@@ -10,9 +10,9 @@
 
 <AnchorPane prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
    <children>
-      <ImageView fitHeight="375.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="375.0" fitWidth="241.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Assets/img/download (9).jpg" />
+            <Image url="@download (9).jpg" />
          </image>
       </ImageView>
       <Label layoutX="291.0" layoutY="13.0" prefHeight="39.0" prefWidth="226.0" text="User Registration">

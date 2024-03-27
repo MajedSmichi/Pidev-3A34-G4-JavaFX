@@ -1,4 +1,4 @@
-package com.example.pidev3a34g4;
+package Controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
