@@ -19,21 +19,28 @@ public class UserController {
 
     // Create or insert user
     public void insertUser(User user) throws SQLException {
+        // First, check if the email already exists
+        if (emailExists(user.getEmail())) {
+            throw new SQLException("Email already registered.");
+        }
+
         try (Connection connection = ConnectionSql.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             String hashedPassword = BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt());
             preparedStatement.setString(1, user.getNom());
             preparedStatement.setString(2, user.getPrenom());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getRole());
+            preparedStatement.setString(4, "CLIENT_ROLE"); // Set the role to CLIENT_ROLE by default
             preparedStatement.setInt(5, user.getNumTele());
             preparedStatement.setString(6, hashedPassword);
             preparedStatement.setString(7, user.getAdresse());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            printSQLException(e);
+            // Re-throw the exception for the caller to handle
+            throw e;
         }
     }
+
 
     // Update user
     public boolean updateUser(User user) throws SQLException {
@@ -122,6 +129,23 @@ public class UserController {
         }
         return users;
     }
+
+    public boolean emailExists(String email) {
+        boolean exists = false;
+        try (Connection connection = ConnectionSql.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) AS count FROM users WHERE email = ?")) {
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                exists = resultSet.getInt("count") > 0;
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return exists;
+    }
+
 
     private static void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

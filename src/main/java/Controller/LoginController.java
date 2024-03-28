@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -68,23 +69,34 @@ public class LoginController {
             errorLabel.setText("Please enter email and password");
             return;
         }
+
         try {
             Connection conn = ConnectionSql.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE email = ? AND motDePass = ?");
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), motDePass FROM users WHERE email = ?");
+            checkEmailExists.setString(1, email);
+            ResultSet emailExistsRS = checkEmailExists.executeQuery();
+
+            if (emailExistsRS.next() && emailExistsRS.getInt(1) == 0) {
+                errorLabel.setText("User not registered yet.");
+                return;
+            }
+
+
+            String storedPasswordHash = emailExistsRS.getString("motDePass");
+
+
+            if (BCrypt.checkpw(password, storedPasswordHash)) {
                 errorLabel.setText("Login Successful");
             } else {
-                errorLabel.setText("Login Failed. Invalid credentials.");
+                errorLabel.setText("Invalid credentials");
             }
         } catch (Exception e) {
             e.printStackTrace();
             errorLabel.setText("Error connecting to the database.");
         }
     }
+
 
 
     @FXML
