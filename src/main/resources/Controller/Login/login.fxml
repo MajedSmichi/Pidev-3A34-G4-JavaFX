@@ -31,8 +31,9 @@
             <Image url="@view.png" />
          </image>
       </ImageView>
-      <Button fx:id="loginButton" layoutX="347.0" layoutY="278.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #8e8585;" text="Login" />
-      <Label fx:id="createAccountLabel" layoutX="392.0" layoutY="324.0" text="Create An Account" textFill="#1b7ccc" />
+      <Button fx:id="loginButton" layoutX="335.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #8e8585;" text="Login" />
+      <Label fx:id="createAccountLabel" layoutX="375.0" layoutY="344.0" text="Create An Account" textFill="#1b7ccc" />
       <Label fx:id="errorLabel" layoutX="319.0" layoutY="249.0" prefHeight="18.0" prefWidth="246.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="forgetPassword" layoutX="376.0" layoutY="320.0" text="Forget Password?" textFill="#1b7ccc" />
    </children>
 </AnchorPane>

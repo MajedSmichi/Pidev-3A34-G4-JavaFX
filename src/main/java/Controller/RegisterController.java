@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -31,7 +28,7 @@ public class RegisterController {
     @FXML
     private Label firstNameError, LastNameerror, emailError, passworderror, phoneError, adresserror, registererror,succesLabel;
 
-    private UserController userController = new UserController();
+    private final UserController userController = new UserController();
 
     @FXML
     private Button registerButton;
@@ -41,6 +38,13 @@ public class RegisterController {
 
     @FXML
     private TextField plainPasswordField,plainConfirmPasswordField;
+
+    @FXML
+    private CheckBox checkBoxTerms;
+
+    @FXML
+    private Label errorTerms;
+
 
     @FXML
     private void initialize() {
@@ -130,6 +134,12 @@ public class RegisterController {
 
         if (adressTextField.getText().isEmpty()) {
             adresserror.setText("Address is required.");
+            isValid = false;
+        }
+
+        // Check if the terms and conditions checkbox is not selected
+        if (!checkBoxTerms.isSelected()) {
+            errorTerms.setText("You must agree to the terms and conditions.");
             isValid = false;
         }
 
