@@ -1,0 +1,39 @@
+.table-view {
+    -fx-table-cell-border-color: transparent;
+    -fx-selection-bar: #b3d7ff; /* Color for selected row */
+    -fx-selection-bar-non-focused: #b3d7ff;
+}
+
+.table-row-cell:filled:selected, .table-row-cell:filled:selected:focused {
+    -fx-background-color: #a8d0ff;
+}
+
+.table-column {
+    -fx-border-color: lightgray;
+    -fx-border-width: 0 0 1 0; /* Border only at the bottom */
+}
+
+.button {
+    -fx-background-color: #5c93fe;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 15px;
+}
+
+.button:hover {
+    -fx-background-color: #3e72ff;
+}
+
+.button:pressed {
+    -fx-background-color: #3361cc;
+}
+
+.hbox {
+    -fx-spacing: 10; /* Space between buttons in HBox */
+}
+
+/* Optional: Add a slight shadow to the table for depth */
+.table-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}

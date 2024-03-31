@@ -12,6 +12,7 @@ module Controller {
 
 
     opens Controller to javafx.fxml;
+    opens Entity to javafx.base;
     exports Controller;
 
 }

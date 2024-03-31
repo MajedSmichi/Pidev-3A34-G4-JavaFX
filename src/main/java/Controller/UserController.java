@@ -5,6 +5,13 @@ import connectionSql.ConnectionSql;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserController {
@@ -14,7 +21,47 @@ public class UserController {
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, motDePass =?, adresse =? where id = ?;";
+    public TextField updateEmailText;
+    public Label updateEmailError;
+    public TextField updateFirstNameText;
+    public TextField updateLastNameText;
+    public Label updateFirstNameError;
+    public Label updateLastNameError;
+    public TextField updatePhoneText;
+    public Label updatePhoneError;
+    public TextField updateAdressText;
+    public Label updateAdressError;
 
+    @FXML
+    private TableView<User> userTableView=new TableView<>(); // Assuming User is your model class
+
+    @FXML
+    private TableColumn<User, Void> actionColumn;
+
+
+    @FXML
+    private TableColumn<User, String> firstname;
+    @FXML
+    private TableColumn<User, String> lastName;
+    @FXML
+    private TableColumn<User, String> email;
+    @FXML
+    private TableColumn<User, String> phone;
+    @FXML
+    private TableColumn<User, String> adress;
+
+    public void initialize() {
+        // Assuming User class uses standard naming for getters
+        firstname.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        // Adjust according to your User class field names
+        lastName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phone.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumTele())));
+        adress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+
+        setupActionColumn();
+        loadUsersIntoTable();
+    }
 
 
     // Create or insert user
@@ -197,5 +244,54 @@ public class UserController {
             printSQLException(e);
         }
         return passwordChanged;
+    }
+
+
+    private void setupActionColumn() {
+        actionColumn.setCellFactory(param -> new TableCell<User, Void>() {
+            private final Button editButton = new Button("Edit");
+            private final Button deleteButton = new Button("Delete");
+            private final HBox container = new HBox(5, editButton, deleteButton); // 5 is the spacing between buttons
+
+            {
+                // Edit button action
+                editButton.setOnAction(event -> {
+                    User currentUser = getTableView().getItems().get(getIndex());
+                    // Handle Edit Action Here
+                    System.out.println("Edit button clicked for " + currentUser);
+                });
+
+                // Delete button action
+                deleteButton.setOnAction(event -> {
+                    User currentUser = getTableView().getItems().get(getIndex());
+                    try {
+                        // Call deleteUser method to delete the user
+                        boolean deleted = deleteUser(currentUser.getId());
+                        if (deleted) {
+                            // If deletion was successful, refresh the table
+                            getTableView().getItems().remove(currentUser);
+                            System.out.println("User deleted successfully.");
+                        } else {
+                            System.out.println("Failed to delete the user.");
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error occurred while deleting the user: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : container);
+            }
+        });
+    }
+
+
+    private void loadUsersIntoTable() {
+        List<User> userList = selectAllUsers(); // Assuming this method fetches your users
+        userTableView.setItems(FXCollections.observableArrayList(userList));
     }
 }
