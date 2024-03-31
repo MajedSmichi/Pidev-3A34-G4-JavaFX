@@ -8,6 +8,7 @@ module Controller {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires jbcrypt;
+    requires java.mail;
 
 
     opens Controller to javafx.fxml;

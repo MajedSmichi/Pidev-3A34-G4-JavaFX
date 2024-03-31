@@ -162,4 +162,40 @@ public class UserController {
             }
         }
     }
+
+    public User findUserByEmail(String email) {
+        User user = null;
+        try (Connection connection = ConnectionSql.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+            preparedStatement.setString(1, email);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String role = rs.getString("role");
+                int numTele = rs.getInt("numTele");
+                String motDePass = rs.getString("motDePass");
+                String adresse = rs.getString("adresse");
+                user = new User(id, nom, prenom, email, role, numTele, motDePass, adresse);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return user;
+    }
+
+    public boolean changePasswordByEmail(String email, String newPassword) {
+        boolean passwordChanged = false;
+        try (Connection connection = ConnectionSql.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET motDePass = ? WHERE email = ?")) {
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setString(2, email);
+            passwordChanged = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return passwordChanged;
+    }
 }

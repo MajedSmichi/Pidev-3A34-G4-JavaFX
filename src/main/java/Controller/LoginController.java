@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 
 public class LoginController {
 
+    public Label forgetPassword;
     @FXML
     private TextField emailTextField;
 
@@ -47,6 +48,7 @@ public class LoginController {
     private void initialize() {
         loginButton.setOnAction(event -> LoginButtonAction());
         createAccountLabel.setOnMouseClicked(event -> navigateToRegistration());
+        forgetPassword.setOnMouseClicked(event -> navigateToFogetPassword());
         plainPasswordField.managedProperty().bind(plainPasswordField.visibleProperty());
         passwordTextField.managedProperty().bind(passwordTextField.visibleProperty());
         plainPasswordField.visibleProperty().bind(passwordTextField.visibleProperty().not());
@@ -110,6 +112,20 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
             errorLabel.setText("Error navigating to the registration form.");
+        }
+    }
+
+    @FXML
+    private void navigateToFogetPassword() {
+        try {
+            Parent forgetPasswordView = FXMLLoader.load(getClass().getResource("forgetPassword/sendEmail.fxml"));
+            Scene scene = new Scene(forgetPasswordView);
+            Stage stage = (Stage) createAccountLabel.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorLabel.setText("Error navigating to the forgetPassword form.");
         }
     }
 
