@@ -2,6 +2,8 @@ package Controller;
 
 import Entity.User;
 import connectionSql.ConnectionSql;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +11,20 @@ import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class UserController {
+    private User currentUser;
     private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, motDePass, adresse) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,motDePass,adresse from users where id =?";
@@ -31,29 +41,29 @@ public class UserController {
     public Label updatePhoneError;
     public TextField updateAdressText;
     public Label updateAdressError;
+    public Button updateDataButton;
 
     @FXML
-    private TableView<User> userTableView=new TableView<>(); // Assuming User is your model class
+    private TableView<User> userTableView=new TableView<>();
 
     @FXML
-    private TableColumn<User, Void> actionColumn;
+    private TableColumn<User, Void> actionColumn=new TableColumn<>();
 
 
     @FXML
-    private TableColumn<User, String> firstname;
+    private TableColumn<User, String> firstname=new TableColumn<>();
     @FXML
-    private TableColumn<User, String> lastName;
+    private TableColumn<User, String> lastName=new TableColumn<>();
     @FXML
-    private TableColumn<User, String> email;
+    private TableColumn<User, String> email=new TableColumn<>();
     @FXML
-    private TableColumn<User, String> phone;
+    private TableColumn<User, String> phone=new TableColumn<>();
     @FXML
-    private TableColumn<User, String> adress;
+    private TableColumn<User, String> adress=new TableColumn<>();
 
     public void initialize() {
         // Assuming User class uses standard naming for getters
         firstname.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        // Adjust according to your User class field names
         lastName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumTele())));
@@ -90,16 +100,26 @@ public class UserController {
 
 
     // Update user
-    public boolean updateUser(User user) throws SQLException {
+    // Update user
+    public boolean updateUser(User user, boolean updatePassword) throws SQLException {
+        // Fetch existing user data
+        User existingUser = selectUser(user.getId());
+        if (existingUser == null) {
+            throw new SQLException("User not found with ID: " + user.getId());
+        }
+
+        // Check if a new password is provided and should be updated
+        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt()) : existingUser.getMotDePass();
+
         boolean rowUpdated;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
-            String hashedPassword = BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt());
             statement.setString(1, user.getNom());
             statement.setString(2, user.getPrenom());
             statement.setString(3, user.getEmail());
-            statement.setString(4, user.getRole());
+            // Use the role from the provided user object or existing user if not updated
+            statement.setString(4, user.getRole() != null && !user.getRole().isEmpty() ? user.getRole() : existingUser.getRole());
             statement.setInt(5, user.getNumTele());
-            statement.setString(6,hashedPassword);
+            statement.setString(6, hashedPassword);
             statement.setString(7, user.getAdresse());
             statement.setInt(8, user.getId());
 
@@ -107,6 +127,7 @@ public class UserController {
         }
         return rowUpdated;
     }
+
 
     // Delete user
     public boolean deleteUser(int id) throws SQLException {
@@ -246,6 +267,17 @@ public class UserController {
         return passwordChanged;
     }
 
+    public void setUserDetails(User user) {
+        updateEmailText.setText(user.getEmail());
+        updateFirstNameText.setText(user.getNom());
+        updateLastNameText.setText(user.getPrenom());
+        updatePhoneText.setText(String.valueOf(user.getNumTele()));
+        updateAdressText.setText(user.getAdresse());
+        this.currentUser = user;
+        // Set any other fields you need
+    }
+
+
 
     private void setupActionColumn() {
         actionColumn.setCellFactory(param -> new TableCell<User, Void>() {
@@ -257,9 +289,21 @@ public class UserController {
                 // Edit button action
                 editButton.setOnAction(event -> {
                     User currentUser = getTableView().getItems().get(getIndex());
-                    // Handle Edit Action Here
-                    System.out.println("Edit button clicked for " + currentUser);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/updateUser.fxml"));
+                        Parent updateView = loader.load();
+                        UserController controller = loader.getController();
+                        controller.setUserDetails(currentUser); // Pass the user data to the update view
+
+                        Scene scene = new Scene(updateView);
+                        Stage stage = (Stage) editButton.getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
+
 
                 // Delete button action
                 deleteButton.setOnAction(event -> {
@@ -290,8 +334,96 @@ public class UserController {
     }
 
 
+
+
     private void loadUsersIntoTable() {
         List<User> userList = selectAllUsers(); // Assuming this method fetches your users
         userTableView.setItems(FXCollections.observableArrayList(userList));
     }
+
+
+
+
+    @FXML
+    private void handleUpdateAction() {
+        String email = updateEmailText.getText();
+        String firstName = updateFirstNameText.getText();
+        String lastName = updateLastNameText.getText();
+        String phone = updatePhoneText.getText();
+        String address = updateAdressText.getText();
+
+        Map<String, Boolean> validationResults = validateInputs(email, phone, firstName, lastName, address);
+
+        if (!validationResults.get("isEmailValid")) {
+            updateEmailError.setText("Invalid email format.");
+            return;
+        }
+        if (!validationResults.get("isPhoneValid")) {
+            updatePhoneError.setText("Phone must be 8 digits.");
+            return;
+        }
+        if (!validationResults.get("isFirstNameValid")) {
+            updateFirstNameError.setText("First name is required.");
+            return;
+        }
+        if (!validationResults.get("isLastNameValid")) {
+            updateLastNameError.setText("Last name is required.");
+            return;
+        }
+        if (!validationResults.get("isAddressValid")) {
+            updateAdressError.setText("Address is required.");
+            return;
+        }
+
+        int userId = currentUser.getId();
+        User currentUser = selectUser(userId);
+        boolean updatePassword = false;
+
+        User userToUpdate = new User(userId, firstName, lastName, email, currentUser.getRole(), Integer.parseInt(phone), currentUser.getMotDePass(), address);
+
+        try {
+            if (updateUser(userToUpdate, updatePassword)) {
+                System.out.println("User updated successfully.");
+                navigateToUserList();
+            } else {
+                System.out.println("Failed to update user.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error updating user: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    private Map<String, Boolean> validateInputs(String email, String phone, String firstName, String lastName, String address) {
+        Map<String, Boolean> validationResults = new HashMap<>();
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        String phoneRegex = "\\d{8}";
+
+        validationResults.put("isEmailValid", email.matches(emailRegex));
+        validationResults.put("isPhoneValid", phone.matches(phoneRegex));
+        validationResults.put("isFirstNameValid", !firstName.trim().isEmpty());
+        validationResults.put("isLastNameValid", !lastName.trim().isEmpty());
+        validationResults.put("isAddressValid", !address.trim().isEmpty());
+
+        return validationResults;
+    }
+
+    private void navigateToUserList() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/userList.fxml"));
+            Parent rootView = loader.load();
+
+            Stage currentStage = (Stage) updateEmailText.getScene().getWindow(); // Assuming updateEmailText is part of the current scene
+            currentStage.setScene(new Scene(rootView));
+
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load user list view: " + e.getMessage());
+        }
+    }
+
+
+
+
 }
