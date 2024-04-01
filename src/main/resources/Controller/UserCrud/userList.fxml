@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
+<AnchorPane prefHeight="474.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
    <children>
-      <TableView fx:id="userTableView" layoutX="24.0" layoutY="41.0" prefHeight="331.0" prefWidth="630.0">
+      <TableView fx:id="userTableView" layoutX="98.0" layoutY="104.0" prefHeight="331.0" prefWidth="702.0">
         <columns>
           <TableColumn fx:id="firstname" prefWidth="75.0" text="FirstName" />
           <TableColumn fx:id="lastName" prefWidth="70.4000244140625" text="LastName" />
             <TableColumn fx:id="email" prefWidth="192.00001525878906" text="Email" />
             <TableColumn fx:id="phone" minWidth="1.5999755859375" prefWidth="65.5999755859375" text="phone" />
-            <TableColumn fx:id="adress" prefWidth="72.0" text="Adress" />
-            <TableColumn fx:id="actionColumn" prefWidth="152.79996337890623" text="Action" />
+            <TableColumn fx:id="adress" prefWidth="115.20004272460938" text="Adress" />
+            <TableColumn fx:id="actionColumn" prefWidth="180.7999267578125" text="Action" />
         </columns>
       </TableView>
+      <Label layoutX="98.0" layoutY="72.0" prefHeight="26.0" prefWidth="81.0" text="Search User">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchTextField" layoutX="172.0" layoutY="71.0" prefHeight="26.0" prefWidth="288.0" promptText="search with email" />
    </children>
 </AnchorPane>

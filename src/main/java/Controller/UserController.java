@@ -10,6 +10,8 @@ import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,6 +44,8 @@ public class UserController {
     public TextField updateAdressText;
     public Label updateAdressError;
     public Button updateDataButton;
+    @FXML
+    private TextField searchTextField;
 
     @FXML
     private TableView<User> userTableView=new TableView<>();
@@ -71,6 +75,7 @@ public class UserController {
 
         setupActionColumn();
         loadUsersIntoTable();
+        setupSearchField();
     }
 
 
@@ -337,7 +342,7 @@ public class UserController {
 
 
     private void loadUsersIntoTable() {
-        List<User> userList = selectAllUsers(); // Assuming this method fetches your users
+        List<User> userList = selectAllUsers();
         userTableView.setItems(FXCollections.observableArrayList(userList));
     }
 
@@ -423,7 +428,35 @@ public class UserController {
         }
     }
 
+    public void setupSearchField() {
+        // Ensure userTableView is already populated with data here
+        // Create a FilteredList wrapper around the ObservableList currently holding all users in the table
+        FilteredList<User> filteredData = new FilteredList<>(FXCollections.observableArrayList(userTableView.getItems()), p -> true);
 
+        // Add a listener to the searchTextField's text property
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(user -> {
+                // If the search field is empty, display all users
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare lower case user email with the lower case search field text
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return user.getEmail().toLowerCase().contains(lowerCaseFilter); // Filter matches email
+            });
+        });
+
+        // Wrap the FilteredList in a SortedList
+        SortedList<User> sortedData = new SortedList<>(filteredData);
+
+        // Bind the SortedList comparator to the TableView comparator
+        sortedData.comparatorProperty().bind(userTableView.comparatorProperty());
+
+        // Add sorted (and filtered) data back to the table
+        userTableView.setItems(sortedData);
+    }
 
 
 }
