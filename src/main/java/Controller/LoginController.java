@@ -1,5 +1,6 @@
 package Controller;
 
+import Entity.User;
 import connectionSql.ConnectionSql;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,12 +85,14 @@ public class LoginController {
                 return;
             }
 
-
             String storedPasswordHash = emailExistsRS.getString("motDePass");
 
-
             if (BCrypt.checkpw(password, storedPasswordHash)) {
-                errorLabel.setText("Login Successful");
+                // Assuming you have a method getUserByEmail that returns a User object
+                User user = getUserByEmail(email);
+                SessionManager.getInstance().setCurrentUser(user); // Set the current user in session
+
+                navigateToUserList(email);
             } else {
                 errorLabel.setText("Invalid credentials");
             }
@@ -97,7 +100,30 @@ public class LoginController {
             e.printStackTrace();
             errorLabel.setText("Error connecting to the database.");
         }
+
     }
+
+
+    private void navigateToUserList(String userEmail) {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/userList.fxml"));
+            Parent userListRoot = loader.load();
+
+            // Get the controller of userList.fxml and pass the email
+            UserController userController = loader.getController();
+            userController.setUserEmail(userEmail); // Assuming you have a method in UserController to set the email
+
+            // Show in the current stage
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.setScene(new Scene(userListRoot));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorLabel.setText("Error navigating to user list.");
+        }
+    }
+
 
 
 
@@ -128,6 +154,38 @@ public class LoginController {
             errorLabel.setText("Error navigating to the forgetPassword form.");
         }
     }
+
+    private User getUserByEmail(String email) {
+        User user = null;
+
+        try {
+            Connection conn = ConnectionSql.getConnection();
+            PreparedStatement getUserStmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
+            getUserStmt.setString(1, email);
+
+            ResultSet rs = getUserStmt.executeQuery();
+
+            if (rs.next()) {
+
+                int id = rs.getInt("id");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+
+                String role = rs.getString("role");
+                int numTele = rs.getInt("numTele");
+                String motDePass = rs.getString("motDePass");
+                String adresse = rs.getString("adresse");
+
+                user = new User(id, nom, prenom, email, role, numTele, motDePass, adresse);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+
 
 }
 

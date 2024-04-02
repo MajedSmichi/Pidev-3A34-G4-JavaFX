@@ -27,6 +27,7 @@ import java.util.Map;
 
 public class UserController {
     private User currentUser;
+    private String userEmail;
     private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, motDePass, adresse) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,motDePass,adresse from users where id =?";
@@ -65,17 +66,50 @@ public class UserController {
     @FXML
     private TableColumn<User, String> adress=new TableColumn<>();
 
+    @FXML
+    private Label firstNameConnect;
+
+    @FXML
+    private Label lastNameConnect;
+
+    @FXML
+    private Label emailConnect;
+
+    @FXML
+    private Button logoutButton=new Button();
+
     public void initialize() {
-        // Assuming User class uses standard naming for getters
+        updateUserInfo();
         firstname.setCellValueFactory(new PropertyValueFactory<>("nom"));
         lastName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumTele())));
         adress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-
         setupActionColumn();
         loadUsersIntoTable();
         setupSearchField();
+        logoutButton.setOnAction(event -> logout());
+    }
+
+    private void updateUserInfo() {
+
+        firstNameConnect.setText(SessionManager.getInstance().getUserFirstName());
+        lastNameConnect.setText(SessionManager.getInstance().getUserLastName());
+        emailConnect.setText(SessionManager.getInstance().getUserEmail());
+    }
+
+    private void logout() {
+        SessionManager.getInstance().clearSession();
+        try {
+            Parent loginView = FXMLLoader.load(getClass().getResource("Login/login.fxml"));
+            Scene scene = new Scene(loginView);
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 
 
@@ -279,7 +313,6 @@ public class UserController {
         updatePhoneText.setText(String.valueOf(user.getNumTele()));
         updateAdressText.setText(user.getAdresse());
         this.currentUser = user;
-        // Set any other fields you need
     }
 
 
@@ -288,7 +321,7 @@ public class UserController {
         actionColumn.setCellFactory(param -> new TableCell<User, Void>() {
             private final Button editButton = new Button("Edit");
             private final Button deleteButton = new Button("Delete");
-            private final HBox container = new HBox(5, editButton, deleteButton); // 5 is the spacing between buttons
+            private final HBox container = new HBox(5, editButton, deleteButton);
 
             {
                 // Edit button action
@@ -298,7 +331,7 @@ public class UserController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/updateUser.fxml"));
                         Parent updateView = loader.load();
                         UserController controller = loader.getController();
-                        controller.setUserDetails(currentUser); // Pass the user data to the update view
+                        controller.setUserDetails(currentUser);
 
                         Scene scene = new Scene(updateView);
                         Stage stage = (Stage) editButton.getScene().getWindow();
@@ -429,34 +462,38 @@ public class UserController {
     }
 
     public void setupSearchField() {
-        // Ensure userTableView is already populated with data here
-        // Create a FilteredList wrapper around the ObservableList currently holding all users in the table
+
         FilteredList<User> filteredData = new FilteredList<>(FXCollections.observableArrayList(userTableView.getItems()), p -> true);
 
-        // Add a listener to the searchTextField's text property
+
         searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(user -> {
-                // If the search field is empty, display all users
+
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
-                // Compare lower case user email with the lower case search field text
+
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                return user.getEmail().toLowerCase().contains(lowerCaseFilter); // Filter matches email
+                return user.getEmail().toLowerCase().contains(lowerCaseFilter);
             });
         });
 
-        // Wrap the FilteredList in a SortedList
+
         SortedList<User> sortedData = new SortedList<>(filteredData);
 
-        // Bind the SortedList comparator to the TableView comparator
+
         sortedData.comparatorProperty().bind(userTableView.comparatorProperty());
 
-        // Add sorted (and filtered) data back to the table
+
         userTableView.setItems(sortedData);
     }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
 
 
 }
