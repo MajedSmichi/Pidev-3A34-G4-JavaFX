@@ -1,32 +1,46 @@
 package connectionSql;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ConnectionSql {
+    public Connection databaseLinck;
 
-    private static final String url = "jdbc:mysql://localhost:3306/pidevJava?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String driverName = "com.mysql.cj.jdbc.Driver";
-    private static final String username = "root";
-    private static final String password = "";
-    private static Connection con;
+    private Connection cnx;
+    private static ConnectionSql instance;
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
+        String databaseName = "pidev";
+        String databaseUser = "root";
+        String databasePassword = "";
+        String url = "jdbc:mysql://localhost/" + databaseName;
+
         try {
-            Class.forName(driverName);
-            try {
-                con = DriverManager.getConnection(url, username, password);
-                System.out.println("Connected to the database.");
-            } catch (SQLException ex) {
-                // log an exception. for example:
-                System.out.println("Failed to create the database connection.");
-                ex.printStackTrace(); // Ajout pour voir la stack trace de l'exception
-            }
-        } catch (ClassNotFoundException ex) {
-            // log an exception. for example:
-            System.out.println("Driver not found.");
-            ex.printStackTrace(); // Ajout pour voir la stack trace de l'exception
+            // Load the JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish the connection
+            databaseLinck = DriverManager.getConnection(url, databaseUser, databasePassword);
+            System.out.println("connect to the database.");
+
+            return databaseLinck;
+        } catch (Exception e) {
+            System.out.println("Failed to connect to the database.");
+            e.printStackTrace();
         }
-        return con;
+
+        // Return null if connection fails
+        return null;
+    }
+
+    public Connection getCnx() {
+        return cnx;
+    }
+
+    public static ConnectionSql getInstance() {
+        if (instance == null) {
+            instance = new ConnectionSql();
+        }
+        return instance;
     }
 }
+
