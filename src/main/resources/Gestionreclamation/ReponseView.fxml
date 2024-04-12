@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderpaneReponse" prefHeight="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.ReponseController">
+
+    <top>
+        <HBox prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Pane prefHeight="42.0" prefWidth="66.0" />
+                <Pane prefHeight="36.0" prefWidth="194.0">
+                    <children>
+                        <TextField layoutX="3.0" layoutY="16.0" maxHeight="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Search" />
+                    </children>
+                </Pane>
+                <Pane>
+                    <children>
+                        <MenuButton layoutX="605.0" layoutY="15.0" mnemonicParsing="false" text="Filtré">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Traité" />
+                                <MenuItem mnemonicParsing="false" text="Non Traité" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                </Pane>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true">
+            <content>
+                <VBox alignment="CENTER" prefWidth="993.0">
+                    <!-- Your existing content -->
+                    <GridPane fx:id="GridReponse" alignment="CENTER">
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                    </GridPane>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

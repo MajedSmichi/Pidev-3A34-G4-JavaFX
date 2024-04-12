@@ -1,0 +1,39 @@
+#PaneReclamation {
+    -fx-width: 300px;
+    -fx-height: 220px;
+    -fx-border-radius: 8px;
+    -fx-padding: 20px 30px;
+    -fx-position: relative;
+    -fx-overflow: hidden;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,0,1 );
+    /* Add transition for smoother hover effect */
+    -fx-transition: all 0.3s ease;
+}
+
+/* Style du titre */
+#name {
+    -fx-font-size: 1.2em; /* Taille de police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #1a1a1a; /* Couleur du texte */
+}
+
+/* Style des étiquettes */
+Label {
+    -fx-font-size: 0.9em; /* Increased font size for better readability */
+    -fx-text-fill: #555555; /* Darker text color for better contrast */
+    -fx-font-family: "Arial", sans-serif; /* Font family */
+    -fx-font-weight: normal; /* Normal font weight */
+}
+
+/* Hover effect for labels */
+Label:hover {
+    -fx-text-fill: #333333; /* Darken text color on hover */
+}
+
+/* Add hover effect for Pane */
+#PaneReclamation:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 15,0,0,2 );
+}

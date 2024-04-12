@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: #e9edf1;" stylesheets="@../dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.Dashboard">
+   <children>
+      <VBox layoutX="-6.0" layoutY="-1.0" prefHeight="660.0" prefWidth="220.0" style="-fx-background-color: #1e1e2d;">
+         <children>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="52.0" layoutX="6.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <Label layoutX="68.0" layoutY="25.0" prefHeight="23.0" prefWidth="98.0" text="SPORTHUB" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <MenuButton layoutX="2.0" layoutY="48.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #1e1e2d;" text="GestionReclamation" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Reclamation" />
+                      <MenuItem mnemonicParsing="false" text="Reponse" />
+                    </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="71.0">
+               <children>
+                  <MenuButton layoutX="2.0" layoutY="1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #1e1e2d;" text="GestionReclamation" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Reclamation" />
+                        <MenuItem mnemonicParsing="false" text="Reponse" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="148.0">
+               <children>
+                  <MenuButton layoutX="2.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #1e1e2d;" text="GestionReclamation" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Reclamation" />
+                        <MenuItem mnemonicParsing="false" text="Reponse" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="226.0">
+               <children>
+                  <MenuButton layoutX="1.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #1e1e2d;" text="GestionReclamation" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Reclamation" />
+                        <MenuItem mnemonicParsing="false" text="Reponse" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Pane layoutX="214.0" prefHeight="62.0" prefWidth="1000.0" style="-fx-background-color: #eff2f5;">
+         <children>
+            <Label layoutX="9.0" layoutY="19.0" prefHeight="26.0" prefWidth="98.0" stylesheets="@../dashboard.css" text="Dashboard" textFill="#181c32">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="paneviewreclamation" layoutX="219.0" layoutY="59.0" prefHeight="600.0" prefWidth="974.0" />
+   </children>
+</AnchorPane>

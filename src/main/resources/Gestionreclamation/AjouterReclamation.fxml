@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.AjouterReclamation">
+   <children>
+      <AnchorPane prefHeight="472.0" prefWidth="798.0" style="-fx-background-color: black;">
+         <children>
+            <AnchorPane fx:id="form_ajouter_text" layoutX="397.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: black;">
+               <children>
+                  <TextField fx:id="description" alignment="TOP_LEFT" layoutX="39.0" layoutY="237.0" prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" />
+                  <Label alignment="CENTER" layoutX="87.0" layoutY="46.0" prefHeight="26.0" prefWidth="241.0" style="-fx-text-fill: white;" text="FullName">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="sujet" layoutX="89.0" layoutY="121.0" prefHeight="26.0" prefWidth="242.0" promptText="Sujet" />
+                  <DatePicker fx:id="date" layoutX="88.0" layoutY="180.0" prefHeight="26.0" prefWidth="242.0" promptText="Date" />
+                  <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="form_ajouter_speech" layoutX="-2.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: black;" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="87.0" layoutY="46.0" prefHeight="26.0" prefWidth="241.0" style="-fx-text-fill: white;" text="FullName">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
+                  <TextField fx:id="file" layoutX="70.0" layoutY="120.0" prefHeight="36.0" prefWidth="209.0" promptText="file" style="-fx-background-color: white;" />
+                  <Button layoutX="291.0" layoutY="120.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: orange;" text="upload" />
+                  <TextArea fx:id="descriptionvoice" layoutX="26.0" layoutY="196.0" prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" wrapText="true" />               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="form_switch_speech" layoutX="-2.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: #677273;">
+               <children>
+                  <Button fx:id="Switch_to_speech" layoutX="75.0" layoutY="400.0" mnemonicParsing="false" onAction="#sweechForm" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: orange;" text="Switch To Speech" />
+                  <Button fx:id="switch_to_text" layoutX="75.0" layoutY="400.0" mnemonicParsing="false" onAction="#sweechForm" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: orange;" text="Switch To Text" visible="false" />
+                  <ImageView fitHeight="275.0" fitWidth="242.0" layoutX="65.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

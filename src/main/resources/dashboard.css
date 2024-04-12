@@ -1,0 +1,49 @@
+/* Style de l'arrière-plan */
+.anchor-pane {
+    -fx-background-color: #e9edf1;
+}
+
+/* Style de la boîte de gauche */
+.vbox {
+    -fx-background-color: #1e1e2d;
+}
+
+/* Style de l'en-tête */
+.text-field{
+    --body-text-color: white;
+}
+/* Style des éléments de menu */
+.menu-item {
+    -fx-text-fill: #2a2a3c; /* Set the default text color */
+    -fx-padding: 5px 20px; /* Espacement intérieur */
+    -fx-background-color: transparent; /* Couleur de fond transparente */
+    /* Remove cursor property -fx-cursor: hand; */
+}
+
+/* Style des éléments de menu au survol */
+.menu-item:hover {
+    -fx-background-color: #2a2a3c; /* Couleur de fond au survol */
+    -fx-background-radius: 5px; /* Rayon de bordure */
+    -fx-text-fill: #ffffff; /* Couleur du texte au survol */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2); /* Effet d'ombre portée */
+}
+
+/* Style des éléments de menu sélectionnés */
+.menu-item:selected {
+    -fx-background-color: #3d3d50; /* Couleur de fond sélectionnée */
+    -fx-background-radius: 5px; /* Rayon de bordure */
+    -fx-text-fill: #ffffff; /* Couleur du texte sélectionné */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 2); /* Effet d'ombre portée */
+}
+
+.pane {
+    -fx-background-color: #eff2f5;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/* Style du texte dans la zone de contenu */
+.label.dashboard {
+    -fx-text-fill: #181c32;
+}
