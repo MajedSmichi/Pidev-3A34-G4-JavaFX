@@ -12,21 +12,26 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.AjouterReclamation">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="795.0" stylesheets="@ajouterReclamation.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.AjouterReclamation">
    <children>
       <AnchorPane prefHeight="472.0" prefWidth="798.0" style="-fx-background-color: black;">
          <children>
             <AnchorPane fx:id="form_ajouter_text" layoutX="397.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: black;">
                <children>
                   <TextField fx:id="description" alignment="TOP_LEFT" layoutX="39.0" layoutY="237.0" prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" />
+                  <Label fx:id="descriptionError" layoutX="101.0" layoutY="362.0" prefHeight="18.0" prefWidth="274.0" style="-fx-text-fill: red;" />
+
                   <Label alignment="CENTER" layoutX="87.0" layoutY="46.0" prefHeight="26.0" prefWidth="241.0" style="-fx-text-fill: white;" text="FullName">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
                   <ComboBox fx:id="sujet" layoutX="89.0" layoutY="121.0" prefHeight="26.0" prefWidth="242.0" promptText="Sujet" />
+                  <Label fx:id="sujetError" layoutX="103.0" layoutY="154.0" prefHeight="18.0" prefWidth="210.0" style="-fx-text-fill: red;" />
                   <DatePicker fx:id="date" layoutX="88.0" layoutY="180.0" prefHeight="26.0" prefWidth="242.0" promptText="Date" />
-                  <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
+                  <Label fx:id="dateError" layoutX="94.0" layoutY="212.0" prefHeight="18.0" prefWidth="232.0" style="-fx-text-fill: red;" />
+
+                  <Button layoutX="138.0" layoutY="386.0" mnemonicParsing="false" onAction="#ajouterText" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="form_ajouter_speech" layoutX="-2.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: black;" visible="false">
@@ -36,10 +41,12 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
+                  <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" onAction="#ajouterVoice" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: orange;" text="Envoyer" />
                   <TextField fx:id="file" layoutX="70.0" layoutY="120.0" prefHeight="36.0" prefWidth="209.0" promptText="file" style="-fx-background-color: white;" />
                   <Button layoutX="291.0" layoutY="120.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: orange;" text="upload" />
-                  <TextArea fx:id="descriptionvoice" layoutX="26.0" layoutY="196.0" prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" wrapText="true" />               </children>
+                  <TextArea fx:id="descriptionvoice" layoutX="26.0" layoutY="196.0"  prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" wrapText="true" />
+                  <Label fx:id="fileError" layoutX="69.0" layoutY="165.0" prefHeight="18.0" prefWidth="210.0" style="-fx-text-fill: red;" />
+                  <Label fx:id="descriptionVoiceError" layoutX="51.0" layoutY="330.0" prefHeight="18.0" prefWidth="274.0" style="-fx-text-fill: red;" visible="false" />               </children>
             </AnchorPane>
             <AnchorPane fx:id="form_switch_speech" layoutX="-2.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: #677273;">
                <children>

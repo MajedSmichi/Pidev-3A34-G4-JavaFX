@@ -1,6 +1,7 @@
 package Gestionreclamation.Services;
 
 import Gestionreclamation.Entity.Reclamation;
+import Gestionreclamation.Entity.Reponse;
 import Gestionreclamation.Entity.User;
 import connectionSql.ConnectionSql;
 
@@ -181,5 +182,26 @@ public class ReclamationService {
     public Reclamation getReclamationById(int reclamationId) {
         // Supposons que reclamationMap contient des données simulées de réclamations
         return reclamationMap.get(reclamationId);
+    }
+    public Reponse getReponseByReclamationId(int reclamationId) {
+        Reponse response = null;
+        String sql = "SELECT * FROM reponse WHERE id_reclamation_id = ?";
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement(sql);
+            preparedStatement.setInt(1, reclamationId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                response = new Reponse();
+                response.setId(resultSet.getInt("id"));
+                response.setDate(resultSet.getTimestamp("date").toLocalDateTime());
+                response.setReponse(resultSet.getString("reponse"));
+                // Set other fields of the response object as necessary
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 }

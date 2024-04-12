@@ -14,28 +14,32 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class client implements Initializable {
+public class client {
 
 
     @FXML
-    private AnchorPane archofront;
+    private AnchorPane achorfront;
+
+
+
+
 
     @FXML
-    private ScrollPane s;
-
-
-    public void initialize(URL location, ResourceBundle resources) {
-        s.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        s.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        // rest of your code...
+    public void reclamation() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gestionreclamation/AjouterReclamation.fxml"));
-            Pane content = fxmlLoader.load(); // Load as Pane
-            archofront.getChildren().setAll(content);
+            Pane reclamtion = fxmlLoader.load(); // Load as Pane
+            achorfront.getChildren().setAll(reclamtion);
+            System.out.println("reclmation front view loaded successfully");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Error while loading the evenement front view");
         }
-        // Charger en tant que Pane
-
     }
+    public void listeReclamtion() {
+        AfficherReclamtion afficherReclamtion = new AfficherReclamtion();
+        afficherReclamtion.createCards();
+        achorfront.getChildren().setAll(afficherReclamtion.getVbox());
+    }
+
 }

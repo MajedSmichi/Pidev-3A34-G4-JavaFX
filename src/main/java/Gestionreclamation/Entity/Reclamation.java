@@ -59,6 +59,19 @@ public class Reclamation {
         // Default constructor
     }
 
+    public Reclamation(int id, String nom, String prenom, String email, int numTele, String etat, String sujet, String description, LocalDateTime date, User utilisateur) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.numTele = numTele;
+        this.etat = etat;
+        this.sujet = sujet;
+        this.description = description;
+        this.date = date;
+        this.utilisateur = utilisateur;
+    }
+
     // Getters and Setters
     public int getId() {
         return id;
