@@ -1,25 +1,34 @@
 package SportHub.Controller;
 
 import SportHub.Entity.Evenement;
-import SportHub.Entity.Ticket;
 import SportHub.Services.EvenementService;
-import SportHub.Services.TicketService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EvenementFront {
+public class EvenementBack {
 
     @FXML
-    private GridPane eventContainer; // This is the container where you will add the event cards
+    private GridPane eventContainerBack;
+
+    @FXML
+    private Button ajouterEvenement;
+
 
     public void initialize() {
+
+        ajouterEvenement.setOnAction(e -> {
+            showAddEventDialog();
+        });
+
         try {
             List<Evenement> events = fetchEventsFromDatabase();
 
@@ -28,7 +37,7 @@ public class EvenementFront {
 
             for (Evenement event : events) {
                 GridPane eventCard = createEventCard(event);
-                eventContainer.add(eventCard, column, row);
+                eventContainerBack.add(eventCard, column, row);
 
                 column++;
                 if (column > 2) {
@@ -66,8 +75,8 @@ public class EvenementFront {
         eventCard.setOnMouseClicked(e -> {
             // Create and display the detailed card
             GridPane detailedCard = createDetailedCard(event);
-            eventContainer.getChildren().clear(); // Clear the event container
-            eventContainer.add(detailedCard, 0, 0); // Add the detailed card to the event container
+            eventContainerBack.getChildren().clear(); // Clear the event container
+            eventContainerBack.add(detailedCard, 0, 0); // Add the detailed card to the event container
         });
 
         return eventCard;
@@ -103,19 +112,6 @@ public class EvenementFront {
         detailedCard.add(eventDescription, 0, 4);
 
 
-        Button getTicketButton = new Button("Get Ticket");
-        getTicketButton.setOnAction(e -> {
-            // Create and display the ticket card
-            GridPane ticketCard = null;
-            try {
-                ticketCard = createTicketCard(event);
-            } catch (SQLException sqlException) {
-                sqlException.printStackTrace();
-            }
-            //eventContainer.getChildren().clear(); // Clear the event container
-            eventContainer.add(ticketCard, 1, 0); // Add the ticket card to the event container
-        });
-        detailedCard.add(getTicketButton, 0, 6); // Add the button to the detailed card
 
 
         // Create a back button with text
@@ -125,7 +121,7 @@ public class EvenementFront {
         backButton.setOnAction(e -> {
             try {
                 // Clear the event container
-                eventContainer.getChildren().clear();
+                eventContainerBack.getChildren().clear();
 
                 // Repopulate the event container with the event cards
                 List<Evenement> events = fetchEventsFromDatabase();
@@ -137,7 +133,7 @@ public class EvenementFront {
                         column = 0;
                         row++;
                     }
-                    eventContainer.add(eventCard, column++, row);
+                    eventContainerBack.add(eventCard, column++, row);
                 }
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
@@ -151,63 +147,98 @@ public class EvenementFront {
     }
 
 
-    private GridPane createTicketCard(Evenement event) throws SQLException {
-        GridPane ticketCard = new GridPane();
-        ticketCard.getStyleClass().add("ticket-card"); // Add the style class
-
-        // Create a TicketService instance to fetch the ticket details
-        TicketService ticketService = new TicketService();
-        Ticket ticket = ticketService.getTicketByEventId(event.getId());
-
-        // Check if the ticket is not null before accessing it
-        if (ticket != null) {
-            // Add the ticket details to the card
 
 
-            Label eventName = new Label("Event Name: " + event.getNom());
-            eventName.getStyleClass().add("ticket-label");
 
-            Label eventTitle = new Label("     VOTRE TICKET ");
-            Label eventTi = new Label("------------------------------- ");
-            Label eventTi1 = new Label("------------------------------- ");
+private void showAddEventDialog() {
+    // Create a custom dialog.
+    Dialog<Evenement> dialog = new Dialog<>();
+    dialog.setTitle("Add Event");
+    dialog.getDialogPane().setPrefSize(600, 600); // Set the preferred size of the dialog
+    dialog.getDialogPane().getStylesheets().add(getClass().getResource("/SportHub/Back.css").toExternalForm()); // Add the CSS file
+    // Set the button types.
+    ButtonType loginButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+    dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+    // Create the labels and fields.
+    GridPane grid = new GridPane();
+    grid.setHgap(10);
+    grid.setVgap(10);
+    grid.setAlignment(Pos.CENTER); // Center the content
+
+    grid.getStyleClass().add("white-bg"); // Add the style class from dashboardDesign.css
+
+    TextField eventName = new TextField();
+    eventName.getStyleClass().add("textfield"); // Add the style class from dashboardDesign.css
+    TextArea eventDescription = new TextArea();
+    eventDescription.getStyleClass().add("textfield"); // Add the style class from dashboardDesign.css
+    TextField eventLieu = new TextField();
+    eventLieu.getStyleClass().add("textfield"); // Add the style class from dashboardDesign.css
+    DatePicker eventDate = new DatePicker();
+    eventDate.getStyleClass().add("textfield"); // Add the style class from dashboardDesign.css
+    Button eventImageButton = new Button("Choose Image");
+    eventImageButton.getStyleClass().add("add-btn"); // Add the style class from dashboardDesign.css
+    Label eventImageLabel = new Label();
+    ImageView eventImageView = new ImageView();
+    eventImageView.setFitWidth(180);  // Set the width of the ImageView
+    eventImageView.setFitHeight(220); // Set the height of the ImageView
+    eventImageView.setPreserveRatio(true);  // Preserve the aspect ratio
 
 
-            Label ticketType = new Label("Ticket Type: " + ticket.getType());
-            ticketType.getStyleClass().add("ticket-label");
+    grid.add(new Label("Image:"), 0, 0);
+    grid.add(eventImageButton, 1, 0);
+    grid.add(eventImageLabel, 2, 0);
+    grid.add(eventImageView, 1, 1); // Add the ImageView to the grid
+    grid.add(new Label("Name:"), 0, 2);
+    grid.add(eventName, 1, 2);
+    grid.add(new Label("Lieu:"), 0, 3);
+    grid.add(eventLieu, 1, 3);
+    grid.add(new Label("Date:"), 0, 4);
+    grid.add(eventDate, 1, 4);
+    grid.add(new Label("Description:"), 0, 5);
+    grid.add(eventDescription, 1, 5);
 
-            Label ticketPrice = new Label("Ticket Price: " + ticket.getPrix() + " DT");
-            ticketPrice.getStyleClass().add("ticket-label");
+    // Create a FileChooser
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
 
-            Label ticketQuantity = new Label("Ticket Quantity: " + ticket.getNbreTicket());
-            ticketQuantity.getStyleClass().add("ticket-label");
-
-            ticketCard.add(eventTitle, 0, 0);
-            ticketCard.add(eventTi, 0, 1);
-            ticketCard.add(eventName, 0, 2);
-            ticketCard.add(ticketType, 0, 3);
-            ticketCard.add(ticketPrice, 0, 4);
-            ticketCard.add(ticketQuantity, 0, 5);
-            ticketCard.add(eventTi1, 0, 6);
-
-
-            // Create a back button with text
-            Button backButton = new Button("PARTICIPATE");
-            // Add the back button to the ticket card
-            ticketCard.add(backButton, 0, 7);
-
-        } else {
-            // Handle the case where the ticket is null
-            Label noTicketLabel = new Label("No ticket available .");
-            noTicketLabel.getStyleClass().add("ticket-label");
-            ticketCard.add(noTicketLabel, 0, 0);
+    // Set an action for the eventImageButton
+    eventImageButton.setOnAction(e -> {
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+           // eventImageLabel.setText(selectedFile.getAbsolutePath());
+            Image image = new Image("file:" + selectedFile.getAbsolutePath());
+            eventImageView.setImage(image); // Update the ImageView with the selected image
         }
+    });
 
+    dialog.getDialogPane().setContent(grid);
 
-        return ticketCard;
-    }
+    // Convert the result to an Evenement object when the Add button is clicked.
+    dialog.setResultConverter(dialogButton -> {
+        if (dialogButton == loginButtonType) {
+            return new Evenement(eventName.getText(), eventDescription.getText(), eventLieu.getText(), java.sql.Date.valueOf(eventDate.getValue()), eventImageLabel.getText());
+        }
+        return null;
+    });
+
+    // Show the dialog and handle the result
+    dialog.showAndWait().ifPresent(event -> {
+        try {
+            new EvenementService().addEvent(event);
+            // Refresh the event container
+            eventContainerBack.getChildren().clear();
+            initialize();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    });
+}
+
 
     private List<Evenement> fetchEventsFromDatabase() throws SQLException {
         EvenementService service = new EvenementService();
         return service.getAllEvents();
     }
+
 }

@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class SampleController {
+public class DashController {
 
     @FXML
     private AnchorPane anchor;
