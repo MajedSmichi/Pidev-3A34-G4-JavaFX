@@ -14,11 +14,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.HashMap;
@@ -493,6 +495,43 @@ public class UserController {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
+
+
+
+    private HBox createUserCard(User user) {
+        HBox card = new HBox(10);
+        card.setPadding(new Insets(10));
+        card.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #ccc; -fx-border-radius: 5;");
+
+        // Add components to card, such as labels, buttons, etc.
+        Label nameLabel = new Label(user.getNom() + " " + user.getPrenom());
+        Button editButton = new Button("Edit");
+        Button deleteButton = new Button("Delete");
+        // Set actions for buttons
+       // editButton.setOnAction();
+        deleteButton.setOnAction(event -> {
+            try {
+                deleteUserCard(user, card);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        card.getChildren().addAll(nameLabel, editButton, deleteButton);
+        return card;
+    }
+
+    private void deleteUserCard(User user, HBox card) throws SQLException {
+        // Call the deleteUser method
+        boolean deleted = deleteUser(user.getId());
+        if (deleted) {
+           // cardsContainer.getChildren().remove(card); // Remove the card from the UI
+            System.out.println("User deleted successfully.");
+        } else {
+            System.out.println("Failed to delete the user.");
+        }
+    }
+
 
 
 

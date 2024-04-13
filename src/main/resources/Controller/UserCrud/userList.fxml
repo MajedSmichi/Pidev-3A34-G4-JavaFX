@@ -2,33 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="474.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
-   <children>
-      <TableView fx:id="userTableView" layoutX="98.0" layoutY="104.0" prefHeight="331.0" prefWidth="702.0">
-        <columns>
-          <TableColumn fx:id="firstname" prefWidth="75.0" text="FirstName" />
-          <TableColumn fx:id="lastName" prefWidth="70.4000244140625" text="LastName" />
-            <TableColumn fx:id="email" prefWidth="192.00001525878906" text="Email" />
-            <TableColumn fx:id="phone" minWidth="1.5999755859375" prefWidth="65.5999755859375" text="phone" />
-            <TableColumn fx:id="adress" prefWidth="115.20004272460938" text="Adress" />
-            <TableColumn fx:id="actionColumn" prefWidth="180.7999267578125" text="Action" />
-        </columns>
-      </TableView>
-      <Label layoutX="98.0" layoutY="72.0" prefHeight="26.0" prefWidth="81.0" text="Search User">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="searchTextField" layoutX="172.0" layoutY="71.0" prefHeight="26.0" prefWidth="288.0" promptText="search with email" />
-      <Label fx:id="firstNameConnect" layoutX="651.0" layoutY="14.0" textFill="#290aec" />
-      <Label fx:id="lastNameConnect" layoutX="698.0" layoutY="14.0" textFill="#290aec" />
-      <Label fx:id="emailConnect" layoutX="651.0" layoutY="36.0" textFill="#290aec" />
-      <Button fx:id="logoutButton" layoutX="766.0" layoutY="10.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="56.0" text="logout" textFill="#0f52e1" />
-   </children>
-</AnchorPane>
+<TilePane fx:id="cardsContainer" hgap="-260"  prefHeight="245.0"  stylesheets="@card.css" prefColumns="3" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserCardController">
+    <children>
+        <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 10 20 10; -fx-border-color: #3a3434; -fx-border-radius: 10;">
+            <ImageView fx:id="userImage" fitHeight="84.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox spacing="5">
+                <Label fx:id="userName" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Nom Prénom" />
+                <Label fx:id="userEmail" text="Email" />
+                <Label fx:id="userPhone" text="Téléphone" />
+            </VBox>
+            <HBox alignment="TOP_CENTER" spacing="10">
+                <Button styleClass="user-button" text="Edit" />
+                <Button styleClass="user-button" text="View" />
+                <Button styleClass="user-button" text="Activate" />
+                <Button styleClass="user-button" text="Delete" />
+            </HBox>
+        </VBox>
+    </children>
+</TilePane >

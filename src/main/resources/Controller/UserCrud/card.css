@@ -1,0 +1,50 @@
+.tile-pane {
+    background-color: #f0f0f0; /* Light grey background */
+}
+
+.v-box {
+    -fx-border-color: #333; /* Darker border color for emphasis */
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-color: #ffffff; /* White background for each user card */
+    -fx-padding: 15;
+    -fx-spacing: 10; /* Space between elements inside the VBox */
+    margin-bottom: 10px;
+}
+
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.label {
+    -fx-text-fill: #333; /* Dark grey text for better readability */
+    -fx-font-size: 14px;
+}
+
+.label#userName {
+    -fx-font-size: 16px; /* Slightly larger and bold for emphasis */
+    -fx-font-weight: bold;
+}
+
+.label#userEmail, .label#userPhone {
+    -fx-font-size: 12px;
+}
+
+.h-box {
+    -fx-spacing: 10;
+    -fx-padding: 5;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-background-color: #5a5a5a; /* Neutral dark grey for buttons */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-padding: 5 15; /* Padding around text inside buttons */
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0.5, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #2a88d8; /* Change color on hover */
+}

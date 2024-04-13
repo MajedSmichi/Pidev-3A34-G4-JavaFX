@@ -112,7 +112,7 @@ public class LoginController {
 
             // Get the controller of userList.fxml and pass the email
             UserController userController = loader.getController();
-            userController.setUserEmail(userEmail); // Assuming you have a method in UserController to set the email
+            userController.setUserEmail(userEmail);
 
             // Show in the current stage
             Stage stage = (Stage) loginButton.getScene().getWindow();
