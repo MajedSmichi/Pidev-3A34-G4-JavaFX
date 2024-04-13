@@ -17,7 +17,7 @@
                 <Label fx:id="userPhone" text="Téléphone" />
             </VBox>
             <HBox alignment="TOP_CENTER" spacing="10">
-                <Button styleClass="user-button" text="Edit" />
+                <Button styleClass="user-button" text="Edit" onAction="#handleEditUser" />
                 <Button styleClass="user-button" text="View" />
                 <Button styleClass="user-button" text="Activate" />
                 <Button styleClass="user-button" text="Delete" onAction="#handleDeleteUser" />

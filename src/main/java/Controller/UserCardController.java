@@ -93,4 +93,12 @@ public class UserCardController {
             }
         }
     }
+
+    @FXML
+    private void handleEditUser() {
+        if (this.currentUser != null && this.refreshListener instanceof SampleController) {
+            ((SampleController) this.refreshListener).showEditUser(currentUser);
+        }
+    }
+
 }
