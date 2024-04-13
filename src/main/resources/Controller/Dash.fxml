@@ -139,7 +139,7 @@
                 </TilePane>
             </content>
         </ScrollPane>
-        <TextField fx:id="searchField" layoutX="269.0" layoutY="74.0" prefWidth="900" promptText="Search...">
+        <TextField fx:id="searchField" visible="false" layoutX="269.0" layoutY="74.0" prefWidth="900" promptText="Search with email">
         </TextField>
     </children>
 </AnchorPane>

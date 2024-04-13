@@ -16,20 +16,21 @@ public class SampleController {
 
     public void initialize() {
 
-        loadUserListLayout();
+       // loadUserListLayout();
         searchField.textProperty().addListener((observable, oldValue, newValue) -> filterUsers(newValue));
     }
 
     public void loadUserListLayout() {
         UserCardController.loadUsersIntoCards(HBoxList);
         userListScrollPane.setVisible(true);
+        searchField.setVisible(true);
     }
 
     private void filterUsers(String searchTerm) {
         if (searchTerm.isEmpty()) {
             loadUserListLayout();
         } else {
-            HBoxList.getChildren().clear(); // Clear current cards
+            HBoxList.getChildren().clear();
             UserCardController.loadFilteredUsersIntoCards(HBoxList, searchTerm);
         }
     }
