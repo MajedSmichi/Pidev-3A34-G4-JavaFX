@@ -87,8 +87,6 @@ public class UserController {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumTele())));
         adress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        setupActionColumn();
-        loadUsersIntoTable();
         setupSearchField();
         logoutButton.setOnAction(event -> logout());
     }
@@ -115,7 +113,7 @@ public class UserController {
     }
 
 
-    // Create or insert user
+    //  insert user
     public void insertUser(User user) throws SQLException {
         // First, check if the email already exists
         if (emailExists(user.getEmail())) {
@@ -140,7 +138,6 @@ public class UserController {
     }
 
 
-    // Update user
     // Update user
     public boolean updateUser(User user, boolean updatePassword) throws SQLException {
         // Fetch existing user data
@@ -171,7 +168,7 @@ public class UserController {
 
 
     // Delete user
-    public boolean deleteUser(int id) throws SQLException {
+    public static boolean deleteUser(int id) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
             statement.setInt(1, id);
@@ -319,71 +316,6 @@ public class UserController {
 
 
 
-    private void setupActionColumn() {
-        actionColumn.setCellFactory(param -> new TableCell<User, Void>() {
-            private final Button editButton = new Button("Edit");
-            private final Button deleteButton = new Button("Delete");
-            private final HBox container = new HBox(5, editButton, deleteButton);
-
-            {
-                // Edit button action
-                editButton.setOnAction(event -> {
-                    User currentUser = getTableView().getItems().get(getIndex());
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/updateUser.fxml"));
-                        Parent updateView = loader.load();
-                        UserController controller = loader.getController();
-                        controller.setUserDetails(currentUser);
-
-                        Scene scene = new Scene(updateView);
-                        Stage stage = (Stage) editButton.getScene().getWindow();
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-
-
-                // Delete button action
-                deleteButton.setOnAction(event -> {
-                    User currentUser = getTableView().getItems().get(getIndex());
-                    try {
-                        // Call deleteUser method to delete the user
-                        boolean deleted = deleteUser(currentUser.getId());
-                        if (deleted) {
-                            // If deletion was successful, refresh the table
-                            getTableView().getItems().remove(currentUser);
-                            System.out.println("User deleted successfully.");
-                        } else {
-                            System.out.println("Failed to delete the user.");
-                        }
-                    } catch (SQLException e) {
-                        System.out.println("Error occurred while deleting the user: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                });
-            }
-
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                setGraphic(empty ? null : container);
-            }
-        });
-    }
-
-
-
-
-    private void loadUsersIntoTable() {
-        List<User> userList = selectAllUsers();
-        userTableView.setItems(FXCollections.observableArrayList(userList));
-    }
-
-
-
-
     @FXML
     private void handleUpdateAction() {
         String email = updateEmailText.getText();
@@ -494,42 +426,6 @@ public class UserController {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-
-
-    private HBox createUserCard(User user) {
-        HBox card = new HBox(10);
-        card.setPadding(new Insets(10));
-        card.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #ccc; -fx-border-radius: 5;");
-
-        // Add components to card, such as labels, buttons, etc.
-        Label nameLabel = new Label(user.getNom() + " " + user.getPrenom());
-        Button editButton = new Button("Edit");
-        Button deleteButton = new Button("Delete");
-        // Set actions for buttons
-       // editButton.setOnAction();
-        deleteButton.setOnAction(event -> {
-            try {
-                deleteUserCard(user, card);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        card.getChildren().addAll(nameLabel, editButton, deleteButton);
-        return card;
-    }
-
-    private void deleteUserCard(User user, HBox card) throws SQLException {
-        // Call the deleteUser method
-        boolean deleted = deleteUser(user.getId());
-        if (deleted) {
-           // cardsContainer.getChildren().remove(card); // Remove the card from the UI
-            System.out.println("User deleted successfully.");
-        } else {
-            System.out.println("Failed to delete the user.");
-        }
     }
 
 

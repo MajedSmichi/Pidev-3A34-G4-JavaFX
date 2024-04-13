@@ -20,7 +20,7 @@
                 <Button styleClass="user-button" text="Edit" />
                 <Button styleClass="user-button" text="View" />
                 <Button styleClass="user-button" text="Activate" />
-                <Button styleClass="user-button" text="Delete" />
+                <Button styleClass="user-button" text="Delete" onAction="#handleDeleteUser" />
             </HBox>
         </VBox>
     </children>

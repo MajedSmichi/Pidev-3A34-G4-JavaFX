@@ -139,7 +139,13 @@
                 </TilePane>
             </content>
         </ScrollPane>
-        <TextField fx:id="searchField" visible="false" layoutX="269.0" layoutY="74.0" prefWidth="900" promptText="Search with email">
+        <TextField fx:id="searchField" visible="false" layoutX="269.0" layoutY="74.0" prefWidth="900" promptText="Search with email"  style="-fx-padding: 8px;
+           -fx-border-radius: 5px;
+           -fx-border-color: #cccccc;
+           -fx-border-width: 2;
+           -fx-background-color: #ffffff;
+           -fx-text-inner-color: #000000;
+           -fx-font-size: 14px;">
         </TextField>
     </children>
 </AnchorPane>
