@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 
 public class LoginController {
 
@@ -76,7 +77,7 @@ public class LoginController {
         try {
             Connection conn = ConnectionSql.getConnection();
 
-            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), motDePass FROM users WHERE email = ?");
+            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM users WHERE email = ?");
             checkEmailExists.setString(1, email);
             ResultSet emailExistsRS = checkEmailExists.executeQuery();
 
@@ -85,7 +86,7 @@ public class LoginController {
                 return;
             }
 
-            String storedPasswordHash = emailExistsRS.getString("motDePass");
+            String storedPasswordHash = emailExistsRS.getString("Password");
 
             if (BCrypt.checkpw(password, storedPasswordHash)) {
                 // Assuming you have a method getUserByEmail that returns a User object
@@ -160,23 +161,27 @@ public class LoginController {
 
         try {
             Connection conn = ConnectionSql.getConnection();
-            PreparedStatement getUserStmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
+            PreparedStatement getUserStmt = conn.prepareStatement(
+                    "SELECT id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified FROM users WHERE email = ?"
+            );
             getUserStmt.setString(1, email);
 
             ResultSet rs = getUserStmt.executeQuery();
 
             if (rs.next()) {
-
                 int id = rs.getInt("id");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-
                 String role = rs.getString("role");
                 int numTele = rs.getInt("numTele");
-                String motDePass = rs.getString("motDePass");
+                String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
+                String avatar = rs.getString("avatar");
+                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("isVerified");
 
-                user = new User(id, nom, prenom, email, role, numTele, motDePass, adresse);
+                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -184,6 +189,7 @@ public class LoginController {
 
         return user;
     }
+
 
 
 

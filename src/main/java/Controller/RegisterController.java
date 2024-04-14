@@ -75,7 +75,7 @@ public class RegisterController {
         newUser.setNom(firstNameTextField.getText());
         newUser.setPrenom(lastNameTextField.getText());
         newUser.setEmail(emailTextField.getText());
-        newUser.setMotDePass(passwordTextField.getText());
+        newUser.setPassword(passwordTextField.getText());
         newUser.setNumTele(Integer.parseInt(phoneTextField.getText()));
         newUser.setAdresse(adressTextField.getText());
 

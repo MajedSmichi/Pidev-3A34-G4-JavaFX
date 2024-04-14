@@ -5,22 +5,17 @@ import connectionSql.ConnectionSql;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.HashMap;
@@ -30,12 +25,12 @@ import java.util.Map;
 public class UserController {
     private User currentUser;
     private String userEmail;
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, motDePass, adresse) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, Password, adresse) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,motDePass,adresse from users where id =?";
+    private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,Password,adresse,avatar,createdAt,updatedAt,isVerified from users where id =?";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, motDePass =?, adresse =? where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, Password =?, adresse =? where id = ?;";
     public TextField updateEmailText;
     public Label updateEmailError;
     public TextField updateFirstNameText;
@@ -46,15 +41,6 @@ public class UserController {
     public Label updatePhoneError;
     public TextField updateAdressText;
     public Label updateAdressError;
-    public Button updateDataButton;
-    @FXML
-    private TextField searchTextField;
-
-    @FXML
-    private TableView<User> userTableView=new TableView<>();
-
-    @FXML
-    private TableColumn<User, Void> actionColumn=new TableColumn<>();
 
 
     @FXML
@@ -87,7 +73,6 @@ public class UserController {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumTele())));
         adress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        setupSearchField();
         logoutButton.setOnAction(event -> logout());
     }
 
@@ -115,24 +100,24 @@ public class UserController {
 
     //  insert user
     public void insertUser(User user) throws SQLException {
-        // First, check if the email already exists
+
         if (emailExists(user.getEmail())) {
             throw new SQLException("Email already registered.");
         }
 
         try (Connection connection = ConnectionSql.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            String hashedPassword = BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt());
+            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
             preparedStatement.setString(1, user.getNom());
             preparedStatement.setString(2, user.getPrenom());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, "CLIENT_ROLE"); // Set the role to CLIENT_ROLE by default
+            preparedStatement.setString(4, "CLIENT_ROLE");
             preparedStatement.setInt(5, user.getNumTele());
             preparedStatement.setString(6, hashedPassword);
             preparedStatement.setString(7, user.getAdresse());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            // Re-throw the exception for the caller to handle
+
             throw e;
         }
     }
@@ -146,8 +131,8 @@ public class UserController {
             throw new SQLException("User not found with ID: " + user.getId());
         }
 
-        // Check if a new password is provided and should be updated
-        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt()) : existingUser.getMotDePass();
+        // Check if a new Password is provided and should be updated
+        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()) : existingUser.getPassword();
 
         boolean rowUpdated;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
@@ -182,12 +167,10 @@ public class UserController {
         User user = null;
 
         try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID)) {
             preparedStatement.setInt(1, id);
 
-
             ResultSet rs = preparedStatement.executeQuery();
-
 
             while (rs.next()) {
                 String nom = rs.getString("nom");
@@ -195,9 +178,14 @@ public class UserController {
                 String email = rs.getString("email");
                 String role = rs.getString("role");
                 int numTele = rs.getInt("numTele");
-                String motDePass = rs.getString("motDePass");
+                String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
-                user = new User(id, nom, prenom, email, role, numTele, motDePass, adresse);
+                String avatar = rs.getString("avatar");
+                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("isVerified");
+
+                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -205,19 +193,15 @@ public class UserController {
         return user;
     }
 
+
     // Select all users
     public static List<User> selectAllUsers() {
-
-
         List<User> users = new ArrayList<>();
 
         try (Connection connection = ConnectionSql.getConnection();
-
-
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)) {
 
             ResultSet rs = preparedStatement.executeQuery();
-
 
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -226,15 +210,22 @@ public class UserController {
                 String email = rs.getString("email");
                 String role = rs.getString("role");
                 int numTele = rs.getInt("numTele");
-                String motDePass = rs.getString("motDePass");
+                String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
-                users.add(new User(id, nom, prenom, email, role, numTele, motDePass, adresse));
+                String avatar = rs.getString("avatar");
+                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("isVerified");
+
+                User user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+                users.add(user);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
         return users;
     }
+
 
     public boolean emailExists(String email) {
         boolean exists = false;
@@ -281,9 +272,14 @@ public class UserController {
                 String prenom = rs.getString("prenom");
                 String role = rs.getString("role");
                 int numTele = rs.getInt("numTele");
-                String motDePass = rs.getString("motDePass");
+                String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
-                user = new User(id, nom, prenom, email, role, numTele, motDePass, adresse);
+                String avatar = rs.getString("avatar");
+                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("isVerified");
+
+                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -291,18 +287,19 @@ public class UserController {
         return user;
     }
 
+
     public boolean changePasswordByEmail(String email, String newPassword) {
-        boolean passwordChanged = false;
+        boolean PasswordChanged = false;
         try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET motDePass = ? WHERE email = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET Password = ? WHERE email = ?")) {
             String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
             preparedStatement.setString(1, hashedPassword);
             preparedStatement.setString(2, email);
-            passwordChanged = preparedStatement.executeUpdate() > 0;
+            PasswordChanged = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return passwordChanged;
+        return PasswordChanged;
     }
 
     public void setUserDetails(User user) {
@@ -349,12 +346,25 @@ public class UserController {
 
         int userId = currentUser.getId();
         User currentUser = selectUser(userId);
-        boolean updatePassword = false;
 
-        User userToUpdate = new User(userId, firstName, lastName, email, currentUser.getRole(), Integer.parseInt(phone), currentUser.getMotDePass(), address);
+        // Updated to use current values for new attributes
+        User userToUpdate = new User(
+                currentUser.getId(),
+                firstName,
+                lastName,
+                email,
+                currentUser.getRole(),
+                Integer.parseInt(phone),
+                currentUser.getPassword(),
+                address,
+                currentUser.getAvatar(),
+                currentUser.getCreatedAt(),
+                LocalDateTime.now(),  // Updated 'updatedAt' to current time
+                currentUser.isVerified()
+        );
 
         try {
-            if (updateUser(userToUpdate, updatePassword)) {
+            if (updateUser(userToUpdate, false)) {
                 System.out.println("User updated successfully.");
                 navigateToUserList();
             } else {
@@ -365,6 +375,7 @@ public class UserController {
             ex.printStackTrace();
         }
     }
+
 
     private Map<String, Boolean> validateInputs(String email, String phone, String firstName, String lastName, String address) {
         Map<String, Boolean> validationResults = new HashMap<>();
@@ -395,34 +406,9 @@ public class UserController {
         }
     }
 
-    public void setupSearchField() {
-
-        FilteredList<User> filteredData = new FilteredList<>(FXCollections.observableArrayList(userTableView.getItems()), p -> true);
 
 
-        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(user -> {
 
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                return user.getEmail().toLowerCase().contains(lowerCaseFilter);
-            });
-        });
-
-
-        SortedList<User> sortedData = new SortedList<>(filteredData);
-
-
-        sortedData.comparatorProperty().bind(userTableView.comparatorProperty());
-
-
-        userTableView.setItems(sortedData);
-    }
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;

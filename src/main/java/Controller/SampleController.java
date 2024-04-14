@@ -14,6 +14,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class SampleController implements UserCardRefreshListener {
     private ScrollPane userListScrollPane;
     @FXML
     private TextField searchField;
-    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, motDePass =?, adresse =? where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, password =?, adresse =? where id = ?;";
 
     public void initialize() {
         EditField.setVisible(false);
@@ -111,7 +112,7 @@ public class SampleController implements UserCardRefreshListener {
         }
 
         // Check if a new password is provided and should be updated
-        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getMotDePass(), BCrypt.gensalt()) : existingUser.getMotDePass();
+        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()) : existingUser.getPassword();
 
         boolean rowUpdated;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
@@ -162,11 +163,14 @@ public class SampleController implements UserCardRefreshListener {
             return;
         }
 
+
         int userId = currentUser.getId();
         User currentUser = selectUser(userId);
         boolean updatePassword = false;
 
-        User userToUpdate = new User(userId, firstName, lastName, email, currentUser.getRole(), Integer.parseInt(phone), currentUser.getMotDePass(), address);
+
+        User userToUpdate = new User(userId, firstName, lastName, email, currentUser.getRole(), Integer.parseInt(phone), currentUser.getPassword(), address,
+                currentUser.getAvatar(), currentUser.getCreatedAt(), LocalDateTime.now(), currentUser.isVerified());
 
         try {
             if (updateUser(userToUpdate, updatePassword)) {
@@ -182,6 +186,7 @@ public class SampleController implements UserCardRefreshListener {
             ex.printStackTrace();
         }
     }
+
 
     private void clearErrors() {
         updateEmailError.setText("");
