@@ -15,7 +15,7 @@ public class EditReponse {
     @FXML
     private TextArea reponseedit;
     private AnchorPane editreponse; // Declare detailanchpane here
-  private AnchorPane detailanchpane; // Declare detailanchpane here
+    private AnchorPane detailanchpane; // Declare detailanchpane here
     private Reponse rep;
     private ReponseService s = new ReponseService();
     private ReponseController reponseController;
@@ -25,12 +25,15 @@ public class EditReponse {
     }
     // Initialize the service here
 
+
     public void setDetailReponseAnchorPane(AnchorPane editreponse) {
         this.editreponse = editreponse;
     }
+
     public void setDetailAnchorPane(AnchorPane detailanchpane) {
         this.detailanchpane = detailanchpane;
     }
+
     public void setData(Reponse reponse) {
         this.rep = reponse;
         reponseedit.setText(reponse.getReponse());
@@ -57,7 +60,6 @@ public class EditReponse {
 
         // Remplacer le contenu de detailanchpane avec la vue de détail actualisée
         detailanchpane.getChildren().setAll(detailReeponseView);
-
 
 
     }

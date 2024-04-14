@@ -19,7 +19,7 @@
             <Pane prefHeight="42.0" prefWidth="66.0" />
             <Pane prefHeight="36.0" prefWidth="194.0">
                <children>
-                  <TextField layoutX="3.0" layoutY="16.0" maxHeight="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Search" />
+                  <TextField fx:id="searchRec" layoutX="3.0" layoutY="16.0" maxHeight="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Search" />
                </children>
             </Pane>
             <Pane>

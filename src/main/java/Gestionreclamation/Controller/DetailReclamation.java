@@ -60,16 +60,15 @@ public class DetailReclamation {
     ReclamationController reclamationController;
 
 
-
     public void setData(Reclamation rec) {
         this.rec = rec;
         // Populate UI elements with Reclamation data
-        User c =rec.getUtilisateur();
+        User c = rec.getUtilisateur();
         date.setText(String.valueOf(rec.getDate()));
         description.setText(rec.getDescription());
         email.setText(rec.getEmail());
         etat.setText(rec.getEtat());
-        fullname.setText(rec.getNom()+"  "+rec.getPrenom());
+        fullname.setText(rec.getNom() + "  " + rec.getPrenom());
         sujet.setText(rec.getSujet());
         tele.setText(String.valueOf(rec.getNumTele()));
     }
@@ -85,26 +84,24 @@ public class DetailReclamation {
 
         editreponse.getChildren().setAll(editReclamationView);
     }
+
     @FXML
     private void handleSuprimerButtonClick() throws IOException {
         ReclamationService s = new ReclamationService();
         if (rec != null) {
-            // Appeler la méthode de service pour supprimer la réclamation
             s.supprimerReclamation(rec);
-
-            // Afficher une alerte pour informer que la réclamation a été supprimée
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Réclamation supprimée");
             alert.setHeaderText(null);
             alert.setContentText("La réclamation a été supprimée avec succès.");
             alert.showAndWait();
-            // Charger la vue ReclamationView.fxml
-            // Charger la vue Dashboard.fxml
-            // Load the ReclamationView.fxml view
+
+            detailanchpane.getChildren().clear();
             Dash.getInstance().loadRec();
 
         }
     }
+
     @FXML
     private void handleReponseButtonClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/AjouterReponse.fxml"));
@@ -113,10 +110,9 @@ public class DetailReclamation {
         ajouterRepenseController.setDetailAnchorPane(detailanchpane); // Pass reference here
         ajouterRepenseController.setData(rec);
         editreponse.getChildren().setAll(ajouterReponseView);
-        Dash.getInstance().loadRep();
 
     }
-    }
+}
 
 
 

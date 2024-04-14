@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Dash{
+public class Dash {
     private static Dash instance;
 
     public Dash() {
@@ -37,8 +37,9 @@ public class Dash{
             e.printStackTrace();
         }
     }
+
     @FXML
-   public void loadRep() throws IOException {
+    public void loadRep() throws IOException {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gestionreclamation/ReponseView.fxml"));

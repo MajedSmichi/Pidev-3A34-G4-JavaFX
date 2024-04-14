@@ -1,4 +1,5 @@
 package Gestionreclamation.Controller;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -21,9 +22,6 @@ public class client {
     private AnchorPane achorfront;
 
 
-
-
-
     @FXML
     public void reclamation() {
         try {
@@ -36,6 +34,7 @@ public class client {
             System.out.println("Error while loading the evenement front view");
         }
     }
+
     public void listeReclamtion() {
         AfficherReclamtion afficherReclamtion = new AfficherReclamtion();
         afficherReclamtion.createCards();

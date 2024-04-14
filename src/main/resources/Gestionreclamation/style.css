@@ -1,29 +1,28 @@
-#prettyPane {
-    -fx-border-color: black;
-    -fx-border-width: 2px;
-    -fx-background-color: #f0f0f0; /* Light gray background */
-    -fx-padding: 10px; /* Padding inside the border */
+/* General styles */
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
 }
+
+/* Style for labels */
 .label {
-    -fx-font-size: 13px; /* Adjust the font size */
-    -fx-font-weight: bold; /* Make the text bold */
-    -fx-text-fill: #333333; /* Dark gray color */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
 }
-#commentLabel {
-    -fx-border-color: #ccc; /* Border color */
-    -fx-border-width: 2px; /* Border width */
-    -fx-border-radius: 4px; /* Border radius for rounded corners */
-    -fx-background-color: #f8f8f8; /* Background color */
-    -fx-font-size: 16px; /* Font size */
-    -fx-text-fill: #333333; /* Text color */
-    -fx-font-family: "Arial"; /* Font family */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 1); /* Shadow effect */
+
+/* Style for detail labels */
+#date, #description, #email, #etat, #fullname, #sujet, #tele {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+    -fx-padding: 5px;
 }
+
 #commentLabel:focused {
     -fx-focus-color: transparent; /* Removes the blue border */
     -fx-faint-focus-color: transparent; /* Removes the faint blue border */
 }
-#editButton, #deleteButton, #saveButton, #backButton,#reponseButton{
+#editButton, #deleteButton, #saveButton, #backButton,#reponseButton {
     -fx-font-size: 14px; /* Adjust the font size */
     -fx-font-weight: bold; /* Make the text bold */
     -fx-text-fill: #ffffff; /* White color text */
@@ -31,11 +30,12 @@
     -fx-border-radius: 5px; /* Rounded corners */
     -fx-background-radius: 5px; /* Background also needs to be rounded */
 }
+
 #reponseButton{
-    -fx-background-color: #ffc107; /* Yellow background */
+    -fx-background-color: #007bff; /* Yellow background */
 }
 #reponseButton:hover {
-    -fx-background-color: #e0a800; /* Darker yellow when hovered */
+    -fx-background-color: #0056b3; /* Darker yellow when hovered */
 }
 
 #editButton {
@@ -46,10 +46,10 @@
     -fx-background-color: #218838; /* Darker green when hovered */
 }
 #saveButton {
-    -fx-background-color: #007bff; /* Blue background */
+    -fx-background-color: #28a745; /* Blue background */
 }
 #saveButton:hover {
-    -fx-background-color: #0056b3; /* Darker blue when hovered */
+    -fx-background-color: #218838; /* Darker blue when hovered */
 }
 
 #deleteButton {
@@ -71,4 +71,11 @@
     -fx-text-fill: #000000; /* Blue color text */
     -fx-underline: true; /* Underline the text */
     -fx-padding: 5px; /* Space around the text */
+}
+#editreponse, #detailanchpane {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
 }

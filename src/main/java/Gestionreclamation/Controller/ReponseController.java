@@ -49,7 +49,8 @@ public class ReponseController implements Initializable {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
-    }    private List<Reponse> getData() throws SQLException {
+    }
+    private List<Reponse> getData() throws SQLException {
         List<Reponse> reponseList = new ArrayList<>();
         ReponseService reponseService = new ReponseService();
         for (Reponse rep : reponseService.afficherReponse()) {

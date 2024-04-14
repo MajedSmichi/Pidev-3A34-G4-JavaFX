@@ -32,8 +32,9 @@ public class Editreclamation implements Initializable {
     public void setDetailAnchorPane(AnchorPane detailanchpane) {
         this.detailanchpane = detailanchpane;
     }
+
     @Override
-    public void initialize (URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         // Initialize the ComboBox items
         combosujet.getItems().addAll("Salle", "Service");
     }

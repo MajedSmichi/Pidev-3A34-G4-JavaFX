@@ -13,12 +13,8 @@ import Gestionreclamation.Services.openIAsevice;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("client.fxml"));
-        ScrollPane root = fxmlLoader.load();
-        // Bind the size of the root node to the size of the stage
-
-        // Set the preferred size of the BorderPane to match the screen's size
-
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dash.fxml"));
+        Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
 
@@ -32,12 +28,6 @@ public class HelloApplication extends Application {
 
 
     }
-
-
-
-
-
-    // Méthode pour afficher les réclamations à partir de la base de données
 
 
     public static void main(String[] args) {

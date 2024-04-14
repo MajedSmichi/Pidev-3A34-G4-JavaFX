@@ -1,4 +1,5 @@
 package Gestionreclamation.Controller;
+
 import Gestionreclamation.Entity.Reclamation;
 import Gestionreclamation.HelloApplication;
 import javafx.fxml.FXML;
@@ -7,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -34,8 +36,6 @@ public class OneReclamation {
     private ReclamationController reclamationController;
 
 
-
-
     public void setReclamationController(ReclamationController reclamationController) {
         this.reclamationController = reclamationController;
     }
@@ -47,6 +47,7 @@ public class OneReclamation {
         Date.setText(String.valueOf(rec.getDate())); // Assuming Date is a Label
         name.setText(rec.getNom() + " " + rec.getPrenom()); // Assuming FullName is a Label
     }
+
     @FXML
     private void handleReclamationClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/DetailReclamation.fxml"));
@@ -54,32 +55,19 @@ public class OneReclamation {
         DetailReclamation detailController = loader.getController();
         detailController.setData(rec);
 
+        // Wrap detailView inside an AnchorPane
+        AnchorPane anchorPane = new AnchorPane(detailView);
+        AnchorPane.setTopAnchor(detailView, 20.0);
+        AnchorPane.setBottomAnchor(detailView, 0.0);
+        AnchorPane.setLeftAnchor(detailView, 70.0);
+        AnchorPane.setRightAnchor(detailView, 0.0);
+
         // Accessing the BorderPane from the OneReclamationController
         BorderPane borderPane = reclamationController.getBorderPane();
-        borderPane.setCenter(null);
-        borderPane.setTop(detailView);//
-        borderPane.setRight(null);// Add the detail view to the center of BorderPane
+        borderPane.setCenter(anchorPane); // Set the AnchorPane as the center
+        borderPane.setTop(null);
+        borderPane.setRight(null);
+
         System.out.println(rec);
     }
-
-
-
-/*
-    private void openDetailPage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/DetailReclamation.fxml"));
-            Parent root = loader.load();
-
-            // Access the controller and call a method
-            DetailReclamation controller = loader.getController();
-            controller.setData(rec); // Pass the Reclamation object to the DetailReclamation controller
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
 }

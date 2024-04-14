@@ -2,6 +2,7 @@ package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.Reclamation;
 import Gestionreclamation.Entity.Reponse;
+import Gestionreclamation.Services.ReponseService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -55,6 +56,7 @@ public class DetailReponse {
         date.setText(String.valueOf(rec.getDate()));
 
     }
+
     @FXML
     private void handleEditButtonClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/EditReponse.fxml"));
@@ -68,4 +70,14 @@ public class DetailReponse {
 
         editreponse.getChildren().setAll(editReponseView);
     }
+
+    @FXML
+    private void handleDeleteButtonClick() throws IOException {
+        ReponseService reponseService = new ReponseService();
+        reponseService.supprimerReponse(rep);
+        detailanchpane.getChildren().clear();
+        Dash.getInstance().loadRep();
+
+    }
+
 }

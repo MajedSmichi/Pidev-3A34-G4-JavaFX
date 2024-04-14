@@ -25,6 +25,7 @@ public class OneReponse {
     private Label reponse;
     private Reponse rep;
     private ReponseController reponseController;
+
     public void setReponseController(ReponseController reponseController) {
         this.reponseController = reponseController;
     }
@@ -37,9 +38,6 @@ public class OneReponse {
         if (rec != null) {
             name.setText(rec.getNom() + " " + rec.getPrenom()); // Assuming FullName is a Label
         } else {
-            // Handle the case where the reclamation is null
-            // This could be showing an error message, throwing an exception, etc.
-            // For this example, we will show an error message and return
             name.setText("Reclamation is null. Please ensure that the reclamation is set correctly.");
         }
     }
@@ -51,8 +49,6 @@ public class OneReponse {
         Parent detailView = loader.load();
         DetailReponse detailController = loader.getController();
         detailController.setData(rep);
-
-        // Accessing the BorderPane from the OneReponseController
         BorderPane borderPane = reponseController.getBorderPane();
         borderPane.setCenter(detailView);
         borderPane.setTop(null);
