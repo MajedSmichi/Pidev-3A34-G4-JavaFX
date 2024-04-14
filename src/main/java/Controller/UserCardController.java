@@ -101,4 +101,11 @@ public class UserCardController {
         }
     }
 
+    @FXML
+    private void handleViewUser() {
+        if (this.currentUser != null && this.refreshListener instanceof SampleController) {
+            ((SampleController) this.refreshListener).showViewUser(currentUser);
+        }
+    }
+
 }

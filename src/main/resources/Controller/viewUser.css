@@ -1,0 +1,47 @@
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495E;
+}
+
+.data-label {
+    -fx-background-color: #ECF0F1;
+    -fx-padding: 5px;
+    -fx-border-color: #BDC3C7;
+    -fx-border-radius: 5px;
+}
+
+.button-close, .button-edit {
+    -fx-background-color: linear-gradient(#3498DB, #2980B9);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 5px 20px;
+}
+
+.button-edit {
+    -fx-background-color: linear-gradient(#2ECC71, #27AE60);
+}
+
+.button-close:hover, .button-edit:hover {
+    -fx-opacity: 0.8;
+}
+
+.card {
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}

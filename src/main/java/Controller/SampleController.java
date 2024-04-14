@@ -21,6 +21,13 @@ import static Controller.UserController.selectUser;
 
 
 public class SampleController implements UserCardRefreshListener {
+    public Button closeDataViewButton;
+    public Label viewAddressLabel;
+    public Label viewPhoneLabel;
+    public Label viewLastNameLabel;
+    public Label viewFirstNameLabel;
+    public Label viewEmailLabel;
+    public AnchorPane DataView;
     private User currentUser;
     public AnchorPane EditField;
     public TextField updateEmailText;
@@ -88,7 +95,7 @@ public class SampleController implements UserCardRefreshListener {
         userListScrollPane.setVisible(false);
         searchField.setVisible(false);
         EditField.setVisible(true);
-
+        DataView.setVisible(false);
         updateEmailText.setText(user.getEmail());
         updateFirstNameText.setText(user.getPrenom());
         updateLastNameText.setText(user.getNom());
@@ -184,6 +191,43 @@ public class SampleController implements UserCardRefreshListener {
         updateAdressError.setText("");
     }
 
+    public void showViewUser(User user) {
+
+        this.currentUser = user;
+
+        userListScrollPane.setVisible(false);
+        searchField.setVisible(false);
+        EditField.setVisible(false);
+
+        // Set user details in view labels
+        viewFirstNameLabel.setText(user.getPrenom());
+        viewLastNameLabel.setText(user.getNom());
+        viewEmailLabel.setText(user.getEmail());
+        viewPhoneLabel.setText(String.valueOf(user.getNumTele()));
+        viewAddressLabel.setText(user.getAdresse());
+        DataView.setVisible(true);
+        //closeDataViewButton.setVisible(true); // Ensure this button is configured to hide the user details view when clicked
+    }
+
+    @FXML
+    private void handleCloseDataViewAction() {
+        viewFirstNameLabel.setText("");
+        viewLastNameLabel.setText("");
+        viewEmailLabel.setText("");
+        viewPhoneLabel.setText("");
+        viewAddressLabel.setText("");
+
+        DataView.setVisible(false);
+        userListScrollPane.setVisible(true);
+        searchField.setVisible(true);
+    }
+
+    @FXML
+    private void handleEditFromView() {
+        if (currentUser != null) {
+            showEditUser(currentUser);
+        }
+    }
 
 
 }
