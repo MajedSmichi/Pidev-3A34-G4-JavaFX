@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="PaneEvenement" prefHeight="279.0" prefWidth="255.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementCard">
+    <children>
+        <Pane prefHeight="288.0" prefWidth="240.0">
+            <children>
+                <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" prefHeight="45.0" prefWidth="220.0" text="EventName" />
+            <ImageView fx:id="imageEvnement" fitHeight="239.0" fitWidth="188.0" layoutX="32.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+                <Label layoutX="38.0" layoutY="276.0" prefHeight="21.0" prefWidth="36.0" text="Date:" />
+            </children>
+        </Pane>
+          <Label fx:id="Date" layoutX="84.0" layoutY="273.0" prefHeight="30.0" prefWidth="166.0" text="Label" />
+      <Button fx:id="supprimer" layoutX="184.0" layoutY="303.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0">
+
+        <graphic>
+            <ImageView fx:id="suppicon" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@images/supp.png" />
+                </image>
+            </ImageView>
+        </graphic>
+
+      </Button>
+      <Button fx:id="modifier" layoutX="125.0" layoutY="303.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0">
+         <graphic>
+            <ImageView fx:id="modifiericon" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+
+
+
+    </children>
+</Pane>
