@@ -8,14 +8,13 @@
 
 <Pane fx:id="PaneEvenement" prefHeight="279.0" prefWidth="255.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementCard">
     <children>
-        <Pane prefHeight="288.0" prefWidth="240.0">
+        <Pane layoutX="12.0" prefHeight="263.0" prefWidth="228.0">
             <children>
                 <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" prefHeight="45.0" prefWidth="220.0" text="EventName" />
-            <ImageView fx:id="imageEvnement" fitHeight="239.0" fitWidth="188.0" layoutX="32.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-                <Label layoutX="38.0" layoutY="276.0" prefHeight="21.0" prefWidth="36.0" text="Date:" />
+            <ImageView fx:id="imageEvnement" fitHeight="224.0" fitWidth="188.0" layoutX="20.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </Pane>
-          <Label fx:id="Date" layoutX="84.0" layoutY="273.0" prefHeight="30.0" prefWidth="166.0" text="Label" />
+          <Label fx:id="Date" layoutX="86.0" layoutY="263.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
       <Button fx:id="supprimer" layoutX="184.0" layoutY="303.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0">
 
         <graphic>
@@ -36,6 +35,7 @@
             </ImageView>
          </graphic>
       </Button>
+          <Label layoutX="50.0" layoutY="268.0" prefHeight="21.0" prefWidth="36.0" text="Date:" />
 
 
 

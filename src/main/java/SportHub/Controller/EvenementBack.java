@@ -73,7 +73,12 @@ public class EvenementBack {
 
     public void initialize() {
         evenementService = new EvenementService();
+
+        // Bind the visibility of the hide button to the visibility of ajouterPane
+        hide.visibleProperty().bind(ajouterPane.visibleProperty());
+
         ajouterPane.setVisible(false); // Make ajouterPane not visible
+
         ajouterEvenement.setOnAction(e -> {
             ajouterPane.setVisible(true);
         });
