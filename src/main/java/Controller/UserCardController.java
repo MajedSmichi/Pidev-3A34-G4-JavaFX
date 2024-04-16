@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,8 +31,27 @@ public class UserCardController {
         userName.setText(user.getNom() + " " + user.getPrenom());
         userEmail.setText(user.getEmail());
         userPhone.setText(String.valueOf(user.getNumTele()));
-        // Optionally set the user image if you have it
-        // userImage.setImage(new Image(user.getImagePath()));
+
+        // Check if the avatar URL is not null and is a valid URL or file path
+        String avatarUrl = user.getAvatar();
+        if (avatarUrl != null && !avatarUrl.trim().isEmpty()) {
+            try {
+                // Get the URL of the avatar image
+                URL avatarUrlResource = getClass().getResource(avatarUrl);
+                if (avatarUrlResource != null) {
+                    userImage.setImage(new Image(avatarUrlResource.toExternalForm()));
+                } else {
+                    // If the URL is invalid, set a default image
+                    userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                }
+            } catch (IllegalArgumentException e) {
+                // If the URL is invalid, set a default image
+                userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            }
+        } else {
+            // If the URL is null, set a default image
+            userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+        }
     }
 
     public static TilePane loadUserCard(User user, UserCardRefreshListener listener) {

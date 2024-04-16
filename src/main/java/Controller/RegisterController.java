@@ -9,9 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
@@ -63,6 +67,38 @@ public class RegisterController {
         plainConfirmPasswordField.textProperty().bindBidirectional(confirmPasswordTextField.textProperty());
     }
 
+    @FXML
+    private ImageView avatarImageView;
+    private String avatarFilePath;
+
+    @FXML
+    private void handleUploadAvatar() {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.png, *.jpg, *.jpeg)", "*.png", "*.jpg", "*.jpeg");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+
+            File destFile = new File("src/main/resources/avatars/" + file.getName());
+            try {
+                Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            // Create an image from the copied file
+            Image image = new Image(destFile.toURI().toString());
+            avatarImageView.setImage(image);
+
+            // Save the relative path
+            avatarFilePath = "/avatars/" + file.getName();
+            System.out.println("Avatar File Path: " + avatarFilePath);
+        }
+    }
+
 
     @FXML
     private void handleRegisterButtonAction() {
@@ -78,12 +114,13 @@ public class RegisterController {
         newUser.setPassword(passwordTextField.getText());
         newUser.setNumTele(Integer.parseInt(phoneTextField.getText()));
         newUser.setAdresse(adressTextField.getText());
+        newUser.setAvatar(avatarFilePath);
 
         try {
             userController.insertUser(newUser);
             // Display a success message
             succesLabel.setText("Registration successful. Redirecting to login...");
-            registererror.setStyle("-fx-text-fill: green;"); // Optional: set the text color to green for success
+            registererror.setStyle("-fx-text-fill: green;");
 
             // Use PauseTransition to wait for a few seconds
             PauseTransition pause = new PauseTransition(Duration.seconds(5)); // 3 seconds wait

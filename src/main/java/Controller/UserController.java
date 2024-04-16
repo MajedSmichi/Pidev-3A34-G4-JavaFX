@@ -25,7 +25,7 @@ import java.util.Map;
 public class UserController {
     private User currentUser;
     private String userEmail;
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, Password, adresse) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, Password, adresse,avatar) VALUES " + " (?, ?, ?,?, ?, ?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,Password,adresse,avatar,createdAt,updatedAt,isVerified from users where id =?";
     private static final String SELECT_ALL_USERS = "select * from users";
@@ -115,6 +115,7 @@ public class UserController {
             preparedStatement.setInt(5, user.getNumTele());
             preparedStatement.setString(6, hashedPassword);
             preparedStatement.setString(7, user.getAdresse());
+            preparedStatement.setString(8, user.getAvatar());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
 
@@ -359,7 +360,7 @@ public class UserController {
                 address,
                 currentUser.getAvatar(),
                 currentUser.getCreatedAt(),
-                LocalDateTime.now(),  // Updated 'updatedAt' to current time
+                LocalDateTime.now(),
                 currentUser.isVerified()
         );
 

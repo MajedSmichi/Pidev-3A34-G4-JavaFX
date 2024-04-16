@@ -33,7 +33,7 @@ public class TestConnectionSql {
 
         List<User> users = UserController.selectAllUsers();
 
-        // Affichage des utilisateurs récupérés
+
         for (User user : users) {
             System.out.println(user);
         }

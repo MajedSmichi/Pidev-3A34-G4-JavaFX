@@ -27,7 +27,7 @@
       <Label layoutX="402.0" layoutY="43.0" text="Last Name" />
       <TextField fx:id="lastNameTextField" layoutX="401.0" layoutY="61.0" prefHeight="26.0" prefWidth="147.0" promptText="LastName" />
       <Label layoutX="251.0" layoutY="99.0" text="Email" />
-      <TextField fx:id="emailTextField" layoutX="250.0" layoutY="117.0" prefHeight="26.0" prefWidth="298.0" promptText="Email" />
+      <TextField fx:id="emailTextField" layoutX="250.0" layoutY="117.0" prefHeight="26.0" prefWidth="139.0" promptText="Email" />
       <Label layoutX="250.0" layoutY="155.0" text="Password" />
       <PasswordField fx:id="passwordTextField" layoutX="250.0" layoutY="173.0" prefHeight="26.0" prefWidth="139.0" promptText="Password" visible="true" />
       <TextField fx:id="plainPasswordField" layoutX="250.0" layoutY="173.0" managed="false" prefHeight="26.0" prefWidth="139.0" promptText="Password" visible="false" />
@@ -64,5 +64,7 @@
       <CheckBox fx:id="checkBoxTerms" layoutX="258.0" layoutY="301.0" mnemonicParsing="false" />
       <Label layoutX="281.0" layoutY="301.0" text="i agree to the terms and conditions" />
       <Label fx:id="errorTerms" layoutX="258.0" layoutY="319.0" textFill="#ea0909" />
+      <ImageView fx:id="avatarImageView" fitHeight="26.0" fitWidth="74.0" layoutX="409.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="495.0" layoutY="116.0" mnemonicParsing="false" text="Upload Avatar" onAction="#handleUploadAvatar"/>
    </children>
 </AnchorPane>
