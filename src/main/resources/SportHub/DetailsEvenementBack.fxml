@@ -30,13 +30,13 @@
             <DatePicker fx:id="event_date" layoutX="28.0" layoutY="390.0" prefHeight="51.0" prefWidth="274.0" promptText="Date" styleClass="label-info" />
             <AnchorPane layoutX="93.0" layoutY="14.0" prefHeight="195.0" prefWidth="144.0" stylesheets="@dashboardDesign.css">
                <children>
-                  <ImageView fx:id="event_image" fitHeight="166.0"  fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="event_image" fitHeight="166.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                   </ImageView>
-                  <Button fx:id="event_import" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#importImage1"  prefHeight="42.0" prefWidth="144.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="152.0" />
+                  <Button fx:id="event_import" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#importImage1" prefHeight="42.0" prefWidth="144.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="152.0" />
                </children>
                <styleClass>
                   <String fx:value="white-bg" />
@@ -46,7 +46,7 @@
             <Button fx:id="event_clear" layoutX="55.0" layoutY="619.0" mnemonicParsing="false" onAction="#eventClear" prefHeight="38.0" prefWidth="230.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
             <Button fx:id="event_update" layoutX="55.0" layoutY="567.0" mnemonicParsing="false" onAction="#eventUpdate1" prefHeight="38.0" prefWidth="230.0" styleClass="update-btn" text="Modifier" />         </children>
       </AnchorPane>
-      <Button fx:id="hide" layoutX="288.0" layoutY="18.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
+      <Button fx:id="hide" layoutX="296.0" layoutY="18.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
          <graphic>
             <ImageView fx:id="modifiericon" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,14 +66,14 @@
             <Label layoutX="31.0" layoutY="449.0" prefHeight="21.0" prefWidth="72.0" text="Description:" />
          </children>
       </Pane>
-      <Button fx:id="modifier" layoutX="243.0" layoutY="17.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" />
+      <Button fx:id="modifier" layoutX="193.0" layoutY="16.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" />
       <ImageView fx:id="modifiericon1" fitHeight="31.0" fitWidth="35.0" layoutX="197.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/edit.png" />
          </image>
       </ImageView>
-      <Button fx:id="supprimer"  onAction="#deleteEvent" layoutX="243.0" layoutY="18.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" />
-      <ImageView fx:id="suppicon" fitHeight="31.0" fitWidth="35.0" layoutX="247.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="supprimer" layoutX="243.0" layoutY="18.0"  mnemonicParsing="false" onAction="#deleteEvent" prefHeight="38.0" prefWidth="46.0" />
+      <ImageView fx:id="suppicon" fitHeight="30.0" fitWidth="22.0" layoutX="251.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/supp.png" />
          </image>

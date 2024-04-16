@@ -266,22 +266,13 @@ void deleteEvent() {
             alert.showAndWait();
 
             // Step 5: Update the UI
+            // Refresh the page to EvenementBack
             try {
-                // Load the EvenementBack.fxml file
-                Parent evenementBackParent = FXMLLoader.load(getClass().getResource("/SportHub/EvenementBack.fxml"));
-
-                // Get the current stage
-                Stage stage = (Stage) root2.getScene().getWindow();
-
-                // Create a new scene with the EvenementBack.fxml file
-                Scene scene = new Scene(evenementBackParent);
-
-                // Set the scene of the current stage to the new scene
-                stage.setScene(scene);
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/SportHub/EvenementBack.fxml"));
+                root2.getChildren().setAll(pane);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

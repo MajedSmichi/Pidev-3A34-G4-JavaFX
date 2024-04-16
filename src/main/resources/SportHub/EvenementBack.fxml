@@ -37,7 +37,7 @@
                      <String fx:value="shadow" />
                   </styleClass>
                </ImageView>
-               <Button fx:id="event_import" onMouseClicked="#importImage" layoutY="152.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="144.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="152.0" />
+               <Button fx:id="event_import" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="42.0" prefWidth="144.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="152.0" />
 
             </children>
             <styleClass>
@@ -45,10 +45,8 @@
                <String fx:value="shadow" />
             </styleClass>
          </AnchorPane>
-         <Button fx:id="event_clear" layoutX="37.0" layoutY="645.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
-         <Button fx:id="event_add" layoutX="37.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
-         <Button fx:id="event_delete" layoutX="176.0" layoutY="645.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
-         <Button fx:id="event_update" layoutX="176.0" layoutY="609.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+         <Button fx:id="event_clear" layoutX="41.0" layoutY="630.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="254.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+         <Button fx:id="event_add" layoutX="40.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="38.0" prefWidth="254.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
       </children>
    </AnchorPane>
    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="450.0" layoutY="127.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">

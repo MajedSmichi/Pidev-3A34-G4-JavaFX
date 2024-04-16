@@ -30,4 +30,14 @@ public void loadTicketLayout() {
         e.printStackTrace();
     }
 }
+
+    @FXML
+    public void loadEvenementCards() {
+        try {
+            AnchorPane evenementLayout = FXMLLoader.load(getClass().getResource("/SportHub/EvenementBack.fxml"));
+            anchor.getChildren().setAll(evenementLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
