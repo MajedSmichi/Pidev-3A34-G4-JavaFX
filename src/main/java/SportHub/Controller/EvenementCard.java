@@ -50,4 +50,8 @@ public class EvenementCard {
 
     }
 
+    public Evenement getEvent() {
+    return this.event;
+}
+
 }

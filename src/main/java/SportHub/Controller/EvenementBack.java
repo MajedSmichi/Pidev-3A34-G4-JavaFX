@@ -4,6 +4,8 @@ import SportHub.Entity.Evenement;
 import SportHub.Services.EvenementService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -96,15 +99,23 @@ public class EvenementBack {
         List<Evenement> events = evenementService.getAllEvents();
         for (int i = 0; i < events.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml"));            Pane pane = fxmlLoader.load();
+            fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml"));
+            Pane pane = fxmlLoader.load();
 
             EvenementCard controller = fxmlLoader.getController();
             controller.setData(events.get(i));
 
+            pane.setOnMouseClicked(e -> {
+                try {
+                    openDetails(controller.getEvent());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+
             eventContainerBack.add(pane, i % 3, i / 3);
         }
     }
-
     public void eventAdd() {
 
         try {
@@ -172,4 +183,11 @@ fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml")); 
         }
     }
 
+private void openDetails(Evenement event) throws IOException {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/DetailsEvenementBack.fxml"));
+    Parent detailsRoot = fxmlLoader.load();
+    DetailsEvenementBack controller = fxmlLoader.getController();
+    controller.setEvent(event);
+    root1.getChildren().setAll(detailsRoot);
+}
 }

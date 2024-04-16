@@ -41,6 +41,7 @@ public void deleteEvent(int id) throws SQLException {
     deleteEventStmt.executeUpdate();
 }
 
+/*
     public void updateEvent(int id, String nom, String description, String lieu, Date date_evenement, String image_evenement) throws SQLException {
         String query = "UPDATE evenement SET nom = ?, description = ?, lieu = ?, date_evenement = ?, image_evenement = ? WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -52,6 +53,28 @@ public void deleteEvent(int id) throws SQLException {
         preparedStatement.setInt(6, id);
         preparedStatement.executeUpdate();
     }
+*/
+
+    public void updateEvent(int id, String nom, String description, String lieu, Date date_evenement, String image_evenement) throws SQLException {
+    String query = "UPDATE evenement SET nom = ?, description = ?, lieu = ?, date_evenement = ?, image_evenement = ? WHERE id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setString(1, nom);
+    preparedStatement.setString(2, description);
+    preparedStatement.setString(3, lieu);
+    preparedStatement.setDate(4, date_evenement);
+    preparedStatement.setString(5, image_evenement);
+    preparedStatement.setInt(6, id);
+
+    System.out.println("Executing update query: " + preparedStatement.toString());
+
+    int rowsUpdated = preparedStatement.executeUpdate();
+
+    if (rowsUpdated > 0) {
+        System.out.println("An existing event was updated successfully!");
+    } else {
+        System.out.println("No event was updated. Check if the event with the given ID exists.");
+    }
+}
 
     public List<Evenement> getAllEvents() throws SQLException {
         List<Evenement> events = new ArrayList<>();
