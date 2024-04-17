@@ -12,15 +12,13 @@ public class User {
     private int numTele;
     private String motDePass;
     private String adresse;
-    private Collection<Reclamation> reclamations;
-    private Collection<Reponse> reponses;
+
 
 
     // Constructors
     public User() {
         // Default constructor
-        this.reclamations = new ArrayList<>();
-        this.reponses = new ArrayList<>();
+
 
     }
 
@@ -91,21 +89,7 @@ public class User {
         this.adresse = adresse;
     }
 
-    public Collection<Reclamation> getReclamations() {
-        return reclamations;
-    }
 
-    public void setReclamations(Collection<Reclamation> reclamations) {
-        this.reclamations = reclamations;
-    }
-
-    public Collection<Reponse> getReponses() {
-        return reponses;
-    }
-
-    public void setReponses(Collection<Reponse> reponses) {
-        this.reponses = reponses;
-    }
 
 
 
