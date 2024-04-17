@@ -9,6 +9,7 @@ module Controller {
     requires java.sql;
     requires jbcrypt;
     requires java.mail;
+    requires com.google.gson;
 
 
     opens Controller to javafx.fxml;

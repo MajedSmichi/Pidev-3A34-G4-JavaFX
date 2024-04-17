@@ -48,3 +48,8 @@
 .button:hover {
     -fx-background-color: #2a88d8; /* Change color on hover */
 }
+
+.rounded-image {
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}

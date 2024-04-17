@@ -7,18 +7,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
 import java.util.Map;
 
 import static Controller.UserController.selectUser;
+import com.google.gson.Gson;
 
 
 public class SampleController implements UserCardRefreshListener {
@@ -29,6 +34,9 @@ public class SampleController implements UserCardRefreshListener {
     public Label viewFirstNameLabel;
     public Label viewEmailLabel;
     public AnchorPane DataView;
+    public ImageView avatarImageView;
+    public Label viewCreatedAtLabel;
+    public Label viewUpdatedAtLabel;
     private User currentUser;
     public AnchorPane EditField;
     public TextField updateEmailText;
@@ -48,8 +56,7 @@ public class SampleController implements UserCardRefreshListener {
     private ScrollPane userListScrollPane;
     @FXML
     private TextField searchField;
-    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, password =?, adresse =? where id = ?;";
-
+    private static final String UPDATE_USERS_SQL = "update user set nom = ?, prenom= ?, email =?, roles =?, num_tele =?, password =?, adresse =?, updated_at =? where id = ?;";
     public void initialize() {
         EditField.setVisible(false);
         // loadUserListLayout();
@@ -119,18 +126,18 @@ public class SampleController implements UserCardRefreshListener {
             statement.setString(1, user.getNom());
             statement.setString(2, user.getPrenom());
             statement.setString(3, user.getEmail());
-            // Use the role from the provided user object or existing user if not updated
-            statement.setString(4, user.getRole() != null && !user.getRole().isEmpty() ? user.getRole() : existingUser.getRole());
+            String rolesJson = new Gson().toJson(user.getRoles());
+            statement.setString(4, rolesJson);
             statement.setInt(5, user.getNumTele());
             statement.setString(6, hashedPassword);
             statement.setString(7, user.getAdresse());
-            statement.setInt(8, user.getId());
+            statement.setTimestamp(8, java.sql.Timestamp.valueOf(LocalDateTime.now())); // Set the updatedAt field to the current time
+            statement.setString(9, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
     }
-
 
     @FXML
     private void handleUpdateAction() {
@@ -163,13 +170,11 @@ public class SampleController implements UserCardRefreshListener {
             return;
         }
 
-
-        int userId = currentUser.getId();
+        String userId = currentUser.getId();
         User currentUser = selectUser(userId);
         boolean updatePassword = false;
-
-
-        User userToUpdate = new User(userId, firstName, lastName, email, currentUser.getRole(), Integer.parseInt(phone), currentUser.getPassword(), address,
+        String[] roles = currentUser.getRoles();
+        User userToUpdate = new User(userId, firstName, lastName, email, roles, Integer.parseInt(phone), currentUser.getPassword(), address,
                 currentUser.getAvatar(), currentUser.getCreatedAt(), LocalDateTime.now(), currentUser.isVerified());
 
         try {
@@ -182,8 +187,12 @@ public class SampleController implements UserCardRefreshListener {
                 System.out.println("Failed to update user.");
             }
         } catch (SQLException ex) {
-            System.out.println("Error updating user: " + ex.getMessage());
-            ex.printStackTrace();
+            if (ex instanceof java.sql.SQLIntegrityConstraintViolationException && ex.getMessage().contains("Duplicate entry")) {
+                updateEmailError.setText("Email already in use. Please use a different email.");
+            } else {
+                System.out.println("Error updating user: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -210,8 +219,28 @@ public class SampleController implements UserCardRefreshListener {
         viewEmailLabel.setText(user.getEmail());
         viewPhoneLabel.setText(String.valueOf(user.getNumTele()));
         viewAddressLabel.setText(user.getAdresse());
+        viewCreatedAtLabel.setText(user.getCreatedAt().toString());
+        viewUpdatedAtLabel.setText(user.getUpdatedAt().toString());
         DataView.setVisible(true);
-        //closeDataViewButton.setVisible(true); // Ensure this button is configured to hide the user details view when clicked
+        String avatarUrl = user.getAvatar();
+        if (avatarUrl != null && !avatarUrl.trim().isEmpty()) {
+            try {
+                // Get the URL of the avatar image
+                URL avatarUrlResource = getClass().getResource(avatarUrl);
+                if (avatarUrlResource != null) {
+                    avatarImageView.setImage(new Image(avatarUrlResource.toExternalForm()));
+                } else {
+                    // If the URL is invalid, set a default image
+                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                }
+            } catch (IllegalArgumentException e) {
+                // If the URL is invalid, set a default image
+                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            }
+        } else {
+            // If the URL is null, set a default image
+            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+        }
     }
 
     @FXML

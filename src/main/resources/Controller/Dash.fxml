@@ -173,26 +173,34 @@
 
         <AnchorPane fx:id="DataView" layoutX="361.0" layoutY="164.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@viewUser.css" visible="false">
             <children>
-                <Pane layoutX="82.0" layoutY="36.0" styleClass="card">
+                <Pane layoutX="82.0" layoutY="14.0" prefWidth="570.0" styleClass="card">
                     <children>
-                        <Label layoutX="210.0" layoutY="10.0" styleClass="header-label" text="User Data" />
-                        <Label layoutX="50.0" layoutY="50.0" styleClass="field-label" text="Email" />
-                        <Label fx:id="viewEmailLabel" layoutX="180.0" layoutY="50.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+                        <Label layoutX="249.0" layoutY="-1.0" styleClass="header-label" text="User Data" />
+                        <ImageView fx:id="avatarImageView" fitHeight="50.0" fitWidth="70.0" layoutX="285.0" layoutY="34.0" />
+                        <Label layoutX="53.0" layoutY="87.0" styleClass="field-label" text="Email" />
+                        <Label fx:id="viewEmailLabel" layoutX="183.0" layoutY="86.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
 
-                        <Label layoutX="50.0" layoutY="90.0" styleClass="field-label" text="First Name" />
-                        <Label fx:id="viewFirstNameLabel" layoutX="180.0" layoutY="90.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+                        <Label layoutX="53.0" layoutY="131.0" styleClass="field-label" text="First Name" />
+                        <Label fx:id="viewFirstNameLabel" layoutX="183.0" layoutY="126.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
 
-                        <Label layoutX="50.0" layoutY="130.0" styleClass="field-label" text="Last Name" />
-                        <Label fx:id="viewLastNameLabel" layoutX="180.0" layoutY="130.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+                        <Label layoutX="53.0" layoutY="171.0" styleClass="field-label" text="Last Name" />
+                        <Label fx:id="viewLastNameLabel" layoutX="183.0" layoutY="166.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
 
-                        <Label layoutX="50.0" layoutY="170.0" styleClass="field-label" text="Phone" />
-                        <Label fx:id="viewPhoneLabel" layoutX="180.0" layoutY="170.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+                        <Label layoutX="53.0" layoutY="211.0" styleClass="field-label" text="Phone" />
+                        <Label fx:id="viewPhoneLabel" layoutX="183.0" layoutY="206.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
 
-                        <Label layoutX="50.0" layoutY="210.0" styleClass="field-label" text="Address" />
-                        <Label fx:id="viewAddressLabel" layoutX="180.0" layoutY="210.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+                        <Label layoutX="53.0" layoutY="252.0" styleClass="field-label" text="Address" />
+                        <Label fx:id="viewAddressLabel" layoutX="183.0" layoutY="246.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
 
-                        <Button fx:id="closeDataViewButton" layoutX="223.0" layoutY="260.0" onAction="#handleCloseDataViewAction" styleClass="button-close" text="Close View" />
-                        <Button fx:id="editUserButton" onAction="#handleEditFromView" layoutX="344.0" layoutY="260.0" styleClass="button-edit" text="Edit User" />
+
+                        <Label layoutX="53.0" layoutY="293.0" styleClass="field-label" text="Created At" />
+                        <Label fx:id="viewCreatedAtLabel" layoutX="183.0" layoutY="287.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+
+                        <Label layoutX="53.0" layoutY="334.0" styleClass="field-label" text="Updated At" />
+                        <Label fx:id="viewUpdatedAtLabel" layoutX="183.0" layoutY="327.0" prefHeight="30.0" prefWidth="350.0" styleClass="data-label" />
+
+                        <Button fx:id="closeDataViewButton" layoutX="236.0" layoutY="378.0" onAction="#handleCloseDataViewAction" styleClass="button-close" text="Close View" />
+                        <Button fx:id="editUserButton" layoutX="357.0" layoutY="378.0" onAction="#handleEditFromView" styleClass="button-edit" text="Edit User" />
                     </children>
                 </Pane>
             </children>

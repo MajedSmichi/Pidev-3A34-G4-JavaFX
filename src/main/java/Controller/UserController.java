@@ -1,13 +1,14 @@
 package Controller;
 
 import Entity.User;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import connectionSql.ConnectionSql;
 
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -18,19 +19,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class UserController {
     private User currentUser;
     private String userEmail;
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (nom, prenom, email, role, numTele, Password, adresse,avatar) VALUES " + " (?, ?, ?,?, ?, ?, ?, ?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO user" + "  (nom, prenom, email, roles, num_tele, Password, adresse,avatar) VALUES " + " (?, ?, ?,?, ?, ?, ?, ?);";
 
-    private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,role,numTele,Password,adresse,avatar,createdAt,updatedAt,isVerified from users where id =?";
-    private static final String SELECT_ALL_USERS = "select * from users";
-    private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-    private static final String UPDATE_USERS_SQL = "update users set nom = ?,prenom= ?, email =?, role =?, numTele =?, Password =?, adresse =? where id = ?;";
+    private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,roles,num_tele,Password,adresse,avatar,created_at,updated_at,is_verified from user where id =?";
+    private static final String SELECT_ALL_USERS = "select * from user";
+    private static final String DELETE_USERS_SQL = "delete from user where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update user set nom = ?,prenom= ?, email =?, roles =?, num_tele =?, Password =?, adresse =? where id = ?;";
     public TextField updateEmailText;
     public Label updateEmailError;
     public TextField updateFirstNameText;
@@ -111,7 +110,8 @@ public class UserController {
             preparedStatement.setString(1, user.getNom());
             preparedStatement.setString(2, user.getPrenom());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, "CLIENT_ROLE");
+            String rolesJson = new Gson().toJson(user.getRoles());
+            preparedStatement.setString(4, rolesJson);
             preparedStatement.setInt(5, user.getNumTele());
             preparedStatement.setString(6, hashedPassword);
             preparedStatement.setString(7, user.getAdresse());
@@ -134,18 +134,20 @@ public class UserController {
 
         // Check if a new Password is provided and should be updated
         String hashedPassword = updatePassword ? BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()) : existingUser.getPassword();
-
+        if (emailExists(user.getEmail())) {
+            throw new SQLException("Email already registered.");
+        }
         boolean rowUpdated;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getNom());
             statement.setString(2, user.getPrenom());
             statement.setString(3, user.getEmail());
-            // Use the role from the provided user object or existing user if not updated
-            statement.setString(4, user.getRole() != null && !user.getRole().isEmpty() ? user.getRole() : existingUser.getRole());
+            String rolesJson = new Gson().toJson(user.getRoles());
+            statement.setString(4, rolesJson);
             statement.setInt(5, user.getNumTele());
             statement.setString(6, hashedPassword);
             statement.setString(7, user.getAdresse());
-            statement.setInt(8, user.getId());
+            statement.setString(8, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
@@ -154,22 +156,22 @@ public class UserController {
 
 
     // Delete user
-    public static boolean deleteUser(int id) throws SQLException {
+    public static boolean deleteUser(String id) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
-            statement.setInt(1, id);
+            statement.setString(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
     }
 
     // Select user by id
-    public static User selectUser(int id) {
+    public static User selectUser(String id) {
         User user = null;
 
         try (Connection connection = ConnectionSql.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -177,16 +179,17 @@ public class UserController {
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String email = rs.getString("email");
-                String role = rs.getString("role");
-                int numTele = rs.getInt("numTele");
+                String roleJson = rs.getString("roles");
+                String[] roles = new Gson().fromJson(roleJson, String[].class);
+                int numTele = rs.getInt("num_tele");
                 String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
                 String avatar = rs.getString("avatar");
-                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
-                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
-                boolean isVerified = rs.getBoolean("isVerified");
+                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("is_verified");
 
-                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+                user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -205,20 +208,22 @@ public class UserController {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String email = rs.getString("email");
-                String role = rs.getString("role");
-                int numTele = rs.getInt("numTele");
+                //String role = rs.getString("role");
+                String roleJson = rs.getString("roles");
+                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+                int numTele = rs.getInt("num_tele");
                 String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
                 String avatar = rs.getString("avatar");
-                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
-                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
-                boolean isVerified = rs.getBoolean("isVerified");
+                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("is_verified");
 
-                User user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+                User user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -231,7 +236,7 @@ public class UserController {
     public boolean emailExists(String email) {
         boolean exists = false;
         try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) AS count FROM users WHERE email = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) AS count FROM user WHERE email = ?")) {
             preparedStatement.setString(1, email);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -264,23 +269,24 @@ public class UserController {
     public User findUserByEmail(String email) {
         User user = null;
         try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email = ?")) {
             preparedStatement.setString(1, email);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-                String role = rs.getString("role");
-                int numTele = rs.getInt("numTele");
+                String roleJson = rs.getString("roles");
+                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+                int numTele = rs.getInt("num_tele");
                 String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
                 String avatar = rs.getString("avatar");
-                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
-                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
-                boolean isVerified = rs.getBoolean("isVerified");
+                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("is_verified");
 
-                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+                user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -292,7 +298,7 @@ public class UserController {
     public boolean changePasswordByEmail(String email, String newPassword) {
         boolean PasswordChanged = false;
         try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET Password = ? WHERE email = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE user SET Password = ? WHERE email = ?")) {
             String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
             preparedStatement.setString(1, hashedPassword);
             preparedStatement.setString(2, email);
@@ -344,8 +350,8 @@ public class UserController {
             updateAdressError.setText("Address is required.");
             return;
         }
-
-        int userId = currentUser.getId();
+        String[] roles = currentUser.getRoles();
+        String userId = currentUser.getId();
         User currentUser = selectUser(userId);
 
         // Updated to use current values for new attributes
@@ -354,7 +360,7 @@ public class UserController {
                 firstName,
                 lastName,
                 email,
-                currentUser.getRole(),
+                roles,
                 Integer.parseInt(phone),
                 currentUser.getPassword(),
                 address,

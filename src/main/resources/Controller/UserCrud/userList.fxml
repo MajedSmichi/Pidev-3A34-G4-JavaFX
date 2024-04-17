@@ -7,14 +7,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.TilePane?>
 
-<TilePane fx:id="cardsContainer" hgap="-260"  prefHeight="245.0"  stylesheets="@card.css" prefColumns="3" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserCardController">
+<?import javafx.scene.shape.Circle?>
+<TilePane fx:id="cardsContainer" hgap="-260" prefHeight="245.0" stylesheets="@card.css" prefColumns="3" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserCardController">
     <children>
         <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 10 20 10; -fx-border-color: #3a3434; -fx-border-radius: 10;">
-            <ImageView fx:id="userImage" fitHeight="84.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="userImage" fitHeight="84.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+                <clip>
+                    <Circle centerX="42" centerY="42" radius="42" /> <!-- Adjust the radius and center points according to your image size -->
+                </clip>
+            </ImageView>
             <VBox spacing="5">
-                <Label fx:id="userName" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Nom Prénom" />
-                <Label fx:id="userEmail" text="Email" />
-                <Label fx:id="userPhone" text="Téléphone" />
+                <HBox spacing="5">
+                    <Label text="Name: " />
+                    <Label fx:id="userName" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Nom Prénom" />
+                </HBox>
+                <HBox spacing="5">
+                    <Label text="Email: " />
+                    <Label fx:id="userEmail" text="Email" />
+                </HBox>
+                <HBox spacing="5">
+                    <Label text="Phone: " />
+                    <Label fx:id="userPhone" text="Téléphone" />
+                </HBox>
             </VBox>
             <HBox alignment="TOP_CENTER" spacing="10">
                 <Button styleClass="user-button" text="Edit" onAction="#handleEditUser" />

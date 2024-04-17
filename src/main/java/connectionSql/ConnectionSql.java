@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class ConnectionSql {
 
-    private static final String url = "jdbc:mysql://localhost:3306/testjava?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String url = "jdbc:mysql://localhost:3306/pidev?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String driverName = "com.mysql.cj.jdbc.Driver";
     private static final String username = "root";
     private static final String password = "";

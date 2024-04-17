@@ -1,13 +1,14 @@
 package Entity;
 
 import java.time.LocalDateTime; // Import LocalDateTime for createdAt and updatedAt fields
+import java.util.Arrays;
 
 public class User {
-    private int id;
+    private String id;
     private String nom;
     private String prenom;
     private String email;
-    private String role;
+    private String[] roles;
     private int numTele;
     private String password;
     private String adresse;
@@ -19,12 +20,12 @@ public class User {
     public User() {}
 
     // Constructors
-    public User(int id, String nom, String prenom, String email, String role, int numTele, String password, String adresse, String avatar, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isVerified) {
+    public User(String id, String nom, String prenom, String email, String[] roles, int numTele, String password, String adresse, String avatar, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isVerified) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.role = role;
+        this.roles = roles;
         this.numTele = numTele;
         this.password = password;
         this.adresse = adresse;
@@ -35,11 +36,11 @@ public class User {
     }
 
     // Getters and Setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,14 +68,13 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
+    public String[] getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
-
     public int getNumTele() {
         return numTele;
     }
@@ -138,7 +138,7 @@ public class User {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
+                ", roles=" + Arrays.toString(roles) +
                 ", numTele=" + numTele +
                 ", password='" + password + '\'' +
                 ", adresse='" + adresse + '\'' +

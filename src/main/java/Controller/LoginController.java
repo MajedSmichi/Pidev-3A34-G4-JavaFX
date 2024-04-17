@@ -20,7 +20,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 public class LoginController {
 
     public Label forgetPassword;
@@ -77,7 +78,7 @@ public class LoginController {
         try {
             Connection conn = ConnectionSql.getConnection();
 
-            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM users WHERE email = ?");
+            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM user WHERE email = ?");
             checkEmailExists.setString(1, email);
             ResultSet emailExistsRS = checkEmailExists.executeQuery();
 
@@ -108,11 +109,12 @@ public class LoginController {
     private void navigateToUserList(String userEmail) {
         try {
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/userList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dash.fxml"));
             Parent userListRoot = loader.load();
 
             // Get the controller of userList.fxml and pass the email
-            UserController userController = loader.getController();
+            SampleController sampleController = loader.getController();
+            UserController userController=new UserController();
             userController.setUserEmail(userEmail);
 
             // Show in the current stage
@@ -162,26 +164,27 @@ public class LoginController {
         try {
             Connection conn = ConnectionSql.getConnection();
             PreparedStatement getUserStmt = conn.prepareStatement(
-                    "SELECT id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified FROM users WHERE email = ?"
+                    "SELECT id, nom, prenom, email, roles, num_tele, Password, adresse, avatar, created_at, updated_at, is_verified FROM user WHERE email = ?"
             );
             getUserStmt.setString(1, email);
 
             ResultSet rs = getUserStmt.executeQuery();
 
             if (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-                String role = rs.getString("role");
-                int numTele = rs.getInt("numTele");
+                String roleJson = rs.getString("roles");
+                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+                int numTele = rs.getInt("num_tele");
                 String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
                 String avatar = rs.getString("avatar");
-                LocalDateTime createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
-                LocalDateTime updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
-                boolean isVerified = rs.getBoolean("isVerified");
+                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
+                boolean isVerified = rs.getBoolean("is_verified");
 
-                user = new User(id, nom, prenom, email, role, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+                user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
             }
         } catch (Exception e) {
             e.printStackTrace();

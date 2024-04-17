@@ -15,7 +15,7 @@ public class TestConnectionSql {
         newUser.setNom("test");
         newUser.setPrenom("test");
         newUser.setEmail("jean.dupont@example.com");
-        newUser.setRole("Utilisateur");
+      //  newUser.setRole("Utilisateur");
         newUser.setNumTele(123456789);
         newUser.setPassword("motdepasse");
         newUser.setAdresse("123 Rue de Paris, 75000 Paris");
@@ -38,7 +38,7 @@ public class TestConnectionSql {
             System.out.println(user);
         }
 
-        User user = UserController.selectUser(Integer.parseInt("1"));
+        User user = UserController.selectUser(String.valueOf(Integer.parseInt("1")));
         System.out.println("Utilisateur d'id 1 : " + user);
 
 
