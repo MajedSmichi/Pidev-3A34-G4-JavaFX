@@ -43,8 +43,7 @@
       </HBox>
       <Label layoutX="72.0" layoutY="457.0" text="Description :" />
       <Label fx:id="descriptionLabel" layoutX="72.0" layoutY="475.0" prefHeight="130.0" prefWidth="158.0" text="Label" />
-      <AnchorPane fx:id="gestion" layoutX="519.0" layoutY="21.0" prefHeight="660.0" prefWidth="350.0">
-         <styleClass>
+      <AnchorPane fx:id="gestion" layoutX="519.0" layoutY="21.0" prefHeight="660.0" prefWidth="350.0" visible="false">         <styleClass>
             <String fx:value="shadow" />
             <String fx:value="white-bg" />
          </styleClass>
@@ -81,6 +80,5 @@
          </children>
       </AnchorPane>
       <Button fx:id="delete" layoutX="341.0" layoutY="247.0" mnemonicParsing="false" onAction="#deleteSalle" text="Supprimer" />
-      <Button layoutX="341.0" layoutY="318.0" mnemonicParsing="false" text="Modifer" />
-   </children>
+      <Button fx:id="modifer" layoutX="341.0" layoutY="318.0" mnemonicParsing="false" onAction="#toggleGestionPane" text="Modifer" />   </children>
 </AnchorPane>

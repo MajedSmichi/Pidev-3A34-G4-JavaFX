@@ -37,6 +37,9 @@ public class detailSalleController {
     private Label capaciteLabel;
 
     @FXML
+    private Button delete;
+
+    @FXML
     private TextArea description;
 
     @FXML
@@ -53,6 +56,9 @@ public class detailSalleController {
 
     @FXML
     private ImageView logoSalle;
+
+    @FXML
+    private Button modifer;
 
     @FXML
     private Button modifierSalle;
@@ -74,8 +80,6 @@ public class detailSalleController {
 
     @FXML
     private TextField numtel;
-    @FXML
-    private Button delete;
 
     private Salle salle;
     public void setData(Salle salle) {
@@ -102,8 +106,7 @@ public class detailSalleController {
             System.out.println("Invalid URL or resource not found: " + salle.getLogo_salle());
         }
     }
-
-    private String imagePath = null;
+    private String imagePath;
     @FXML
     void importimage(ActionEvent event) {
         // Open the file chooser dialog to select an image
@@ -120,7 +123,44 @@ public class detailSalleController {
 
     @FXML
     void modifierSalle(ActionEvent event) {
-        
+        // Get the new values from the text fields
+        String newName = name.getText();
+        String newAddress = addresse.getText();
+        int newNumTel = Integer.parseInt(numtel.getText());
+        int newCapacite = Integer.parseInt(capacite.getText());
+        String newDescription = description.getText();
+        int newNbrClients = Integer.parseInt(nbrclients.getText());
+
+        // If a new image has been imported, use it. Otherwise, keep the current image.
+        String newLogoSalle = (imagePath != null) ? imagePath : salle.getLogo_salle();
+
+        // Update the Salle object
+        salle.setNom(newName);
+        salle.setAddresse(newAddress);
+        salle.setNum_tel(newNumTel);
+        salle.setCapacite(newCapacite);
+        salle.setDescription(newDescription);
+        salle.setNbr_client(newNbrClients);
+        salle.setLogo_salle(newLogoSalle);
+
+        // Call the method from SalleService to update the Salle in the database
+        SalleService salleService = new SalleService();
+        try {
+            salleService.updateSalle(salle.getId(), newName, newAddress, newNumTel, newCapacite, newDescription, newNbrClients, newLogoSalle);
+
+            // Navigate back to Salle.fxml
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Salle.fxml"));
+            Parent salleParent = fxmlLoader.load();
+            Scene salleScene = new Scene(salleParent);
+
+            // Get the current stage
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            window.setScene(salleScene);
+            window.show();
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     void deleteSalle(ActionEvent event) {
@@ -146,5 +186,10 @@ public class detailSalleController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    void toggleGestionPane(ActionEvent event) {
+        boolean isVisible = gestion.isVisible();
+        gestion.setVisible(!isVisible);
     }
 }
