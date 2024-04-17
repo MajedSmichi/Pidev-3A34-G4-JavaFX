@@ -65,6 +65,13 @@ public class LoginController {
         passwordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "Assets/hide.png" : "Assets/view.png").toExternalForm()));
     }
 
+    private String convertBcryptPrefixTo2a(String hash) {
+        if (hash != null && hash.startsWith("$2y$")) {
+            return "$2a$" + hash.substring(4);
+        }
+        return hash;
+    }
+
 
     public void LoginButtonAction() {
         String email = emailTextField.getText();
@@ -77,7 +84,6 @@ public class LoginController {
 
         try {
             Connection conn = ConnectionSql.getConnection();
-
             PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM user WHERE email = ?");
             checkEmailExists.setString(1, email);
             ResultSet emailExistsRS = checkEmailExists.executeQuery();
@@ -89,10 +95,12 @@ public class LoginController {
 
             String storedPasswordHash = emailExistsRS.getString("Password");
 
+            storedPasswordHash = convertBcryptPrefixTo2a(storedPasswordHash);
+
             if (BCrypt.checkpw(password, storedPasswordHash)) {
-                // Assuming you have a method getUserByEmail that returns a User object
+
                 User user = getUserByEmail(email);
-                SessionManager.getInstance().setCurrentUser(user); // Set the current user in session
+                SessionManager.getInstance().setCurrentUser(user);
 
                 navigateToUserList(email);
             } else {
@@ -102,8 +110,8 @@ public class LoginController {
             e.printStackTrace();
             errorLabel.setText("Error connecting to the database.");
         }
-
     }
+
 
 
     private void navigateToUserList(String userEmail) {
