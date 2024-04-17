@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="701.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailSalleController">
+   <children>
+      <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="99.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox layoutX="158.0" layoutY="278.0" prefHeight="22.0" prefWidth="226.0">
+         <children>
+            <Label fx:id="nameLabel" prefHeight="18.0" prefWidth="158.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox layoutX="72.0" layoutY="319.0" prefHeight="22.0" prefWidth="226.0">
+         <children>
+            <Label text="Adresse :" />
+            <Label fx:id="addressLabel" prefHeight="18.0" prefWidth="158.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox layoutX="72.0" layoutY="351.0" prefHeight="22.0" prefWidth="278.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="121.0" text="Numéro Téléphone :" />
+            <Label fx:id="numTelLabel" prefHeight="18.0" prefWidth="131.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox layoutX="72.0" layoutY="382.0" prefHeight="22.0" prefWidth="226.0">
+         <children>
+            <Label text="Capacite :" />
+            <Label fx:id="capaciteLabel" prefHeight="18.0" prefWidth="158.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox layoutX="72.0" layoutY="416.0" prefHeight="22.0" prefWidth="349.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="96.0" text="Nombre clients :" />
+            <Label fx:id="nbrClientLabel" prefHeight="18.0" prefWidth="144.0" text="Label" />
+         </children>
+      </HBox>
+      <Label layoutX="72.0" layoutY="457.0" text="Description :" />
+      <Label fx:id="descriptionLabel" layoutX="72.0" layoutY="475.0" prefHeight="130.0" prefWidth="158.0" text="Label" />
+      <AnchorPane fx:id="gestion" layoutX="519.0" layoutY="21.0" prefHeight="660.0" prefWidth="350.0">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <Label layoutX="21.0" layoutY="217.0" prefHeight="18.0" prefWidth="41.0" text="Name" />
+            <Label layoutX="17.0" layoutY="269.0" text="Addresse" />
+            <Label layoutX="14.0" layoutY="483.0" text="Description" />
+            <Label layoutX="28.0" layoutY="14.0" text="Image" />
+            <TextField fx:id="name" layoutX="16.0" layoutY="235.0" prefHeight="26.0" prefWidth="240.0" promptText="Name" />
+            <TextField fx:id="addresse" layoutX="16.0" layoutY="285.0" prefHeight="26.0" prefWidth="240.0" promptText="Addresse" />
+            <TextArea fx:id="description" layoutX="10.0" layoutY="511.0" prefHeight="86.0" prefWidth="240.0" promptText="Description" />
+            <AnchorPane layoutX="41.0" layoutY="60.0" prefHeight="154.0" prefWidth="218.0">
+               <children>
+                  <ImageView fx:id="logoSalle" fitHeight="117.0" fitWidth="208.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </ImageView>
+                  <Button fx:id="event_import" layoutY="120.0" mnemonicParsing="false" onAction="#importimage" prefHeight="34.0" prefWidth="218.0" styleClass="import-btn" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </AnchorPane>
+            <Button fx:id="modifierSalle" layoutX="10.0" layoutY="605.0" mnemonicParsing="false" onAction="#modifierSalle" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" text="Modifier" />
+            <TextField fx:id="numtel" layoutX="16.0" layoutY="336.0" prefHeight="26.0" prefWidth="240.0" promptText="Numero Téléphone" />
+            <Label layoutX="17.0" layoutY="318.0" text="Numero Téléphone" />
+            <Label layoutX="21.0" layoutY="369.0" prefHeight="18.0" prefWidth="87.0" text="Capacite" />
+            <TextField fx:id="capacite" layoutX="16.0" layoutY="387.0" prefHeight="26.0" prefWidth="240.0" promptText="Capacite" />
+            <Label layoutX="21.0" layoutY="426.0" prefHeight="18.0" prefWidth="154.0" text="Nombre de clients" />
+            <TextField fx:id="nbrclients" layoutX="16.0" layoutY="444.0" prefHeight="26.0" prefWidth="240.0" promptText="Nombre de clients" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="delete" layoutX="341.0" layoutY="247.0" mnemonicParsing="false" onAction="#deleteSalle" text="Supprimer" />
+      <Button layoutX="341.0" layoutY="318.0" mnemonicParsing="false" text="Modifer" />
+   </children>
+</AnchorPane>

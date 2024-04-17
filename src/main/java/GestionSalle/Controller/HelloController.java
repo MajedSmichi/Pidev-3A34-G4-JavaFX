@@ -1,4 +1,4 @@
-package com.example.pidev3a34g4;
+package GestionSalle.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

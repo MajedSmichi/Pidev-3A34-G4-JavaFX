@@ -1,12 +1,16 @@
-module com.example.pidev3a34g4 {
+module com.example.gestionreclamation {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires org.controlsfx.controls;
-    requires org.kordamp.bootstrapfx.core;
+    requires com.dlsc.formsfx;
     requires java.sql;
-    requires jbcrypt;
-
-    opens com.example.pidev3a34g4 to javafx.fxml;
-    exports com.example.pidev3a34g4;
+    //requires java.persistence;
+    opens GestionSalle to javafx.fxml;
+    exports GestionSalle;
+    exports connectionSql;
+    opens connectionSql to javafx.fxml;
+    exports GestionSalle.Controller;
+    opens GestionSalle.Controller to javafx.fxml;
+    exports GestionSalle.Entity;
+    opens GestionSalle.Entity to javafx.fxml;
 }

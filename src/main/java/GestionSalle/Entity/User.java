@@ -1,5 +1,7 @@
-package Entity;
+package GestionSalle.Entity;
 
+import java.util.Collection;
+import java.util.ArrayList;
 
 public class User {
     private int id;
@@ -10,20 +12,17 @@ public class User {
     private int numTele;
     private String motDePass;
     private String adresse;
+    private Collection<Reclamation> reclamations;
+    private Collection<Reponse> reponses;
 
-    public User(){}
+
     // Constructors
-    public User(int id, String nom, String prenom, String email, String role, int numTele, String motDePass, String adresse) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.role = role;
-        this.numTele = numTele;
-        this.motDePass = motDePass;
-        this.adresse = adresse;
-    }
+    public User() {
+        // Default constructor
+        this.reclamations = new ArrayList<>();
+        this.reponses = new ArrayList<>();
 
+    }
 
     // Getters and Setters
     // Implement your getters and setters here...
@@ -92,16 +91,23 @@ public class User {
         this.adresse = adresse;
     }
 
-
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", numTele=" + numTele +
-                ", adresse='" + adresse + '\'' +
-                '}';
+    public Collection<Reclamation> getReclamations() {
+        return reclamations;
     }
+
+    public void setReclamations(Collection<Reclamation> reclamations) {
+        this.reclamations = reclamations;
+    }
+
+    public Collection<Reponse> getReponses() {
+        return reponses;
+    }
+
+    public void setReponses(Collection<Reponse> reponses) {
+        this.reponses = reponses;
+    }
+
+
+
+    // Add and remove methods for relations...
 }
