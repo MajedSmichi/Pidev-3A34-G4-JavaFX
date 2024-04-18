@@ -136,4 +136,26 @@ public void deleteEvent(int id) throws SQLException {
         return null;
     }
 
+
+
+    public Evenement getEventById(int id) throws SQLException {
+    String query = "SELECT * FROM evenement WHERE id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, id);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+        Evenement event = new Evenement();
+        event.setId(resultSet.getInt("id"));
+        event.setNom(resultSet.getString("nom"));
+        event.setDescription(resultSet.getString("description"));
+        event.setLieu(resultSet.getString("lieu"));
+        event.setDateEvenement(resultSet.getDate("date_evenement"));
+        event.setImageEvenement(resultSet.getString("image_evenement"));
+        return event;
+    }
+    return null;
+}
+
+
+
 }

@@ -7,12 +7,15 @@ import SportHub.Services.TicketService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,6 +80,8 @@ public class TicketBack {
     @FXML
     public void initialize() {
         loadEvents();
+        showListTicket();
+
     }
 
     private void loadEvents() {
@@ -176,5 +181,30 @@ public class TicketBack {
             e.printStackTrace();
         }
     }
+
+
+
+
+private void showListTicket() {
+    ticketContainerBack.getChildren().clear();
+    try {
+        List<Ticket> tickets = ticketService.getAllTickets();
+        for (Ticket ticket : tickets) {
+            String eventName = evenementService.getEventNameById(ticket.getEvenementId());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/SportHub/TicketCard.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            TicketCard controller = fxmlLoader.getController();
+            controller.setData(ticket, eventName);
+
+            ticketContainerBack.add(pane, ticket.getId() % 3, ticket.getId() / 3);
+        }
+    } catch (SQLException | IOException e) {
+        e.printStackTrace();
+        System.out.printf("Error: %s%n", e.getMessage());
+    }
+}
+
 
 }
