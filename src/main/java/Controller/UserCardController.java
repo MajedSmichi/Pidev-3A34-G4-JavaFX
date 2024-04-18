@@ -1,6 +1,7 @@
 package Controller;
 
 import Entity.User;
+import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -14,8 +15,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static Controller.UserController.selectAllUsers;
+import static Services.UserService.selectAllUsers;
 
 public class UserCardController {
     @FXML private ImageView userImage;
@@ -101,7 +101,7 @@ public class UserCardController {
     private void handleDeleteUser() {
         if (this.currentUser != null) {
             try {
-                if (UserController.deleteUser(this.currentUser.getId())) {
+                if (UserService.deleteUser(this.currentUser.getId())) {
                     System.out.println("User deleted successfully");
                     if (refreshListener != null) {
                         refreshListener.refreshUserList();

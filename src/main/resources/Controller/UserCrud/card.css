@@ -10,6 +10,8 @@
     -fx-padding: 15;
     -fx-spacing: 10; /* Space between elements inside the VBox */
     margin-bottom: 10px;
+    width: 200px; /* Fixed width */
+    height: 200px; /* Fixed height */
 }
 
 .image-view {

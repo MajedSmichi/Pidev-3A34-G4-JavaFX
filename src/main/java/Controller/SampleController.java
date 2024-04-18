@@ -1,6 +1,7 @@
 package Controller;
 
 import Entity.User;
+import Services.UserService;
 import connectionSql.ConnectionSql;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,7 +23,7 @@ import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Controller.UserController.selectUser;
+import static Services.UserService.selectUser;
 import com.google.gson.Gson;
 
 
@@ -56,7 +57,7 @@ public class SampleController implements UserCardRefreshListener {
     private ScrollPane userListScrollPane;
     @FXML
     private TextField searchField;
-    private static final String UPDATE_USERS_SQL = "update user set nom = ?, prenom= ?, email =?, roles =?, num_tele =?, password =?, adresse =?, updated_at =? where id = ?;";
+    private UserService userService = new UserService();
     public void initialize() {
         EditField.setVisible(false);
         // loadUserListLayout();
@@ -111,33 +112,7 @@ public class SampleController implements UserCardRefreshListener {
         updateAdressText.setText(user.getAdresse());
     }
 
-    public boolean updateUser(User user, boolean updatePassword) throws SQLException {
-        // Fetch existing user data
-        User existingUser = selectUser(user.getId());
-        if (existingUser == null) {
-            throw new SQLException("User not found with ID: " + user.getId());
-        }
 
-        // Check if a new password is provided and should be updated
-        String hashedPassword = updatePassword ? BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()) : existingUser.getPassword();
-
-        boolean rowUpdated;
-        try (Connection connection = ConnectionSql.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
-            statement.setString(1, user.getNom());
-            statement.setString(2, user.getPrenom());
-            statement.setString(3, user.getEmail());
-            String rolesJson = new Gson().toJson(user.getRoles());
-            statement.setString(4, rolesJson);
-            statement.setInt(5, user.getNumTele());
-            statement.setString(6, hashedPassword);
-            statement.setString(7, user.getAdresse());
-            statement.setTimestamp(8, java.sql.Timestamp.valueOf(LocalDateTime.now())); // Set the updatedAt field to the current time
-            statement.setString(9, user.getId());
-
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
-    }
 
     @FXML
     private void handleUpdateAction() {
@@ -183,7 +158,7 @@ public class SampleController implements UserCardRefreshListener {
                 currentUser.getAvatar(), currentUser.getCreatedAt(), LocalDateTime.now(), currentUser.isVerified());
 
         try {
-            if (updateUser(userToUpdate, updatePassword)) {
+            if (userService.updateUser(userToUpdate, updatePassword)) {
                 System.out.println("User updated successfully.");
                 clearErrors();
                 EditField.setVisible(false);

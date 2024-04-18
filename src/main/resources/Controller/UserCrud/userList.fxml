@@ -12,9 +12,7 @@
     <children>
         <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 10 20 10; -fx-border-color: #3a3434; -fx-border-radius: 10;">
             <ImageView fx:id="userImage" fitHeight="84.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
-                <clip>
-                    <Circle centerX="42" centerY="42" radius="42" /> <!-- Adjust the radius and center points according to your image size -->
-                </clip>
+
             </ImageView>
             <VBox spacing="5">
                 <HBox spacing="5">

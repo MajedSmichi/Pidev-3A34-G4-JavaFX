@@ -3,6 +3,7 @@ package Controller;
 
 
 import Entity.User;
+import Services.UserService;
 import connectionSql.ConnectionSql;
 
 import java.sql.Connection;
@@ -25,20 +26,20 @@ public class TestConnectionSql {
 
         // Insertion de l'utilisateur
         try {
-            userController.insertUser(newUser);
+            UserService.insertUser(newUser);
             System.out.println("Insertion réussie.");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        List<User> users = UserController.selectAllUsers();
+        List<User> users = UserService.selectAllUsers();
 
 
         for (User user : users) {
             System.out.println(user);
         }
 
-        User user = UserController.selectUser(String.valueOf(Integer.parseInt("1")));
+        User user = UserService.selectUser(String.valueOf(Integer.parseInt("1")));
         System.out.println("Utilisateur d'id 1 : " + user);
 
 

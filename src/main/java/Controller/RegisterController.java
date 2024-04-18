@@ -2,6 +2,7 @@ package Controller;
 
 import Entity.User;
 
+import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -117,7 +118,7 @@ public class RegisterController {
         newUser.setAvatar(avatarFilePath);
 
         try {
-            userController.insertUser(newUser);
+            UserService.insertUser(newUser);
             // Display a success message
             succesLabel.setText("Registration successful. Redirecting to login...");
             registererror.setStyle("-fx-text-fill: green;");

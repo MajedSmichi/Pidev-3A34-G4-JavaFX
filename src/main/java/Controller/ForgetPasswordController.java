@@ -1,5 +1,6 @@
 package Controller;
 
+import Services.UserService;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,7 +131,7 @@ public class ForgetPasswordController {
         }
 
         // Assuming UserController or the equivalent has an isEmailRegistered method
-        UserController userManager = new UserController();
+        UserService userManager = new UserService();
         if (userManager.findUserByEmail(recipientEmail)==null) {
             fpError.setText("Email not registered."); // Email is not registered
             return;
@@ -222,7 +223,7 @@ public class ForgetPasswordController {
     // Placeholder for actual password change logic
     private boolean changeUserPassword(String email, String newPassword) {
 
-        UserController userManager = new UserController();
+        UserService userManager = new UserService();
         return userManager.changePasswordByEmail(email, newPassword);
     }
 
