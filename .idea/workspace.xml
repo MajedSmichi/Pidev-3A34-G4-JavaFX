@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/uneActiviteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneActivite.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Activite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Activite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +177,7 @@
       <workItem from="1713316357380" duration="4389000" />
       <workItem from="1713393103512" duration="1328000" />
       <workItem from="1713394454617" duration="10977000" />
+      <workItem from="1713459904033" duration="7971000" />
     </task>
     <task id="LOCAL-00001" summary="crud activite">
       <option name="closed" value="true" />

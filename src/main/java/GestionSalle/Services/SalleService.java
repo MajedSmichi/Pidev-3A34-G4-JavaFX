@@ -82,6 +82,25 @@ public class SalleService {
         }
         return null;
     }
+    public Salle getSalleByName(String name) throws SQLException {
+        String query = "SELECT * FROM salle WHERE nom = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, name);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            Salle salle = new Salle();
+            salle.setId(resultSet.getInt("id"));
+            salle.setNom(resultSet.getString("nom"));
+            salle.setAddresse(resultSet.getString("addresse"));
+            salle.setNum_tel(resultSet.getInt("num_tel"));
+            salle.setCapacite(resultSet.getInt("capacite"));
+            salle.setDescription(resultSet.getString("description"));
+            salle.setNbr_client(resultSet.getInt("nbr_client"));
+            salle.setLogo_salle(resultSet.getString("logo_salle"));
+            return salle;
+        }
+        return null;
+    }
 
 
 }
