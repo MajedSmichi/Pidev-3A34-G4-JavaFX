@@ -2,6 +2,7 @@ package Entity;
 
 import java.time.LocalDateTime; // Import LocalDateTime for createdAt and updatedAt fields
 import java.util.Arrays;
+import java.util.UUID;
 
 public class User {
     private String id;
@@ -12,12 +13,14 @@ public class User {
     private int numTele;
     private String password;
     private String adresse;
-    private String avatar;            // URL to the user's avatar image
-    private LocalDateTime createdAt;  // Time when the user was created
-    private LocalDateTime updatedAt;  // Time when the user's information was last updated
-    private boolean isVerified;       // Flag to indicate whether the user's account is verified
+    private String avatar;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private boolean isVerified;
 
-    public User() {}
+    public User() {
+
+    }
 
     // Constructors
     public User(String id, String nom, String prenom, String email, String[] roles, int numTele, String password, String adresse, String avatar, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isVerified) {

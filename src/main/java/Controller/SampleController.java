@@ -170,6 +170,11 @@ public class SampleController implements UserCardRefreshListener {
             return;
         }
 
+        if (currentUser == null) {
+            System.out.println("Current user is null. Cannot update user.");
+            return;
+        }
+
         String userId = currentUser.getId();
         User currentUser = selectUser(userId);
         boolean updatePassword = false;

@@ -24,8 +24,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class UserController {
     private User currentUser;
     private String userEmail;
-    private static final String INSERT_USERS_SQL = "INSERT INTO user" + "  (nom, prenom, email, roles, num_tele, Password, adresse,avatar) VALUES " + " (?, ?, ?,?, ?, ?, ?, ?);";
-
+    private static final String INSERT_USERS_SQL = "INSERT INTO user ( nom, prenom, email, roles, num_tele, Password, adresse, avatar, created_at, updated_at, is_verified) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select id,nom,prenom,email,roles,num_tele,Password,adresse,avatar,created_at,updated_at,is_verified from user where id =?";
     private static final String SELECT_ALL_USERS = "select * from user";
     private static final String DELETE_USERS_SQL = "delete from user where id = ?;";
@@ -99,31 +98,34 @@ public class UserController {
 
     //  insert user
     public void insertUser(User user) throws SQLException {
-
         if (emailExists(user.getEmail())) {
             throw new SQLException("Email already registered.");
         }
 
         try (Connection connection = ConnectionSql.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
+            hashedPassword = hashedPassword.replaceFirst("\\$2a\\$", "\\$2y\\$");
             preparedStatement.setString(1, user.getNom());
             preparedStatement.setString(2, user.getPrenom());
             preparedStatement.setString(3, user.getEmail());
+            user.setRoles(new String[]{"ROLE_CLIENT"});
             String rolesJson = new Gson().toJson(user.getRoles());
             preparedStatement.setString(4, rolesJson);
             preparedStatement.setInt(5, user.getNumTele());
             preparedStatement.setString(6, hashedPassword);
             preparedStatement.setString(7, user.getAdresse());
             preparedStatement.setString(8, user.getAvatar());
+            user.setCreatedAt(LocalDateTime.now());
+            preparedStatement.setTimestamp(9, Timestamp.valueOf(user.getCreatedAt()));
+            user.setUpdatedAt(LocalDateTime.now());
+            preparedStatement.setTimestamp(10, Timestamp.valueOf(user.getUpdatedAt()));
+            preparedStatement.setBoolean(11, user.isVerified());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-
             throw e;
         }
     }
-
-
     // Update user
     public boolean updateUser(User user, boolean updatePassword) throws SQLException {
         // Fetch existing user data
