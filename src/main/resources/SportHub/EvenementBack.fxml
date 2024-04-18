@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="root1" prefHeight="762.0" prefWidth="1356.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementBack">
    <Button fx:id="ajouterEvenement" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Ajouter Evenement" textAlignment="CENTER" />
-   <AnchorPane fx:id="ajouterPane" layoutX="62.0" layoutY="62.0" prefHeight="678.0" prefWidth="350.0" stylesheets="@dashboardDesign.css">
+   <AnchorPane fx:id="ajouterPane" layoutX="33.0" layoutY="69.0" prefHeight="678.0" prefWidth="350.0" stylesheets="@dashboardDesign.css">
       <styleClass>
          <String fx:value="shadow" />
          <String fx:value="white-bg" />
@@ -49,8 +49,8 @@
          <Button fx:id="event_add" layoutX="40.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="38.0" prefWidth="254.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
       </children>
    </AnchorPane>
-   <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="450.0" layoutY="127.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">
-      <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="604.0" prefWidth="893.0" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
+   <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="402.0" layoutY="127.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">
+      <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="610.0" prefWidth="874.0" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
       </GridPane>
    </ScrollPane>
    <Button fx:id="hide" layoutX="282.0" layoutY="16.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
