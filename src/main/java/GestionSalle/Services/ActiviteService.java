@@ -24,7 +24,7 @@ public class ActiviteService {
             activite.setId(resultSet.getInt("id"));
             activite.setSalle_id(resultSet.getInt("salle_id"));
             activite.setNom(resultSet.getString("nom"));
-            activite.setDate(resultSet.getDate("date"));
+            activite.setDate(resultSet.getTimestamp("date"));
             activite.setNbr_max(resultSet.getInt("nbr_max"));
             activite.setDescription(resultSet.getString("description"));
             activite.setImage(resultSet.getString("image_activte"));

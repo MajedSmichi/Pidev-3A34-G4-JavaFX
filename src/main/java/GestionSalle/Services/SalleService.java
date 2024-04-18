@@ -68,6 +68,20 @@ public class SalleService {
 
         preparedStatement.executeUpdate();
     }
+    public Salle getSalleById(int id) throws SQLException {
+        String query = "SELECT * FROM salle WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            Salle salle = new Salle();
+            salle.setId(resultSet.getInt("id"));
+            salle.setNom(resultSet.getString("nom"));
+            // Set other properties...
+            return salle;
+        }
+        return null;
+    }
 
 
 }

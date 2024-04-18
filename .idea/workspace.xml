@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/uneActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneActivite.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Activite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Activite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Reclamation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Reponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -181,8 +182,17 @@
       <updated>1713316356293</updated>
       <workItem from="1713316357380" duration="4389000" />
       <workItem from="1713393103512" duration="1328000" />
-      <workItem from="1713394454617" duration="2550000" />
+      <workItem from="1713394454617" duration="10977000" />
     </task>
+    <task id="LOCAL-00001" summary="crud activite">
+      <option name="closed" value="true" />
+      <created>1713397139835</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713397139835</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,5 +208,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="crud activite" />
+    <option name="LAST_COMMIT_MESSAGE" value="crud activite" />
   </component>
 </project>

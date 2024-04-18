@@ -1,12 +1,13 @@
 package GestionSalle.Entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Activite {
     private int id;
     private  int salle_id;
     private String nom;
-    private Date date;
+    private Timestamp date;
     private int nbr_max;
     private String description;
     private String image_activte;
@@ -44,11 +45,11 @@ public class Activite {
         this.nom = nom;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
@@ -76,7 +77,7 @@ public class Activite {
         this.image_activte = image;
     }
 
-    public Activite(int id, int salle_id, String nom, Date date, int nbr_max, String description, String image, String coach){
+    public Activite(int id, int salle_id, String nom, Timestamp date, int nbr_max, String description, String image, String coach){
         this.id = id;
         this.salle_id = salle_id;
         this.nom = nom;

@@ -13,7 +13,7 @@
     -fx-font-size: 14px; /* Smaller font size */
 }
 
-#PaneSalle {
+#PaneActivite,#PaneSalle {
     -fx-width: 300px;
     -fx-height: 220px;
     -fx-border-radius: 8px;
@@ -47,8 +47,14 @@
 }
 
 /* Add hover effect for Pane */
-#PaneSalle:hover {
+#PaneActivite:hover, #PaneSalle:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 15,0,0,2 );
+}
+#list {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-border-color: #ccc; /* Light border color */
+    -fx-border-width: 1px; /* Thin border */
+    -fx-border-radius: 5px; /* Rounded corners */
 }
