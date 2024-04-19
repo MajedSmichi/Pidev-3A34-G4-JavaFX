@@ -104,13 +104,29 @@ public class DetailReclamation {
 
     @FXML
     private void handleReponseButtonClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/AjouterReponse.fxml"));
-        Parent ajouterReponseView = loader.load();
-        AjouterRepense ajouterRepenseController = loader.getController();
-        ajouterRepenseController.setDetailAnchorPane(detailanchpane); // Pass reference here
-        ajouterRepenseController.setData(rec);
-        editreponse.getChildren().setAll(ajouterReponseView);
+        if ("Traité".equals(rec.getEtat())) {
+            // Create a new Label to display the message
+            Label messageLabel = new Label();
+            messageLabel.setText("La réclamation a déjà reçu une réponse.");
+            messageLabel.setStyle("-fx-font-family: Arial, sans-serif; -fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-background-color: #f2f2f2; -fx-padding: 20px; -fx-border-radius: 5px;");
+            messageLabel.setWrapText(true); // Wrap the text
 
+            // Center the messageLabel in the middle of editreponse
+            AnchorPane.setTopAnchor(messageLabel, 20.0);
+            AnchorPane.setRightAnchor(messageLabel,0.0);
+            AnchorPane.setBottomAnchor(messageLabel, 20.0);
+            AnchorPane.setLeftAnchor(messageLabel,0.0);
+
+            // Add the messageLabel to editreponse
+            editreponse.getChildren().setAll(messageLabel);
+        } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/AjouterReponse.fxml"));
+            Parent ajouterReponseView = loader.load();
+            AjouterRepense ajouterRepenseController = loader.getController();
+            ajouterRepenseController.setDetailAnchorPane(detailanchpane); // Pass reference here
+            ajouterRepenseController.setData(rec);
+            editreponse.getChildren().setAll(ajouterReponseView);
+        }
     }
 }
 

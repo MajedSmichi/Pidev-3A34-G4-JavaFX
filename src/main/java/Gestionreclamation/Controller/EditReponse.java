@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
@@ -14,6 +15,10 @@ import java.io.IOException;
 public class EditReponse {
     @FXML
     private TextArea reponseedit;
+    @FXML
+    private Label repEditError;
+
+
     private AnchorPane editreponse; // Declare detailanchpane here
     private AnchorPane detailanchpane; // Declare detailanchpane here
     private Reponse rep;
@@ -47,6 +52,14 @@ public class EditReponse {
             return;
         }
 
+        // Check if the reponseedit field is not empty
+        if (reponseedit.getText().isEmpty()) {
+            repEditError.setText("Response cannot be empty."); // Changed error message
+            return;
+        } else {
+            repEditError.setText(""); // Clear the error message
+        }
+
         rep.setReponse(reponseedit.getText());
         s.modifierReponse(rep);
 
@@ -60,7 +73,5 @@ public class EditReponse {
 
         // Remplacer le contenu de detailanchpane avec la vue de détail actualisée
         detailanchpane.getChildren().setAll(detailReeponseView);
-
-
     }
 }

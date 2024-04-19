@@ -24,10 +24,10 @@
             </Pane>
             <Pane>
                <children>
-                  <MenuButton layoutX="545.0" layoutY="15.0" mnemonicParsing="false" text="MenuButton">
+                  <MenuButton layoutX="644.0" layoutY="15.0" mnemonicParsing="false" text="Tous">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                        <MenuItem mnemonicParsing="false" text="Traité" />
+                        <MenuItem mnemonicParsing="false" text="Non Traité" />
                      </items>
                   </MenuButton>
                </children>

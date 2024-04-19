@@ -3,6 +3,7 @@ package Gestionreclamation.Controller;
 import Gestionreclamation.Entity.Reclamation;
 import Gestionreclamation.Entity.Reponse;
 import Gestionreclamation.Entity.User;
+import Gestionreclamation.Services.EmailAPI;
 import Gestionreclamation.Services.ReclamationService;
 import Gestionreclamation.Services.ReponseService;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -96,6 +98,21 @@ public class AjouterRepense {
             rec.setEtat("Traité");
             ReclamationService reclamationService = new ReclamationService();
             reclamationService.modifierReclamation(rec);
+
+            EmailAPI emailAPI = new EmailAPI();
+
+            String htmlMessage = "<div style='font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px;'>" +
+                    "<div style='max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px;'>" +
+                    "<h1 style='color: #3498db;'>Response Added</h1>" +
+                    "<p style='color: #2c3e50;'>Nous vous informons que votre reclamation a recu une reponse. Veuillez consulter votre compte pour plus de details.</p>" +                    "<p style='color: #2c3e50; font-weight: bold;'>SPORTHUB</p>" +
+                    "</div>" +
+                    "</div>";
+
+            try {
+                emailAPI.sendEmail(rec.getEmail(), "Response Added", htmlMessage);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Response Added");

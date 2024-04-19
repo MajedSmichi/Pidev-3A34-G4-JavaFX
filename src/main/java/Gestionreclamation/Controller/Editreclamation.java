@@ -26,6 +26,13 @@ public class Editreclamation implements Initializable {
 
     @FXML
     private TextArea textdescription;
+
+    @FXML
+    private Label choixEditError;
+
+    @FXML
+    private Label desEditError;
+
     private Reclamation rec; // Assuming Reclamation class exists
     private AnchorPane detailanchpane; // Declare detailanchpane here
 
@@ -55,6 +62,22 @@ public class Editreclamation implements Initializable {
             System.out.println(rec);
             return;
         }
+
+        // Check if the textdescription and combosujet fields are not empty
+        if (textdescription.getText().isEmpty()) {
+            desEditError.setText("Please enter a description.");
+            return;
+        } else {
+            desEditError.setText(""); // Clear the error message
+        }
+
+        if (combosujet.getValue() == null || combosujet.getValue().isEmpty()) {
+            choixEditError.setText("Please select a subject.");
+            return;
+        } else {
+            choixEditError.setText(""); // Clear the error message
+        }
+
         rec.setDescription(textdescription.getText());
         rec.setSujet(combosujet.getValue());
         s.modifierReclamation(rec);
@@ -68,6 +91,5 @@ public class Editreclamation implements Initializable {
 
         // Remplacer le contenu de detailanchpane avec la vue de détail actualisée
         detailanchpane.getChildren().setAll(detailReclamationView);
-
     }
 }

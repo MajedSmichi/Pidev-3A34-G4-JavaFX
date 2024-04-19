@@ -14,11 +14,10 @@ public class openIAsevice {
 
         try {
             HttpResponse<String> response = Unirest.post("https://api.openai.com/v1/audio/transcriptions")
-                    .header("Authorization", "Bearer " + "a")
+                    .header("Authorization", "Bearer " + "aa")
                     .field("file", new File(filePath))
                     .field("model", "whisper-1")
                     .asString();
-
 
             JSONObject jsonResponse = new JSONObject(response.getBody());
             transcription = jsonResponse.getString("text");

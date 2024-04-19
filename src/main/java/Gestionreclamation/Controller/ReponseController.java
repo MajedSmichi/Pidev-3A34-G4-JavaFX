@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ReponseController implements Initializable {
     @FXML
@@ -20,6 +22,8 @@ public class ReponseController implements Initializable {
 
     @FXML
     private BorderPane borderpaneReponse;
+    @FXML
+    private TextField SearchRep;
     private List<Reponse> reponses = new ArrayList<>();
     public BorderPane getBorderPane() {
         return borderpaneReponse;
@@ -29,25 +33,46 @@ public class ReponseController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             reponses = getData();
-            int columns = 0;
-            int row = 1;
-            for (Reponse rep : reponses) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gestionreclamation/OneReponse.fxml"));
-                Pane pane = fxmlLoader.load(); // Load as Pane
-                OneReponse oneReponse = fxmlLoader.getController();
-                oneReponse.setData(rep);
-                oneReponse.setReponseController(this); // Set the ReponseController instance
+            populateGrid(reponses);
 
-                GridReponse.add(pane, columns, row); // Use the loaded Pane
-                columns++;
-                if (columns > 2) {
-                    columns = 0;
-                    row++;
+            // Add a listener to the SearchRep TextField
+            SearchRep.textProperty().addListener((observable, oldValue, newValue) -> {
+                // Filter the reponses list based on the search text
+                List<Reponse> filteredReponses = reponses.stream()
+                        .filter(rep -> rep.getidReclamation().getNom().toLowerCase().contains(newValue.toLowerCase())
+                                || rep.getidReclamation().getPrenom().toLowerCase().contains(newValue.toLowerCase())
+                                || rep.getReponse().toLowerCase().contains(newValue.toLowerCase())
+                                || rep.getDate().toString().contains(newValue))
+                        .collect(Collectors.toList());
+                try {
+                    populateGrid(filteredReponses);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                GridPane.setMargin(pane, new Insets(10));
-            }
+            });
         } catch (IOException | SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void populateGrid(List<Reponse> reponses) throws IOException {
+        GridReponse.getChildren().clear();
+        int columns = 0;
+        int row = 1;
+        for (Reponse rep : reponses) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gestionreclamation/OneReponse.fxml"));
+            Pane pane = fxmlLoader.load(); // Load as Pane
+            OneReponse oneReponse = fxmlLoader.getController();
+            oneReponse.setData(rep);
+            oneReponse.setReponseController(this); // Set the ReponseController instance
+
+            GridReponse.add(pane, columns, row); // Use the loaded Pane
+            columns++;
+            if (columns > 2) {
+                columns = 0;
+                row++;
+            }
+            GridPane.setMargin(pane, new Insets(10));
         }
     }
     private List<Reponse> getData() throws SQLException {

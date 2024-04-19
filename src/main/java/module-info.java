@@ -7,6 +7,7 @@ module com.example.gestionreclamation {
     requires mysql.connector.java;
     requires unirest.java;
     requires json;
+    requires javax.mail.api;
     opens Gestionreclamation to javafx.fxml;
     exports Gestionreclamation;
     exports connectionSql;

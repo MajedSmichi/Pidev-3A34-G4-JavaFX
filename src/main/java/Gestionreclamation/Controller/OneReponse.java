@@ -25,11 +25,9 @@ public class OneReponse {
     private Label reponse;
     private Reponse rep;
     private ReponseController reponseController;
-
     public void setReponseController(ReponseController reponseController) {
         this.reponseController = reponseController;
     }
-
     public void setData(Reponse id) {
         this.rep = id;
         reponse.setText(rep.getReponse());
@@ -41,8 +39,6 @@ public class OneReponse {
             name.setText("Reclamation is null. Please ensure that the reclamation is set correctly.");
         }
     }
-
-
     @FXML
     private void handleReponseClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Gestionreclamation/DetailReponse.fxml"));

@@ -132,50 +132,26 @@ public class ReclamationService {
     }
     public void modifierReclamation(Reclamation r) {
         if (r.getId() != 0) {
-            StringBuilder reqBuilder = new StringBuilder("UPDATE `reclamation` SET ");
-
-            if (r.getNom() != null) {
-                reqBuilder.append("nom='" + r.getNom() + "', ");
-            }
-            if (r.getPrenom() != null) {
-                reqBuilder.append("prenom='" + r.getPrenom() + "', ");
-            }
-            if (r.getEmail() != null) {
-                reqBuilder.append("email='" + r.getEmail() + "', ");
-            }
-            if (r.getNumTele() != 0) {
-                reqBuilder.append("num_tele='" + r.getNumTele() + "', ");
-            }
-            if (r.getSujet() != null) {
-                reqBuilder.append("sujet='" + r.getSujet() + "', ");
-            }
-            if (r.getDescription() != null) {
-                reqBuilder.append("description='" + r.getDescription() + "', ");
-            }
-            if (r.getEtat() != null) {
-                reqBuilder.append("etat='" + r.getEtat() + "', ");
-            }
-            r.setDate(LocalDateTime.now());
-
-            // Append modification date to the SQL query
-            reqBuilder.append("date='" + r.getDate() + "', ");
-
-            // Supprimer la virgule et l'espace finaux
-            reqBuilder.delete(reqBuilder.length() - 2, reqBuilder.length());
-
-            // Ajouter la condition WHERE
-            reqBuilder.append(" WHERE id = ").append(r.getId());
-
+            String req = "UPDATE `reclamation` SET nom=?, prenom=?, email=?, num_tele=?, sujet=?, description=?, etat=?, date=? WHERE id=?";
             try {
-                Statement st = cnx.createStatement();
-                st.executeUpdate(reqBuilder.toString());
+                PreparedStatement st = cnx.prepareStatement(req);
+                st.setString(1, r.getNom());
+                st.setString(2, r.getPrenom());
+                st.setString(3, r.getEmail());
+                st.setInt(4, r.getNumTele());
+                st.setString(5, r.getSujet());
+                st.setString(6, r.getDescription());
+                st.setString(7, r.getEtat());
+                st.setTimestamp(8, java.sql.Timestamp.valueOf(r.getDate()));
+                st.setInt(9, r.getId());
+
+                st.executeUpdate();
                 System.out.println("Reclamation modifiée avec succès");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
     }
-
     private Map<Integer, Reclamation> reclamationMap = new HashMap<>();
 
     // Méthode pour récupérer une réclamation à partir de son ID
