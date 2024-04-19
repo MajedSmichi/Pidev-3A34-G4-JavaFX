@@ -14,9 +14,8 @@
 
 <AnchorPane fx:id="root3" prefHeight="762.0" prefWidth="1356.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.TicketBack">
    <children>
-      <Button fx:id="ajouterTicket" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="1017.0" layoutY="29.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Ajouter Ticket" textAlignment="CENTER" />
-      <Button fx:id="hide" layoutX="282.0" layoutY="16.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0" />
-      <AnchorPane layoutX="974.0" layoutY="97.0" prefHeight="640.0" prefWidth="325.0" stylesheets="@dashboardDesign.css">
+      <Button fx:id="ajouterTicket" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="1067.0" layoutY="29.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="129.0" text="Ajouter Ticket" textAlignment="CENTER" />
+      <AnchorPane fx:id="ajouterPane" layoutX="989.0" layoutY="91.0" prefHeight="661.0" prefWidth="326.0" stylesheets="@dashboardDesign.css">
          <styleClass>
             <String fx:value="white-bg" />
             <String fx:value="shadow" />
@@ -35,20 +34,25 @@
             <TextField fx:id="ticket_nbre" layoutX="36.0" layoutY="444.0" prefHeight="59.0" prefWidth="250.0" promptText="Nombre de tickets" styleClass="label-info" stylesheets="@dashboardDesign.css" />
             <ComboBox fx:id="ticket_evenement" layoutX="37.0" layoutY="147.0" prefHeight="46.0" prefWidth="250.0" promptText="choisir un evenement" />
             <Label layoutX="36.0" layoutY="115.0" prefHeight="31.0" prefWidth="66.0" text="Evenement" />
-            <Button fx:id="ticket_add" layoutX="43.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#addTicket1" prefHeight="38.0" prefWidth="236.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
-            <Button fx:id="ticket_clear" layoutX="43.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#ticketClear" prefHeight="38.0" prefWidth="236.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+            <Button fx:id="ticket_add" layoutX="43.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#addTicket1" prefHeight="38.0" prefWidth="236.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+            <Button fx:id="ticket_clear" layoutX="43.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="38.0" prefWidth="236.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
             <Label layoutX="220.0" layoutY="251.0" prefHeight="31.0" prefWidth="66.0" text="DT" />
+            <Button fx:id="ticket_update" layoutX="41.0" layoutY="562.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="236.0" styleClass="update-btn" text="Modifier" />
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="28.0" layoutY="125.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="65.0" layoutY="111.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">
          <content>
             <GridPane fx:id="ticketContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="610.0" prefWidth="874.0" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0" />
          </content>
       </ScrollPane>
-      <ImageView fx:id="modifiericon" fitHeight="31.0" fitWidth="35.0" layoutX="1196.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/cancel.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="hide" layoutX="1208.0" layoutY="31.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
+         <graphic>
+            <ImageView fx:id="modifiericon" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

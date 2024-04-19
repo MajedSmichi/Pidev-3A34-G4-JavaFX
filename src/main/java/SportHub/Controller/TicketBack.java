@@ -58,6 +58,10 @@ public class TicketBack {
     private TextField ticket_type;
 
     @FXML
+    private AnchorPane ajouterPane;
+
+
+    @FXML
     void addTicket(MouseEvent event) {
 
     }
@@ -70,7 +74,28 @@ public class TicketBack {
 
     private EvenementService evenementService;
     private TicketService ticketService;
+    private int currentTicketId;
 
+    // Add these getter methods to your TicketBack class
+    public AnchorPane getAjouterPane() {
+        return ajouterPane;
+    }
+
+    public TextField getTicket_prix() {
+        return ticket_prix;
+    }
+
+    public TextField getTicket_type() {
+        return ticket_type;
+    }
+
+    public TextField getTicket_nbre() {
+        return ticket_nbre;
+    }
+
+    public ComboBox<String> getTicket_evenement() {
+        return ticket_evenement;
+    }
 
     public TicketBack() {
         evenementService = new EvenementService();
@@ -79,6 +104,19 @@ public class TicketBack {
 
     @FXML
     public void initialize() {
+
+        // Bind the visibility of the hide button to the visibility of ajouterPane
+        hide.visibleProperty().bind(ajouterPane.visibleProperty());
+
+        ajouterPane.setVisible(false); // Make ajouterPane not visible
+
+        ajouterTicket.setOnAction(e -> {
+            ajouterPane.setVisible(true);
+        });
+        hide.setOnAction(e -> {
+            ajouterPane.setVisible(false);
+        });
+
         loadEvents();
         showListTicket();
 
@@ -175,7 +213,7 @@ public class TicketBack {
                 alert.showAndWait();
 
                 // Refresh the table view
-                //showListTicket();
+                showListTicket();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -184,7 +222,7 @@ public class TicketBack {
 
 
 
-
+@FXML
 private void showListTicket() {
     ticketContainerBack.getChildren().clear();
     try {
@@ -206,5 +244,49 @@ private void showListTicket() {
     }
 }
 
+
+
+
+public void populateFields(Ticket ticket) {
+    ajouterPane.setVisible(true);
+    ticket_prix.setText(String.valueOf(ticket.getPrix()));
+    ticket_type.setText(ticket.getType());
+    ticket_nbre.setText(String.valueOf(ticket.getNbreTicket()));
+    try {
+        ticket_evenement.setValue(evenementService.getEventNameById(ticket.getEvenementId()));
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+    // Store the id of the ticket to be updated
+    currentTicketId = ticket.getId();
+}
+
+@FXML
+public void ticketUpdate() {
+    // Get the updated values from the input fields
+    String selectedEventName = ticket_evenement.getSelectionModel().getSelectedItem();
+    int prix = Integer.parseInt(ticket_prix.getText());
+    String type = ticket_type.getText();
+    int nbre = Integer.parseInt(ticket_nbre.getText());
+
+    try {
+        // Update the ticket
+        Evenement selectedEvent = evenementService.getEventByName(selectedEventName);
+        ticketService.updateTicket(currentTicketId, selectedEvent.getId(), prix, type, nbre);
+
+        // Refresh the table view
+        showListTicket();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle the exception appropriately, e.g., show an error message to the user
+    }
+}
+
+    public void clear() {
+        ticket_evenement.getSelectionModel().clearSelection();
+        ticket_prix.clear();
+        ticket_type.clear();
+        ticket_nbre.clear();
+    }
 
 }
