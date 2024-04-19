@@ -68,7 +68,7 @@ public class UserService {
             statement.setInt(5, user.getNumTele());
             statement.setString(6, hashedPassword);
             statement.setString(7, user.getAdresse());
-            statement.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now())); // Set the updated_at field to the current time
+            statement.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
             statement.setString(9, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
@@ -212,6 +212,19 @@ public class UserService {
             printSQLException(e);
         }
         return user;
+    }
+
+    public static boolean updateUserActiveStatus(String userId, boolean isActive) {
+        boolean rowUpdated = false;
+        try (Connection connection = ConnectionSql.getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE user SET is_verified = ? WHERE id = ?")) {
+            statement.setBoolean(1, isActive);
+            statement.setString(2, userId);
+            rowUpdated = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return rowUpdated;
     }
 
 

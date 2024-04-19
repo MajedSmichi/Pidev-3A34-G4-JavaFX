@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.TilePane?>
 
 <?import javafx.scene.shape.Circle?>
-<TilePane fx:id="cardsContainer" hgap="-260" prefHeight="245.0" stylesheets="@card.css" prefColumns="3" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserCardController">
+<TilePane fx:id="cardsContainer" hgap="-300" prefHeight="245.0" stylesheets="@card.css" prefColumns="3" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserCardController">
     <children>
-        <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 10 20 10; -fx-border-color: #3a3434; -fx-border-radius: 10;">
+        <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 10 20 10; -fx-border-color: #3a3434; -fx-border-radius: 10;"
+              minWidth="340" minHeight="250" maxWidth="340" maxHeight="250">
             <ImageView fx:id="userImage" fitHeight="84.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
-
             </ImageView>
             <VBox spacing="5">
                 <HBox spacing="5">
@@ -31,7 +31,7 @@
             <HBox alignment="TOP_CENTER" spacing="10">
                 <Button styleClass="user-button" text="Edit" onAction="#handleEditUser" />
                 <Button styleClass="user-button" text="View" onAction="#handleViewUser"/>
-                <Button styleClass="user-button" text="Activate" />
+                <Button fx:id="activateButton" styleClass="user-button" text="Activate" onAction="#handleActivateUser" />
                 <Button styleClass="user-button" text="Delete" onAction="#handleDeleteUser" />
             </HBox>
         </VBox>

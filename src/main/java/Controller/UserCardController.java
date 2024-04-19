@@ -23,6 +23,8 @@ public class UserCardController {
     @FXML private Label userEmail;
     @FXML private Label userPhone;
     @FXML private Button deleteButton;
+    @FXML
+    private Button activateButton;
     private User currentUser;
     private UserCardRefreshListener refreshListener;
 
@@ -31,7 +33,7 @@ public class UserCardController {
         userName.setText(user.getNom() + " " + user.getPrenom());
         userEmail.setText(user.getEmail());
         userPhone.setText(String.valueOf(user.getNumTele()));
-
+        activateButton.setText(user.isVerified() ? "Desactivate" : "Activate");
         // Check if the avatar URL is not null and is a valid URL or file path
         String avatarUrl = user.getAvatar();
         if (avatarUrl != null && !avatarUrl.trim().isEmpty()) {
@@ -126,6 +128,20 @@ public class UserCardController {
     private void handleViewUser() {
         if (this.currentUser != null && this.refreshListener instanceof SampleController) {
             ((SampleController) this.refreshListener).showViewUser(currentUser);
+        }
+    }
+
+    @FXML
+    private void handleActivateUser() {
+        if (this.currentUser != null) {
+            boolean newStatus = !this.currentUser.isVerified();
+            if (UserService.updateUserActiveStatus(this.currentUser.getId(), newStatus)) {
+                System.out.println("User active status updated successfully");
+                this.currentUser.setVerified(newStatus);
+                activateButton.setText(newStatus ? "Deactivate" : "Activate");
+            } else {
+                System.out.println("Failed to update user active status");
+            }
         }
     }
 
