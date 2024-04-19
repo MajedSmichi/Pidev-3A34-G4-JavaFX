@@ -44,7 +44,7 @@ public class uneActiviteController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Date.setText(activite.getDate().toString());
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = formatter.format(activite.getDate());
         Date.setText(formattedDate);
