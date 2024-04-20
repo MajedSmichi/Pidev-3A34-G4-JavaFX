@@ -84,6 +84,7 @@ public void setData(Ticket ticket, String eventName) {
     Prix.setText(Integer.toString(ticket.getPrix()));
 }
 
+/*
 public void deleteTicket() {
     Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
     confirmationAlert.setTitle("Confirmation");
@@ -107,5 +108,11 @@ public void deleteTicket() {
     }
 }
 
+*/
+@FXML
+private void deleteTicket() {
+    ticketBackController.setSelectedTicket(ticket);
+    ticketBackController.deleteTicket();
+}
 
 }

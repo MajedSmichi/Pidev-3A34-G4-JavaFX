@@ -10,7 +10,7 @@ public class DashController {
 
     @FXML
     private AnchorPane anchor;
-
+/*
     @FXML
     public void loadEvenementLayout() {
         try {
@@ -19,8 +19,9 @@ public class DashController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
+/*
     @FXML
 public void loadTicketLayout() {
     try {
@@ -30,6 +31,7 @@ public void loadTicketLayout() {
         e.printStackTrace();
     }
 }
+*/
 
     @FXML
     public void loadEvenementCards() {
@@ -40,4 +42,16 @@ public void loadTicketLayout() {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void loadTicketCards() {
+        try {
+            AnchorPane evenementLayout = FXMLLoader.load(getClass().getResource("/SportHub/TicketBack.fxml"));
+            anchor.getChildren().setAll(evenementLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

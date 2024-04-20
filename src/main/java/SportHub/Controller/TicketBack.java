@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class TicketBack {
 
@@ -100,6 +101,12 @@ public class TicketBack {
     public TicketBack() {
         evenementService = new EvenementService();
         ticketService = new TicketService();
+    }
+
+    private Ticket selectedTicket;
+
+    public void setSelectedTicket(Ticket ticket) {
+        this.selectedTicket = ticket;
     }
 
     @FXML
@@ -224,28 +231,28 @@ public class TicketBack {
 
 @FXML
 private void showListTicket() {
-    ticketContainerBack.getChildren().clear();
     try {
-        List<Ticket> tickets = ticketService.getAllTickets();
+        TicketService service = new TicketService();
+        List<Ticket> tickets = service.getAllTickets();
+
+        // Clear the grid before repopulating it
+        ticketContainerBack.getChildren().clear();
+
         for (Ticket ticket : tickets) {
-            String eventName = evenementService.getEventNameById(ticket.getEvenementId());
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/SportHub/TicketCard.fxml"));
             Pane pane = fxmlLoader.load();
 
             TicketCard controller = fxmlLoader.getController();
-            controller.setData(ticket, eventName);
+            controller.setData(ticket, evenementService.getEventNameById(ticket.getEvenementId()));
+            controller.setTicketBackController(this);
 
             ticketContainerBack.add(pane, ticket.getId() % 3, ticket.getId() / 3);
         }
     } catch (SQLException | IOException e) {
         e.printStackTrace();
-        System.out.printf("Error: %s%n", e.getMessage());
     }
 }
-
-
-
 
 public void populateFields(Ticket ticket) {
     ajouterPane.setVisible(true);
@@ -281,6 +288,41 @@ public void ticketUpdate() {
         // Handle the exception appropriately, e.g., show an error message to the user
     }
 }
+
+
+
+    public void deleteTicket() {
+        // Check if a ticket is selected
+        if (selectedTicket == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a ticket in the table.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Show a confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Ticket");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to delete this ticket?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // If the user confirmed the deletion
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                // Delete the ticket
+                ticketService.deleteTicket(selectedTicket.getId());
+
+                // Refresh the table view
+                showListTicket();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     public void clear() {
         ticket_evenement.getSelectionModel().clearSelection();
