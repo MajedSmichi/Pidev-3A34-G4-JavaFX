@@ -156,6 +156,15 @@ public void deleteEvent(int id) throws SQLException {
     return null;
 }
 
-
+public boolean eventExists(String eventName) throws SQLException {
+    String query = "SELECT COUNT(*) FROM evenement WHERE nom = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setString(1, eventName);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+        return resultSet.getInt(1) > 0;
+    }
+    return false;
+}
 
 }

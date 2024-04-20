@@ -116,57 +116,51 @@ public class EvenementBack {
             eventContainerBack.add(pane, i % 3, i / 3);
         }
     }
-    public void eventAdd() {
 
+
+    public void eventAdd() {
         try {
             Alert alert;
 
-            if (event_titre.getText().isEmpty()
-                    || event_description.getText().isEmpty() || event_lieu.getText().isEmpty()
-                    || event_date.getValue() == null
-            ) {
-
+            if (event_titre.getText().isEmpty() || event_description.getText().isEmpty() || event_lieu.getText().isEmpty() || event_date.getValue() == null) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Les champs sont obligatoires");
                 alert.showAndWait();
-            } else if (event_date.getValue().isBefore(LocalDate.now())) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Date doit être supérieure à la date actuelle");
-                alert.showAndWait();
             } else {
+                String nom = event_titre.getText();
+                String description = event_description.getText();
+                String lieu = event_lieu.getText();
+                Date date = Date.valueOf(event_date.getValue());
 
-                Evenement event = new Evenement();
-                event.setNom(event_titre.getText());
-                event.setDescription(event_description.getText());
-                event.setLieu(event_lieu.getText());
-                event.setDateEvenement(Date.valueOf(event_date.getValue()));
+                // Check if event with the same name already exists
+                if (evenementService.eventExists(nom)) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Evènement nom déjà existe, merci de le changer");
+                    alert.showAndWait();
+                } else {
+                    Evenement event = new Evenement();
+                    event.setNom(nom);
+                    event.setDescription(description);
+                    event.setLieu(lieu);
+                    event.setDateEvenement(date);
 
-                if (file != null) {
-                    event.setImageEvenement(file.getPath()); // Set the image path
+                    evenementService.addEvent(event);
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Added!");
+                    alert.showAndWait();
+
+                    // Refresh the table view
+                    displayEvents();
                 }
-
-                EvenementService service = new EvenementService();
-                service.addEvent(event);
-
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Successfully Added!");
-                alert.showAndWait();
-
-
-            displayEvents();
-/*
-                Parent fmxlLoader = FXMLLoader.load(getClass().getResource("/GUI/Back/evenement.fxml"));
-                root1.getChildren().removeAll();
-                root1.getChildren().setAll(fmxlLoader);
-*/
             }
-        } catch (Exception e) {
+        } catch (SQLException  | IOException e) {
             e.printStackTrace();
         }
     }

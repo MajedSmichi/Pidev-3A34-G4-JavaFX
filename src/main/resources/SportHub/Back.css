@@ -111,8 +111,8 @@
 
 #PaneTicket:hover {
     /* Add your hover styles here */
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 83, 137, 0.87), 10, 0, 0, 10);
-    -fx-background-color: rgba(0, 169, 239, 0.81);
+    -fx-effect: dropshadow(three-pass-box, rgba(70, 182, 255, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(0, 120, 171, 0.81);
     -fx-text-fill: white ;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
@@ -128,4 +128,20 @@
 }
 #ajouterTicket:hover {
     -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
 }

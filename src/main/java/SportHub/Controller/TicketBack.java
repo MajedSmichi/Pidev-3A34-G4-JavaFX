@@ -143,66 +143,75 @@ public class TicketBack {
         }
     }
 
-    @FXML
-    public void addTicket1() {
+@FXML
+public void addTicket1() {
+    try {
+        Alert alert;
+        int prix = 0;
+        int nbre = 0;
+        boolean isPrixInteger = true;
+        boolean isNbreInteger = true;
+
         try {
-            Alert alert;
-            int prix = 0;
-            int nbre = 0;
-            boolean isPrixInteger = true;
-            boolean isNbreInteger = true;
+            prix = Integer.parseInt(ticket_prix.getText());
+        } catch (NumberFormatException e) {
+            isPrixInteger = false;
+        }
 
-            try {
-                prix = Integer.parseInt(ticket_prix.getText());
-            } catch (NumberFormatException e) {
-                isPrixInteger = false;
-            }
+        try {
+            nbre = Integer.parseInt(ticket_nbre.getText());
+        } catch (NumberFormatException e) {
+            isNbreInteger = false;
+        }
 
-            try {
-                nbre = Integer.parseInt(ticket_nbre.getText());
-            } catch (NumberFormatException e) {
-                isNbreInteger = false;
-            }
+        if (ticket_prix.getText().isEmpty() || ticket_type.getText().isEmpty() || ticket_nbre.getText().isEmpty() || ticket_evenement.getSelectionModel().getSelectedItem() == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Les champs sont obligatoires");
+            alert.showAndWait();
+        } else if (!isPrixInteger && !isNbreInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix et Nombre de tickets sont des entiers");
+            alert.showAndWait();
+        } else if (!isPrixInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix doit être un entier");
+            alert.showAndWait();
+        } else if (!isNbreInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Nombre de tickets doit être un entier");
+            alert.showAndWait();
+        } else if (prix <= 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix doit être supérieur à zéro");
+            alert.showAndWait();
+        } else if (nbre <= 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Nombre de tickets doit être supérieur à zéro");
+            alert.showAndWait();
+        } else {
+            String selectedEventName = ticket_evenement.getSelectionModel().getSelectedItem();
+            Evenement selectedEvent = evenementService.getEventByName(selectedEventName);
+            Ticket existingTicket = ticketService.getTicketByEventId(selectedEvent.getId());
 
-            if (ticket_prix.getText().isEmpty() || ticket_type.getText().isEmpty() || ticket_nbre.getText().isEmpty() || ticket_evenement.getSelectionModel().getSelectedItem() == null) {
+            if (existingTicket != null) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Les champs sont obligatoires");
-                alert.showAndWait();
-            } else if (!isPrixInteger && !isNbreInteger) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Prix et Nombre de tickets sont des entiers");
-                alert.showAndWait();
-            } else if (!isPrixInteger) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Prix doit être un entier");
-                alert.showAndWait();
-            } else if (!isNbreInteger) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Nombre de tickets doit être un entier");
-                alert.showAndWait();
-            } else if (prix <= 0) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Prix doit être supérieur à zéro");
-                alert.showAndWait();
-            } else if (nbre <= 0) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Nombre de tickets doit être supérieur à zéro");
+                alert.setContentText("Un ticket est déjà créé avec cet événement");
                 alert.showAndWait();
             } else {
-                String selectedEventName = ticket_evenement.getSelectionModel().getSelectedItem();
-                Evenement selectedEvent = evenementService.getEventByName(selectedEventName);
                 String type = ticket_type.getText();
 
                 Ticket ticket = new Ticket();
@@ -222,12 +231,11 @@ public class TicketBack {
                 // Refresh the table view
                 showListTicket();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
-
-
+}
 
 @FXML
 private void showListTicket() {
