@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -142,6 +143,7 @@ public class ActiviteController {
             for (Activite activite : activites) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneActivite.fxml"));
                 Pane pane = fxmlLoader.load();
+
                 uneActiviteController oneActivite = fxmlLoader.getController();
                 oneActivite.setData(activite);
                 pane.setOnMouseClicked(event -> displayActiviteDetails(activite)); // Add this line
@@ -216,6 +218,10 @@ void addActivite(ActionEvent event) {
                 Pane pane = fxmlLoader.load(); // Load as Pane
                 uneActiviteController oneActivite = fxmlLoader.getController();
                 oneActivite.setData(activite);
+                pane.setOnMouseClicked(event -> {
+                    currentActivite = activite; // Update the currentActivite
+                    displayActiviteDetails(activite); // Display the details of the currentActivite
+                });
                 GridActivite.add(pane, 0, row); // Always add to the first column
                 row++;
                 GridPane.setMargin(pane, new Insets(10));
@@ -343,7 +349,9 @@ void updateActivite(ActionEvent event) {
         currentActivite.setDescription(updatedescription.getText());
         currentActivite.setNbr_max(Integer.parseInt(updatenbrmax.getText()));
         currentActivite.setDate(java.sql.Timestamp.valueOf(updatedate.getValue().atStartOfDay()));
-        currentActivite.setImage(imagePath); // Update the image
+        if (imagePath != null) {
+            currentActivite.setImage(imagePath);
+        }
 
         // Assuming 'updatesalle' is a ComboBox that should be set to the name of the Salle of the currentActivite
         SalleService salleService = new SalleService();
@@ -362,7 +370,8 @@ void updateActivite(ActionEvent event) {
             activiteService.updateActivite(currentActivite);
             refreshGridPane(); // Refresh the GridPane after updating the Activite
             modifier.setVisible(false); // Hide the modifier AnchorPane
-            displayActiviteDetails(currentActivite); // Refresh the detail AnchorPane
+            displayActiviteDetails(currentActivite); //
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -57,7 +57,7 @@ public class uneSalleController {
             System.out.println("Invalid URL or resource not found: " + salle.getLogo_salle());
         }
 
-        // Set mouse click event handler for PaneSalle
+       //Set mouse click event handler for PaneSalle
         PaneSalle.setOnMouseClicked(event -> {
             // Load detailSalle.fxml
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/detailSalle.fxml"));
@@ -75,11 +75,27 @@ public class uneSalleController {
             // Pass the Salle data to the controller
             controller.setData(this.salle);
 
+            // Load Dash.fxml
+            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Dash.fxml"));
+            Parent dash;
+            try {
+                dash = dashLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            // Get the controller of Dash.fxml
+            DashController dashController = dashLoader.getController();
+
+            // Set detailSalle as the content of the AnchorPane in Dash.fxml
+            dashController.getAnchor().getChildren().setAll(detailSalle);
+
             // Get the current stage
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            // Create a new scene with the loaded page
-            Scene scene = new Scene(detailSalle, currentStage.getWidth(), currentStage.getHeight());
+            // Create a new scene with the loaded Dash.fxml
+            Scene scene = new Scene(dash, currentStage.getWidth(), currentStage.getHeight());
 
             // Set the new scene to the current stage
             currentStage.setScene(scene);

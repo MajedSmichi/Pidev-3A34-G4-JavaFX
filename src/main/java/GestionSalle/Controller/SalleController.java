@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -148,6 +149,12 @@ public class SalleController implements Initializable {
             salleService.addEvent(newSalle);
             hideGestionPane(); // Hide the AnchorPane gestion
             refreshGridPane(); // Refresh the GridPane after adding a new Salle
+            // Get the instance of DashController
+            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Dash.fxml"));
+            Parent dash = dashLoader.load();
+            DashController dashController = dashLoader.getController();
+            dashController.refreshSalle();
+
 
             // Clear the fields
             name.clear();
@@ -158,7 +165,7 @@ public class SalleController implements Initializable {
             nbrclients.clear();
             logoSalle.setImage(null); // Clear the image
 
-        } catch (SQLException e) {
+        } catch (SQLException |IOException e) {
             e.printStackTrace();
         }
     }

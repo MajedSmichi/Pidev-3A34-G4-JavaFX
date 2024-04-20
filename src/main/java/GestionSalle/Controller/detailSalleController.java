@@ -148,16 +148,27 @@ public class detailSalleController {
         try {
             salleService.updateSalle(salle.getId(), newName, newAddress, newNumTel, newCapacite, newDescription, newNbrClients, newLogoSalle);
 
-            // Navigate back to Salle.fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Salle.fxml"));
-            Parent salleParent = fxmlLoader.load();
-            Scene salleScene = new Scene(salleParent);
+            // Load Salle.fxml
+            FXMLLoader salleLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Salle.fxml"));
+            Parent salleView = salleLoader.load();
+
+            // Get the instance of DashController
+            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Dash.fxml"));
+            Parent dash = dashLoader.load();
+            DashController dashController = dashLoader.getController();
+
+            // Set Salle.fxml as the content of the AnchorPane in Dash.fxml
+            dashController.getAnchor().getChildren().setAll(salleView);
 
             // Get the current stage
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            window.setScene(salleScene);
-            window.show();
+            // Create a new scene with the loaded Dash.fxml
+            Scene scene = new Scene(dash, currentStage.getWidth(), currentStage.getHeight());
+
+            // Set the new scene to the current stage
+            currentStage.setScene(scene);
+
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
@@ -168,22 +179,29 @@ public class detailSalleController {
         SalleService salleService = new SalleService();
         try {
             salleService.deleteSalle(salle.getId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        // Navigate to Salle.fxml
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Salle.fxml"));
-            Parent salleParent = fxmlLoader.load();
-            Scene salleScene = new Scene(salleParent);
+            // Load Salle.fxml
+            FXMLLoader salleLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Salle.fxml"));
+            Parent salleView = salleLoader.load();
+
+            // Get the instance of DashController
+            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Dash.fxml"));
+            Parent dash = dashLoader.load();
+            DashController dashController = dashLoader.getController();
+
+            // Set Salle.fxml as the content of the AnchorPane in Dash.fxml
+            dashController.getAnchor().getChildren().setAll(salleView);
 
             // Get the current stage
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            window.setScene(salleScene);
-            window.show();
-        } catch (IOException e) {
+            // Create a new scene with the loaded Dash.fxml
+            Scene scene = new Scene(dash, currentStage.getWidth(), currentStage.getHeight());
+
+            // Set the new scene to the current stage
+            currentStage.setScene(scene);
+
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
