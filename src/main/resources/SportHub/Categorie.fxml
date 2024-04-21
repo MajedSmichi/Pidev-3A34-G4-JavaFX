@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root1" prefHeight="765.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.CategorieController">
+    <children>
+        <AnchorPane layoutX="444.0" layoutY="23.0" prefHeight="682.0" prefWidth="714.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="shadow" />
+                <String fx:value="white-bg" />
+            </styleClass>
+            <children>
+                <TableView fx:id="eventTableView" layoutX="137.0" layoutY="46.0" prefHeight="591.0" prefWidth="464.0" stylesheets="@dashboardDesign.css">
+                    <columns>
+                        <TableColumn fx:id="col_event_nom" prefWidth="187.99993896484375" text="Nom" />
+                        <TableColumn fx:id="col_event_description" prefWidth="272.00006103515625" text="Actions" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="53.0" layoutY="14.0" prefHeight="682.0" prefWidth="335.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="shadow" />
+                <String fx:value="white-bg" />
+            </styleClass>
+            <children>
+                <Label layoutX="40.0" layoutY="87.0" text="Nom" />
+                <TextField fx:id="event_titre" layoutX="36.0" layoutY="120.0" prefHeight="46.0" prefWidth="240.0" promptText="Titre" styleClass="label-info" />
+                <Button fx:id="event_clear" layoutX="37.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+                <Button fx:id="event_add" layoutX="37.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+                <Button fx:id="event_delete" layoutX="176.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
+                <Button fx:id="event_update" layoutX="176.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#eventUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

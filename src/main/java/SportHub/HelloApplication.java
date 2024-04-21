@@ -1,8 +1,8 @@
 package SportHub;
-import SportHub.Entity.Evenement;
-import SportHub.Entity.Ticket;
-import SportHub.Services.EvenementService;
-import SportHub.Services.TicketService;
+import SportHub.Entity.Product;
+import SportHub.Entity.Categorie_p;
+import SportHub.Services.ProductService;
+import SportHub.Services.Servicecategorie;
 import connectionSql.ConnectionSql;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
