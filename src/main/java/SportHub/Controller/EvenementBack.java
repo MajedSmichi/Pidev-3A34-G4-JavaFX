@@ -118,52 +118,61 @@ public class EvenementBack {
     }
 
 
-    public void eventAdd() {
-        try {
-            Alert alert;
+public void eventAdd() {
+    try {
+        Alert alert;
 
-            if (event_titre.getText().isEmpty() || event_description.getText().isEmpty() || event_lieu.getText().isEmpty() || event_date.getValue() == null) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Les champs sont obligatoires");
-                alert.showAndWait();
-            } else {
-                String nom = event_titre.getText();
-                String description = event_description.getText();
-                String lieu = event_lieu.getText();
-                Date date = Date.valueOf(event_date.getValue());
+        if (event_titre.getText().isEmpty()
+                || event_description.getText().isEmpty() || event_lieu.getText().isEmpty()
+                || event_date.getValue() == null
+        ) {
 
-                // Check if event with the same name already exists
-                if (evenementService.eventExists(nom)) {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Evènement nom déjà existe, merci de le changer");
-                    alert.showAndWait();
-                } else {
-                    Evenement event = new Evenement();
-                    event.setNom(nom);
-                    event.setDescription(description);
-                    event.setLieu(lieu);
-                    event.setDateEvenement(date);
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Les champs sont obligatoires");
+            alert.showAndWait();
+        } else if (event_date.getValue().isBefore(LocalDate.now())) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Date doit être supérieure à la date actuelle");
+            alert.showAndWait();
+        } else if (evenementService.eventExists(event_titre.getText())) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Evènement nom déjà existe, merci de le changer");
+            alert.showAndWait();
+        } else {
 
-                    evenementService.addEvent(event);
+            Evenement event = new Evenement();
+            event.setNom(event_titre.getText());
+            event.setDescription(event_description.getText());
+            event.setLieu(event_lieu.getText());
+            event.setDateEvenement(Date.valueOf(event_date.getValue()));
 
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully Added!");
-                    alert.showAndWait();
-
-                    // Refresh the table view
-                    displayEvents();
-                }
+            if (file != null) {
+                event.setImageEvenement(file.getPath()); // Set the image path
             }
-        } catch (SQLException  | IOException e) {
-            e.printStackTrace();
+
+            EvenementService service = new EvenementService();
+            service.addEvent(event);
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Successfully Added!");
+            alert.showAndWait();
+
+            displayEvents();
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
+
 
     @FXML
     void importImage() {

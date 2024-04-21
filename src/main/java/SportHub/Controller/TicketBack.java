@@ -276,29 +276,94 @@ public void populateFields(Ticket ticket) {
     currentTicketId = ticket.getId();
 }
 
+
 @FXML
 public void ticketUpdate() {
-    // Get the updated values from the input fields
-    String selectedEventName = ticket_evenement.getSelectionModel().getSelectedItem();
-    int prix = Integer.parseInt(ticket_prix.getText());
-    String type = ticket_type.getText();
-    int nbre = Integer.parseInt(ticket_nbre.getText());
-
     try {
-        // Update the ticket
-        Evenement selectedEvent = evenementService.getEventByName(selectedEventName);
-        ticketService.updateTicket(currentTicketId, selectedEvent.getId(), prix, type, nbre);
+        Alert alert;
+        int prix = 0;
+        int nbre = 0;
+        boolean isPrixInteger = true;
+        boolean isNbreInteger = true;
 
-        // Refresh the table view
-        showListTicket();
+        try {
+            prix = Integer.parseInt(ticket_prix.getText());
+        } catch (NumberFormatException e) {
+            isPrixInteger = false;
+        }
+
+        try {
+            nbre = Integer.parseInt(ticket_nbre.getText());
+        } catch (NumberFormatException e) {
+            isNbreInteger = false;
+        }
+
+        if (ticket_prix.getText().isEmpty() || ticket_type.getText().isEmpty() || ticket_nbre.getText().isEmpty() || ticket_evenement.getSelectionModel().getSelectedItem() == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Les champs sont obligatoires");
+            alert.showAndWait();
+        } else if (!isPrixInteger && !isNbreInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix et Nombre de tickets sont des entiers");
+            alert.showAndWait();
+        } else if (!isPrixInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix doit être un entier");
+            alert.showAndWait();
+        } else if (!isNbreInteger) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Nombre de tickets doit être un entier");
+            alert.showAndWait();
+        } else if (prix <= 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Prix doit être supérieur à zéro");
+            alert.showAndWait();
+        } else if (nbre <= 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Nombre de tickets doit être supérieur à zéro");
+            alert.showAndWait();
+        } else {
+            // Get the updated values from the input fields
+            String selectedEventName = ticket_evenement.getSelectionModel().getSelectedItem();
+            String type = ticket_type.getText();
+
+            // Get the selected event
+            Evenement selectedEvent = evenementService.getEventByName(selectedEventName);
+
+            // Check if a ticket with the same event already exists, excluding the current event of the modifying ticket
+            Ticket existingTicket = ticketService.testTicketByEventId(selectedEvent.getId(), currentTicketId);
+            if (existingTicket != null) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("A ticket with the selected event already exists.");
+                alert.showAndWait();
+                return;
+            }
+
+            // Update the ticket
+            ticketService.updateTicket(currentTicketId, selectedEvent.getId(), prix, type, nbre);
+
+            // Refresh the table view
+            showListTicket();
+        }
     } catch (SQLException e) {
         e.printStackTrace();
         // Handle the exception appropriately, e.g., show an error message to the user
     }
 }
-
-
-
     public void deleteTicket() {
         // Check if a ticket is selected
         if (selectedTicket == null) {

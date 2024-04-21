@@ -78,4 +78,29 @@ public class TicketService {
         }
         return null;
     }
+
+public Ticket testTicketByEventId(int eventId, int currentTicketId) throws SQLException {
+    String query = "SELECT * FROM ticket WHERE evenement_id = ? AND id != ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, eventId);
+    preparedStatement.setInt(2, currentTicketId);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+        Ticket ticket = new Ticket();
+        ticket.setId(resultSet.getInt("id"));
+        ticket.setEvenementId(resultSet.getInt("evenement_id"));
+        ticket.setPrix(resultSet.getInt("prix"));
+        ticket.setType(resultSet.getString("type"));
+        ticket.setNbreTicket(resultSet.getInt("nbre_ticket"));
+        return ticket;
+    }
+    return null;
+}
+/*public boolean ticketExistsForEvent(int eventId) throws SQLException {
+    String query = "SELECT * FROM ticket WHERE evenement_id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, eventId);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    return resultSet.next();
+}*/
 }

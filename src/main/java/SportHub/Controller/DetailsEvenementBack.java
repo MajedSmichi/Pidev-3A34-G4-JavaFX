@@ -164,9 +164,33 @@ public void setEvent(Evenement event) {
         event_image.setImage(null);
     }
 
-
 @FXML
 void eventUpdate1() {
+    Alert alert;
+
+    // Check if the fields are empty
+    if (event_nom.getText().isEmpty()
+            || event_description.getText().isEmpty() || event_lieu.getText().isEmpty()
+            || event_date.getValue() == null
+    ) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Les champs sont obligatoires");
+        alert.showAndWait();
+        return;
+    }
+
+    // Check if the date is before the current date
+    if (event_date.getValue().isBefore(LocalDate.now())) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Date doit être supérieure à la date actuelle");
+        alert.showAndWait();
+        return;
+    }
+
     // Step 1: Get the values from the text fields and the date picker
     String nom = event_nom.getText();
     String description = event_description.getText();
@@ -190,29 +214,38 @@ void eventUpdate1() {
     // Step 3: Call the updateEvent method from EvenementService
     EvenementService evenementService = new EvenementService();
     try {
-        evenementService.updateEvent(updatedEvent.getId(), updatedEvent.getNom(), updatedEvent.getDescription(), updatedEvent.getLieu(), updatedEvent.getDateEvenement(), updatedEvent.getImageEvenement());
+        // Check if an event with the same name already exists, excluding the current event
+        if (evenementService.eventExists(nom) && !nom.equals(event.getNom())) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Nom de l'événement déjà existe, merci de saisir un autre nom");
+            alert.showAndWait();
+        } else {
+            evenementService.updateEvent(updatedEvent.getId(), updatedEvent.getNom(), updatedEvent.getDescription(), updatedEvent.getLieu(), updatedEvent.getDateEvenement(), updatedEvent.getImageEvenement());
+
+            // Step 4: Update the labels in the PaneDetail
+            name.setText(updatedEvent.getNom());
+            Date.setText(updatedEvent.getDateEvenement().toString());
+            Lieu.setText(updatedEvent.getLieu());
+            Description.setText(updatedEvent.getDescription());
+
+            // Step 5: Update the imageEvnement ImageView
+            if (updatedEvent.getImageEvenement() != null) {
+                File file = new File(updatedEvent.getImageEvenement());
+                Image newImage = new Image(file.toURI().toString());
+                imageEvnement.setImage(newImage);
+            } else {
+                // Handle the situation where updatedEvent.getImageEvenement() is null
+                // For example, you could set imageEvnement to a default image
+            }
+
+            // Step 6: Hide the modifier pane
+            modifierPane.setVisible(false);
+        }
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
-    // Step 4: Update the labels in the PaneDetail
-    name.setText(updatedEvent.getNom());
-    Date.setText(updatedEvent.getDateEvenement().toString());
-    Lieu.setText(updatedEvent.getLieu());
-    Description.setText(updatedEvent.getDescription());
-
-    // Step 5: Update the imageEvnement ImageView
-    if (updatedEvent.getImageEvenement() != null) {
-        File file = new File(updatedEvent.getImageEvenement());
-        Image newImage = new Image(file.toURI().toString());
-        imageEvnement.setImage(newImage);
-    } else {
-        // Handle the situation where updatedEvent.getImageEvenement() is null
-        // For example, you could set imageEvnement to a default image
-    }
-
-    // Step 6: Hide the modifier pane
-    modifierPane.setVisible(false);
 }
 
 @FXML
