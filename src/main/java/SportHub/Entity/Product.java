@@ -9,10 +9,11 @@ public class Product {
     private SportHub.Entity.Categorie_p category;
     private String image;
 
-
     public Product(){}
 
-    public Product(int id, Categorie_p category, int quantite, double price, String name, String description, String image) {
+    public Product(int id, Categorie_p categorie, int quantite, double price, String name, String description, String image){}
+
+    public Product (Categorie_p category, int quantite, double price, String name, String description, String image) {
     }
 
     public Product(int id, String name, int quantite, int price,  Categorie_p category, String description, String image) {

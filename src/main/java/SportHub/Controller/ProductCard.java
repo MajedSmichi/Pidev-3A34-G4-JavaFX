@@ -18,7 +18,7 @@ public class ProductCard {
     private Label price;
 
     @FXML
-    private Pane PaneProduit;
+    private Pane PaneProduct;
 
     @FXML
     private Label name;
@@ -34,9 +34,8 @@ public class ProductCard {
 
     public void setData(Product produit) {
         this.produit = produit;
-        price.setText(String.valueOf(produit.getPrice())); // Assuming Date is a Label
+        price.setText(String.valueOf(produit.getPrice()));
         name.setText(produit.getName()); // Assuming FullName is a Label
-
         // Set the image
         String imageUrl = produit.getImage();
         if (imageUrl != null && !imageUrl.isEmpty()) {

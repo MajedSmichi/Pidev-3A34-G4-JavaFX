@@ -40,4 +40,14 @@ public void loadTicketLayout() {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void loadGestionCategroiesLayout() {
+        try {
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Categrie.fxml"));
+            anchor.getChildren().setAll(gestionProduitsLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

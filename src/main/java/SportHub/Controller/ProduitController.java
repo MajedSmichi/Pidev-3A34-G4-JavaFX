@@ -4,9 +4,11 @@ import SportHub.Entity.Categorie_p;
 import SportHub.Entity.Product;
 import SportHub.Services.ProductService;
 import SportHub.Services.Servicecategorie;
+import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,11 +22,10 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 public class ProduitController {
-
+    private ProductService serviceProduit;
     @FXML
     private GridPane produitContainer;
 
@@ -64,17 +65,21 @@ public class ProduitController {
     @FXML
     private ChoiceBox<Categorie_p> choicebox;
 
+    @FXML
+    private AnchorPane root1;
+
 
     @FXML
     private Button produit_import;
 
     private File file = null;
+    private String url_image = null;
+
     private Image image = null;
 
-    private ProductService serviceProduit;
 
      private Servicecategorie serviceCategorie;
-
+     private Product product;
 
 
     public void initialize() {
@@ -121,11 +126,18 @@ public class ProduitController {
        List<Product>products = serviceProduit.getAll();
        for (int i = 0; i < products.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/SportHub/ProduitCard.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/SportHub/ProductCard.fxml"));
             Pane pane = fxmlLoader.load();
             ProductCard controller = fxmlLoader.getController();
             controller.setData(products.get(i));
 
+            pane.setOnMouseClicked(e -> {
+               try {
+                   openDetails(controller.getProduct());
+               } catch (IOException ex) {
+                   ex.printStackTrace();
+               }
+           });
             produitContainer.add(pane, i % 3, i / 3);
         }
     }
@@ -144,42 +156,58 @@ public class ProduitController {
                 alert.setContentText("Tous les champs sont obligatoires");
                 alert.showAndWait();
             } else {
-                Product product = new Product();
-                product.setName(produit_nom.getText());
-                product.setDescription(produit_description.getText());
-                product.setPrice((int) Double.parseDouble(produit_prix.getText()));
-                product.setCategory(choicebox.getValue());
-                product.setQuantite(Integer.parseInt(produit_quantity.getText()));
+                String name = produit_nom.getText();
+                if (serviceProduit.productExist(name)) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Produit nom déjà existe, merci de le changer");
+                    alert.showAndWait();
+                } else {
 
-                if (file != null) {
-                    product.setImage(file.getPath()); // Set the image path
+                    Product product = new Product();
+                    product.setName(produit_nom.getText());
+                    product.setDescription(produit_description.getText());
+                    product.setPrice((int) Double.parseDouble(produit_prix.getText()));
+                    product.setCategory(choicebox.getValue());
+                    product.setQuantite(Integer.parseInt(produit_quantity.getText()));
+
+                    if (file != null) {
+                        product.setImage(file.getPath()); // Set the image path
+                    }
+
+                    serviceProduit.ajouter(product);
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Produit ajouté avec succès!");
+                    alert.showAndWait();
+
+                    displayProduct();
                 }
-
-                serviceProduit.ajouter(product);
-
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Produit ajouté avec succès!");
-                alert.showAndWait();
-
-            displayProduct();
             }
-        } catch (Exception e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 
-
     @FXML
     void importImage() {
         FileChooser open = new FileChooser();
-        file = open.showOpenDialog(ajouterPane.getScene().getWindow());
+        file = open.showOpenDialog(root1.getScene().getWindow());
 
         if (file != null) {
             image = new Image(file.toURI().toString(), 270, 310, false, true);
+            url_image = file.getName();
             produit_image.setImage(image);
         }
     }
-
+    private void openDetails(Product product) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/DetailsProductBack.fxml"));
+        Parent detailsRoot = fxmlLoader.load();
+        DetailsProductBack controller = fxmlLoader.getController();
+        controller.setProduct(product);
+        root1.getChildren().setAll(detailsRoot);
+    }
 }

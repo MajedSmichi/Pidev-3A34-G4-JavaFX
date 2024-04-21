@@ -23,7 +23,7 @@
     -fx-background-radius: 5;
     -fx-font-family: 'Verdana'; /* Change this to your preferred font */
     -fx-font-size: 17px; /* Adjust size as needed */
-    //-fx-font-weight: bold; /* Makes the text bold */
+//-fx-font-weight: bold; /* Makes the text bold */
 }
 .button:hover {
     -fx-background-color: #FFA500;

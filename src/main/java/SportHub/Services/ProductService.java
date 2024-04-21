@@ -1,14 +1,12 @@
 package SportHub.Services;
 
 import SportHub.Entity.Categorie_p;
-import SportHub.Services.Servicecategorie;
 import SportHub.Entity.Product;
 import connectionSql.ConnectionSql;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 
 public class ProductService {
@@ -34,17 +32,17 @@ public class ProductService {
 
     }
 
-    public void modifier(Product produit){
-        String req= "UPDATE `produit` SET`categorie_p_id`=?,`name`=?,`price`=?,`quantite`=?,`description`=?,`image`=? WHERE `id`=?";
+    public void modifier(int id , String name, String description, int quantite , int price , String image , Categorie_p category){
+        String req= "UPDATE `product` SET`categorie_p_id`=?,`name`=?,`price`=?,`quantite`=?,`description`=?,`image`=? WHERE `id`=?";
         try {
             PreparedStatement pst = conn.prepareStatement(req);
-            pst.setInt(1,produit.getCategory().getId());
-            pst.setString(2,produit.getName());
-            pst.setDouble(3,produit.getPrice());
-            pst.setInt(4,produit.getQuantite());
-            pst.setString(5,produit.getDescription());
-            pst.setString(6,produit.getImage());
-            pst.setInt(7,produit.getId());
+            pst.setInt(1,category.getId());
+            pst.setString(2,name);
+            pst.setInt(3,price);
+            pst.setInt(4,quantite);
+            pst.setString(5,description);
+            pst.setString(6,image);
+            pst.setInt(7,id);
             pst.executeUpdate();
             System.out.println("produit modifiée");
         }catch (SQLException e){
@@ -52,17 +50,12 @@ public class ProductService {
         }
     }
 
-    public void supprimer(int id) {
+    public  void delete(int id) throws SQLException{
 
-        String req= "DELETE FROM `product` WHERE `id`=?";
-        try {
-            PreparedStatement pst = conn.prepareStatement(req);
-            pst.setInt(1,id);
-            pst.executeUpdate();
-            System.out.println("produit supprimée ");
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
+        String deleteProductQuery = "DELETE FROM product WHERE id = ?";
+        PreparedStatement deleteEventStmt = conn.prepareStatement(deleteProductQuery);
+        deleteEventStmt.setInt(1, id);
+        deleteEventStmt.executeUpdate();
 
     }
 
@@ -78,10 +71,10 @@ public class ProductService {
             product.setName(resultSet.getString("name"));
             product.setDescription(resultSet.getString("description"));
             product.setPrice((int) resultSet.getDouble("price"));
-            product.setQuantite(resultSet.getInt("quantity"));
-
+            product.setQuantite(resultSet.getInt("quantite"));
+            product.setImage(resultSet.getString("image"));
             // Récupérer la catégorie du produit à partir de la table de catégorie
-            int categoryId = resultSet.getInt("category_id");
+            int categoryId = resultSet.getInt("categorie_p_id");
             String categoryQuery = "SELECT name FROM categorie_p WHERE id = ?";
             PreparedStatement categoryStatement = conn.prepareStatement(categoryQuery);
             categoryStatement.setInt(1, categoryId);
@@ -120,5 +113,15 @@ public class ProductService {
         String description = rs.getString("description");
         String image = rs.getString("image");
         return new Product(id,categorie,quantite, price,name,description,image);
+    }
+    public boolean productExist(String productName) throws SQLException {
+        String query = "SELECT COUNT(*) FROM evenement WHERE nom = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1,productName );
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1) > 0;
+        }
+        return false;
     }
 }
