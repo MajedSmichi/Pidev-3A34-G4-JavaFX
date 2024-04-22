@@ -1,4 +1,2 @@
-package GestionSalle.Controller;
-
-public class FrontViewController {
+package GestionSalle.Controller;public class FrontViewController {
 }
