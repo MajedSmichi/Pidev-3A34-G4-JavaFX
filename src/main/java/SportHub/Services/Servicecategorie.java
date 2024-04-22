@@ -16,46 +16,35 @@ public class Servicecategorie {
            conn =ConnectionSql.getInstance().getConnection();
     }
 
-    public void ajouter(Categorie_p categorie) {
-        String req= "INSERT INTO `categorie`(`nom`,`description`) VALUES (?,?)";
-    try {
+    public void ajouter(Categorie_p categorie) throws SQLException{
+        String req= "INSERT INTO `categorie_p`(`name`) VALUES (?)";
            PreparedStatement pst = conn.prepareStatement(req);
            pst.setString(1,categorie.getName());
            pst.executeUpdate();
            System.out.println("categorie ajoutée");
-    }catch (SQLException e){
-        System.out.println(e.getMessage());
-    }
 
     }
 
 
-    public void modifier(Categorie_p categorie){
-        String req= "UPDATE `categorie` SET `nom`=?,`description`=? WHERE `id`=?";
-        try {
+    public void modifier(Categorie_p categorie) throws SQLException{
+        String req= "UPDATE `categorie_p` SET `name`=? WHERE `id`=?";
+
             PreparedStatement pst = conn.prepareStatement(req);
             pst.setString(1,categorie.getName());
-            pst.setInt(3,categorie.getId());
+            pst.setInt(2,categorie.getId());
             pst.executeUpdate();
             System.out.println("categorie modifiée");
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
 
 
     }
 
-    public void supprimer(int id) {
+    public void supprimer(int id) throws SQLException{
 
-        String req= "DELETE FROM `categorie` WHERE `id`=?";
-        try {
+        String req= "DELETE FROM `categorie_p` WHERE `id`=?";
             PreparedStatement pst = conn.prepareStatement(req);
             pst.setInt(1,id);
             pst.executeUpdate();
             System.out.println("categorie supprimée ");
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
 
     }
 
@@ -78,20 +67,17 @@ public class Servicecategorie {
         }
         return categories;
     }
-    public List<Product> getAll() throws SQLException {
-        return null;
-    }
+
 
     public Categorie_p getOneById(int id){
         Categorie_p categorie = null;
-        String req ="select * from categorie WHERE id=?";
+        String req ="select * from categorie_p WHERE id=?";
         try {
             PreparedStatement pst= conn.prepareStatement(req);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 String nom = rs.getString("nom");
-                String description = rs.getString("description");
                 categorie = new Categorie_p(id,nom);
             }
 

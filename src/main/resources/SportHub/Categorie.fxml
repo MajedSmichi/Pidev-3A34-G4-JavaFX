@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root1" prefHeight="765.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.CategorieController">
     <children>
@@ -16,26 +17,30 @@
                 <String fx:value="white-bg" />
             </styleClass>
             <children>
-                <TableView fx:id="eventTableView" layoutX="137.0" layoutY="46.0" prefHeight="591.0" prefWidth="464.0" stylesheets="@dashboardDesign.css">
+                <TableView fx:id="categorieTableView" layoutX="136.0" layoutY="64.0" prefHeight="591.0" prefWidth="464.0" stylesheets="@dashboardDesign.css">
                     <columns>
-                        <TableColumn fx:id="col_event_nom" prefWidth="187.99993896484375" text="Nom" />
-                        <TableColumn fx:id="col_event_description" prefWidth="272.00006103515625" text="Actions" />
+                        <TableColumn fx:id="col_categorie_name" prefWidth="463.20001220703125" text="Nom" />
                     </columns>
                 </TableView>
+            <Label layoutX="250.0" layoutY="14.0" text="LIiste Des Categores">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="53.0" layoutY="14.0" prefHeight="682.0" prefWidth="335.0" stylesheets="@dashboardDesign.css">
+        <AnchorPane layoutX="54.0" layoutY="14.0" prefHeight="682.0" prefWidth="335.0" stylesheets="@dashboardDesign.css">
             <styleClass>
                 <String fx:value="shadow" />
                 <String fx:value="white-bg" />
             </styleClass>
             <children>
                 <Label layoutX="40.0" layoutY="87.0" text="Nom" />
-                <TextField fx:id="event_titre" layoutX="36.0" layoutY="120.0" prefHeight="46.0" prefWidth="240.0" promptText="Titre" styleClass="label-info" />
-                <Button fx:id="event_clear" layoutX="37.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
-                <Button fx:id="event_add" layoutX="37.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
-                <Button fx:id="event_delete" layoutX="176.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
-                <Button fx:id="event_update" layoutX="176.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#eventUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+                <TextField fx:id="categorie_name" layoutX="36.0" layoutY="120.0" prefHeight="46.0" prefWidth="240.0" promptText="nom_categorie" styleClass="label-info" />
+                <Button fx:id="categ_clear" layoutX="53.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#categorieClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+                <Button fx:id="categ_add" layoutX="53.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#categorieAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+                <Button fx:id="categ_delete" layoutX="188.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#categorieDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
+                <Button fx:id="categ_update" layoutX="188.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#categorieUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
 
             </children>
         </AnchorPane>
