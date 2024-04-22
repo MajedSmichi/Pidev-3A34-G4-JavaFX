@@ -1,0 +1,10 @@
+
+t
+java:S1104"YMake databaseLinck a static final constant or non-public and provide accessors if needed.(®¢ãêşÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôãÔÍ
+¯
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ó¿¿
+?
+java:S2115")Add password protection to this database.(°’ÔÜ
+@	java:S106"+Replace this use of System.out by a logger.(ÓŸƒ
+E	java:S106"+Replace this use of System.out by a logger.(µ½¨Òüÿÿÿÿ

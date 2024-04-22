@@ -1,0 +1,95 @@
+/* Style for the event name */
+#name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3f3f3f;
+}
+
+/* Style for the event date */
+#Date {
+    -fx-font-size: 16px;
+    -fx-text-fill: #7f7f7f;
+}
+
+#PaneEvenement {
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+    -fx-min-width: 250px;  /* Set minimum width */
+    -fx-min-height: 350px; /* Set minimum height */
+    -fx-max-width: 250px;  /* Set maximum width */
+    -fx-max-height: 350px; /* Set maximum height */
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+
+#PaneEvenement:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 165, 0, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(255, 195, 89, 0.81);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#PaneEvenement:hover #name {
+    -fx-text-fill: #ffffff; /* Makes the text white */
+}
+
+#supprimer, #modifier {
+    -fx-background-color: transparent;
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+    -fx-min-width: 38px;
+    -fx-min-height: 38px;
+    -fx-max-width: 38px;
+    -fx-max-height: 38px;
+}
+
+#hide {
+    -fx-background-color: transparent;
+
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+    -fx-min-width: 38px;
+    -fx-min-height: 38px;
+    -fx-max-width: 38px;
+    -fx-max-height: 38px;
+}
+
+#supprimer:hover, #modifier:hover {
+    -fx-background-color: white;
+}
+
+#ajouterEvenement{
+    -fx-background-color: #000000; /* Change button background color to black */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#ajouterEvenement:hover {
+    -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
+#PaneDetail {
+
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+#PaneDetail:hover {
+
+    -fx-effect: dropshadow(three-pass-box, rgba(87, 87, 87, 0.87), 10, 0, 0, 10);
+}

@@ -1,0 +1,20 @@
+
+d
+java:S1192|"NDefine a constant instead of duplicating this literal "Error Message" 6 times.(ö‡
+P
+java:S1141n"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+P
+java:S1141t"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ
+j	java:S116+"URename this field "ticket_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óëµÁ
+l	java:S116."WRename this field "ticket_clear" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸÕ¼
+u	java:S1161"[Rename this field "ticket_evenement" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õª˜›ÿÿÿÿÿ
+p	java:S1164"VRename this field "ticket_nbre" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆû¢Ëøÿÿÿÿ
+j	java:S1167"VRename this field "ticket_prix" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©U
+k	java:S116:"VRename this field "ticket_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚µ”»
+œ
+java:S1186="€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(í¶Ğßşÿÿÿÿ
+—
+java:S1186B"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ÿš·ö
+R	java:S125²"<This block of commented-out lines of code should be removed.(–å¥
+F	java:S106Í"+Replace this use of System.out by a logger.(ğåèêşÿÿÿÿ

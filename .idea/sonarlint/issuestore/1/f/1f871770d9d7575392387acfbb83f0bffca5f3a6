@@ -1,0 +1,14 @@
+
+‘	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÙÇµùÿÿÿÿJ$522cce13-0a12-47c7-bc6e-984810b66bc0
+‘	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÙÇµùÿÿÿÿJ$e0716031-f61a-4470-aaf8-41a2502a74e7
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿJ$295c1574-1597-48db-ad9f-1347dee75ce2
+
+java:S2095B"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$fc466bac-5762-41dd-9e4c-4d83d6d32593
+ˆ
+java:S20951"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°ÁµşÿÿÿÿJ$450508af-cb44-460a-9a01-c3055b5873df
+
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$9519b9a6-a266-4b5a-90e6-3736381c5a05
+
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$1ea953ef-06a6-4ffb-ad20-1ab24bd17e52
+
+java:S2095%"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$a13d290e-98ef-4d79-8db1-26795fad4b26
