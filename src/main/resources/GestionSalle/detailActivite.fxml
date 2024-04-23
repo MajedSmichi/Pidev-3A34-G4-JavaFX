@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<AnchorPane prefHeight="756.0" prefWidth="1510.0" stylesheets="@detailActivite.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailActiviteController">
+    <AnchorPane fx:id="detail" layoutX="110.0" layoutY="75.0" prefHeight="606.0" prefWidth="353.0">
+        <children>
+            <ImageView fx:id="imageact" fitHeight="150.0" fitWidth="200.0" layoutX="88.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="70.0" layoutY="208.0" prefHeight="18.0" prefWidth="34.0" text="Nom:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="nameact" layoutX="105.0" layoutY="208.0" prefHeight="18.0" prefWidth="142.0" text="Label" />
+            <Label layoutX="70.0" layoutY="245.0" prefHeight="18.0" prefWidth="34.0" text="Date :">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="dateact" layoutX="108.0" layoutY="245.0" prefHeight="18.0" prefWidth="107.0" text="Label" />
+            <Label layoutX="68.0" layoutY="281.0" text="Coach :">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="coachact" layoutX="120.0" layoutY="280.0" prefHeight="18.0" prefWidth="107.0" text="Label" />
+            <Label layoutX="71.0" layoutY="315.0" text="Nbr Max :">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="nbrmaxact" layoutX="133.0" layoutY="314.0" prefHeight="18.0" prefWidth="126.0" text="Label" />
+            <Label layoutX="71.0" layoutY="352.0" text="Salle :">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="salleact" layoutX="117.0" layoutY="351.0" prefHeight="18.0" prefWidth="142.0" text="Label" />
+            <Label layoutX="72.0" layoutY="397.0" text="Description :">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+            <Label fx:id="descriptionact" alignment="TOP_LEFT" layoutX="71.0" layoutY="415.0" prefHeight="83.0" prefWidth="234.0" text="Label" wrapText="true" />
+            <Button fx:id="showModifier" layoutX="29.0" layoutY="529.0" mnemonicParsing="false" onAction="#showUpdate" prefHeight="31.0" prefWidth="126.0" text="Modifer" />
+            <Button fx:id="supprimer" layoutX="196.0" layoutY="529.0" mnemonicParsing="false" onAction="#deleteActivite" prefHeight="31.0" prefWidth="126.0" text="Supprimer" />
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="modifier" layoutX="594.0" layoutY="62.0" prefHeight="598.0" prefWidth="388.0" visible="false">
+        <children>
+            <ImageView fx:id="updimage" fitHeight="127.0" fitWidth="200.0" layoutX="94.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="66.0" layoutY="220.0" text="Nom" />
+            <TextField fx:id="updatenom" layoutX="108.0" layoutY="216.0" />
+            <Label layoutX="66.0" layoutY="263.0" text="Coach" />
+            <TextField fx:id="updatecoach" layoutX="108.0" layoutY="259.0" />
+            <Label layoutX="47.0" layoutY="303.0" prefHeight="18.0" prefWidth="50.0" text="Nbr Max" />
+            <TextField fx:id="updatenbrmax" layoutX="108.0" layoutY="299.0" />
+            <Label layoutX="66.0" layoutY="336.0" text="Date" />
+            <DatePicker fx:id="updatedate" layoutX="107.0" layoutY="332.0" />
+            <Label layoutX="66.0" layoutY="374.0" text="Salle" />
+            <ComboBox fx:id="updatesalle" layoutX="108.0" layoutY="370.0" prefWidth="150.0" />
+            <Label layoutX="36.0" layoutY="421.0" text="Description" />
+            <TextField fx:id="updatedescription" layoutX="107.0" layoutY="413.0" prefHeight="107.0" prefWidth="200.0" />
+            <Button fx:id="updateActivite" layoutX="111.0" layoutY="532.0" mnemonicParsing="false" onAction="#updateActivite" prefHeight="38.0" prefWidth="170.0" text="Modifier Activite" />
+         <Button fx:id="updateimage" layoutX="95.0" layoutY="158.0" mnemonicParsing="false" onAction="#updateimage" prefHeight="26.0" prefWidth="107.0" text="Import" />
+        </children>
+    </AnchorPane>
+   <Label layoutX="149.0" layoutY="30.0" text="Détail Activitée">
+      <font>
+         <Font name="System Bold Italic" size="21.0" />
+      </font>
+   </Label>
 
 </AnchorPane>

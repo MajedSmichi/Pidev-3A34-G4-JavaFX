@@ -1,0 +1,16 @@
+#detail {
+    -fx-background-color: #cbc6c6;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#detail:hover {
+    -fx-background-color: #ff9e37;
+    -fx-background-radius: 20px; /* Adjust as needed */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+
+}
+#list   {
+    -fx-background-color: transparent;
+
+}
+

@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -133,8 +130,57 @@ public class SalleController implements Initializable {
         gestion.setVisible(false);
     }
 
+
     @FXML
     void ajouterSalle(ActionEvent event) {
+        // Check if the fields are empty
+        if (name.getText().isEmpty() || addresse.getText().isEmpty() || numtel.getText().isEmpty() ||
+                capacite.getText().isEmpty() || description.getText().isEmpty() || nbrclients.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Veuillez remplir tous les champs.");
+            alert.showAndWait();
+            return;
+        }
+        // Check if description is at least 15 characters
+        if (description.getText().length() < 15) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "La description doit contenir au moins 15 caractères.");
+            alert.showAndWait();
+            return;
+        }
+        // Check if imagePath is not null
+        if (imagePath == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez sélectionner une image.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if numtel is a valid number
+        try {
+            Integer.parseInt(numtel.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un numéro de téléphone valide.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if capacite is a valid integer
+        try {
+            Integer.parseInt(capacite.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer une capacité valide.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if nbrclients is a valid integer
+        try {
+            Integer.parseInt(nbrclients.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un nombre valide de clients.");
+            alert.showAndWait();
+            return;
+        }
+
+        // If all checks pass, proceed with the rest of the method
         Salle newSalle = new Salle();
         newSalle.setNom(name.getText());
         newSalle.setAddresse(addresse.getText());
@@ -142,19 +188,16 @@ public class SalleController implements Initializable {
         newSalle.setCapacite(Integer.parseInt(capacite.getText()));
         newSalle.setDescription(description.getText());
         newSalle.setNbr_client(Integer.parseInt(nbrclients.getText()));
-        // Assuming logoSalle is a String of image path
         newSalle.setLogo_salle(imagePath);
         SalleService salleService = new SalleService();
         try {
             salleService.addEvent(newSalle);
-            hideGestionPane(); // Hide the AnchorPane gestion
-            refreshGridPane(); // Refresh the GridPane after adding a new Salle
-            // Get the instance of DashController
+            hideGestionPane();
+            refreshGridPane();
             FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionSalle/Dash.fxml"));
             Parent dash = dashLoader.load();
             DashController dashController = dashLoader.getController();
             dashController.refreshSalle();
-
 
             // Clear the fields
             name.clear();
@@ -163,13 +206,11 @@ public class SalleController implements Initializable {
             capacite.clear();
             description.clear();
             nbrclients.clear();
-            logoSalle.setImage(null); // Clear the image
-
-        } catch (SQLException |IOException e) {
+            logoSalle.setImage(null);
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
-
     private void refreshGridPane() throws SQLException {
         GridSalle.getChildren().clear(); // Clear the GridPane
         salles = getData(); // Get the updated data

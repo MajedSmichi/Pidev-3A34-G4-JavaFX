@@ -1,26 +1,29 @@
 package GestionSalle.Controller;
 
+import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
+import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class detailSalleController {
 
@@ -40,7 +43,7 @@ public class detailSalleController {
     private Button delete;
 
     @FXML
-    private TextArea description;
+    private TextField description;
 
     @FXML
     private Label descriptionLabel;
@@ -50,6 +53,9 @@ public class detailSalleController {
 
     @FXML
     private AnchorPane gestion;
+
+    @FXML
+    private ScrollPane list;
 
     @FXML
     private ImageView logoImageView;
@@ -80,6 +86,9 @@ public class detailSalleController {
 
     @FXML
     private TextField numtel;
+    @FXML
+    private GridPane GridActivite;
+    private Activite currentActivite;
 
     private Salle salle;
     public void setData(Salle salle) {
@@ -105,6 +114,55 @@ public class detailSalleController {
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid URL or resource not found: " + salle.getLogo_salle());
         }
+        try {
+            List<Activite> activites = getData();
+            int row = 0;
+            for (Activite activite : activites) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/ActiviteCard.fxml"));
+                Pane pane = fxmlLoader.load();
+
+                ActiviteCardController oneActivite = fxmlLoader.getController();
+                oneActivite.setData(activite);
+pane.setOnMouseClicked(event -> {
+    try {
+        currentActivite = activite;
+        // Load detailActivite.fxml
+        FXMLLoader detailLoader = new FXMLLoader(getClass().getResource("/GestionSalle/detailActivite.fxml"));
+        Parent detailActivite = detailLoader.load();
+
+        // Get the controller of detailActivite.fxml
+        detailActiviteController controller = detailLoader.getController();
+
+        // Pass the Activite data to the controller
+        controller.setData(activite);
+
+        // Pass the currentActivite to the controller
+        controller.setCurrentActivite(currentActivite);
+
+        // Get the current scene
+        Scene currentScene = ((Node) event.getSource()).getScene();
+
+        // Find the AnchorPane in the current scene
+        AnchorPane anchorPane = (AnchorPane) currentScene.lookup("#anchor");
+
+        // Set detailActivite as the content of the AnchorPane
+        anchorPane.getChildren().setAll(detailActivite);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+});
+                GridActivite.add(pane, 0, row); // Always add to the first column
+                row++;
+                GridPane.setMargin(pane, new Insets(10));
+            }
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private List<Activite> getData() throws SQLException {
+        ActiviteService activiteService = new ActiviteService();
+        return activiteService.getActiviteBySalle(salle.getId());
     }
     private String imagePath;
     @FXML
@@ -123,6 +181,52 @@ public class detailSalleController {
 
     @FXML
     void modifierSalle(ActionEvent event) {
+
+
+        // If a new image has been imported, use it. Otherwise, keep the current image.
+        String newLogoSalle = (imagePath != null) ? imagePath : salle.getLogo_salle();
+
+        if (name.getText().isEmpty() || addresse.getText().isEmpty() || numtel.getText().isEmpty() ||
+                capacite.getText().isEmpty() || description.getText().isEmpty() || nbrclients.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if description is at least 15 characters
+        if (description.getText().length() < 15) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "La description doit contenir au moins 15 caractères.");
+            alert.showAndWait();
+            return;
+        }
+
+
+        // Check if numtel is a valid number
+        try {
+            Integer.parseInt(numtel.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un numéro de téléphone valide.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if capacite is a valid integer
+        try {
+            Integer.parseInt(capacite.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer une capacité valide.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if nbrclients is a valid integer
+        try {
+            Integer.parseInt(nbrclients.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un nombre valide de clients.");
+            alert.showAndWait();
+            return;
+        }
         // Get the new values from the text fields
         String newName = name.getText();
         String newAddress = addresse.getText();
@@ -130,9 +234,6 @@ public class detailSalleController {
         int newCapacite = Integer.parseInt(capacite.getText());
         String newDescription = description.getText();
         int newNbrClients = Integer.parseInt(nbrclients.getText());
-
-        // If a new image has been imported, use it. Otherwise, keep the current image.
-        String newLogoSalle = (imagePath != null) ? imagePath : salle.getLogo_salle();
 
         // Update the Salle object
         salle.setNom(newName);
@@ -209,5 +310,8 @@ public class detailSalleController {
     void toggleGestionPane(ActionEvent event) {
         boolean isVisible = gestion.isVisible();
         gestion.setVisible(!isVisible);
+        boolean isListVisible = list.isVisible();
+        list.setVisible(!isListVisible);
+
     }
 }

@@ -1,0 +1,28 @@
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+#ajoutSalle {
+    -fx-background-color: #79cc79;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#ajoutSalle:hover {
+    -fx-background-color: #4886f8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+#showButton {
+    -fx-background-color: #e15f4e;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#event_import {
+    -fx-background-color: #6e7aff;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#event_import:hover {
+    -fx-background-color: #0365e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+

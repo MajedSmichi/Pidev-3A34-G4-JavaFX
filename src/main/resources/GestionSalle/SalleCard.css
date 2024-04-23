@@ -16,7 +16,7 @@
     -fx-padding: 20px 30px;
     -fx-position: relative;
     -fx-overflow: hidden;
-    -fx-background-color: #ffffff;
+    -fx-background-color: #b2b2b2;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,0,1 );
     /* Add transition for smoother hover effect */
     -fx-transition: all 0.3s ease;
@@ -26,13 +26,13 @@
 #name {
     -fx-font-size: 1.2em; /* Taille de police */
     -fx-font-weight: bold; /* Gras */
-    -fx-text-fill: #123d57; /* Couleur du texte */
+    -fx-text-fill: #ffffff; /* Couleur du texte */
 }
 
 /* Style des étiquettes */
 .label{
     -fx-font-size: 12px; /* Increased font size for better readability */
-    -fx-text-fill: #123d57; /* Darker text color for better contrast */
+    -fx-text-fill: #ffffff; /* Darker text color for better contrast */
     -fx-font-family: "Arial", sans-serif; /* Font family */
     -fx-font-weight: normal; /* Normal font weight */
 }
@@ -43,5 +43,5 @@
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 15,0,0,2 );
+    -fx-background-color: #fd9900;
 }
-

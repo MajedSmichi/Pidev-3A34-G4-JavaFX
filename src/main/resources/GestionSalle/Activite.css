@@ -1,0 +1,56 @@
+#detail {
+    -fx-background-color: #cbc6c6;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#detail:hover {
+    -fx-background-color: #656161;
+    -fx-background-radius: 20px; /* Adjust as needed */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#list,#salleACTIVITE,#GridActivite {
+    -fx-background-color: transparent;
+}
+#supprimer {
+    -fx-background-color: #ec5353;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#supprimer:hover {
+    -fx-background-color: #fa0f2b;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#showModifier,#updateActivite {
+    -fx-background-color: #80fc72;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#showModifier,#updateActivite:hover {
+    -fx-background-color: #20fa08;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#ajouter {
+    -fx-background-color: #e15f4e;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#addActivite {
+    -fx-background-color: #79cc79;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#addActivite:hover {
+    -fx-background-color: #4886f8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#updateimage,#importimage {
+    -fx-background-color: #6e7aff;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#updateimage:hover {
+    -fx-background-color: #0365e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#importimage:hover {
+    -fx-background-color: #0365e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}

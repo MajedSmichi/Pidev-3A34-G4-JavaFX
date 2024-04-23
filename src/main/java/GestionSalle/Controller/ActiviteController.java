@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 public class ActiviteController {
@@ -161,52 +162,90 @@ public class ActiviteController {
         ActiviteService activiteService = new ActiviteService();
         return activiteService.getAllActivite();
     }
-   @FXML
-void addActivite(ActionEvent event) {
-    Activite newActivite = new Activite();
-    newActivite.setNom(nom.getText());
-    newActivite.setCoach(coach.getText());
-    newActivite.setDate(java.sql.Timestamp.valueOf(date.getValue().atStartOfDay()));
-    newActivite.setDescription(decription.getText());
-    newActivite.setNbr_max(Integer.parseInt(nbrmax.getText()));
-    newActivite.setImage(imagePath);
+       @FXML
+    void addActivite(ActionEvent event) {
 
-    SalleService salleService = new SalleService();
-    try {
-        Salle salle = salleService.getSalleByName(this.salle.getValue());
-        if (salle != null) {
-            newActivite.setSalle_id(salle.getId());
-        } else {
-            // Handle the case where no Salle with the selected name is found
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("No Salle with the selected name is found!");
-            alert.showAndWait();
-            return;
+           // Check if the fields are empty
+           if (nom.getText().isEmpty() || coach.getText().isEmpty() || date.getValue() == null ||
+                   decription.getText().isEmpty() || nbrmax.getText().isEmpty() || salle.getValue() == null) {
+               Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs.");
+               alert.showAndWait();
+               return;
+           }
+
+           // Check if description is at least 15 characters
+           if (decription.getText().length() < 15) {
+               Alert alert = new Alert(Alert.AlertType.WARNING, "La description doit contenir au moins 15 caractères.");
+               alert.showAndWait();
+               return;
+           }
+
+           // Check if imagePath is not null
+           if (imagePath == null) {
+               Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez sélectionner une image.");
+               alert.showAndWait();
+               return;
+           }
+           // Check if the selected date is in the future
+           if (date.getValue().isBefore(LocalDate.now())) {
+               Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez sélectionner une date à venir.");
+               alert.showAndWait();
+               return;
+           }
+
+           // Check if nbrmax is a valid integer
+           try {
+               Integer.parseInt(nbrmax.getText());
+           } catch (NumberFormatException e) {
+               Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un nombre valide pour le nombre maximum. des paricipants");
+               alert.showAndWait();
+               return;
+           }
+
+        Activite newActivite = new Activite();
+        newActivite.setNom(nom.getText());
+        newActivite.setCoach(coach.getText());
+        newActivite.setDate(java.sql.Timestamp.valueOf(date.getValue().atStartOfDay()));
+        newActivite.setDescription(decription.getText());
+        newActivite.setNbr_max(Integer.parseInt(nbrmax.getText()));
+        newActivite.setImage(imagePath);
+
+        SalleService salleService = new SalleService();
+        try {
+            Salle salle = salleService.getSalleByName(this.salle.getValue());
+            if (salle != null) {
+                newActivite.setSalle_id(salle.getId());
+            } else {
+                // Handle the case where no Salle with the selected name is found
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("No Salle with the selected name is found!");
+                alert.showAndWait();
+                return;
+            }
+
+            ActiviteService activiteService = new ActiviteService();
+            activiteService.addActivite(newActivite);
+            refreshGridPane(); // Refresh the GridPane after adding a new Activite
+
+            // Clear the fields
+            nom.clear();
+            coach.clear();
+            date.setValue(null);
+            decription.clear();
+            nbrmax.clear();
+            this.salle.setValue(null);
+            image.setImage(null); // Clear the image
+            imagePath = null; // Clear the image path
+            ajout.setVisible(false);
+            modifier.setVisible(false);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        ActiviteService activiteService = new ActiviteService();
-        activiteService.addActivite(newActivite);
-        refreshGridPane(); // Refresh the GridPane after adding a new Activite
-
-        // Clear the fields
-        nom.clear();
-        coach.clear();
-        date.setValue(null);
-        decription.clear();
-        nbrmax.clear();
-        this.salle.setValue(null);
-        image.setImage(null); // Clear the image
-        imagePath = null; // Clear the image path
-        ajout.setVisible(false);
-        modifier.setVisible(false);
-
-
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
 
     private void refreshGridPane() throws SQLException {
         GridActivite.getChildren().clear(); // Clear the GridPane
@@ -280,11 +319,11 @@ void addActivite(ActionEvent event) {
         // Show the details AnchorPane
         detail.setVisible(true);
         ajout.setVisible(false);
+        modifier.setVisible(false);
         this.currentActivite = activite;
 
     }
     @FXML
-
     void deleteActivite(ActionEvent event) {
         // Use the currentActivite field instead of selectedActivite
         if (currentActivite != null) {
@@ -308,82 +347,114 @@ void addActivite(ActionEvent event) {
             alert.showAndWait();
         }
     }
+
        @FXML
-void showUpdate(ActionEvent event) {
-    // Assuming 'modifier' is the AnchorPane you want to show
-    boolean isVisible = modifier.isVisible();
-    modifier.setVisible(!isVisible);
+    void showUpdate(ActionEvent event) {
+        // Assuming 'modifier' is the AnchorPane you want to show
+        boolean isVisible = modifier.isVisible();
+        modifier.setVisible(!isVisible);
 
-    // If the modifier AnchorPane is being shown, set the fields to the values of the currentActivite
-    if (!isVisible && currentActivite != null) {
-        updatenom.setText(currentActivite.getNom());
-        updatecoach.setText(currentActivite.getCoach());
-        updatedescription.setText(currentActivite.getDescription());
-        updatenbrmax.setText(String.valueOf(currentActivite.getNbr_max()));
-        updatedate.setValue(currentActivite.getDate().toLocalDateTime().toLocalDate()); // Set the DatePicker value
+        // If the modifier AnchorPane is being shown, set the fields to the values of the currentActivite
+        if (!isVisible && currentActivite != null) {
+            updatenom.setText(currentActivite.getNom());
+            updatecoach.setText(currentActivite.getCoach());
+            updatedescription.setText(currentActivite.getDescription());
+            updatenbrmax.setText(String.valueOf(currentActivite.getNbr_max()));
+            updatedate.setValue(currentActivite.getDate().toLocalDateTime().toLocalDate()); // Set the DatePicker value
 
-        // Assuming 'updatesalle' is a ComboBox that should be set to the name of the Salle of the currentActivite
-        SalleService salleService = new SalleService();
-        try {
-            Salle salle = salleService.getSalleById(currentActivite.getSalle_id());
-            if (salle != null) {
-                updatesalle.setValue(salle.getNom());
+            // Assuming 'updatesalle' is a ComboBox that should be set to the name of the Salle of the currentActivite
+            SalleService salleService = new SalleService();
+            try {
+                Salle salle = salleService.getSalleById(currentActivite.getSalle_id());
+                if (salle != null) {
+                    updatesalle.setValue(salle.getNom());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        // Assuming 'updimage' is an ImageView that should be set to the image of the currentActivite
-        try {
-            updimage.setImage(new Image(currentActivite.getImage()));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid URL or resource not found: " + currentActivite.getImage());
+            // Assuming 'updimage' is an ImageView that should be set to the image of the currentActivite
+            try {
+                updimage.setImage(new Image(currentActivite.getImage()));
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid URL or resource not found: " + currentActivite.getImage());
+            }
         }
     }
-}
+
     @FXML
-void updateActivite(ActionEvent event) {
-    if (currentActivite != null) {
-        // Update the currentActivite with the values from the modifier AnchorPane
-        currentActivite.setNom(updatenom.getText());
-        currentActivite.setCoach(updatecoach.getText());
-        currentActivite.setDescription(updatedescription.getText());
-        currentActivite.setNbr_max(Integer.parseInt(updatenbrmax.getText()));
-        currentActivite.setDate(java.sql.Timestamp.valueOf(updatedate.getValue().atStartOfDay()));
-        if (imagePath != null) {
-            currentActivite.setImage(imagePath);
-        }
-
-        // Assuming 'updatesalle' is a ComboBox that should be set to the name of the Salle of the currentActivite
-        SalleService salleService = new SalleService();
-        try {
-            Salle salle = salleService.getSalleByName(updatesalle.getValue());
-            if (salle != null) {
-                currentActivite.setSalle_id(salle.getId());
+    void updateActivite(ActionEvent event) {
+        if (currentActivite != null) {
+            // Check if the fields are empty
+            if (updatenom.getText().isEmpty() || updatecoach.getText().isEmpty() || updatedate.getValue() == null ||
+                    updatedescription.getText().isEmpty() || updatenbrmax.getText().isEmpty() || updatesalle.getValue() == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs.");
+                alert.showAndWait();
+                return;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        // Update the currentActivite in the database
-        ActiviteService activiteService = new ActiviteService();
-        try {
-            activiteService.updateActivite(currentActivite);
-            refreshGridPane(); // Refresh the GridPane after updating the Activite
-            modifier.setVisible(false); // Hide the modifier AnchorPane
-            displayActiviteDetails(currentActivite); //
+            // Check if description is at least 15 characters
+            if (updatedescription.getText().length() < 15) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "La description doit contenir au moins 15 caractères.");
+                alert.showAndWait();
+                return;
+            }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            // Check if the selected date is in the future
+            if (updatedate.getValue().isBefore(LocalDate.now())) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez sélectionner une date à venir.");
+                alert.showAndWait();
+                return;
+            }
+            // Check if nbrmax is a valid integer
+            try {
+                Integer.parseInt(updatenbrmax.getText());
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez entrer un nombre valide pour le nombre maximum des paricipants");
+                alert.showAndWait();
+                return;
+            }
+            // Update the currentActivite with the values from the modifier AnchorPane
+            currentActivite.setNom(updatenom.getText());
+            currentActivite.setCoach(updatecoach.getText());
+            currentActivite.setDescription(updatedescription.getText());
+            currentActivite.setNbr_max(Integer.parseInt(updatenbrmax.getText()));
+            currentActivite.setDate(java.sql.Timestamp.valueOf(updatedate.getValue().atStartOfDay()));
+            if (imagePath != null) {
+                currentActivite.setImage(imagePath);
+            }
+
+            // Assuming 'updatesalle' is a ComboBox that should be set to the name of the Salle of the currentActivite
+            SalleService salleService = new SalleService();
+            try {
+                Salle salle = salleService.getSalleByName(updatesalle.getValue());
+                if (salle != null) {
+                    currentActivite.setSalle_id(salle.getId());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Update the currentActivite in the database
+            ActiviteService activiteService = new ActiviteService();
+            try {
+                activiteService.updateActivite(currentActivite);
+                refreshGridPane(); // Refresh the GridPane after updating the Activite
+                modifier.setVisible(false); // Hide the modifier AnchorPane
+                displayActiviteDetails(currentActivite); //
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Handle the case where no Activite is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("No Activite selected!");
+            alert.showAndWait();
         }
-    } else {
-        // Handle the case where no Activite is selected
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("No Activite selected!");
-        alert.showAndWait();
     }
-}
+
 
     @FXML
     void updateimage(ActionEvent event) {

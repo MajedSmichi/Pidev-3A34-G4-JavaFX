@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Frontview.fxml"));
         //BorderPane root = fxmlLoader.load();
+        //AnchorPane root = fxmlLoader.load();
         ScrollPane root = fxmlLoader.load();
 
         // Bind the size of the root node to the size of the stage

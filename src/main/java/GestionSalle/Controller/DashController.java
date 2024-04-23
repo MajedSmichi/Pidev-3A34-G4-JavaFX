@@ -20,6 +20,8 @@ public class DashController {
     @FXML
     private Button gestionSalle;
 
+
+
     @FXML
     void openActivite(ActionEvent event) {
         try {

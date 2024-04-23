@@ -67,4 +67,24 @@ public class ActiviteService {
         preparedStatement.setInt(8, activite.getId());
         preparedStatement.executeUpdate();
     }
+    public List<Activite> getActiviteBySalle(int salle_id) throws SQLException {
+        List<Activite> activites = new ArrayList<>();
+        String query = "SELECT * FROM activite WHERE salle_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, salle_id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Activite activite = new Activite();
+            activite.setId(resultSet.getInt("id"));
+            activite.setSalle_id(resultSet.getInt("salle_id"));
+            activite.setNom(resultSet.getString("nom"));
+            activite.setDate(resultSet.getTimestamp("date"));
+            activite.setNbr_max(resultSet.getInt("nbr_max"));
+            activite.setDescription(resultSet.getString("description"));
+            activite.setImage(resultSet.getString("image_activte"));
+            activite.setCoach(resultSet.getString("coach"));
+            activites.add(activite);
+        }
+        return activites;
+    }
 }

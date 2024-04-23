@@ -5,20 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite 3">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/DashController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontSalleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Dash.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontSalle.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontView.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Frontview.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/fullpackstyling.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailActivite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailSalle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/salle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/DashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/DashController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontSalleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontSalleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailSalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/uneSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/uneSalleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/ActiviteCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/ActiviteCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontSalle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Frontview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Frontview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Salle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Salle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailActivite.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontActivite.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailSalle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/images/activite.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/images/activite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/images/sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/images/sale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneActivite.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/uneSalle.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +50,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -63,6 +85,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\louay\Desktop\JavaFX-GestionSalle\Pidev-3A34-G4-JavaFX\src\main\resources\GestionSalle" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GestionSalle.HelloApplication" />
@@ -188,7 +215,11 @@
       <workItem from="1713393103512" duration="1328000" />
       <workItem from="1713394454617" duration="10977000" />
       <workItem from="1713459904033" duration="8361000" />
-      <workItem from="1713481371653" duration="19042000" />
+      <workItem from="1713481371653" duration="19369000" />
+      <workItem from="1713710474608" duration="24364000" />
+      <workItem from="1713807816324" duration="1208000" />
+      <workItem from="1713810188897" duration="25804000" />
+      <workItem from="1713837944020" duration="4772000" />
     </task>
     <task id="LOCAL-00001" summary="crud activite">
       <option name="closed" value="true" />
