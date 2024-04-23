@@ -243,24 +243,26 @@ private void showListTicket() {
         TicketService service = new TicketService();
         List<Ticket> tickets = service.getAllTickets();
 
-        // Clear the grid before repopulating it
+        // Clear the container before repopulating it
         ticketContainerBack.getChildren().clear();
 
-        for (Ticket ticket : tickets) {
+        for (int i = 0; i < tickets.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/SportHub/TicketCard.fxml"));
             Pane pane = fxmlLoader.load();
 
             TicketCard controller = fxmlLoader.getController();
-            controller.setData(ticket, evenementService.getEventNameById(ticket.getEvenementId()));
+            controller.setData(tickets.get(i), evenementService.getEventNameById(tickets.get(i).getEvenementId()));
             controller.setTicketBackController(this);
 
-            ticketContainerBack.add(pane, ticket.getId() % 3, ticket.getId() / 3);
+            // Add the pane to the GridPane at the specified column and row
+            ticketContainerBack.add(pane, i % 3, i / 3);
         }
     } catch (SQLException | IOException e) {
         e.printStackTrace();
     }
 }
+
 
 public void populateFields(Ticket ticket) {
     ajouterPane.setVisible(true);
@@ -364,6 +366,8 @@ public void ticketUpdate() {
         // Handle the exception appropriately, e.g., show an error message to the user
     }
 }
+
+
     public void deleteTicket() {
         // Check if a ticket is selected
         if (selectedTicket == null) {

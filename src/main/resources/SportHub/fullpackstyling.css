@@ -150,3 +150,8 @@
 {
     -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
 }
+
+.AnchorPane  {
+    -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+

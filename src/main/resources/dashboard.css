@@ -2,16 +2,11 @@
 
 /* Style for the event name */
 .label {
-    -fx-font-size: 20px;
+    -fx-font-size: 17px;
     -fx-font-weight: bold;
     -fx-text-fill: #3f3f3f;
 }
 
-/* Style for the event date */
-.label.date {
-    -fx-font-size: 16px;
-    -fx-text-fill: #7f7f7f;
-}
 
 .button {
     -fx-background-color: #000000; /* Change button background color to black */

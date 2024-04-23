@@ -5,11 +5,7 @@
     -fx-text-fill: #3f3f3f;
 }
 
-/* Style for the event date */
-#Date {
-    -fx-font-size: 16px;
-    -fx-text-fill: #7f7f7f;
-}
+
 
 #PaneEvenement {
     -fx-background-color: #ffffff;
@@ -91,7 +87,7 @@
 
 
 #PaneTicket {
-    -fx-background-color: #ffffff;
+    -fx-background-color: rgb(255, 255, 255);
     -fx-padding: 40px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
     -fx-border-color: transparent;
@@ -111,11 +107,18 @@
 
 #PaneTicket:hover {
     /* Add your hover styles here */
-    -fx-effect: dropshadow(three-pass-box, rgba(70, 182, 255, 0.87), 10, 0, 0, 10);
-    -fx-background-color: rgba(0, 120, 171, 0.81);
+    -fx-effect: dropshadow(three-pass-box, rgb(146, 138, 191), 10, 0, 0, 10);
+    -fx-background-color: rgb(255, 208, 108);
     -fx-text-fill: white ;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
+}
+#PaneTicket:hover #name,
+#PaneTicket:hover #Date,
+#PaneTicket:hover #Prix,
+#PaneTicket:hover #Type,
+#PaneTicket:hover #Nbre_tickets {
+    -fx-text-fill: white;
 }
 
 #ajouterTicket{
@@ -143,5 +146,16 @@
 }
 
 .scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
+}
+
+#scrollPane{
+    -fx-background-color: transparent;
+}
+#eventContainerBack {
+    -fx-background-color: transparent;
+
+}
+#root1 {
     -fx-background-color: transparent;
 }

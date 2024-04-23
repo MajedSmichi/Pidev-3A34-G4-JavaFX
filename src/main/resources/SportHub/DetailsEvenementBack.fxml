@@ -59,13 +59,13 @@
       <Button fx:id="hide" layoutX="296.0" layoutY="18.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0" />
       <Pane fx:id="PaneDetail" layoutX="526.0" layoutY="80.0" maxHeight="642.0" maxWidth="542.0" prefHeight="642.0" prefWidth="414.0" stylesheets="@Back.css">
          <children>
-            <Label fx:id="Date" layoutX="105.0" layoutY="414.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
+            <Label fx:id="Date" layoutX="150.0" layoutY="414.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
             <Label layoutX="40.0" layoutY="418.0" prefHeight="21.0" prefWidth="36.0" text="Date :" />
             <ImageView fx:id="imageEvnement" fitHeight="335.0" fitWidth="255.0" layoutX="80.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" prefHeight="45.0" prefWidth="350.0" text="EventName" />
-            <Label fx:id="Lieu" layoutX="112.0" layoutY="458.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
+            <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="45.0" prefWidth="350.0" text="EventName" />
+            <Label fx:id="Lieu" layoutX="150.0" layoutY="458.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
             <Label layoutX="40.0" layoutY="462.0" prefHeight="21.0" prefWidth="36.0" text="Lieu :" />
-            <Label fx:id="Description" layoutX="98.0" layoutY="498.0" prefHeight="130.0" prefWidth="302.0" text="Label" />
+            <Label fx:id="Description" layoutX="150.0" layoutY="488.0" prefHeight="63.0" prefWidth="230.0" text="Label" />
             <Label layoutX="40.0" layoutY="498.0" prefHeight="21.0" prefWidth="72.0" text="Description:" />
          </children>
       </Pane>

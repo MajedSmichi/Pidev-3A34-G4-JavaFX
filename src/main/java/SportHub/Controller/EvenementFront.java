@@ -45,6 +45,9 @@ public class EvenementFront {
         GridPane eventCard = new GridPane();
         eventCard.getStyleClass().add("card"); // Add the style class
 
+        eventCard.setVgap(10); // Set the amount of vertical space you want
+
+
         // Create an ImageView and load the image from the file path
         ImageView eventImage = new ImageView();
         Image image = new Image("file:" + event.getImageEvenement());
@@ -52,11 +55,14 @@ public class EvenementFront {
         eventImage.setFitWidth(190);  // Set the width of the ImageView
         eventImage.setFitHeight(220);
         eventImage.setPreserveRatio(true);  // Preserve the aspect ratio
-        eventCard.add(eventImage, 0, 0);
+        eventCard.add(eventImage, 0, 1);
 
         Label eventName = new Label(event.getNom());
         eventName.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
-        eventCard.add(eventName, 0, 1);
+        eventCard.add(eventName, 0, 0);
+
+        GridPane.setHalignment(eventName, javafx.geometry.HPos.CENTER);
+
 
         Label eventDate = new Label(event.getDateEvenement().toString());
         eventDate.setStyle("-fx-font-size: 14;");
@@ -77,6 +83,10 @@ public class EvenementFront {
         GridPane detailedCard = new GridPane();
         detailedCard.getStyleClass().add("detailed-card"); // Add the style class
 
+
+        // Set vertical gap
+        detailedCard.setVgap(10); // Set the amount of vertical space you want
+
         // Create an ImageView and load the image from the file path
         ImageView eventImage = new ImageView();
         Image image = new Image("file:" + event.getImageEvenement());
@@ -84,22 +94,28 @@ public class EvenementFront {
         eventImage.setFitWidth(300);  // Set the width of the ImageView
         eventImage.setFitHeight(450);
         eventImage.setPreserveRatio(true);  // Preserve the aspect ratio
-        detailedCard.add(eventImage, 0, 0);
+        detailedCard.add(eventImage, 0, 1);
 
-        Label eventName = new Label("Event Name: " + event.getNom());
-        eventName.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
-        detailedCard.add(eventName, 0, 1);
+
+
+        Label eventName = new Label( event.getNom());
+        eventName.setStyle("-fx-font-size: 22; -fx-font-weight: bold;");
+        detailedCard.add(eventName, 0, 0);
+
+
+        // Center the eventName in its area of the GridPane
+        GridPane.setHalignment(eventName, javafx.geometry.HPos.CENTER);
 
         Label eventDate = new Label("Event Date: " + event.getDateEvenement().toString());
-        eventDate.setStyle("-fx-font-size: 14;");
+        //eventDate.setStyle("-fx-font-size: 14;");
         detailedCard.add(eventDate, 0, 2);
 
         Label eventLieu = new Label("Event Lieu: " + event.getLieu());
-        eventDate.setStyle("-fx-font-size: 14;");
+        //eventDate.setStyle("-fx-font-size: 14;");
         detailedCard.add(eventLieu, 0, 3);
 
         Label eventDescription = new Label("Event Description: " + event.getDescription());
-        eventDescription.setStyle("-fx-font-size: 14;");
+       // eventDescription.setStyle("-fx-font-size: 14;");
         detailedCard.add(eventDescription, 0, 4);
 
 
