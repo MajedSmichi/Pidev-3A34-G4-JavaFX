@@ -1,2 +1,8 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8úòó³ï1J$718555c7-c5e9-4ccf-94fc-f93eb4dc92d3
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8úòó³ï1J$d3b4336d-f6fb-4ce6-83ac-7a031ce7b7b8
+I
+java:S1481<"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8æ¿„Áğ1
+i
+java:S1168Z"&Return an empty array instead of null.(¥¹ï8éÃ•½ğ1J$508e5b5c-56c1-4c5e-8481-fa3c9ef106a4
+œ
+java:S3012^"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ê›Ğ”8êÃ•½ğ1J$b15389fe-c663-4751-827d-05cf5ad9993e

@@ -1,30 +1,32 @@
 package SportHub.Entity;
+import java.util.Arrays;
+
 
 public class Cours {
     private int id;
     private String name;
     private String description;
-    private String pdfFile;
-    private String cover;
+    private Byte[] pdfFileData;
+    private Byte[] coverImageData;
     private Category category;
 
-    public Cours() {
+    public Cours(String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category) {
     }
 
-    public Cours(String name, String description, String pdfFile, String cover, Category category) {
+    public Cours(String name, String description, Byte[] pdfFileData, Byte[] coverImageData, Category category) {
         this.name = name;
         this.description = description;
-        this.pdfFile = pdfFile;
-        this.cover = cover;
+        this.pdfFileData = pdfFileData;
+        this.coverImageData = coverImageData;
         this.category = category;
     }
 
-    public Cours(int id, String name, String description, String pdfFile, String cover, Category category) {
+    public Cours(int id, String name, String description, Byte[] pdfFileData, Byte[] coverImageData, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.pdfFile = pdfFile;
-        this.cover = cover;
+        this.pdfFileData = pdfFileData;
+        this.coverImageData = coverImageData;
         this.category = category;
     }
 
@@ -52,20 +54,20 @@ public class Cours {
         this.description = description;
     }
 
-    public String getPdfFile() {
-        return pdfFile;
+    public Byte[] getPdfFileData() {
+        return pdfFileData;
     }
 
-    public void setPdfFile(String pdfFile) {
-        this.pdfFile = pdfFile;
+    public void setPdfFileData(Byte[] pdfFileData) {
+        this.pdfFileData = pdfFileData;
     }
 
-    public String getCover() {
-        return cover;
+    public Byte[] getCoverImageData() {
+        return coverImageData;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setCoverImageData(Byte[] coverImageData) {
+        this.coverImageData = coverImageData;
     }
 
     public Category getCategory() {
@@ -82,8 +84,8 @@ public class Cours {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", pdfFile='" + pdfFile + '\'' +
-                ", cover='" + cover + '\'' +
+                ", pdfFileData=" + Arrays.toString(pdfFileData) +
+                ", coverImageData=" + Arrays.toString(coverImageData) +
                 ", category=" + category +
                 '}';
     }

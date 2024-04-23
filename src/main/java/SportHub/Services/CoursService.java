@@ -23,8 +23,8 @@ public class CoursService {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, cours.getName());
             preparedStatement.setString(2, cours.getDescription());
-            preparedStatement.setString(3, cours.getPdfFile());
-            preparedStatement.setString(4, cours.getCover());
+            preparedStatement.setBytes(3, toPrimitive(cours.getPdfFileData()));
+            preparedStatement.setBytes(4, toPrimitive(cours.getCoverImageData()));
             preparedStatement.setInt(5, cours.getCategory().getId());
             preparedStatement.executeUpdate();
         }
@@ -35,8 +35,8 @@ public class CoursService {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, cours.getName());
             preparedStatement.setString(2, cours.getDescription());
-            preparedStatement.setString(3, cours.getPdfFile());
-            preparedStatement.setString(4, cours.getCover());
+            preparedStatement.setBytes(3, toPrimitive(cours.getPdfFileData()));
+            preparedStatement.setBytes(4, toPrimitive(cours.getCoverImageData()));
             preparedStatement.setInt(5, cours.getCategory().getId());
             preparedStatement.setInt(6, cours.getId());
             preparedStatement.executeUpdate();
@@ -60,11 +60,11 @@ public class CoursService {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
-                String pdfFile = resultSet.getString("pdfFile");
-                String cover = resultSet.getString("cover");
+                byte[] pdfFileData = resultSet.getBytes("pdfFile");
+                byte[] coverImageData = resultSet.getBytes("cover");
                 int categoryId = resultSet.getInt("category_id");
                 Category category = getCategoryById(categoryId);
-                coursList.add(new Cours(id, name, description, pdfFile, cover, category));
+                coursList.add(new Cours(name, description, pdfFileData, coverImageData, category));
             }
         }
         return coursList;
@@ -83,5 +83,16 @@ public class CoursService {
             }
         }
         return null;
+    }
+
+    private byte[] toPrimitive(java.lang.Byte[] array) {
+        if (array == null) {
+            return null;
+        }
+        byte[] primitiveArray = new byte[array.length];
+        for (int i = 0; i < array.length; i++) {
+            primitiveArray[i] = array[i];
+        }
+        return primitiveArray;
     }
 }
