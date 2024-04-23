@@ -14,7 +14,7 @@
     <children>
         <ScrollPane fx:id="salleACTIVITE" layoutX="403.0" layoutY="47.0" prefHeight="531.0" prefWidth="493.0" stylesheets="@Activite.css">
             <content>
-                <GridPane fx:id="GridActivite" alignment="CENTER" stylesheets="@Activite.css">
+                <GridPane fx:id="GridActivite" alignment="CENTER">
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
                     </rowConstraints>
