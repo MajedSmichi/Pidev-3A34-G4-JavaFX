@@ -62,6 +62,13 @@
       <version>8.0-r6</version>
     </dependency>
 
+
+      <dependency>
+          <groupId>com.konghq</groupId>
+          <artifactId>unirest-java</artifactId>
+          <version>3.13.2</version>
+      </dependency>
+
   </dependencies>
 
   <build>

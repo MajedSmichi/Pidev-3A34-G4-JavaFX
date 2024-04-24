@@ -4,6 +4,7 @@ import SportHub.Entity.Evenement;
 import SportHub.Entity.Ticket;
 import SportHub.Services.EvenementService;
 import SportHub.Services.TicketService;
+import SportHub.Services.WeatherService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,14 +14,23 @@ import javafx.scene.image.ImageView;
 
 import java.sql.SQLException;
 import java.util.List;
+import SportHub.Services.WeatherService;
+import kong.unirest.json.JSONObject;
+
+
+
 
 public class EvenementFront {
 
     @FXML
     private GridPane eventContainer; // This is the container where you will add the event cards
 
+    private WeatherService weatherService;
+
     public void initialize() {
         try {
+            weatherService = new WeatherService();
+
             List<Evenement> events = fetchEventsFromDatabase();
 
             int column = 0;
@@ -41,47 +51,84 @@ public class EvenementFront {
         }
     }
 
-    private GridPane createEventCard(Evenement event) {
-        GridPane eventCard = new GridPane();
-        eventCard.getStyleClass().add("card"); // Add the style class
+private GridPane createEventCard(Evenement event) {
+    GridPane eventCard = new GridPane();
+    eventCard.getStyleClass().add("card"); // Add the style class
 
-        eventCard.setVgap(10); // Set the amount of vertical space you want
+    eventCard.setVgap(10); // Set the amount of vertical space you want
 
+    // Fetch the weather data for the city
+    WeatherService weatherService = new WeatherService();
+    JSONObject weatherData = weatherService.getWeatherByCity(event.getLieu());
 
-        // Create an ImageView and load the image from the file path
-        ImageView eventImage = new ImageView();
-        Image image = new Image("file:" + event.getImageEvenement());
-        eventImage.setImage(image);
-        eventImage.setFitWidth(190);  // Set the width of the ImageView
-        eventImage.setFitHeight(220);
-        eventImage.setPreserveRatio(true);  // Preserve the aspect ratio
-        eventCard.add(eventImage, 0, 1);
+    String weatherInfo = "Weather data could not be retrieved.";
+    if (weatherData != null) {
+        // Extract the weather information from the JSON object
+        String weatherDescription = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
+        double temperature = weatherData.getJSONObject("main").getDouble("temp");
 
-        Label eventName = new Label(event.getNom());
-        eventName.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
-        eventCard.add(eventName, 0, 0);
-
-        GridPane.setHalignment(eventName, javafx.geometry.HPos.CENTER);
-
-
-        Label eventDate = new Label(event.getDateEvenement().toString());
-        eventDate.setStyle("-fx-font-size: 14;");
-        eventCard.add(eventDate, 0, 2);
-
-        // Add an event handler to the card
-        eventCard.setOnMouseClicked(e -> {
-            // Create and display the detailed card
-            GridPane detailedCard = createDetailedCard(event);
-            eventContainer.getChildren().clear(); // Clear the event container
-            eventContainer.add(detailedCard, 0, 0); // Add the detailed card to the event container
-        });
-
-        return eventCard;
+        weatherInfo = "Weather: " + weatherDescription + ", Temperature: " + temperature;
     }
+
+    Label weatherLabel = new Label(weatherInfo);
+    eventCard.add(weatherLabel, 0, 3); // Add the weather label to the top of the card
+
+    // Create an ImageView and load the image from the file path
+    ImageView eventImage = new ImageView();
+    Image image = new Image("file:" + event.getImageEvenement());
+    eventImage.setImage(image);
+    eventImage.setFitWidth(190);  // Set the width of the ImageView
+    eventImage.setFitHeight(220);
+    eventImage.setPreserveRatio(true);  // Preserve the aspect ratio
+    eventCard.add(eventImage, 0, 1);
+
+    Label eventName = new Label(event.getNom());
+    eventName.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
+    eventCard.add(eventName, 0, 0);
+
+    GridPane.setHalignment(eventName, javafx.geometry.HPos.CENTER);
+
+    Label eventDate = new Label(event.getDateEvenement().toString());
+    eventDate.setStyle("-fx-font-size: 14;");
+    eventCard.add(eventDate, 0, 2);
+
+    // Add an event handler to the card
+    eventCard.setOnMouseClicked(e -> {
+        // Create and display the detailed card
+        GridPane detailedCard = createDetailedCard(event);
+        eventContainer.getChildren().clear(); // Clear the event container
+        eventContainer.add(detailedCard, 0, 0); // Add the detailed card to the event container
+    });
+
+    return eventCard;
+}
+
+
 
     private GridPane createDetailedCard(Evenement event) {
         GridPane detailedCard = new GridPane();
         detailedCard.getStyleClass().add("detailed-card"); // Add the style class
+
+
+        // Fetch the weather data for the city
+        WeatherService weatherService = new WeatherService();
+        JSONObject weatherData = weatherService.getWeatherByCity(event.getLieu());
+
+        String weatherInfo = "Weather data could not be retrieved.";
+        if (weatherData != null) {
+            // Extract the weather information from the JSON object
+            String weatherDescription = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
+            double temperatureInKelvin = weatherData.getJSONObject("main").getDouble("temp");
+
+            // Convert the temperature to Celsius
+            double temperatureInCelsius = temperatureInKelvin - 273.15;
+
+            weatherInfo = "Weather: " + weatherDescription + ", Temperature: " + String.format("%.2f", temperatureInCelsius) + "°C";
+        }
+
+        Label weatherLabel = new Label(weatherInfo);
+        detailedCard.add(weatherLabel, 0, 5); // Add the weather label to the card
+
 
 
         // Set vertical gap

@@ -4,6 +4,7 @@ module com.example.gestionreclamation {
 
     //requires com.dlsc.formsfx;
     requires java.sql;
+    requires unirest.java;
     //requires java.persistence;
     opens SportHub to javafx.fxml;
     exports SportHub;
