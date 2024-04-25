@@ -42,6 +42,31 @@
 
 }
 
+.chart {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.chart .axis {
+    -fx-tick-label-fill: #000000;
+    -fx-font-size: 14px;
+}
+
+.chart .axis .axis-label {
+    -fx-text-fill: #000000;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.chart .bar {
+    -fx-bar-fill: #318fdc;
+}
+
+
+
 
 
 

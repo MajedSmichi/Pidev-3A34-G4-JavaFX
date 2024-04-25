@@ -4,6 +4,9 @@ import Entity.User;
 import Services.UserService;
 import connectionSql.ConnectionSql;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -12,8 +15,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,53 +26,64 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static Services.UserService.selectUser;
+
 import com.google.gson.Gson;
 
 
 public class SampleController implements UserCardRefreshListener {
-    public Button closeDataViewButton;
-    public Label viewAddressLabel;
-    public Label viewPhoneLabel;
-    public Label viewLastNameLabel;
-    public Label viewFirstNameLabel;
-    public Label viewEmailLabel;
-    public AnchorPane DataView;
+    public Button closeDataViewButton, updateDataButton;
+    public Label viewAddressLabel, viewPhoneLabel, viewLastNameLabel, viewFirstNameLabel, viewEmailLabel, viewCreatedAtLabel, viewUpdatedAtLabel, updateEmailError, updateFirstNameError, updateLastNameError, updatePhoneError, updateAdressError;
+    public AnchorPane DataView = new AnchorPane(), anchor, EditProfileField, EditField = new AnchorPane();
     public ImageView avatarImageView;
-    public Label viewCreatedAtLabel;
-    public Label viewUpdatedAtLabel;
+    public TextField updateEmailText, updateFirstNameText, updateLastNameText, updatePhoneText, updateAdressText;
+    public Button updateProfileButton= new Button();
+    public Button logoutButton=new Button();
+
     private User currentUser;
-    public AnchorPane EditField;
-    public TextField updateEmailText;
-    public Label updateEmailError;
-    public TextField updateFirstNameText;
-    public TextField updateLastNameText;
-    public Label updateFirstNameError;
-    public Label updateLastNameError;
-    public TextField updatePhoneText;
-    public Label updatePhoneError;
-    public TextField updateAdressText;
-    public Button updateDataButton;
-    public Label updateAdressError;
+    private User currentUser1;
+    public Label updateProfileEmailError, updateProfileFirstNameError, updateProfileLastNameError, updateProfilePhoneError, updateProfileAdressError;
+    public TextField updateProfileEmailText, updateProfileFirstNameText, updateProfileLastNameText, updateProfilePhoneText, updateProfileAdressText;
     @FXML
     private TilePane HBoxList;
     @FXML
-    private ScrollPane userListScrollPane;
+    private ScrollPane userListScrollPane = new ScrollPane();
     @FXML
-    private TextField searchField;
+    private TextField searchField = new TextField();
     private UserService userService = new UserService();
+
     public void initialize() {
         EditField.setVisible(false);
         // loadUserListLayout();
+        loadUserCreationStatistics();
         searchField.textProperty().addListener((observable, oldValue, newValue) -> filterUsers(newValue));
+        updateProfileButton.setOnAction(event -> updateProfile());
+        logoutButton.setOnAction(event -> logout());
     }
 
     public void loadUserListLayout() {
         UserCardController.loadUsersIntoCards(HBoxList, this);
         userListScrollPane.setVisible(true);
         searchField.setVisible(true);
+        anchor.setVisible(false);
+    }
+
+    @FXML
+    void logout() {
+        SessionManager.getInstance().clearSession();
+        try {
+            Parent loginView = FXMLLoader.load(getClass().getResource("Login/login.fxml"));
+            Scene scene = new Scene(loginView);
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 
     @Override
@@ -111,7 +127,6 @@ public class SampleController implements UserCardRefreshListener {
         updatePhoneText.setText(String.valueOf(user.getNumTele()));
         updateAdressText.setText(user.getAdresse());
     }
-
 
 
     @FXML
@@ -184,6 +199,13 @@ public class SampleController implements UserCardRefreshListener {
         updateLastNameError.setText("");
         updateAdressError.setText("");
     }
+    private void clearErrors1() {
+        updateProfileEmailError.setText("");
+        updateProfilePhoneError.setText("");
+        updateProfileFirstNameError.setText("");
+        updateProfileLastNameError.setText("");
+        updateProfileAdressError.setText("");
+    }
 
     public void showViewUser(User user) {
 
@@ -243,5 +265,171 @@ public class SampleController implements UserCardRefreshListener {
         }
     }
 
+    public void showEditUser1(User user) {
+        // Set the user details in the updateProfile fields
+        updateProfileEmailText.setText(user.getEmail());
+        updateProfileFirstNameText.setText(user.getPrenom());
+        updateProfileLastNameText.setText(user.getNom());
+        updateProfilePhoneText.setText(String.valueOf(user.getNumTele()));
+        updateProfileAdressText.setText(user.getAdresse());
+        // avatarImageView.setImage(new Image(getClass().getResource(user.getAvatar()).toExternalForm()));
+        String avatarUrl = user.getAvatar();
+        if (avatarUrl != null && !avatarUrl.trim().isEmpty()) {
+            try {
+                // Get the URL of the avatar image
+                URL avatarUrlResource = getClass().getResource(avatarUrl);
+                if (avatarUrlResource != null) {
+                    avatarImageView.setImage(new Image(avatarUrlResource.toExternalForm()));
+                } else {
+                    // If the URL is invalid, set a default image
+                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                }
+            } catch (IllegalArgumentException e) {
+                // If the URL is invalid, set a default image
+                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            }
+        } else {
+            // If the URL is null, set a default image
+            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+        }
 
+    }
+
+    public void handleProfileEdit() {
+        try {
+            this.currentUser1 = SessionManager.getInstance().getCurrentUser();
+            // Load the updateProfile.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/updateProfile.fxml"));
+            Parent updateProfileRoot = loader.load();
+
+            // Get the controller of updateProfile.fxml
+            SampleController sampleController = loader.getController();
+            sampleController.showEditUser1(currentUser1);
+
+            // Enable the text fields and change the button text
+            sampleController.updateProfileEmailText.setEditable(false);
+            sampleController.updateProfileFirstNameText.setEditable(false);
+            sampleController.updateProfileLastNameText.setEditable(false);
+            sampleController.updateProfilePhoneText.setEditable(false);
+            sampleController.updateProfileAdressText.setEditable(false);
+
+
+            // Set the updateProfile view in the anchor pane
+            anchor.getChildren().setAll(updateProfileRoot);
+            anchor.setVisible(true);
+            userListScrollPane.setVisible(false);
+            searchField.setVisible(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProfile() {
+        if (updateProfileButton.getText().equals("Enregistrer Data")) {
+            // Call the method to update the data in the database
+            if (handleUpdateAction1()) {
+                // If the update is successful, disable the text fields and change the button text
+                updateProfileEmailText.setEditable(false);
+                updateProfileFirstNameText.setEditable(false);
+                updateProfileLastNameText.setEditable(false);
+                updateProfilePhoneText.setEditable(false);
+                updateProfileAdressText.setEditable(false);
+                updateProfileButton.setText("Update Data");
+            }
+
+
+
+        } else {
+            // Enable the text fields
+            updateProfileEmailText.setEditable(true);
+            updateProfileFirstNameText.setEditable(true);
+            updateProfileLastNameText.setEditable(true);
+            updateProfilePhoneText.setEditable(true);
+            updateProfileAdressText.setEditable(true);
+
+            // Change the button text
+            updateProfileButton.setText("Enregistrer Data");
+            updateProfileButton.setStyle("-fx-background-color: #318fdc; -fx-text-fill: white;");
+
+        }
+
+    }
+
+    private boolean handleUpdateAction1() {
+        String email = updateProfileEmailText.getText();
+        String firstName = updateProfileFirstNameText.getText();
+        String lastName = updateProfileLastNameText.getText();
+        String phone = updateProfilePhoneText.getText();
+        String address = updateProfileAdressText.getText();
+
+        Map<String, Boolean> validationResults = validateInputs(email, phone, firstName, lastName, address);
+
+        if (!validationResults.get("isEmailValid")) {
+            updateProfileEmailError.setText("Invalid email format.");
+            return false;
+        }
+        if (!validationResults.get("isPhoneValid")) {
+            updateProfilePhoneError.setText("Phone must be 8 digits.");
+            return false;
+        }
+        if (!validationResults.get("isFirstNameValid")) {
+            updateProfileFirstNameError.setText("First name is required.");
+            return false;
+        }
+        if (!validationResults.get("isLastNameValid")) {
+            updateProfileLastNameError.setText("Last name is required.");
+            return false;
+        }
+        if (!validationResults.get("isAddressValid")) {
+            updateProfileAdressError.setText("Address is required.");
+            return false;
+        }
+        this.currentUser1 = SessionManager.getInstance().getCurrentUser();
+        if (this.currentUser1 == null) {
+            System.out.println("Current user is null. Cannot update user.");
+            return false;
+        }
+
+
+
+        String userId = currentUser1.getId();
+        boolean updatePassword = false;
+        String[] roles = currentUser1.getRoles();
+        User userToUpdate = new User(userId, firstName, lastName, email, roles, Integer.parseInt(phone), currentUser1.getPassword(), address,
+                currentUser1.getAvatar(), currentUser1.getCreatedAt(), LocalDateTime.now(), currentUser1.isVerified());
+
+        try {
+            if (userService.updateUser(userToUpdate, updatePassword)) {
+                System.out.println("User updated successfully.");
+                clearErrors1();
+                return true;
+            } else {
+                System.out.println("Failed to update user.");
+                return false;
+            }
+        } catch (SQLException ex) {
+            updateProfileEmailError.setText("Email already in use. Please use a different email.");
+        }
+        return false;
+    }
+
+   public void loadUserCreationStatistics() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCrud/UserCreationStatistics.fxml"));
+        AnchorPane userCreationStatisticsView = loader.load();
+
+        // Get the controller and set the data
+        UserCreationStatisticsController controller = loader.getController();
+        List<User> users = userService.selectAllUsers();
+        controller.setUserCreationData(users);
+
+        anchor.getChildren().setAll(userCreationStatisticsView);
+        anchor.setVisible(true);
+        searchField.setVisible(false);
+        userListScrollPane.setVisible(false);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
+}
+

@@ -90,6 +90,8 @@ public class RegisterController {
     private ImageView avatarImageView;
     private String avatarFilePath;
 
+
+
     @FXML
     private void handleUploadAvatar() {
         FileChooser fileChooser = new FileChooser();
@@ -99,11 +101,11 @@ public class RegisterController {
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
-
             File destFile = new File("src/main/resources/avatars/" + file.getName());
             try {
                 Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
+                System.out.println("Failed to copy file to avatars directory.");
                 e.printStackTrace();
                 return;
             }
@@ -117,6 +119,9 @@ public class RegisterController {
             System.out.println("Avatar File Path: " + avatarFilePath);
         }
     }
+
+
+
 
 
     @FXML
@@ -146,8 +151,10 @@ public class RegisterController {
         String code = generateVerificationCode();
         CodeVerificationController.verificationCodeEmail = code;
         try {
+            registererror.setText("Wait an email!Check your mailbox.");
+            registererror.setVisible(true);
+            registererror.setOpacity(1.0);
             sendEmail(this.user.getEmail(), code);
-            succesLabel.setText("Registration successful! Check your mailbox.");
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(event -> navigateToCodeVerificationView(user));
             pause.play();

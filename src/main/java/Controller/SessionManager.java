@@ -8,12 +8,12 @@ public class SessionManager {
     private boolean isAuthenticated;
     private String userEmail;
 
-    private User currentUser; // This field should represent the currently logged-in user
+    private User currentUser;
 
     private SessionManager() {
         isAuthenticated = false;
         userEmail = null;
-        currentUser = null; // Ensure the user is null at initialization
+        currentUser = null;
     }
 
     public static SessionManager getInstance() {
@@ -39,7 +39,7 @@ public class SessionManager {
         this.userEmail = userEmail;
     }
 
-    // Set the current user and update isAuthenticated and userEmail accordingly
+
     public void setCurrentUser(User user) {
         this.currentUser = user;
         if (user != null) {
@@ -74,6 +74,6 @@ public class SessionManager {
     public void clearSession() {
         isAuthenticated = false;
         userEmail = null;
-        currentUser = null; // Don't forget to nullify the currentUser
+        currentUser = null;
     }
 }
