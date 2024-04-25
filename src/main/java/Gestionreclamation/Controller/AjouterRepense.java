@@ -30,8 +30,8 @@ public class AjouterRepense {
 
     @FXML
     private Label ReponseError;
-    private Reclamation rec; // Assuming Reclamation class exists
 
+    private Reclamation rec; // Assuming Reclamation class exists
     private AnchorPane detailanchpane; // Declare detailanchpane here
 
     public void setDetailAnchorPane(AnchorPane detailanchpane) {

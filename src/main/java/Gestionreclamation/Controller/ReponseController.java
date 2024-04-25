@@ -1,11 +1,13 @@
 package Gestionreclamation.Controller;
 
+import Gestionreclamation.Entity.Reclamation;
 import Gestionreclamation.Entity.Reponse;
 import Gestionreclamation.Services.ReponseService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import java.io.IOException;
@@ -24,7 +26,13 @@ public class ReponseController implements Initializable {
     private BorderPane borderpaneReponse;
     @FXML
     private TextField SearchRep;
+
+    private Pagination pagination;
+    private static final int ITEMS_PER_PAGE = 3;
+
+
     private List<Reponse> reponses = new ArrayList<>();
+
     public BorderPane getBorderPane() {
         return borderpaneReponse;
     }
@@ -33,6 +41,7 @@ public class ReponseController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             reponses = getData();
+            createPagination();
             populateGrid(reponses);
 
             // Add a listener to the SearchRep TextField
@@ -55,6 +64,29 @@ public class ReponseController implements Initializable {
         }
     }
 
+    private void createPagination() {
+        int totalItems = reponses.size();
+        int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
+
+        pagination = new Pagination(totalPages);
+        pagination.setPageFactory(pageIndex -> {
+            try {
+                int fromIndex = pageIndex * ITEMS_PER_PAGE;
+                int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, totalItems);
+                List<Reponse> pageReponses = reponses.subList(fromIndex, toIndex);
+                populateGrid(pageReponses);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Return an empty Pane
+            return new Pane();
+        });
+
+        borderpaneReponse.setBottom(pagination);
+    }
+
+
     private void populateGrid(List<Reponse> reponses) throws IOException {
         GridReponse.getChildren().clear();
         int columns = 0;
@@ -75,6 +107,7 @@ public class ReponseController implements Initializable {
             GridPane.setMargin(pane, new Insets(10));
         }
     }
+
     private List<Reponse> getData() throws SQLException {
         List<Reponse> reponseList = new ArrayList<>();
         ReponseService reponseService = new ReponseService();

@@ -28,7 +28,6 @@ public class EditReponse {
     public void setReponseController(ReponseController reponseController) {
         this.reponseController = reponseController;
     }
-    // Initialize the service here
 
 
     public void setDetailReponseAnchorPane(AnchorPane editreponse) {

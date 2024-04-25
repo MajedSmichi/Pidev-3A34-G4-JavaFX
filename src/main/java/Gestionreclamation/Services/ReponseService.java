@@ -16,6 +16,7 @@ import java.util.List;
 public class ReponseService {
     ConnectionSql connectionSql = new ConnectionSql();
     Connection cnx = connectionSql.getConnection();
+
     public List<Reponse> afficherReponse() {
         List<Reponse> reponseList = new ArrayList<>();
         String req = "SELECT * FROM reponse INNER JOIN reclamation ON reponse.id_reclamation_id = reclamation.id INNER JOIN user ON reponse.utilisateur_id = user.id";
@@ -52,8 +53,9 @@ public class ReponseService {
             ex.printStackTrace();
         }
         return reponseList;
-    }    public void ajouterReponse(Reponse r) {
-        String req = "INSERT INTO `reponse`(`utilisateur_id`, `id_reclamation_id`, `date`, `reponse`) VALUES ('"+r.getUtilisateur().getId()+"','"+r.getidReclamation().getId()+"','"+r.getDate()+"','"+r.getReponse()+"')";
+    }
+
+    public void ajouterReponse(Reponse r) {String req = "INSERT INTO `reponse`(`utilisateur_id`, `id_reclamation_id`, `date`, `reponse`) VALUES ('"+r.getUtilisateur().getId()+"','"+r.getidReclamation().getId()+"','"+r.getDate()+"','"+r.getReponse()+"')";
 
         try {
             Statement st = cnx.createStatement();
@@ -63,6 +65,7 @@ public class ReponseService {
             System.out.println(ex.getMessage());
         }
     }
+
     public void supprimerReponse( Reponse r  ) {
         String req="DELETE FROM `reponse` WHERE id ="+r.getId();
 
@@ -75,6 +78,7 @@ public class ReponseService {
             ex.printStackTrace();
         }
     }
+
     public void modifierReponse(Reponse r) {
         if (r.getId() != 0) {
             StringBuilder reqBuilder = new StringBuilder("UPDATE `reponse` SET ");

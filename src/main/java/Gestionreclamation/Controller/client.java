@@ -35,11 +35,13 @@ public class client {
         }
     }
 
+    private AfficherReclamtion afficherReclamtion;
+
+    // ...
+
     public void listeReclamtion() {
-        AfficherReclamtion afficherReclamtion = new AfficherReclamtion();
+        afficherReclamtion = new AfficherReclamtion();
         afficherReclamtion.createCards();
         achorfront.getChildren().setAll(afficherReclamtion.getVbox());
     }
-
-
 }

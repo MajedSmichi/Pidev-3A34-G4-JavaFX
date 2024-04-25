@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
@@ -21,22 +23,28 @@ public class ReclamationController implements Initializable {
     @FXML
     private GridPane GridReclamation;
 
-
     @FXML
     private BorderPane borderpanereclamation;
     @FXML
     private TextField searchRec;
+
+    @FXML
+    private VBox vboxContainer;
+
     private List<Reclamation> reclamations = new ArrayList<>();
+    private Pagination pagination;
+    private static final int ITEMS_PER_PAGE = 8;
 
     public BorderPane getBorderPane() {
         return borderpanereclamation;
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             reclamations = getData();
+            createPagination();
+
             populateGrid(reclamations);
 
             // Add a listener to the search TextField
@@ -44,7 +52,7 @@ public class ReclamationController implements Initializable {
                 // Filter the reclamations list based on the search text
                 List<Reclamation> filteredReclamations = reclamations.stream()
                         .filter(rec -> rec.getNom().toLowerCase().contains(newValue.toLowerCase())
-                                || rec.getPrenom().toLowerCase().contains(newValue.toLowerCase())
+                                ||rec.getPrenom() != null && rec.getPrenom().toLowerCase().contains(newValue.toLowerCase())
                                 || rec.getSujet().toLowerCase().contains(newValue.toLowerCase())
                                 || rec.getDate().toString().contains(newValue))
                         .collect(Collectors.toList());
@@ -61,6 +69,28 @@ public class ReclamationController implements Initializable {
         }
     }
 
+    private void createPagination() {
+        int totalItems = reclamations.size();
+        int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
+
+        pagination = new Pagination(totalPages);
+        pagination.setPageFactory(pageIndex -> {
+            try {
+                int fromIndex = pageIndex * ITEMS_PER_PAGE;
+                int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, totalItems);
+                List<Reclamation> pageReclamations = reclamations.subList(fromIndex, toIndex);
+                populateGrid(pageReclamations);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Return an empty Pane
+            return new Pane();
+        });
+
+        borderpanereclamation.setBottom(pagination);
+    }
+
     private void populateGrid(List<Reclamation> reclamations) throws IOException {
         GridReclamation.getChildren().clear();
         int columns = 0;
@@ -74,13 +104,15 @@ public class ReclamationController implements Initializable {
 
             GridReclamation.add(pane, columns, row); // Utiliser le Pane chargé
             columns++;
-            if (columns > 2) {
+            if (columns > 3) {
                 columns = 0;
                 row++;
             }
             GridPane.setMargin(pane, new Insets(10));
         }
     }
+
+
     private List<Reclamation> getData() throws SQLException {
         List<Reclamation> reclamationList = new ArrayList<>();
         ReclamationService reclamationService = new ReclamationService();
@@ -103,5 +135,8 @@ public class ReclamationController implements Initializable {
 
         return reclamationList;
     }
-}
 
+    public GridPane getGridPane() {
+        return GridReclamation;
+    }
+}

@@ -53,6 +53,7 @@ public class Editreclamation implements Initializable {
         fullname.setText(rec.getNom() + " " + rec.getPrenom());
         combosujet.setValue(rec.getSujet());
     }
+
     @FXML
     private void handleEditButtonClick() throws Exception{
         ReclamationService s = new ReclamationService();

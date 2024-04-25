@@ -2,6 +2,7 @@ package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.Reclamation;
 import Gestionreclamation.Entity.User;
+import Gestionreclamation.Services.BadWordService;
 import Gestionreclamation.Services.ReclamationService;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -151,11 +152,16 @@ public class AjouterReclamation implements Initializable {
             dateError.setText("Date cannot be null");
             isValidInput = false;
         }
-
+        BadWordService badWordService = new BadWordService();
         if (descriptionValue == null || descriptionValue.trim().isEmpty()) {
             descriptionError.setText("Description cannot be empty");
             isValidInput = false;
-        } else {
+        }
+        else if (badWordService.containsBadWords(descriptionValue)) {
+            descriptionError.setText("Description contains inappropriate language");
+            isValidInput = false;
+        }
+        else {
             descriptionError.setText("");
             NewReclamation.setDescription(descriptionValue);
         }
@@ -179,9 +185,9 @@ public class AjouterReclamation implements Initializable {
             ReclamationService reclamationService = new ReclamationService();
             reclamationService.ajouterReclamation(NewReclamation);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Response Added");
+            alert.setTitle("Reclamation Added");
             alert.setHeaderText(null);
-            alert.setContentText("The response has been added successfully.");
+            alert.setContentText("The reclamation has been added successfully.");
             alert.showAndWait();
 
             description.clear();

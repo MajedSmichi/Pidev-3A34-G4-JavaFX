@@ -130,6 +130,7 @@ public class ReclamationService {
             ex.printStackTrace();
         }
     }
+
     public void modifierReclamation(Reclamation r) {
         if (r.getId() != 0) {
             String req = "UPDATE `reclamation` SET nom=?, prenom=?, email=?, num_tele=?, sujet=?, description=?, etat=?, date=? WHERE id=?";
@@ -152,6 +153,8 @@ public class ReclamationService {
             }
         }
     }
+
+
     private Map<Integer, Reclamation> reclamationMap = new HashMap<>();
 
     // Méthode pour récupérer une réclamation à partir de son ID
@@ -159,6 +162,7 @@ public class ReclamationService {
         // Supposons que reclamationMap contient des données simulées de réclamations
         return reclamationMap.get(reclamationId);
     }
+
     public Reponse getReponseByReclamationId(int reclamationId) {
         Reponse response = null;
         String sql = "SELECT * FROM reponse WHERE id_reclamation_id = ?";

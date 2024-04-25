@@ -33,6 +33,7 @@ public class Dash {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gestionreclamation/ReclamationView.fxml"));
             Pane content = fxmlLoader.load(); // Load as Pane
             anchor.getChildren().setAll(content);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

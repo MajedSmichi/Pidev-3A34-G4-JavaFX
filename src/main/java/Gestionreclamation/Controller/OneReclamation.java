@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
@@ -67,6 +68,11 @@ public class OneReclamation {
         borderPane.setCenter(anchorPane); // Set the AnchorPane as the center
         borderPane.setTop(null);
         borderPane.setRight(null);
+        borderPane.setBottom(null); // Hide the pagination
+
+
+        GridPane gridPane = reclamationController.getGridPane();
+        gridPane.setVisible(false); // Hide the GridPane
 
         System.out.println(rec);
     }

@@ -19,8 +19,7 @@
             <AnchorPane fx:id="form_ajouter_text" layoutX="397.0" prefHeight="474.0" prefWidth="400.0" style="-fx-background-color: black;">
                <children>
                   <TextField fx:id="description" alignment="TOP_LEFT" layoutX="39.0" layoutY="237.0" prefHeight="122.0" prefWidth="342.0" promptText="Description" style="-fx-background-color: white;" />
-                  <Label fx:id="descriptionError" layoutX="40.0" layoutY="362.0" prefHeight="18.0" prefWidth="330.0" style="-fx-text-fill: red;" />
-
+                  <Label fx:id="descriptionError" layoutX="37.0" layoutY="362.0" prefHeight="18.0" prefWidth="358.0" style="-fx-text-fill: red;" />
                   <Label alignment="CENTER" layoutX="87.0" layoutY="46.0" prefHeight="26.0" prefWidth="241.0" style="-fx-text-fill: white;" text="FullName">
                      <font>
                         <Font size="25.0" />

@@ -79,3 +79,22 @@
     -fx-border-radius: 5px;
     -fx-padding: 10px;
 }
+.pagination .control-box {
+    -fx-padding: 8px;
+}
+
+.pagination .control-box .number-button {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #a0a0a0;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+.pagination .control-box .number-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.pagination .control-box .current-page {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: #ffffff;
+}
