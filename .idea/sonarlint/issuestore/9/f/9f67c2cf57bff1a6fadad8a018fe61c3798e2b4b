@@ -1,8 +1,10 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ğµñ1J$f6924990-fa8e-449a-b937-2bbef6a3ea5c
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ğµñ1J$6ead65a5-4da3-4089-a08a-04f146f00b35
 ¯
-java:S1450("gRemove the "categoriesObservableList" field and declare it as a local variable in the relevant methods.(ñë¨—ùÿÿÿÿ8»’Ğµñ1J$4ccdd52a-32ac-4f5a-84a2-43957db4be0e
+java:S1450("gRemove the "categoriesObservableList" field and declare it as a local variable in the relevant methods.(ñë¨—ùÿÿÿÿ8»’Ğµñ1J$1123da73-a7fa-410f-987d-faed60a9796a
 ¡
-java:S1171@"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ì’Ğµñ1J$87b7e26c-6960-4272-907d-57c232bfd1ed
+java:S1171@"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ì’Ğµñ1J$91e1c729-625f-47ad-acdd-f5914f86167c
 t
-java:S3011i",This accessibility update should be removed.(Åë¿‹ùÿÿÿÿ8Ù’Ğµñ1J$5477f340-b719-4d33-888d-3e454f86a2cc
+java:S3011i",This accessibility update should be removed.(Åë¿‹ùÿÿÿÿ8Ù’Ğµñ1J$f7d56b5e-d8a2-4efd-94f2-4abcb301f10c
+P
+java:S1068'"3Remove this unused "categoryService" private field.(å³Î8ğ—ºñ1

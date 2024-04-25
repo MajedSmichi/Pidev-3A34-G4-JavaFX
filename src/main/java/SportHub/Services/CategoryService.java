@@ -44,7 +44,7 @@ public class CategoryService {
         }
     }
 
-    public List<Category> getAllCategories() throws SQLException {
+    public static List<Category> getAllCategories() throws SQLException {
         List<Category> categories = new ArrayList<>();
         String query = "SELECT id, type, description FROM categories";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

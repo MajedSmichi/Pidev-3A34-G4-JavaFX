@@ -47,3 +47,17 @@ Y
 )src/main/java/SportHub/Entity/Ticket.java,8\f\8f109c5f5f1c533f124c39c6380ded83e2e17036
 W
 'src/main/java/SportHub/Entity/User.java,3\b\3bb209d78b299601a82626aeed72559c6a65dcdc
+…
+Usrc/main/java/SportHub/Controller/MyController/Category/UpdateCategoryController.java,a\8\a8d28b3e9eebf4bb841096c106a1037c2e05117a
+ƒ
+Ssrc/main/java/SportHub/Controller/MyController/Category/CategoryListController.java,d\0\d0b9721abad4a2cc088e0ebefa470f1bc5d70d41
+‚
+Rsrc/main/java/SportHub/Controller/MyController/Category/NewCategoryController.java,f\f\ff48a09d1c2b1bd36b488015e7d35a4da08ecf7f
+†
+Vsrc/main/java/SportHub/Controller/MyController/Category/Cours/ListCoursController.java,5\7\578243d8506cd03282520e3d03747ff58e9c4358
+w
+Gsrc/main/java/SportHub/Controller/MyController/ListCoursController.java,c\5\c59dfee2d4768f20cc96a7401da400ad9927249b
+v
+Fsrc/main/java/SportHub/Controller/MyController/NewCoursController.java,b\b\bb01a93f217f186b1084b6659270170cf0127a9d
+y
+Isrc/main/java/SportHub/Controller/MyController/UpdateCoursController.java,3\7\37e2495e59729eb47e5fbe30ffc5e9903737b458

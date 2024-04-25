@@ -86,7 +86,7 @@ public class CategoryListController {
 
     private void loadCategories() {
         try {
-            List<Category> categories = categoryService.getAllCategories();
+            List<Category> categories = CategoryService.getAllCategories();
             categoriesObservableList = FXCollections.observableArrayList(categories);
             categoryTableView.setItems(categoriesObservableList);
         } catch (SQLException e) {

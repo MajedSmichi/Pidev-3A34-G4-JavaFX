@@ -1,81 +1,104 @@
 package SportHub.Entity;
-import java.util.Arrays;
 
+import javafx.beans.property.*;
 
 public class Cours {
-    private int id;
-    private String name;
-    private String description;
-    private Byte[] pdfFileData;
-    private Byte[] coverImageData;
-    private Category category;
+    private final IntegerProperty id;
+    private final StringProperty name;
+    private final StringProperty description;
+    private final ObjectProperty<byte[]> pdfFileData;
+    private final ObjectProperty<byte[]> coverImageData;
+    private final ObjectProperty<Category> category;
 
-    public Cours(String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category) {
+    public Cours(String name, String description, byte[] pdfFileData, byte[] coverImageData, Category selectedCategory) {
+        this.id = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+        this.description = new SimpleStringProperty();
+        this.pdfFileData = new SimpleObjectProperty<>();
+        this.coverImageData = new SimpleObjectProperty<>();
+        this.category = new SimpleObjectProperty<>();
     }
 
-    public Cours(String name, String description, Byte[] pdfFileData, Byte[] coverImageData, Category category) {
-        this.name = name;
-        this.description = description;
-        this.pdfFileData = pdfFileData;
-        this.coverImageData = coverImageData;
-        this.category = category;
+    public Cours(int id, String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category) {
+        this(name, description, pdfFileData, coverImageData, category);
+        this.id.set(id);
+        this.name.set(name);
+        this.description.set(description);
+        this.pdfFileData.set(pdfFileData);
+        this.coverImageData.set(coverImageData);
+        this.category.set(category);
     }
 
-    public Cours(int id, String name, String description, Byte[] pdfFileData, Byte[] coverImageData, Category category) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.pdfFileData = pdfFileData;
-        this.coverImageData = coverImageData;
-        this.category = category;
-    }
-
-    public int getId() {
+    public IntegerProperty idProperty() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id.get();
     }
 
-    public String getName() {
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public StringProperty nameProperty() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name.get();
     }
 
-    public String getDescription() {
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public StringProperty descriptionProperty() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getDescription() {
+        return description.get();
     }
 
-    public Byte[] getPdfFileData() {
+    public void setDescription(String description) {
+        this.description.set(description);
+    }
+
+    public ObjectProperty<byte[]> pdfFileDataProperty() {
         return pdfFileData;
     }
 
-    public void setPdfFileData(Byte[] pdfFileData) {
-        this.pdfFileData = pdfFileData;
+    public byte[] getPdfFileData() {
+        return pdfFileData.get();
     }
 
-    public Byte[] getCoverImageData() {
+    public void setPdfFileData(byte[] pdfFileData) {
+        this.pdfFileData.set(pdfFileData);
+    }
+
+    public ObjectProperty<byte[]> coverImageDataProperty() {
         return coverImageData;
     }
 
-    public void setCoverImageData(Byte[] coverImageData) {
-        this.coverImageData = coverImageData;
+    public byte[] getCoverImageData() {
+        return coverImageData.get();
     }
 
-    public Category getCategory() {
+    public void setCoverImageData(byte[] coverImageData) {
+        this.coverImageData.set(coverImageData);
+    }
+
+    public ObjectProperty<Category> categoryProperty() {
         return category;
     }
 
+    public Category getCategory() {
+        return category.get();
+    }
+
     public void setCategory(Category category) {
-        this.category = category;
+        this.category.set(category);
     }
 
     @Override
@@ -84,8 +107,8 @@ public class Cours {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", pdfFileData=" + Arrays.toString(pdfFileData) +
-                ", coverImageData=" + Arrays.toString(coverImageData) +
+                ", pdfFileData=" + (pdfFileData.get() != null ? pdfFileData.get().length + " bytes" : "null") +
+                ", coverImageData=" + (coverImageData.get() != null ? coverImageData.get().length + " bytes" : "null") +
                 ", category=" + category +
                 '}';
     }
