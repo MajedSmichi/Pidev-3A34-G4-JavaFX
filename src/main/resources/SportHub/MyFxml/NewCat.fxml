@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.NewCategoryController">
+   <children>
+      <Label layoutX="45.0" layoutY="39.0" prefHeight="30.0" prefWidth="297.0" text="Add a new category.">
+         <font>
+            <Font name="Roboto Black" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="categoryNameField" layoutX="45.0" layoutY="139.0" prefHeight="26.0" prefWidth="221.0" promptText="Enter a name" AnchorPane.leftAnchor="45.0" />
+      <TextField fx:id="categoryDescriptionField" layoutX="45.0" layoutY="233.0" prefHeight="26.0" prefWidth="221.0" promptText="Enter a description" AnchorPane.leftAnchor="45.0" />
+      <Label layoutX="45.0" layoutY="109.0" text="Category name">
+         <font>
+            <Font name="Roboto Medium" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="209.0" text="Category description">
+         <font>
+            <Font name="Roboto Medium" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="addButton" layoutX="45.0" layoutY="308.0" mnemonicParsing="false" prefHeight="30.0" onMouseClicked="#addCategory" prefWidth="112.0" text="Add Category" />
+      <Button fx:id="addButton1" layoutX="388.0" layoutY="39.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="169.0" text="Go to Category List" onMouseClicked="#handleOpenListButton"/>
+   </children>
+</AnchorPane>

@@ -37,3 +37,13 @@ b
 2src/main/java/SportHub/Services/TicketService.java,1\f\1f871770d9d7575392387acfbb83f0bffca5f3a6
 a
 1src/main/java/SportHub/Controller/TicketBack.java,6\a\6a9678ab659adb8ec173682cb9e388d7f1b24569
+y
+Isrc/main/java/SportHub/Controller/MyController/NewCategoryController.java,c\9\c9499375cbb90113f2c9b28b6fb3fc06ce9d2966
+|
+Lsrc/main/java/SportHub/Controller/MyController/UpdateCategoryController.java,c\8\c8dd327f3a97af8b1dbfa135f30edfd7ea348298
+z
+Jsrc/main/java/SportHub/Controller/MyController/CategoryListController.java,9\f\9f67c2cf57bff1a6fadad8a018fe61c3798e2b4b
+Y
+)src/main/java/SportHub/Entity/Ticket.java,8\f\8f109c5f5f1c533f124c39c6380ded83e2e17036
+W
+'src/main/java/SportHub/Entity/User.java,3\b\3bb209d78b299601a82626aeed72559c6a65dcdc
