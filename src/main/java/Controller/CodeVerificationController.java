@@ -49,7 +49,7 @@ public class CodeVerificationController {
         System.out.println("Comparing Input: " + inputCode + " with Stored: " + verificationCodeEmail);
         if (inputCode.equals(CodeVerificationController.verificationCodeEmail)) {
             codeError.setText("");
-            codeSucces.setText("Registration successful. Redirecting to Confirm email...");
+            codeSucces.setText("Registration successfully...");
             user.setVerified(true);
             UserService.insertUser(user);
 

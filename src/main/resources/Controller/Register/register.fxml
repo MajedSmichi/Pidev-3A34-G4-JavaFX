@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
+   <children>
+      <ImageView fitHeight="389.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@download (9).jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="290.0" layoutY="1.0" prefHeight="39.0" prefWidth="226.0" text="User Registration">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="250.0" layoutY="43.0" text="First Name" textFill="#080808" />
+      <TextField fx:id="firstNameTextField" layoutX="250.0" layoutY="61.0" prefHeight="26.0" prefWidth="139.0" promptText="FirstName" />
+      <Label layoutX="402.0" layoutY="43.0" text="Last Name" />
+      <TextField fx:id="lastNameTextField" layoutX="401.0" layoutY="61.0" prefHeight="26.0" prefWidth="147.0" promptText="LastName" />
+      <Label layoutX="251.0" layoutY="99.0" text="Email" />
+      <TextField fx:id="emailTextField" layoutX="250.0" layoutY="117.0" prefHeight="26.0" prefWidth="139.0" promptText="Email" />
+      <Label layoutX="250.0" layoutY="155.0" text="Password" />
+      <PasswordField fx:id="passwordTextField" layoutX="250.0" layoutY="173.0" prefHeight="26.0" prefWidth="139.0" promptText="Password" visible="true" />
+      <TextField fx:id="plainPasswordField" layoutX="250.0" layoutY="173.0" managed="false" prefHeight="26.0" prefWidth="139.0" promptText="Password" visible="false" />
+      <ImageView fx:id="passwordToggleImageView" fitHeight="26.0" fitWidth="20.0" layoutX="365.0" layoutY="176.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/view.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="402.0" layoutY="155.0" text="Confirm Password" />
+      <PasswordField fx:id="confirmPasswordTextField" layoutX="402.0" layoutY="173.0" prefHeight="26.0" prefWidth="147.0" promptText="Confirm Password" visible="true" />
+      <TextField fx:id="plainConfirmPasswordField" layoutX="402.0" layoutY="173.0" managed="false" prefHeight="26.0" prefWidth="147.0" promptText="Confirm Password" visible="false" />
+      <ImageView fx:id="confirmPasswordToggleImageView" fitHeight="26.0" fitWidth="20.0" layoutX="526.0" layoutY="176.0" onMouseClicked="#toggleConfirmPasswordVisibility" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/view.png" />
+         </image>
+      </ImageView>
+
+      <Label layoutX="251.0" layoutY="213.0" text="Phone" />
+      <TextField fx:id="phoneTextField" layoutX="250.0" layoutY="229.0" prefHeight="26.0" prefWidth="139.0" promptText="Phone" />
+      <Label layoutX="402.0" layoutY="213.0" text="Adress" />
+      <TextField fx:id="adressTextField" layoutX="401.0" layoutY="229.0" prefHeight="26.0" prefWidth="147.0" promptText="Adress" />
+      <Button fx:id="registerButton" layoutX="252.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="298.0" style="-fx-background-color: #8e8585;" text="Register" textFill="#080808" />
+      <Label layoutX="272.0" layoutY="371.0" text="Already have an account ?" />
+      <Label fx:id="loginLink" layoutX="417.0" layoutY="370.0" text="click here to login" textFill="#1b7ccc" />
+      <!-- Error Labels -->
+      <Label fx:id="firstNameError" layoutX="257.0" layoutY="87.0" textFill="#f40909" />
+      <Label fx:id="LastNameerror" layoutX="407.0" layoutY="87.0" textFill="#ef0505" />
+      <Label fx:id="emailError" layoutX="258.0" layoutY="143.0" textFill="#e70909" />
+      <Label fx:id="passworderror" layoutX="258.0" layoutY="199.0" textFill="#f40e0e" />
+      <Label fx:id="phoneError" layoutX="257.0" layoutY="255.0" textFill="#f40e0e" />
+      <Label fx:id="adresserror" layoutX="410.0" layoutY="254.0" textFill="#f40e0e" />
+      <Label fx:id="registererror" layoutX="381.0" layoutY="273.0" textFill="#f40e0e" />
+      <Label fx:id="succesLabel" layoutX="381.0" layoutY="273.0" prefHeight="18.0" prefWidth="298.0" textAlignment="CENTER" textFill="#f40e0e" />
+      <CheckBox fx:id="checkBoxTerms" layoutX="258.0" layoutY="301.0" mnemonicParsing="false" />
+      <Label layoutX="281.0" layoutY="301.0" text="i agree to the terms and conditions" />
+      <Label fx:id="errorTerms" layoutX="258.0" layoutY="319.0" textFill="#ea0909" />
+      <ImageView fx:id="avatarImageView" fitHeight="26.0" fitWidth="74.0" layoutX="409.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="495.0" layoutY="116.0" mnemonicParsing="false" text="Upload Avatar" onAction="#handleUploadAvatar"/>
+   </children>
+</AnchorPane>
