@@ -34,7 +34,7 @@ public class UserCardController {
         userEmail.setText(user.getEmail());
         userPhone.setText(String.valueOf(user.getNumTele()));
         activateButton.setText(user.isVerified() ? "Desactivate" : "Activate");
-        // Check if the avatar URL is not null and is a valid URL or file path
+
         String avatarUrl = user.getAvatar();
         if (avatarUrl != null && !avatarUrl.trim().isEmpty()) {
             try {
@@ -43,15 +43,15 @@ public class UserCardController {
                 if (avatarUrlResource != null) {
                     userImage.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
-                    // If the URL is invalid, set a default image
+
                     userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
-                // If the URL is invalid, set a default image
+
                 userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
             }
         } else {
-            // If the URL is null, set a default image
+
             userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
         }
     }

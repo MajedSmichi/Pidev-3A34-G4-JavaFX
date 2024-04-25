@@ -17,18 +17,31 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.security.SecureRandom;
 import java.sql.SQLException;
+import java.util.Properties;
+
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class RegisterController {
+    private User user=new User();
+
+
+
     @FXML
-    private Label loginLink;
+    private Label loginLink=new Label();
+
+    private static String recipientEmail;
 
     @FXML
     private TextField firstNameTextField, lastNameTextField, emailTextField, phoneTextField, adressTextField;
     @FXML
-    private PasswordField passwordTextField,confirmPasswordTextField;
+    private PasswordField passwordTextField=new PasswordField(),confirmPasswordTextField=new PasswordField();
 
     @FXML
     private Label firstNameError, LastNameerror, emailError, passworderror, phoneError, adresserror, registererror,succesLabel;
@@ -36,13 +49,13 @@ public class RegisterController {
     private final UserController userController = new UserController();
 
     @FXML
-    private Button registerButton;
+    private Button registerButton=new Button();
 
     @FXML
     private ImageView passwordToggleImageView,confirmPasswordToggleImageView;
 
     @FXML
-    private TextField plainPasswordField,plainConfirmPasswordField;
+    private TextField plainPasswordField=new TextField(),plainConfirmPasswordField=new TextField();
 
     @FXML
     private CheckBox checkBoxTerms;
@@ -55,7 +68,12 @@ public class RegisterController {
     private void initialize() {
 
         loginLink.setOnMouseClicked(event -> navigateToLogin());
-        registerButton.setOnAction(event -> handleRegisterButtonAction());
+        registerButton.setOnAction(event -> {
+            handleRegisterButtonAction();
+            if (validateInput()) {
+                handleRegisterButtonAction();
+            }
+        });
 
         plainPasswordField.managedProperty().bind(plainPasswordField.visibleProperty());
         passwordTextField.managedProperty().bind(passwordTextField.visibleProperty());
@@ -105,38 +123,41 @@ public class RegisterController {
     private void handleRegisterButtonAction() {
         clearErrors();
         if (!validateInput()) {
+            registererror.setText("Please fill in all fields correctly.");
             return;
         }
 
-        User newUser = new User();
-        newUser.setNom(firstNameTextField.getText());
-        newUser.setPrenom(lastNameTextField.getText());
-        newUser.setEmail(emailTextField.getText());
-        newUser.setPassword(passwordTextField.getText());
-        newUser.setNumTele(Integer.parseInt(phoneTextField.getText()));
-        newUser.setAdresse(adressTextField.getText());
-        newUser.setAvatar(avatarFilePath);
+        // Assign user details from form
+        this.user.setNom(firstNameTextField.getText());
+        this.user.setPrenom(lastNameTextField.getText());
+        this.user.setEmail(emailTextField.getText());
+        this.user.setPassword(passwordTextField.getText());
+        this.user.setNumTele(Integer.parseInt(phoneTextField.getText()));
+        this.user.setAdresse(adressTextField.getText());
+        this.user.setAvatar(avatarFilePath);
 
+        // Check if the email is already registered
+        if (UserService.emailExists(this.user.getEmail())) {
+            registererror.setText("This email is already registered.");
+            return;
+        }
+
+        // Continue with registration and send email
+        String code = generateVerificationCode();
+        CodeVerificationController.verificationCodeEmail = code;
         try {
-            UserService.insertUser(newUser);
-            // Display a success message
-            succesLabel.setText("Registration successful. Redirecting to login...");
-            registererror.setStyle("-fx-text-fill: green;");
-
-            // Use PauseTransition to wait for a few seconds
-            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // 3 seconds wait
-            pause.setOnFinished(event -> navigateToLogin()); // Navigate to login after pause
+            sendEmail(this.user.getEmail(), code);
+            succesLabel.setText("Registration successful! Check your mailbox.");
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(event -> navigateToCodeVerificationView(user));
             pause.play();
-
-        } catch (SQLException e) {
+        } catch (MessagingException e) {
+            registererror.setText("Failed to send email. Please try again.");
             e.printStackTrace();
-            if (e.getMessage().contains("Email already registered")) {
-                emailError.setText("Email already in use. Please use a different email.");
-            } else {
-                registererror.setText("Error during registration: " + e.getMessage());
-            }
         }
     }
+
+
 
 
     private boolean validateInput() {
@@ -165,7 +186,7 @@ public class RegisterController {
             isValid = false;
         }
 
-        if (phoneTextField.getText().isEmpty() || phoneTextField.getText().length() != 8) {
+        if (phoneTextField.getText().isEmpty() || !phoneTextField.getText().matches("\\d{8}")) {
             phoneError.setText("Phone must be 8 digits.");
             isValid = false;
         }
@@ -175,7 +196,6 @@ public class RegisterController {
             isValid = false;
         }
 
-        // Check if the terms and conditions checkbox is not selected
         if (!checkBoxTerms.isSelected()) {
             errorTerms.setText("You must agree to the terms and conditions.");
             isValid = false;
@@ -183,6 +203,7 @@ public class RegisterController {
 
         return isValid;
     }
+
 
     @FXML
     private void navigateToLogin() {
@@ -220,5 +241,84 @@ public class RegisterController {
         phoneError.setText("");
         adresserror.setText("");
         registererror.setText("");
+    }
+    private void navigateToCodeVerificationView(User user) {
+        try {
+            FXMLLoader codeVerificationViewLoader = new FXMLLoader(getClass().getResource("Register/codeConfirm.fxml"));
+            Parent root = codeVerificationViewLoader.load();
+
+
+            CodeVerificationController codeVerificationController = codeVerificationViewLoader.getController();
+            codeVerificationController.setUser(user);
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) registerButton.getScene().getWindow();
+            if (stage == null) {
+                // Handle case where stage is null
+                System.out.println("Stage is null. Cannot navigate.");
+                return;
+            }
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            registererror.setText("Error navigating to the verification form." + e.getMessage());
+        }
+    }
+    public void sendEmail(String recipientEmail, String code) throws MessagingException {
+        final String username = "smichimajed@gmail.com";
+        final String password = "oxaxivwyxzrnzelz";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); // TLS
+
+        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("smichimajed@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            message.setSubject("Password Reset Code");
+            message.setText("Your password reset code is: " + code);
+
+            Transport.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String generateVerificationCode() {
+        SecureRandom random = new SecureRandom();
+        int num = random.nextInt(1000000);
+        return String.format("%06d", num);
+    }
+
+
+
+
+    @FXML
+    private void handleSendEmail() {
+        recipientEmail = emailTextField.getText(); // Get email from TextField
+        if (recipientEmail.isEmpty()) {
+            registererror.setText("Please enter an email address."); // Prompt for an email
+            return;
+        }
+
+        String code = generateVerificationCode();
+        CodeVerificationController.verificationCodeEmail = code;
+        try {
+            sendEmail(recipientEmail, code);
+            navigateToCodeVerificationView(user);
+        } catch (MessagingException e) {
+            registererror.setText("Failed to send email. Please try again."); // Display error message
+            e.printStackTrace();
+        }
     }
 }

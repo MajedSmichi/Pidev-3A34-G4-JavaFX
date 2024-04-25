@@ -59,12 +59,12 @@
       <Label fx:id="passworderror" layoutX="258.0" layoutY="199.0" textFill="#f40e0e" />
       <Label fx:id="phoneError" layoutX="257.0" layoutY="255.0" textFill="#f40e0e" />
       <Label fx:id="adresserror" layoutX="410.0" layoutY="254.0" textFill="#f40e0e" />
-      <Label fx:id="registererror" layoutX="381.0" layoutY="273.0" textFill="#f40e0e" />
-      <Label fx:id="succesLabel" layoutX="258.0" layoutY="273.0" prefHeight="18.0" prefWidth="298.0" textAlignment="CENTER" textFill="#2aff04" />
+      <Label fx:id="registererror" layoutX="346.0" layoutY="273.0" textFill="#f40e0e" />
+      <Label fx:id="succesLabel" layoutX="263.0" layoutY="272.0" prefHeight="18.0" prefWidth="252.0" textAlignment="CENTER" textFill="#2aff04" />
       <CheckBox fx:id="checkBoxTerms" layoutX="258.0" layoutY="301.0" mnemonicParsing="false" />
       <Label layoutX="281.0" layoutY="301.0" text="i agree to the terms and conditions" />
       <Label fx:id="errorTerms" layoutX="258.0" layoutY="319.0" textFill="#ea0909" />
       <ImageView fx:id="avatarImageView" fitHeight="26.0" fitWidth="74.0" layoutX="409.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="495.0" layoutY="116.0" mnemonicParsing="false" text="Upload Avatar" onAction="#handleUploadAvatar"/>
+      <Button layoutX="495.0" layoutY="116.0" mnemonicParsing="false" onAction="#handleUploadAvatar" text="Upload Avatar" />
    </children>
 </AnchorPane>

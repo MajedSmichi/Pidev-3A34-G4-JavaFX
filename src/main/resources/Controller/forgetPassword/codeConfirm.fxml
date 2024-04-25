@@ -20,6 +20,6 @@
     <TextField fx:id="codeText" layoutX="252.0" layoutY="135.0" prefHeight="27.0" prefWidth="255.0" />
     <Label layoutX="253.0" layoutY="116.0" text="Code" />
     <Button fx:id="confirmCode" layoutX="272.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleConfirmCode" prefHeight="30.0" prefWidth="211.0" text="confirm Code" />
-    <Label fx:id="codeError" layoutX="283.0" layoutY="169.0" prefHeight="18.0" prefWidth="255.0" textAlignment="CENTER" textFill="#ef0909" />
+    <Label fx:id="codeError" layoutX="247.0" layoutY="166.0" prefHeight="18.0" prefWidth="255.0" textAlignment="CENTER" textFill="#ef0909" />
     <Label layoutX="364.0" layoutY="243.0" text="login" textFill="#0892e1" />
 </AnchorPane>
