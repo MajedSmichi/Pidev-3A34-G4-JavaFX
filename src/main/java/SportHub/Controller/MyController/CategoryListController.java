@@ -14,8 +14,8 @@ import SportHub.Entity.Category;
 import SportHub.Services.CategoryService;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 public class CategoryListController {
@@ -60,6 +60,7 @@ public class CategoryListController {
     private void setupActionsColumn() {
         actionsColumn.setCellFactory(param -> new TableCell<Category, Void>() {
             private final Button editButton = new Button("Edit");
+            private final Button deleteButton = new Button("Delete");
 
             {
                 editButton.setOnAction(event -> {
@@ -70,6 +71,11 @@ public class CategoryListController {
                         e.printStackTrace();
                     }
                 });
+
+                deleteButton.setOnAction(event -> {
+                    Category category = getTableView().getItems().get(getIndex());
+                    deleteCategory(category);
+                });
             }
 
             @Override
@@ -79,6 +85,7 @@ public class CategoryListController {
                     setGraphic(null);
                 } else {
                     setGraphic(editButton);
+                    setGraphic(deleteButton);
                 }
             }
         });
@@ -95,25 +102,6 @@ public class CategoryListController {
         }
     }
 
-    @FXML
-    public void updateCategory(MouseEvent event) {
-        Category selectedCategory = categoryTableView.getSelectionModel().getSelectedItem();
-        if (selectedCategory != null) {
-            try {
-                // Use reflection to access the private 'type' field
-                Field typeField = Category.class.getDeclaredField("type");
-                typeField.setAccessible(true);
-                String typeValue = (String) typeField.get(selectedCategory);
-                selectedCategory.setType(typeValue);
-
-                // Open the update form with the selected category's details
-                openUpdateForm(selectedCategory);
-            } catch (IOException | NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private void openUpdateForm(Category selectedCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/UpdateCat.fxml"));
         Parent root = loader.load();
@@ -126,6 +114,24 @@ public class CategoryListController {
         controller.setSelectedCategory(selectedCategory);
 
         stage.show();
+    }
+
+    private void deleteCategory(Category category) {
+        try {
+            categoryService.deleteCategory(category.getId());
+            categoriesObservableList.remove(category);
+        } catch (SQLException e) {
+            if (e instanceof SQLIntegrityConstraintViolationException) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Category Deletion");
+                alert.setHeaderText(null);
+                alert.setContentText("This category cannot be deleted as it has associated data.");
+                alert.showAndWait();
+            } else {
+                e.printStackTrace();
+                // Handle other SQLExceptions if needed
+            }
+        }
     }
 
     @FXML

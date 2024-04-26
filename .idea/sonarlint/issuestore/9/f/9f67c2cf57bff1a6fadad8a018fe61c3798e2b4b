@@ -1,10 +1,6 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ğµñ1J$6ead65a5-4da3-4089-a08a-04f146f00b35
-¯
-java:S1450("gRemove the "categoriesObservableList" field and declare it as a local variable in the relevant methods.(ñë¨—ùÿÿÿÿ8»’Ğµñ1J$1123da73-a7fa-410f-987d-faed60a9796a
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ğµñ1J$c1eedddb-1832-4717-a60a-23c92fb33366
 ¡
-java:S1171@"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ì’Ğµñ1J$91e1c729-625f-47ad-acdd-f5914f86167c
-t
-java:S3011i",This accessibility update should be removed.(Åë¿‹ùÿÿÿÿ8Ù’Ğµñ1J$f7d56b5e-d8a2-4efd-94f2-4abcb301f10c
-P
-java:S1068'"3Remove this unused "categoryService" private field.(å³Î8ğ—ºñ1
+java:S1171A"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¾ı†Ïñ1J$ff61c3db-62da-425a-a620-11f047843090
+ˆ
+java:S1193|"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8«ª¸Ïñ1J$63680398-e817-4908-943c-2f1168c48410

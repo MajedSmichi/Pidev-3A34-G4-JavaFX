@@ -27,7 +27,7 @@ public class CategoryService {
     }
 
     public void updateCategory(Category category) throws SQLException {
-        String query = "UPDATE categories SET type = ?, description = ? WHERE id = ?";
+        String query = "UPDATE category SET type = ?, description = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, category.getType());
             preparedStatement.setString(2, category.getDescription());
@@ -37,7 +37,7 @@ public class CategoryService {
     }
 
     public void deleteCategory(int categoryId) throws SQLException {
-        String query = "DELETE FROM categories WHERE id = ?";
+        String query = "DELETE FROM category WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, categoryId);
             preparedStatement.executeUpdate();
@@ -46,7 +46,7 @@ public class CategoryService {
 
     public static List<Category> getAllCategories() throws SQLException {
         List<Category> categories = new ArrayList<>();
-        String query = "SELECT id, type, description FROM categories";
+        String query = "SELECT id, type, description FROM category";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
