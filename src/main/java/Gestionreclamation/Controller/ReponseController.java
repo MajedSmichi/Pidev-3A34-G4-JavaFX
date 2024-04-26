@@ -49,12 +49,13 @@ public class ReponseController implements Initializable {
                 // Filter the reponses list based on the search text
                 List<Reponse> filteredReponses = reponses.stream()
                         .filter(rep -> rep.getidReclamation().getNom().toLowerCase().contains(newValue.toLowerCase())
-                                || rep.getidReclamation().getPrenom().toLowerCase().contains(newValue.toLowerCase())
+                                ||rep.getidReclamation().getPrenom() != null && rep.getidReclamation().getPrenom().toLowerCase().contains(newValue.toLowerCase())
                                 || rep.getReponse().toLowerCase().contains(newValue.toLowerCase())
                                 || rep.getDate().toString().contains(newValue))
                         .collect(Collectors.toList());
                 try {
                     populateGrid(filteredReponses);
+                    updatePagination(filteredReponses);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -64,6 +65,26 @@ public class ReponseController implements Initializable {
         }
     }
 
+
+    private void updatePagination(List<Reponse> reponses) {
+        int totalItems = reponses.size();
+        int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
+
+        pagination.setPageCount(totalPages);
+        pagination.setPageFactory(pageIndex -> {
+            try {
+                int fromIndex = pageIndex * ITEMS_PER_PAGE;
+                int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, totalItems);
+                List<Reponse> pageReponses = reponses.subList(fromIndex, toIndex);
+                populateGrid(pageReponses);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Return an empty Pane
+            return new Pane();
+        });
+    }
     private void createPagination() {
         int totalItems = reponses.size();
         int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);

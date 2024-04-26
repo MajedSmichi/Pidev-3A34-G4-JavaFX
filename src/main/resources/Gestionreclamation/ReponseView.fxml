@@ -12,7 +12,7 @@
 <BorderPane fx:id="borderpaneReponse" prefHeight="773.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.ReponseController">
 
     <top>
-        <HBox prefHeight="212.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="73.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
             <children>
                 <Pane prefHeight="42.0" prefWidth="66.0" />
                 <Pane prefHeight="36.0" prefWidth="194.0">
@@ -29,7 +29,7 @@
         <ScrollPane fitToHeight="true" fitToWidth="true">
             <content>
                 <VBox prefWidth="1278.0">
-                    <GridPane fx:id="GridReponse" >
+                    <GridPane fx:id="GridReponse">
                         <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>

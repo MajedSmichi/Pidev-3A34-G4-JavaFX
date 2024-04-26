@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -184,4 +185,68 @@ public class ReclamationService {
 
         return response;
     }
-}
+
+    public double getTreatedReclamationPercentage() throws SQLException {
+        String queryTotal = "SELECT COUNT(*) FROM reclamation";
+        String queryTreated = "SELECT COUNT(*) FROM reclamation WHERE etat = 'Traité'";
+        Statement stTotal = cnx.createStatement();
+        Statement stTreated = cnx.createStatement();
+        ResultSet rsTotal = stTotal.executeQuery(queryTotal);
+        ResultSet rsTreated = stTreated.executeQuery(queryTreated);
+        if (rsTotal.next() && rsTreated.next()) {
+            int total = rsTotal.getInt(1);
+            int treated = rsTreated.getInt(1);
+            return (double) treated / total * 100;
+        }
+        return 0;
+    }
+
+    public double getPendingReclamationPercentage() throws SQLException {
+        String queryTotal = "SELECT COUNT(*) FROM reclamation";
+        String queryPending = "SELECT COUNT(*) FROM reclamation WHERE etat = 'En attente'";
+        Statement stTotal = cnx.createStatement();
+        Statement stPending = cnx.createStatement();
+        ResultSet rsTotal = stTotal.executeQuery(queryTotal);
+        ResultSet rsPending = stPending.executeQuery(queryPending);
+        if (rsTotal.next() && rsPending.next()) {
+            int total = rsTotal.getInt(1);
+            int pending = rsPending.getInt(1);
+            return (double) pending / total * 100;
+        }
+        return 0;
+    }
+
+    public Map<Integer, Double> calculateWeeklyResponseRate() throws SQLException {
+        Map<Integer, Double> weeklyResponseRate = new HashMap<>();
+
+        // Get the current week of the year
+        int currentWeek = LocalDateTime.now().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+
+        for (int week = 1; week <= currentWeek; week++) {
+            // Count the number of complaints and responses in the week
+            String queryComplaints = "SELECT COUNT(*) FROM reclamation WHERE WEEK(date, 1) = ?";
+            String queryResponses = "SELECT COUNT(*) FROM reponse WHERE WEEK(date, 1) = ?";
+
+            PreparedStatement stComplaints = cnx.prepareStatement(queryComplaints);
+            PreparedStatement stResponses = cnx.prepareStatement(queryResponses);
+
+            stComplaints.setInt(1, week);
+            stResponses.setInt(1, week);
+
+            ResultSet rsComplaints = stComplaints.executeQuery();
+            ResultSet rsResponses = stResponses.executeQuery();
+
+            if (rsComplaints.next() && rsResponses.next()) {
+                int complaints = rsComplaints.getInt(1);
+                int responses = rsResponses.getInt(1);
+
+                // Calculate the response rate
+                double responseRate = complaints == 0 ? 0 : (double) responses / complaints;
+
+                // Add the week and response rate to the map
+                weeklyResponseRate.put(week, responseRate);
+            }
+        }
+
+        return weeklyResponseRate;
+    }}
