@@ -6,20 +6,20 @@ public class Cours {
     private final IntegerProperty id;
     private final StringProperty name;
     private final StringProperty description;
-    private final ObjectProperty<byte[]> pdfFileData;
-    private final ObjectProperty<byte[]> coverImageData;
+    private final StringProperty pdfFileData;
+    private final StringProperty coverImageData;
     private final ObjectProperty<Category> category;
 
-    public Cours(String name, String description, byte[] pdfFileData, byte[] coverImageData, Category selectedCategory) {
+    public Cours(String name, String description, String pdfFileData, String coverImageData, Category selectedCategory) {
         this.id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
         this.description = new SimpleStringProperty();
-        this.pdfFileData = new SimpleObjectProperty<>();
-        this.coverImageData = new SimpleObjectProperty<>();
+        this.pdfFileData = new SimpleStringProperty();
+        this.coverImageData = new SimpleStringProperty();
         this.category = new SimpleObjectProperty<>();
     }
 
-    public Cours(int id, String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category) {
+    public Cours(int id, String name, String description, String pdfFileData, String coverImageData, Category category) {
         this(name, description, pdfFileData, coverImageData, category);
         this.id.set(id);
         this.name.set(name);
@@ -65,27 +65,27 @@ public class Cours {
         this.description.set(description);
     }
 
-    public ObjectProperty<byte[]> pdfFileDataProperty() {
+    public StringProperty pdfFileDataProperty() {
         return pdfFileData;
     }
 
-    public byte[] getPdfFileData() {
+    public String getPdfFileData() {
         return pdfFileData.get();
     }
 
-    public void setPdfFileData(byte[] pdfFileData) {
+    public void setPdfFileData(String pdfFileData) {
         this.pdfFileData.set(pdfFileData);
     }
 
-    public ObjectProperty<byte[]> coverImageDataProperty() {
+    public StringProperty coverImageDataProperty() {
         return coverImageData;
     }
 
-    public byte[] getCoverImageData() {
+    public String getCoverImageData() {
         return coverImageData.get();
     }
 
-    public void setCoverImageData(byte[] coverImageData) {
+    public void setCoverImageData(String coverImageData) {
         this.coverImageData.set(coverImageData);
     }
 
@@ -107,8 +107,8 @@ public class Cours {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", pdfFileData=" + (pdfFileData.get() != null ? pdfFileData.get().length + " bytes" : "null") +
-                ", coverImageData=" + (coverImageData.get() != null ? coverImageData.get().length + " bytes" : "null") +
+                ", pdfFileData='" + pdfFileData.get() + '\'' +
+                ", coverImageData='" + coverImageData.get() + '\'' +
                 ", category=" + category +
                 '}';
     }

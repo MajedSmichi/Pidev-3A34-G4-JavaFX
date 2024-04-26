@@ -1,4 +1,4 @@
-package SportHub.Controller;
+/*package SportHub.Controller;
 
 import SportHub.Entity.Category;
 import SportHub.Entity.Cours;
@@ -83,8 +83,8 @@ public class CoursController {
         }
 
         try {
-            byte[] pdfFileData = Files.readAllBytes(pdfFile.toPath());
-            byte[] coverImageData = Files.readAllBytes(coverFile.toPath());
+            String pdfFileData = Files.readAllBytes(pdfFile.toPath());
+            String coverImageData = Files.readAllBytes(coverFile.toPath());
             Category category = cours_category.getValue();
             Cours cours = new Cours(name, description, pdfFileData, coverImageData, category);
             coursService.addCours(cours);
@@ -121,3 +121,4 @@ public class CoursController {
         }
     }
 }
+*/

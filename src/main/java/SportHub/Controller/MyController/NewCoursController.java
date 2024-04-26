@@ -1,5 +1,4 @@
 package SportHub.Controller.MyController;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,13 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import SportHub.Entity.Category;
 import SportHub.Entity.Cours;
 import SportHub.Services.CoursService;
 import SportHub.Services.CategoryService;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class NewCoursController {
     private TextField coursDescriptionField;
 
     @FXML
-    private ChoiceBox<Category> categoryChoiceBox; // Updated to ChoiceBox for category selection
+    private ChoiceBox<Category> categoryChoiceBox;
 
     @FXML
     private Button addCoursButton;
@@ -38,7 +38,7 @@ public class NewCoursController {
 
     @FXML
     public void initialize() {
-        loadCategories(); // Load categories when the controller is initialized
+        loadCategories();
     }
 
     private void loadCategories() {
@@ -56,13 +56,21 @@ public class NewCoursController {
     public void addCours(MouseEvent event) {
         String name = coursNameField.getText();
         String description = coursDescriptionField.getText();
-        Category selectedCategory = categoryChoiceBox.getValue(); // Get the selected category
+        Category selectedCategory = categoryChoiceBox.getValue();
 
         try {
             if (selectedCategory != null) {
-                byte[] pdfFileData = null;
-                byte[] coverImageData = null;
-                Cours newCours = new Cours(name, description, pdfFileData, coverImageData, selectedCategory);
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Upload PDF File");
+                File pdfFile = fileChooser.showOpenDialog(addCoursButton.getScene().getWindow());
+
+                fileChooser.setTitle("Upload Cover Image");
+                File coverImageFile = fileChooser.showOpenDialog(addCoursButton.getScene().getWindow());
+
+                String pdfFilePath = pdfFile != null ? pdfFile.getAbsolutePath() : null;
+                String coverImageFilePath = coverImageFile != null ? coverImageFile.getAbsolutePath() : null;
+
+                Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory);
                 coursService.addCours(newCours);
                 closeWindow();
             } else {

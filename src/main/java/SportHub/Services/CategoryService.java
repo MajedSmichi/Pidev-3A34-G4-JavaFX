@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryService {
-    private Connection connection;
+    private static Connection connection;
 
     public CategoryService() {
         connection = ConnectionSql.getInstance().getConnection();
