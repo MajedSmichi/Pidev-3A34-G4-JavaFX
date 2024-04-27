@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -63,6 +65,9 @@ public class RegisterController {
     @FXML
     private Label errorTerms;
 
+    @FXML
+    private WebView recaptchaWebView;
+
 
     @FXML
     private void initialize() {
@@ -84,6 +89,15 @@ public class RegisterController {
         confirmPasswordTextField.managedProperty().bind(confirmPasswordTextField.visibleProperty());
         plainConfirmPasswordField.visibleProperty().bind(confirmPasswordTextField.visibleProperty().not());
         plainConfirmPasswordField.textProperty().bindBidirectional(confirmPasswordTextField.textProperty());
+//        WebEngine webEngine = recaptchaWebView.getEngine();
+//        webEngine.loadContent("<html>\n" +
+//                "  <head>\n" +
+//                "    <script src='https://www.google.com/recaptcha/api.js'></script>\n" +
+//                "  </head>\n" +
+//                "  <body>\n" +
+//                "    <div class='g-recaptcha' data-sitekey='6Ld1QIEpAAAAAFXkv9jOb2mdwYyz5OzLwnR4NysB'></div>\n" +
+//                "  </body>\n" +
+//                "</html>");
     }
 
     @FXML
@@ -328,4 +342,6 @@ public class RegisterController {
             e.printStackTrace();
         }
     }
+
+
 }

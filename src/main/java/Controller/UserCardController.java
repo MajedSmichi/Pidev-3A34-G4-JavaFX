@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +29,13 @@ public class UserCardController {
     private User currentUser;
     private UserCardRefreshListener refreshListener;
 
+    public void initialize() {
+
+        Circle clip = new Circle(userImage.getFitWidth() / 2, userImage.getFitHeight() / 2, Math.min(userImage.getFitWidth(), userImage.getFitHeight()) / 2);
+        userImage.setClip(clip);
+
+    }
+
     public void setUserData(User user) {
         this.currentUser = user;
         userName.setText(user.getNom() + " " + user.getPrenom());
@@ -44,15 +52,15 @@ public class UserCardController {
                     userImage.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
 
-                    userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                    userImage.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
 
-                userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                userImage.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
             }
         } else {
 
-            userImage.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            userImage.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
         }
     }
 

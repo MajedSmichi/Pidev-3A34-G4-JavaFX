@@ -19,7 +19,7 @@
                   <Image url="@images/breadcrumb-bg.jpg" />
                </image>
             </ImageView>
-            <HBox alignment="TOP_CENTER" layoutX="142.0" layoutY="34.0" prefHeight="64.0" prefWidth="1235.0">
+            <HBox alignment="TOP_CENTER" layoutX="142.0" layoutY="34.0" prefHeight="64.0" prefWidth="1349.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Home" />
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Sales" />
@@ -27,6 +27,9 @@
                   <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" />
                   <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Produit" />
                   <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="128.0" text="Reclamation" />
+                  <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadUpdateClient" prefHeight="39.0" prefWidth="128.0" text="Profile" />
+                  <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" fx:id="logoutButton" prefHeight="39.0" prefWidth="128.0" text="Logout" textFill="#ec0606" />
+
                </children>
             </HBox>
          </children>

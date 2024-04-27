@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 public class LoginController {
 
     public Label forgetPassword;

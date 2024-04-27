@@ -2,6 +2,7 @@ module Controller {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires javafx.web;
     requires mysql.connector.java;
 
     requires org.controlsfx.controls;
@@ -10,12 +11,13 @@ module Controller {
     requires jbcrypt;
     requires java.mail;
     requires com.google.gson;
-
+    requires com.google.api.client;
+    requires google.api.client;
+    requires com.google.api.client.json.jackson2;
 
     opens Controller to javafx.fxml;
     opens Entity to javafx.base;
     exports Controller;
     exports connectionSql;
     opens connectionSql to javafx.fxml;
-
 }

@@ -10,6 +10,10 @@
     -fx-text-fill: #34495E;
 }
 
+.TextField:disabled {
+    -fx-background-color: #D3D3D3; /* This is light gray. Change it to the color you want. */
+}
+
 .data-label {
     -fx-background-color: #ECF0F1;
     -fx-padding: 5px;
@@ -27,7 +31,7 @@
 }
 
 .button-edit {
-    -fx-background-color: linear-gradient(#2ECC71, #27AE60);
+    -fx-background-color: linear-gradient(#318fdc, #318fdc);
 }
 
 .button-close:hover, .button-edit:hover {

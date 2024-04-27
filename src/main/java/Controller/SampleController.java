@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,6 +63,9 @@ public class SampleController implements UserCardRefreshListener {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> filterUsers(newValue));
         updateProfileButton.setOnAction(event -> updateProfile());
         logoutButton.setOnAction(event -> logout());
+        Circle clip = new Circle(avatarImageView.getFitWidth() / 2, avatarImageView.getFitHeight() / 2, Math.min(avatarImageView.getFitWidth(), avatarImageView.getFitHeight()) / 2);
+        avatarImageView.setClip(clip);
+
     }
 
     public void loadUserListLayout() {
@@ -233,15 +237,15 @@ public class SampleController implements UserCardRefreshListener {
                     avatarImageView.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
                     // If the URL is invalid, set a default image
-                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
                 // If the URL is invalid, set a default image
-                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
             }
         } else {
             // If the URL is null, set a default image
-            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
         }
     }
 
@@ -282,15 +286,15 @@ public class SampleController implements UserCardRefreshListener {
                     avatarImageView.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
                     // If the URL is invalid, set a default image
-                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                    avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
                 // If the URL is invalid, set a default image
-                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+                avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
             }
         } else {
             // If the URL is null, set a default image
-            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.jpg").toExternalForm()));
+            avatarImageView.setImage(new Image(getClass().getResource("/avatars/default.png").toExternalForm()));
         }
 
     }
@@ -324,36 +328,44 @@ public class SampleController implements UserCardRefreshListener {
         }
     }
 
-    public void updateProfile() {
-        if (updateProfileButton.getText().equals("Enregistrer Data")) {
-            // Call the method to update the data in the database
-            if (handleUpdateAction1()) {
-                // If the update is successful, disable the text fields and change the button text
-                updateProfileEmailText.setEditable(false);
-                updateProfileFirstNameText.setEditable(false);
-                updateProfileLastNameText.setEditable(false);
-                updateProfilePhoneText.setEditable(false);
-                updateProfileAdressText.setEditable(false);
-                updateProfileButton.setText("Update Data");
-            }
-
-
-
-        } else {
-            // Enable the text fields
-            updateProfileEmailText.setEditable(true);
-            updateProfileFirstNameText.setEditable(true);
-            updateProfileLastNameText.setEditable(true);
-            updateProfilePhoneText.setEditable(true);
-            updateProfileAdressText.setEditable(true);
-
-            // Change the button text
-            updateProfileButton.setText("Enregistrer Data");
+   public void updateProfile() {
+    if (updateProfileButton.getText().equals("Enregistrer Data")) {
+        // Call the method to update the data in the database
+        if (handleUpdateAction1()) {
+            // If the update is successful, disable the text fields and change the button text
+            String disabledStyle = "-fx-background-color: #938f8f; -fx-text-fill: #000000;-fx-border-color:#070707;";
+            updateProfileEmailText.setEditable(false);
+            updateProfileEmailText.setStyle(disabledStyle);
+            updateProfileFirstNameText.setEditable(false);
+            updateProfileFirstNameText.setStyle(disabledStyle);
+            updateProfileLastNameText.setEditable(false);
+            updateProfileLastNameText.setStyle(disabledStyle);
+            updateProfilePhoneText.setEditable(false);
+            updateProfilePhoneText.setStyle(disabledStyle);
+            updateProfileAdressText.setEditable(false);
+            updateProfileAdressText.setStyle(disabledStyle);
+            updateProfileButton.setText("Update Data");
             updateProfileButton.setStyle("-fx-background-color: #318fdc; -fx-text-fill: white;");
-
         }
+    } else {
+        // Enable the text fields
+        String enabledStyle = "-fx-background-color: #ffffff; -fx-text-fill: #090909;-fx-border-color:#070707;";
+        updateProfileEmailText.setEditable(true);
+        updateProfileEmailText.setStyle(enabledStyle);
+        updateProfileFirstNameText.setEditable(true);
+        updateProfileFirstNameText.setStyle(enabledStyle);
+        updateProfileLastNameText.setEditable(true);
+        updateProfileLastNameText.setStyle(enabledStyle);
+        updateProfilePhoneText.setEditable(true);
+        updateProfilePhoneText.setStyle(enabledStyle);
+        updateProfileAdressText.setEditable(true);
+        updateProfileAdressText.setStyle(enabledStyle);
 
+        // Change the button text
+        updateProfileButton.setText("Enregistrer Data");
+        updateProfileButton.setStyle("-fx-background-color: #318fdc; -fx-text-fill: white;");
     }
+}
 
     private boolean handleUpdateAction1() {
         String email = updateProfileEmailText.getText();

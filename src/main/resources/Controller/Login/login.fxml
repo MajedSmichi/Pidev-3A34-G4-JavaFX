@@ -16,24 +16,24 @@
             <Image url="@download (7).jpg" />
          </image>
       </ImageView>
-      <Label layoutX="388.0" layoutY="71.0" text="Login">
+      <Label layoutX="386.0" layoutY="31.0" text="Login">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Label layoutX="315.0" layoutY="140.0" text="Email" />
-      <TextField fx:id="emailTextField" layoutX="313.0" layoutY="158.0" prefHeight="26.0" prefWidth="226.0" promptText="Email" />
-      <Label layoutX="315.0" layoutY="193.0" text="Password" />
-      <PasswordField fx:id="passwordTextField" layoutX="313.0" layoutY="211.0" prefHeight="26.0" prefWidth="226.0" promptText="Password" />
-      <TextField fx:id="plainPasswordField" layoutX="313.0" layoutY="211.0" prefHeight="26.0" prefWidth="226.0" promptText="Password" visible="false" />
-      <ImageView fx:id="passwordToggleImageView" fitHeight="26.0" fitWidth="20.0" layoutX="515.0" layoutY="214.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="313.0" layoutY="100.0" text="Email" />
+      <TextField fx:id="emailTextField" layoutX="311.0" layoutY="118.0" prefHeight="26.0" prefWidth="226.0" promptText="Email" />
+      <Label layoutX="313.0" layoutY="153.0" text="Password" />
+      <PasswordField fx:id="passwordTextField" layoutX="311.0" layoutY="171.0" prefHeight="26.0" prefWidth="226.0" promptText="Password" />
+      <TextField fx:id="plainPasswordField" layoutX="311.0" layoutY="171.0" prefHeight="26.0" prefWidth="226.0" promptText="Password" visible="false" />
+      <ImageView fx:id="passwordToggleImageView" fitHeight="26.0" fitWidth="20.0" layoutX="513.0" layoutY="174.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@view.png" />
          </image>
       </ImageView>
-      <Button fx:id="loginButton" layoutX="335.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #8e8585;" text="Login" />
-      <Label fx:id="createAccountLabel" layoutX="375.0" layoutY="344.0" text="Create An Account" textFill="#1b7ccc" />
-      <Label fx:id="errorLabel" layoutX="319.0" layoutY="249.0" prefHeight="18.0" prefWidth="246.0" textAlignment="CENTER" textFill="RED" />
-      <Label fx:id="forgetPassword" layoutX="376.0" layoutY="320.0" text="Forget Password?" textFill="#1b7ccc" />
+      <Button fx:id="loginButton" layoutX="333.0" layoutY="234.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #8e8585;" text="Login" />
+      <Label fx:id="createAccountLabel" layoutX="374.0" layoutY="332.0" text="Create An Account" textFill="#1b7ccc" />
+      <Label fx:id="errorLabel" layoutX="317.0" layoutY="209.0" prefHeight="18.0" prefWidth="246.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="forgetPassword" layoutX="375.0" layoutY="308.0" text="Forget Password?" textFill="#1b7ccc" />
    </children>
 </AnchorPane>
