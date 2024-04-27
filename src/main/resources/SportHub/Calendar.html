@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fullcalendar.io/releases/main/base.css' rel='stylesheet' />
+    <script src='https://fullcalendar.io/releases/main/base.js'></script>
+    <script>
+        var calendar; // Define the calendar variable in the global scope
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+                // Add more options as needed
+            });
+            calendar.render();
+
+            // Call the getEvents method after the calendar is initialized
+            window.myEvents();
+        });
+
+        function updateEvents(eventsJson) {
+            // Log the eventsJson string for debugging
+            console.log("updateEvents function is called");
+
+            console.log("eventsJson: ", eventsJson);
+
+            // Parse the JSON string into an array of events
+            var events = JSON.parse(eventsJson);
+
+            // Log the parsed events for debugging
+            console.log("Parsed events: ", events);
+
+            // Remove all current events from the calendar
+            calendar.removeAllEvents();
+
+            // Add each event to the calendar
+            for (var i = 0; i < events.length; i++) {
+                calendar.addEvent(events[i]);
+            }
+
+            // Log the events in the calendar for debugging
+            console.log("Calendar events: ", calendar.getEvents());
+        }
+    </script>
+    <style>
+        #calendar {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+    </style>
+    <title>Calendar</title>
+</head>
+<body>
+    <div id='calendar'></div>
+</body>
+</html>
