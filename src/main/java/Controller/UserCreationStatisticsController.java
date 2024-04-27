@@ -7,10 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 
 import java.time.format.TextStyle;
 import java.util.List;
@@ -26,6 +23,9 @@ public class UserCreationStatisticsController {
 
     @FXML
     private NumberAxis yAxis;
+
+    @FXML
+    private PieChart verifiedUsersPieChart;
 
     private ObservableList<String> monthNames = FXCollections.observableArrayList();
 
@@ -48,6 +48,26 @@ public class UserCreationStatisticsController {
         // Set labels for the axes
         xAxis.setLabel("Month");
         yAxis.setLabel("Number of Users");
+    }
+
+
+
+    public double calculateVerifiedUsersPercentage(List<User> users) {
+        int verifiedUsersCount = 0;
+        for (User user : users) {
+            if (user.isVerified()) {
+                verifiedUsersCount++;
+            }
+        }
+        return (double) verifiedUsersCount / users.size() * 100;
+    }
+
+    public void updateVerifiedUsersPieChart(double verifiedUsersPercentage) {
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Verified Users", verifiedUsersPercentage),
+                        new PieChart.Data("Not Verified Users", 100 - verifiedUsersPercentage));
+        verifiedUsersPieChart.setData(pieChartData);
     }
 
     public void setUserCreationData(List<User> users) {
@@ -89,5 +109,8 @@ public class UserCreationStatisticsController {
                 node.setStyle("-fx-bar-fill: " + colors[i] + ";");
             }
         });
+        double verifiedUsersPercentage = calculateVerifiedUsersPercentage(users);
+        updateVerifiedUsersPieChart(verifiedUsersPercentage);
+
     }
 }

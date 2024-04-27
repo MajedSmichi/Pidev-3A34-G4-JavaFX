@@ -420,7 +420,7 @@ public class SampleController implements UserCardRefreshListener {
 
         // Get the controller and set the data
         UserCreationStatisticsController controller = loader.getController();
-        List<User> users = userService.selectAllUsers();
+        List<User> users = userService.selectAllUsers(); // Replace with your method to get all users
         controller.setUserCreationData(users);
 
         anchor.getChildren().setAll(userCreationStatisticsView);

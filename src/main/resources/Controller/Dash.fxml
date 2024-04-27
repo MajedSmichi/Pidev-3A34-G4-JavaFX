@@ -229,7 +229,7 @@
                 </Pane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="anchor" layoutX="351.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0"  visible="false">
+        <AnchorPane fx:id="anchor" layoutX="351.0" layoutY="100.0" prefHeight="600" prefWidth="800"  visible="false">
 
         </AnchorPane>
 
