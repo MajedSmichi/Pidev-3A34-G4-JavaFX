@@ -9,25 +9,29 @@ public class Cours {
     private final StringProperty pdfFileData;
     private final StringProperty coverImageData;
     private final ObjectProperty<Category> category;
+    private final IntegerProperty categoryId;
 
-    public Cours(String name, String description, String pdfFileData, String coverImageData, Category selectedCategory) {
+    public Cours(String name, String description, String pdfFileData, String coverImageData, Category category, int categoryId) {
         this.id = new SimpleIntegerProperty();
-        this.name = new SimpleStringProperty();
-        this.description = new SimpleStringProperty();
-        this.pdfFileData = new SimpleStringProperty();
-        this.coverImageData = new SimpleStringProperty();
-        this.category = new SimpleObjectProperty<>();
+        this.name = new SimpleStringProperty(name);
+        this.description = new SimpleStringProperty(description);
+        this.pdfFileData = new SimpleStringProperty(pdfFileData);
+        this.coverImageData = new SimpleStringProperty(coverImageData);
+        this.category = new SimpleObjectProperty<>(category);
+        this.categoryId = new SimpleIntegerProperty(categoryId);
     }
 
-    public Cours(int id, String name, String description, String pdfFileData, String coverImageData, Category category) {
-        this(name, description, pdfFileData, coverImageData, category);
-        this.id.set(id);
-        this.name.set(name);
-        this.description.set(description);
-        this.pdfFileData.set(pdfFileData);
-        this.coverImageData.set(coverImageData);
-        this.category.set(category);
+    public Cours(int id, String name, String description, String pdfFileData, String coverImageData, Category category, int categoryId) {
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.description = new SimpleStringProperty(description);
+        this.pdfFileData = new SimpleStringProperty(pdfFileData);
+        this.coverImageData = new SimpleStringProperty(coverImageData);
+        this.category = new SimpleObjectProperty<>(category);
+        this.categoryId = new SimpleIntegerProperty(categoryId);
     }
+
+
 
     public IntegerProperty idProperty() {
         return id;
@@ -101,6 +105,18 @@ public class Cours {
         this.category.set(category);
     }
 
+    public IntegerProperty categoryIdProperty() {
+        return categoryId;
+    }
+
+    public int getCategoryId() {
+        return categoryId.get();
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId.set(categoryId);
+    }
+
     @Override
     public String toString() {
         return "Cours{" +
@@ -110,6 +126,7 @@ public class Cours {
                 ", pdfFileData='" + pdfFileData.get() + '\'' +
                 ", coverImageData='" + coverImageData.get() + '\'' +
                 ", category=" + category +
+                ", categoryId=" + categoryId +
                 '}';
     }
 }

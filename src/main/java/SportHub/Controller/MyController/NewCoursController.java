@@ -1,7 +1,11 @@
 package SportHub.Controller.MyController;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -14,10 +18,18 @@ import SportHub.Services.CoursService;
 import SportHub.Services.CategoryService;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class NewCoursController {
+    @FXML
+    private Button addButton1;
+    @FXML
+    private Button coverUploadButton;
+    @FXML
+    private Button pdfUploadButton;
+
     @FXML
     private TextField coursNameField;
 
@@ -31,9 +43,14 @@ public class NewCoursController {
     private Button addCoursButton;
 
     private final CoursService coursService;
+    private final CategoryService categoryService;
+
+    private File pdfFile;
+    private File coverImageFile;
 
     public NewCoursController() {
         this.coursService = new CoursService();
+        this.categoryService = new CategoryService();
     }
 
     @FXML
@@ -47,9 +64,13 @@ public class NewCoursController {
             ObservableList<Category> categoryList = FXCollections.observableArrayList(categories);
             categoryChoiceBox.setItems(categoryList);
         } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exception if needed
+            handleSQLException(e);
         }
+    }
+
+    private void handleSQLException(SQLException e) {
+        // Display error message to the user or log the error
+        System.err.println("Error loading categories: " + e.getMessage());
     }
 
     @FXML
@@ -59,26 +80,66 @@ public class NewCoursController {
         Category selectedCategory = categoryChoiceBox.getValue();
 
         try {
-            if (selectedCategory != null) {
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle("Upload PDF File");
-                File pdfFile = fileChooser.showOpenDialog(addCoursButton.getScene().getWindow());
+            if (selectedCategory == null) {
+                System.out.println("Please select a category.");
+                return; // Exit the method if category is null
+            }
 
-                fileChooser.setTitle("Upload Cover Image");
-                File coverImageFile = fileChooser.showOpenDialog(addCoursButton.getScene().getWindow());
+            int categoryId = selectedCategory.getId(); // Assuming getId() returns the ID of the category
 
-                String pdfFilePath = pdfFile != null ? pdfFile.getAbsolutePath() : null;
-                String coverImageFilePath = coverImageFile != null ? coverImageFile.getAbsolutePath() : null;
+            if (validateInputs(name, description, categoryId)) {
+                String pdfFilePath = pdfFile.getAbsolutePath();
+                String coverImageFilePath = coverImageFile.getAbsolutePath();
 
-                Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory);
+                Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory, categoryId);
                 coursService.addCours(newCours);
                 closeWindow();
-            } else {
-                // Handle case where no category is selected
             }
         } catch (SQLException e) {
+            handleSQLException(e);
+        }
+    }
+
+    private boolean validateInputs(String name, String description, int categoryId) {
+        if (categoryId <= 0 || pdfFile == null || coverImageFile == null) {
+            System.out.println("Please select category and upload both PDF and cover image.");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    public void handlePdfUpload(MouseEvent event) {
+        pdfFile = chooseFile("Upload PDF File");
+    }
+
+    @FXML
+    public void handleCoverUpload(MouseEvent event) {
+        coverImageFile = chooseFile("Upload Cover Image");
+    }
+
+    private File chooseFile(String title) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        return fileChooser.showOpenDialog(addCoursButton.getScene().getWindow());
+    }
+
+    @FXML
+    public void handleOpenListButton(MouseEvent actionEvent) {
+        loadFXML("/SportHub/MyFxml/ListCours.fxml");
+    }
+
+    private void loadFXML(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            // Handle FXML loading error
             e.printStackTrace();
-            // Handle SQLException if needed
         }
     }
 

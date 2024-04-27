@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import SportHub.Entity.Category;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+
+import static SportHub.Services.CategoryService.getAllCategories;
 
 public class CategoryListController {
     @FXML
@@ -42,7 +45,6 @@ public class CategoryListController {
     public CategoryListController() {
         this.categoryService = new CategoryService();
     }
-
 
     @FXML
     public void initialize() {
@@ -84,8 +86,8 @@ public class CategoryListController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(editButton);
-                    setGraphic(deleteButton);
+                    HBox buttonsContainer = new HBox(editButton, deleteButton);
+                    setGraphic(buttonsContainer);
                 }
             }
         });
@@ -93,13 +95,17 @@ public class CategoryListController {
 
     private void loadCategories() {
         try {
-            List<Category> categories = CategoryService.getAllCategories();
+            List<Category> categories = getAllCategories();
             categoriesObservableList = FXCollections.observableArrayList(categories);
             categoryTableView.setItems(categoriesObservableList);
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQLException if needed
         }
+    }
+
+    public void refreshCategoryList() {
+        loadCategories();
     }
 
     private void openUpdateForm(Category selectedCategory) throws IOException {
@@ -141,6 +147,11 @@ public class CategoryListController {
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+
+        // Pass this controller instance to NewCategoryController
+        NewCategoryController newCategoryController = loader.getController();
+        newCategoryController.setCategoryListController(this);
+
         stage.show();
     }
 }

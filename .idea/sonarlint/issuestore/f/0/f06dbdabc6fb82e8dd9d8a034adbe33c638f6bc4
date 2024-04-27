@@ -1,11 +1,13 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ8 ÊŸ¼ï1J$6b6f3e5e-f370-4522-9284-03c6c08eb9f8
-	java:S116"WRename this field "category_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß¦ùÀşÿÿÿÿ8¿ÊŸ¼ï1J$aabe78e4-f744-450d-9b83-3fd7c9ea3c04
-š	java:S116"XRename this field "category_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¹öÛ8¿ÊŸ¼ï1J$c1216f56-2b73-4828-9a4b-aefe307c5002
-¦	java:S116"_Rename this field "category_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßêº¸ÿÿÿÿÿ8¿ÊŸ¼ï1J$09ee5e74-6a16-4e43-94a3-2e70ac899111
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ8 ÊŸ¼ï1J$e5671a55-719c-4fff-9827-186f66a37251
+	java:S116"WRename this field "category_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß¦ùÀşÿÿÿÿ8¿ÊŸ¼ï1J$fc79f342-1c9f-492f-87d0-1ffb1d205804
+š	java:S116"XRename this field "category_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¹öÛ8¿ÊŸ¼ï1J$d10b733f-eadc-44f4-bf19-e8fabb4cf91e
+¦	java:S116"_Rename this field "category_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßêº¸ÿÿÿÿÿ8¿ÊŸ¼ï1J$8b5e1f6f-f00b-4130-ac59-cbe55304bffa
+R
+java:S2209G"5Change this instance-reference to a static reference.(³İû‰8­óÊĞñ1
 n
-java:S1168J"+Return an empty collection instead of null.(¥¹ï8ÇÊŸ¼ï1J$a03b5c6d-471e-4d9d-97de-fabb2c481d99
+java:S1168J"+Return an empty collection instead of null.(¥¹ï8ÇÊŸ¼ï1J$12cab81e-f11b-4d7e-8298-30bbc9aca5e4
 }
-java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8ÈÊŸ¼ï1J$28d2b960-6ecc-4437-bbb9-e6271d6e8d8c
+java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8ÈÊŸ¼ï1J$cc6c3dfa-96b1-4f28-996d-9291f5f29945
 
-java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8ÈÊŸ¼ï1J$ebd09d0c-0748-49b9-9b6e-626e7f3cb237
+java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8ÈÊŸ¼ï1J$afbd6d51-9af8-45c3-a6f4-8fa5e35bc313

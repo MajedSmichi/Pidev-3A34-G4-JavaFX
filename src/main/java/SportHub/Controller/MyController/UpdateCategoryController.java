@@ -2,7 +2,6 @@ package SportHub.Controller.MyController;
 
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,7 +42,7 @@ public class UpdateCategoryController {
     }
 
     @FXML
-    public void updateCategory(ActionEvent event) {
+    public void updateCategory(MouseEvent event) {
         String name = categoryNameField.getText();
         String description = categoryDescriptionField.getText();
 
@@ -61,13 +60,14 @@ public class UpdateCategoryController {
     }
     @FXML
     public void handleOpenListButton(MouseEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SportHub.MyFxml.ListCat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCat.fxml"));
         Parent root = loader.load();
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 
     private void closeWindow() {
         Stage stage = (Stage) updateButton.getScene().getWindow();

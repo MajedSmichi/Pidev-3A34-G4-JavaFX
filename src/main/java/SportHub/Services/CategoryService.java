@@ -45,7 +45,7 @@ public class CategoryService {
     }
 
     public static List<Category> getAllCategories() throws SQLException {
-        List<Category> categories = new ArrayList<>();
+        List<Category> categoryList = new ArrayList<>();
         String query = "SELECT id, type, description FROM category";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -53,9 +53,23 @@ public class CategoryService {
                 int id = resultSet.getInt("id");
                 String type = resultSet.getString("type");
                 String description = resultSet.getString("description");
-                categories.add(new Category(id, type, description));
+                categoryList.add(new Category(id, type, description));
             }
         }
-        return categories;
+        return categoryList;
+    }
+
+    public boolean categoryExists(String categoryName) throws SQLException {
+        String query = "SELECT COUNT(*) FROM category WHERE type = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, categoryName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0; // Returns true if category with the given name exists
+                }
+            }
+        }
+        return false; // Default to false if there's an issue or no result
     }
 }

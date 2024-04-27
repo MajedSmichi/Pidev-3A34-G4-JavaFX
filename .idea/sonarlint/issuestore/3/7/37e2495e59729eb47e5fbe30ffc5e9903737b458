@@ -1,4 +1,9 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ïèÃ¹ñ1J$f271fdc6-2ae4-4976-8170-7894585de4b7
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ì‚Å¹ñ1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8¢ØÏçñ1J$e75e33b6-2839-4ae7-b9ba-a638de619728
+m	java:S106T"+Replace this use of System.err by a logger.(ÿêË8ÅØÏçñ1J$5d658de3-a612-478f-941f-9f330f0b995e
+r	java:S106_"+Replace this use of System.out by a logger.(§’–üÿÿÿÿ8ÆØÏçñ1J$e82f22cf-e14d-488a-8ed8-1da81a7d32a1
+„
+java:S1172{"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8ÉØÏçñ1J$b544aa22-e8c6-4bbb-ad9c-c21387f7cd55
+r	java:S106}"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ÉØÏçñ1J$757d68d0-43b9-4c9e-b0c8-16c86b7d217e
+v
+java:S1068."3Remove this unused "categoryService" private field.(å³Î8ÚØÏçñ1J$302023a3-6167-4a8b-8c02-5ed922afbb4c
