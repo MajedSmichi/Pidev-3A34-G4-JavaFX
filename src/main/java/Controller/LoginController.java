@@ -20,6 +20,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 public class LoginController {
@@ -73,45 +75,48 @@ public class LoginController {
     }
 
 
-    public void LoginButtonAction() {
-        String email = emailTextField.getText();
-        String password = passwordTextField.getText();
+public void LoginButtonAction() {
+    String email = emailTextField.getText();
+    String password = passwordTextField.getText();
 
-        if (email.isBlank() || password.isBlank()) {
-            errorLabel.setText("Please enter email and password");
+    if (email.isBlank() || password.isBlank()) {
+        errorLabel.setText("Please enter email and password");
+        return;
+    }
+
+    try {
+        Connection conn = ConnectionSql.getConnection();
+        PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM user WHERE email = ?");
+        checkEmailExists.setString(1, email);
+        ResultSet emailExistsRS = checkEmailExists.executeQuery();
+
+        if (emailExistsRS.next() && emailExistsRS.getInt(1) == 0) {
+            errorLabel.setText("User not registered yet.");
             return;
         }
 
-        try {
-            Connection conn = ConnectionSql.getConnection();
-            PreparedStatement checkEmailExists = conn.prepareStatement("SELECT count(1), Password FROM user WHERE email = ?");
-            checkEmailExists.setString(1, email);
-            ResultSet emailExistsRS = checkEmailExists.executeQuery();
+        String storedPasswordHash = emailExistsRS.getString("Password");
 
-            if (emailExistsRS.next() && emailExistsRS.getInt(1) == 0) {
-                errorLabel.setText("User not registered yet.");
-                return;
-            }
+        storedPasswordHash = convertBcryptPrefixTo2a(storedPasswordHash);
 
-            String storedPasswordHash = emailExistsRS.getString("Password");
+        if (BCrypt.checkpw(password, storedPasswordHash)) {
 
-            storedPasswordHash = convertBcryptPrefixTo2a(storedPasswordHash);
+            User user = getUserByEmail(email);
+            SessionManager.getInstance().setCurrentUser(user);
 
-            if (BCrypt.checkpw(password, storedPasswordHash)) {
-
-                User user = getUserByEmail(email);
-                SessionManager.getInstance().setCurrentUser(user);
-
-                navigateToUserList(email);
-            } else {
-                errorLabel.setText("Invalid credentials");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            errorLabel.setText("Error connecting to the database.");
+            if (Arrays.asList(user.getRoles()).contains("ROLE_CLIENT")) {
+    navigateToFrontView();
+} else {
+    navigateToUserList(email);
+}
+        } else {
+            errorLabel.setText("Invalid credentials");
         }
+    } catch (Exception e) {
+        e.printStackTrace();
+        errorLabel.setText("Error connecting to the database.");
     }
-
+}
 
 
     private void navigateToUserList(String userEmail) {
@@ -132,6 +137,19 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
             errorLabel.setText("Error navigating to user list.");
+        }
+    }
+
+    private void navigateToFrontView() {
+        try {
+            Parent frontView = FXMLLoader.load(getClass().getResource("Frontview.fxml"));
+            Scene scene = new Scene(frontView);
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorLabel.setText("Error navigating to the front view.");
         }
     }
 

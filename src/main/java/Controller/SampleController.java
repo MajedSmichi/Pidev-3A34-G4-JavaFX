@@ -37,7 +37,7 @@ import com.google.gson.Gson;
 public class SampleController implements UserCardRefreshListener {
     public Button closeDataViewButton, updateDataButton;
     public Label viewAddressLabel, viewPhoneLabel, viewLastNameLabel, viewFirstNameLabel, viewEmailLabel, viewCreatedAtLabel, viewUpdatedAtLabel, updateEmailError, updateFirstNameError, updateLastNameError, updatePhoneError, updateAdressError;
-    public AnchorPane DataView = new AnchorPane(), anchor, EditProfileField, EditField = new AnchorPane();
+    public AnchorPane DataView = new AnchorPane(), anchor=new AnchorPane(), EditProfileField, EditField = new AnchorPane();
     public ImageView avatarImageView;
     public TextField updateEmailText, updateFirstNameText, updateLastNameText, updatePhoneText, updateAdressText;
     public Button updateProfileButton= new Button();

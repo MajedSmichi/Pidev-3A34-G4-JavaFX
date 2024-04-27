@@ -119,22 +119,24 @@ public class UserService {
 
 
     // Select all users
-    public static List<User> selectAllUsers() {
-        List<User> users = new ArrayList<>();
+public static List<User> selectAllUsers() {
+    List<User> users = new ArrayList<>();
 
-        try (Connection connection = ConnectionSql.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)) {
+    try (Connection connection = ConnectionSql.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)) {
 
-            ResultSet rs = preparedStatement.executeQuery();
+        ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()) {
-                String id = rs.getString("id");
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                String email = rs.getString("email");
-                //String role = rs.getString("role");
-                String roleJson = rs.getString("roles");
-                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+        while (rs.next()) {
+            String id = rs.getString("id");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String email = rs.getString("email");
+            String roleJson = rs.getString("roles");
+            String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+
+            // Check if the user has the role "ROLE_CLIENT"
+            if (Arrays.asList(roles).contains("ROLE_CLIENT")) {
                 int numTele = rs.getInt("num_tele");
                 String Password = rs.getString("Password");
                 String adresse = rs.getString("adresse");
@@ -146,12 +148,12 @@ public class UserService {
                 User user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
                 users.add(user);
             }
-        } catch (SQLException e) {
-            printSQLException(e);
         }
-        return users;
+    } catch (SQLException e) {
+        printSQLException(e);
     }
-
+    return users;
+}
 
     public static boolean emailExists(String email) {
         boolean exists = false;
