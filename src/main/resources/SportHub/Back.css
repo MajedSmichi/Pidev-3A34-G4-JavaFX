@@ -159,3 +159,21 @@
 #root1 {
     -fx-background-color: transparent;
 }
+.error-message {
+    /* Add your styles here */
+    font-size: 20px;
+    color: red;
+}
+
+#sortComboBox {
+    -fx-background-color: #ffffff; /* Change button background color to black */
+    -fx-text-fill: #003669;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#sortComboBox:hover {
+    -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
