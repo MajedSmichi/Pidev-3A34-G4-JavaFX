@@ -99,10 +99,11 @@
          <Button fx:id="updateActivite" layoutX="130.0" layoutY="544.0" mnemonicParsing="false" onAction="#updateActivite" prefHeight="31.0" prefWidth="150.0" text="Modifier Activite" />
       </children>
    </AnchorPane>
-   <Label layoutX="85.0" layoutY="14.0" text="Liste Activitée :">
+   <Label layoutX="27.0" layoutY="14.0" text="Liste Activitée :">
       <font>
          <Font name="System Bold Italic" size="21.0" />
       </font>
    </Label>
+   <TextField fx:id="saerch" layoutX="311.0" layoutY="17.0" promptText="search" />
 
 </AnchorPane>

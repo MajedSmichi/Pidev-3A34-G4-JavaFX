@@ -1,5 +1,7 @@
 package GestionSalle.Entity;
 
+import java.util.Objects;
+
 public class Salle {
     private int id;
     private String nom;
@@ -87,4 +89,5 @@ public class Salle {
     public void setLogo_salle(String logo_salle) {
         this.logo_salle = logo_salle;
     }
+
 }

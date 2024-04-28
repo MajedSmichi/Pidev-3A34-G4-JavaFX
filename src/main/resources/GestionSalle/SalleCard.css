@@ -9,7 +9,7 @@
     -fx-font-size: 12px; /* Smaller font size */
 }
 
-#PaneActivite,#PaneSalle {
+#PaneSalle {
     -fx-width: 300px;
     -fx-height: 220px;
     -fx-border-radius: 8px;
@@ -31,15 +31,14 @@
 
 /* Style des étiquettes */
 .label{
-    -fx-font-size: 12px; /* Increased font size for better readability */
+
     -fx-text-fill: #ffffff; /* Darker text color for better contrast */
-    -fx-font-family: "Arial", sans-serif; /* Font family */
-    -fx-font-weight: normal; /* Normal font weight */
+
 }
 
 
 /* Add hover effect for Pane */
-#PaneActivite:hover, #PaneSalle:hover {
+#PaneSalle:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 15,0,0,2 );

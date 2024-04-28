@@ -13,7 +13,7 @@
         <AnchorPane fx:id="anchorpane1" prefHeight="798.0" prefWidth="1520.0">
             <children>
                 <Pane prefHeight="66.0" prefWidth="1248.0" />
-                <AnchorPane fx:id="achorfront" layoutX="291.0" layoutY="418.0" prefHeight="334.0" prefWidth="611.0" />
+                <AnchorPane fx:id="achorfront" layoutX="291.0" layoutY="418.0" prefHeight="334.0" prefWidth="706.0" />
                 <ImageView fitHeight="401.0" fitWidth="1519.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/breadcrumb-bg.jpg" />

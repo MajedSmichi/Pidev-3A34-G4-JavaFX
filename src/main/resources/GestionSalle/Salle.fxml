@@ -2,81 +2,89 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root1" prefHeight="756.0" prefWidth="1521.0" stylesheets="@salle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.SalleController">
-    <children>
-        <Button fx:id="showButton" layoutX="20" layoutY="20" onMouseClicked="#showGestionPane" prefHeight="26.0" prefWidth="112.0" text="Ajouter Salle" />
-        <AnchorPane fx:id="gestion" layoutX="6.0" layoutY="-3.0" prefHeight="756.0" prefWidth="262.0" visible="false">
-            <styleClass>
-                <String fx:value="shadow" />
-                <String fx:value="white-bg" />
-            </styleClass>
-            <children>
+<BorderPane fx:id="list" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1265.0" stylesheets="@salle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.SalleController">
+   <center>
+      <VBox alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="716.0" prefWidth="935.0">
+         <children>
+            <GridPane fx:id="GridSalle" prefWidth="1026.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Pane prefHeight="23.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="74.0" layoutY="-4.0" prefHeight="31.0" prefWidth="112.0" text="Liste Salle :">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="showButton" layoutX="1010.0" layoutY="-5.0" onMouseClicked="#showGestionPane" prefHeight="26.0" prefWidth="112.0" text="Ajouter Salle" />
+            <TextField fx:id="search" layoutX="396.0" layoutY="-1.0" prefHeight="25.0" prefWidth="266.0" promptText="search" />
+            <ComboBox fx:id="filter" layoutX="734.0" layoutY="-1.0" prefWidth="150.0" promptText="Trier" />
+         </children>
+      </Pane>
+   </top>
+   <right>
+      <AnchorPane fx:id="gestion" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="330.0" visible="false" BorderPane.alignment="CENTER">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
             <ImageView fitHeight="44.0" fitWidth="34.0" layoutX="208.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@images/cancel1.png" />
-                </image>
+               <image>
+                  <Image url="@images/cancel1.png" />
+               </image>
             </ImageView>
-                <Label layoutX="20.0" layoutY="294.0" prefHeight="18.0" prefWidth="41.0" text="Name" />
-                <Label layoutX="23.0" layoutY="347.0" text="Addresse" />
-                <Label layoutX="25.0" layoutY="567.0" text="Description" />
-                <Label layoutX="31.0" layoutY="63.0" text="Image" />
-                <TextField fx:id="name" layoutX="20.0" layoutY="313.0" prefHeight="26.0" prefWidth="240.0" promptText="Name" />
-                <TextField fx:id="addresse" layoutX="20.0" layoutY="365.0" prefHeight="26.0" prefWidth="240.0" promptText="Addresse" />
-                <TextArea fx:id="description" layoutX="20.0" layoutY="585.0" prefHeight="86.0" prefWidth="240.0" promptText="Description" />
-
-                <AnchorPane layoutX="45.0" layoutY="92.0" prefHeight="154.0" prefWidth="218.0">
-
-                    <children>
-                        <ImageView fx:id="logoSalle" fitHeight="121.0" fitWidth="218.0" layoutX="-15.0" pickOnBounds="true" preserveRatio="true">
-                            <styleClass>
-                                <String fx:value="white-bg" />
-                                <String fx:value="shadow" />
-                            </styleClass>
-                        </ImageView>
-                        <Button fx:id="event_import" layoutX="-15.0" layoutY="132.0" mnemonicParsing="false" onAction="#importimage" prefHeight="26.0" prefWidth="122.0" styleClass="import-btn" text="Import" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="132.0" />
-                    </children>
-                    <styleClass>
+            <Label layoutX="20.0" layoutY="294.0" prefHeight="18.0" prefWidth="41.0" text="Name" />
+            <Label layoutX="23.0" layoutY="347.0" text="Addresse" />
+            <Label layoutX="25.0" layoutY="567.0" text="Description" />
+            <Label layoutX="31.0" layoutY="63.0" text="Image" />
+            <TextField fx:id="name" layoutX="20.0" layoutY="313.0" prefHeight="26.0" prefWidth="240.0" promptText="Name" />
+            <TextField fx:id="addresse" layoutX="20.0" layoutY="365.0" prefHeight="26.0" prefWidth="240.0" promptText="Addresse" />
+            <TextArea fx:id="description" layoutX="20.0" layoutY="585.0" prefHeight="86.0" prefWidth="240.0" promptText="Description" />
+            <AnchorPane layoutX="45.0" layoutY="92.0" prefHeight="154.0" prefWidth="218.0">
+               <children>
+                  <ImageView fx:id="logoSalle" fitHeight="121.0" fitWidth="218.0" layoutX="-15.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
-                    </styleClass>
-                </AnchorPane>
-                <Button fx:id="ajoutSalle" layoutX="71.0" layoutY="693.0" mnemonicParsing="false" onAction="#ajouterSalle" prefHeight="26.0" prefWidth="112.0" styleClass="add-btn" text="Ajouter" />
+                     </styleClass>
+                  </ImageView>
+                  <Button fx:id="event_import" layoutX="-15.0" layoutY="132.0" mnemonicParsing="false" onAction="#importimage" prefHeight="26.0" prefWidth="122.0" styleClass="import-btn" text="Import" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="132.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </AnchorPane>
+            <Button fx:id="ajoutSalle" layoutX="71.0" layoutY="693.0" mnemonicParsing="false" onAction="#ajouterSalle" prefHeight="26.0" prefWidth="112.0" styleClass="add-btn" text="Ajouter" />
             <TextField fx:id="numtel" layoutX="20.0" layoutY="416.0" prefHeight="26.0" prefWidth="240.0" promptText="Numero Téléphone" />
             <Label layoutX="25.0" layoutY="398.0" text="Numero Téléphone" />
             <Label layoutX="23.0" layoutY="450.0" prefHeight="18.0" prefWidth="49.0" text="Capacite" />
             <TextField fx:id="capacite" layoutX="20.0" layoutY="468.0" prefHeight="26.0" prefWidth="240.0" promptText="Capacite" />
             <Label layoutX="25.0" layoutY="503.0" prefHeight="18.0" prefWidth="154.0" text="Nombre de clients" />
             <TextField fx:id="nbrclients" layoutX="20.0" layoutY="522.0" prefHeight="26.0" prefWidth="240.0" promptText="Nombre de clients" />
-              <Button fx:id="hideButton" layoutX="208.0" layoutY="27.0" onMouseClicked="#hideGestionPane" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
-
-            </children>
-        </AnchorPane>
-
-        <ScrollPane fx:id="list" layoutX="270.0" layoutY="27.0" prefHeight="722.0" prefWidth="1206.0" styleClass="scroll-pane">
-                    <content>
-                    <GridPane fx:id="GridSalle" alignment="CENTER">
-                        <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
-                    </GridPane>
-
-                </content>
-        </ScrollPane>
-      <Label layoutX="302.0" layoutY="10.0" prefHeight="31.0" prefWidth="112.0" text="Liste Salle :">
-         <font>
-            <Font name="System Bold Italic" size="21.0" />
-         </font>
-      </Label>
-    </children>
-</AnchorPane>
+            <Button fx:id="hideButton" layoutX="208.0" layoutY="27.0" onMouseClicked="#hideGestionPane" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: transparent;" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

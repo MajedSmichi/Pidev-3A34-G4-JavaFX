@@ -141,6 +141,6 @@
                     </font>
                 </Label>
             </children></AnchorPane>
-        <AnchorPane fx:id="anchor" layoutX="275.0" layoutY="14.0" prefHeight="586.0" prefWidth="905.0" />
+        <AnchorPane fx:id="anchor" layoutX="275.0" layoutY="14.0" prefHeight="673.0" prefWidth="906.0" />
     </children>
 </AnchorPane>

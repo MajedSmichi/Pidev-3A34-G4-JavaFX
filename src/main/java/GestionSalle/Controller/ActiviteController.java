@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ActiviteController {
 
@@ -119,6 +120,8 @@ public class ActiviteController {
     private ComboBox<String> updatesalle;
     @FXML
     private ImageView updimage;
+    @FXML
+    private TextField saerch;
 
 
 
@@ -140,21 +143,38 @@ public class ActiviteController {
         }
         try {
             List<Activite> activites = getData();
-            int row = 0;
-            for (Activite activite : activites) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneActivite.fxml"));
-                Pane pane = fxmlLoader.load();
+            populateGrid(activites);
 
-                uneActiviteController oneActivite = fxmlLoader.getController();
-                oneActivite.setData(activite);
-                pane.setOnMouseClicked(event -> displayActiviteDetails(activite)); // Add this line
+            // Add a listener to the search TextField
+            saerch.textProperty().addListener((observable, oldValue, newValue) -> {
+                List<Activite> filteredActivites = activites.stream()
+                        .filter(activite -> activite.getNom().toLowerCase().contains(newValue.toLowerCase()))
+                        .collect(Collectors.toList());
 
-                GridActivite.add(pane, 0, row); // Always add to the first column
-                row++;
-                GridPane.setMargin(pane, new Insets(10));
-            }
+                try {
+                    populateGrid(filteredActivites);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         } catch (IOException | SQLException e) {
             e.printStackTrace();
+        }
+    }
+    private  void populateGrid(List<Activite> activites) throws IOException {
+        GridActivite.getChildren().clear();
+        int row = 0;
+        for (Activite activite : activites) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneActivite.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            uneActiviteController oneActivite = fxmlLoader.getController();
+            oneActivite.setData(activite);
+            pane.setOnMouseClicked(event -> displayActiviteDetails(activite));
+
+            GridActivite.add(pane, 0, row); // Always add to the first column
+            row++;
+            GridPane.setMargin(pane, new Insets(10));
         }
     }
 

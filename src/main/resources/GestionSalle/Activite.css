@@ -25,7 +25,7 @@
     -fx-background-radius: 20px; /* Adjust as needed */
 }
 
-#showModifier,#updateActivite:hover {
+#showModifier:hover,#updateActivite:hover {
     -fx-background-color: #20fa08;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }

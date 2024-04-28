@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,10 +9,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="688.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailFrontActiviteController">
-   <Pane fx:id="detail" layoutX="284.0" layoutY="14.0" prefHeight="574.0" prefWidth="319.0" stylesheets="@detailFrontSalle.css">
+   <Pane fx:id="detail" layoutX="284.0" layoutY="14.0" prefHeight="592.0" prefWidth="362.0" stylesheets="@detailFrontSalle.css">
       <children>
-         <HBox layoutX="30.0" layoutY="147.0" prefHeight="22.0" prefWidth="226.0" />
-         <HBox layoutX="60.0" layoutY="244.0" prefHeight="22.0" prefWidth="226.0">
+         <HBox layoutX="86.0" layoutY="244.0" prefHeight="22.0" prefWidth="226.0">
             <children>
                <Label prefHeight="18.0" prefWidth="43.0" text="Nom :">
                   <font>
@@ -21,7 +21,7 @@
                <Label fx:id="nameact" prefHeight="18.0" prefWidth="158.0" text="Label" />
             </children>
          </HBox>
-         <HBox layoutX="60.0" layoutY="277.0" prefHeight="22.0" prefWidth="278.0">
+         <HBox layoutX="86.0" layoutY="277.0" prefHeight="22.0" prefWidth="278.0">
             <children>
                <Label prefHeight="18.0" prefWidth="42.0" text="Date :">
                   <font>
@@ -31,7 +31,7 @@
                <Label fx:id="dateact" prefHeight="18.0" prefWidth="131.0" text="Label" />
             </children>
          </HBox>
-         <HBox layoutX="60.0" layoutY="340.0" prefHeight="22.0" prefWidth="226.0">
+         <HBox layoutX="86.0" layoutY="338.0" prefHeight="22.0" prefWidth="226.0">
             <children>
                <Label prefHeight="18.0" prefWidth="66.0" text="Nbr Max :">
                   <font>
@@ -41,13 +41,13 @@
                <Label fx:id="nbrmaxact" prefHeight="18.0" prefWidth="158.0" text="Label" />
             </children>
          </HBox>
-         <Label layoutX="67.0" layoutY="413.0" text="Description :">
+         <Label layoutX="86.0" layoutY="413.0" text="Description :">
             <font>
                <Font name="System Bold Italic" size="12.0" />
             </font>
          </Label>
-         <Label fx:id="descriptionact" alignment="TOP_LEFT" layoutX="67.0" layoutY="430.0" prefHeight="130.0" prefWidth="158.0" text="Label" wrapText="true" />
-         <HBox layoutX="60.0" layoutY="309.0" prefHeight="22.0" prefWidth="349.0">
+         <Label fx:id="descriptionact" alignment="TOP_LEFT" layoutX="86.0" layoutY="430.0" prefHeight="130.0" prefWidth="200.0" text="Label" wrapText="true" />
+         <HBox layoutX="86.0" layoutY="309.0" prefHeight="22.0" prefWidth="349.0">
             <children>
                <Label prefHeight="18.0" prefWidth="54.0" text="Coach :">
                   <font>
@@ -57,8 +57,8 @@
                <Label fx:id="coachact" prefHeight="18.0" prefWidth="144.0" text="Label" />
             </children>
          </HBox>
-         <ImageView fx:id="imageact" fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-         <HBox layoutX="60.0" layoutY="372.0" prefHeight="22.0" prefWidth="226.0">
+         <ImageView fx:id="imageact" fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+         <HBox layoutX="86.0" layoutY="372.0" prefHeight="22.0" prefWidth="226.0">
             <children>
                <Label prefHeight="18.0" prefWidth="46.0" text="Salle :">
                   <font>
@@ -68,11 +68,16 @@
                <Label fx:id="salleact" prefHeight="18.0" prefWidth="158.0" text="Label" />
             </children>
          </HBox>
-         <Label layoutX="27.0" layoutY="14.0" text="Détaile Activitée :">
+         <Label layoutX="67.0" layoutY="22.0" text="Détaile Activitée ">
             <font>
                <Font name="System Bold Italic" size="18.0" />
             </font>
          </Label>
+         <Button fx:id="reserver" layoutX="114.0" layoutY="520.0" mnemonicParsing="false" onAction="#reserverActivite" prefHeight="40.0" prefWidth="145.0" text="Réserver">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Button>
       </children>
    </Pane>
 

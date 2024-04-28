@@ -8,9 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FrontActiviteController {
 
@@ -53,44 +52,58 @@ public class FrontActiviteController {
 
     @FXML
     private Label salleact;
+    @FXML
+    private TextField search;
 
     @FXML
-    private Button showModifier;
+    private Button reserver;
 
-    @FXML
-    private Button supprimer;
     private Activite currentActivite;
 
     public void initialize() {
-
-
-
         try {
             List<Activite> activites = getData();
-            int row = 0;
-            for (Activite activite : activites) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/ActiviteCard.fxml"));
-                Pane pane = fxmlLoader.load();
 
-                ActiviteCardController oneActivite = fxmlLoader.getController();
-                oneActivite.setData(activite);
-                pane.setOnMouseClicked(event -> displayActiviteDetails(activite)); // Add this line
+            // Add a listener to the search TextField
+            search.textProperty().addListener((observable, oldValue, newValue) -> {
+                List<Activite> filteredActivites = activites.stream()
+                        .filter(activite -> activite.getNom().toLowerCase().contains(newValue.toLowerCase()))
+                        .collect(Collectors.toList());
 
-                GridActivite.add(pane, 0, row); // Always add to the first column
-                row++;
-                GridPane.setMargin(pane, new Insets(10));
-            }
+                try {
+                    populateGrid(filteredActivites);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            populateGrid(activites);
+
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
+    private void populateGrid(List<Activite> activites) throws IOException {
+        GridActivite.getChildren().clear();
+        int row = 0;
+        for (Activite activite : activites) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/ActiviteCard.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            ActiviteCardController oneActivite = fxmlLoader.getController();
+            oneActivite.setData(activite);
+            pane.setOnMouseClicked(event -> displayActiviteDetails(activite));
+
+            GridActivite.add(pane, 0, row); // Always add to the first column
+            row++;
+            GridPane.setMargin(pane, new Insets(10));
+        }
+    }
+
     private List<Activite> getData() throws SQLException {
         ActiviteService activiteService = new ActiviteService();
         return activiteService.getAllActivite();
     }
-
-
-
     private void displayActiviteDetails(Activite activite) {
         nameact.setText(activite.getNom());
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -122,5 +135,25 @@ public class FrontActiviteController {
         this.currentActivite = activite;
 
     }
+    @FXML
+    void reserverActivite(ActionEvent event) {
+        ActiviteService activiteUserService = new ActiviteService();
+        try {
+            if (currentActivite.getNbr_max() == 0) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Désolé, cette activité est complète.");
+                alert.showAndWait();
+                return;
+            }
+            int userId = 1; // Replace this with actual method to get logged in user id
+            activiteUserService.reserverActivite(currentActivite.getId(), userId);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Activité réservée avec succès.");
+            alert.showAndWait();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Vous avez déjà réservé cette activité.");
+            alert.showAndWait();
+        }
+    }
+
 
 }

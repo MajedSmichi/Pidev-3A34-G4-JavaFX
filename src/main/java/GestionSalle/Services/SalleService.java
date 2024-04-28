@@ -6,6 +6,7 @@ import connectionSql.ConnectionSql;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SalleService {
     Connection connection;
@@ -101,6 +102,25 @@ public class SalleService {
         }
         return null;
     }
+    public boolean isUnique(String nom, String addresse) {
+    String query = "SELECT * FROM salle WHERE nom = ? AND addresse = ?";
+    try {
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, nom);
+        preparedStatement.setString(2, addresse);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            // A Salle with the same nom and addresse already exists
+            return false;
+        } else {
+            // No Salle with the same nom and addresse exists
+            return true;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 
 
 }

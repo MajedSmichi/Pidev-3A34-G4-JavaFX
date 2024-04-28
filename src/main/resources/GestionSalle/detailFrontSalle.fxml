@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="971.0" stylesheets="@detailFrontSalle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailFrontSalleController">
+<AnchorPane prefHeight="660.0" prefWidth="971.0" style="-fx-background-color: transparent;" stylesheets="@detailFrontSalle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailFrontSalleController">
     <children>
-        <ScrollPane fx:id="salleACTIVITE" layoutX="403.0" layoutY="47.0" prefHeight="531.0" prefWidth="493.0" stylesheets="@Activite.css">
+        <ScrollPane fx:id="salleACTIVITE" layoutX="403.0" layoutY="47.0" prefHeight="531.0" prefWidth="493.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
             <content>
-                <GridPane fx:id="GridActivite" alignment="CENTER">
+                <GridPane fx:id="GridActivite" alignment="CENTER" style="-fx-background-color: transparent;" >
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
                     </rowConstraints>

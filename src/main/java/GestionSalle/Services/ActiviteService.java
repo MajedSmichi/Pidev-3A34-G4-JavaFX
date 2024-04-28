@@ -87,4 +87,16 @@ public class ActiviteService {
         }
         return activites;
     }
+    public void reserverActivite( int activiteId ,int userId) throws SQLException {
+        String query = "INSERT INTO activite_user (activite_id, user_id) VALUES (?, ?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, activiteId);
+        stmt.setInt(2, userId);
+        stmt.executeUpdate();
+
+        String updateQuery = "UPDATE activite SET nbr_max = nbr_max - 1 WHERE id = ?";
+        PreparedStatement updateStmt = connection.prepareStatement(updateQuery);
+        updateStmt.setInt(1, activiteId);
+        updateStmt.executeUpdate();
+    }
 }

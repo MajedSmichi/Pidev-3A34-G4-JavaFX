@@ -7,22 +7,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
+import javafx.scene.control.Pagination;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class SalleController implements Initializable {
 
@@ -52,7 +55,7 @@ public class SalleController implements Initializable {
     private Button hideButton;
 
     @FXML
-    private ScrollPane list;
+    private BorderPane list;
 
     @FXML
     private ImageView logoSalle;
@@ -71,55 +74,128 @@ public class SalleController implements Initializable {
 
     @FXML
     private Button showButton;
+    @FXML
+    private TextField search;
+
+    private Pagination pagination;
+
+    @FXML
+    private ComboBox<String> filter;
+
+    private static final int ITEMS_PER_PAGE = 6;
 
 
     private List<Salle> salles = new ArrayList<>();
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            salles = getData();
-            System.out.println(salles);
-            int columns = 0;
-            int row = 1;
-            for (Salle salle : salles) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneSalle.fxml"));
-                Pane pane = fxmlLoader.load(); // Load as Pane
-                uneSalleController oneSalle = fxmlLoader.getController();
-                oneSalle.setData(salle);
-                GridSalle.add(pane, columns, row); // Use the loaded Pane
-                columns++;
-                if (columns > 2) {
-                    columns = 0;
-                    row++;
+public void initialize(URL url, ResourceBundle resourceBundle) {
+    try {
+        salles = getData();
+        createPagination();
+        populateGrid(salles);
+
+        // Add sorting options to the filter ComboBox
+        // Add sorting options to the filter ComboBox
+        filter.getItems().addAll("Trier par nombre de client (ascendant)", "Trier par nombre de client (descendant)", "Par défaut");
+
+        // Add a listener to the filter ComboBox
+        filter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                List<Salle> sortedSalles;
+                if (newValue.equals("Trier par nombre de client (ascendant)")) {
+                    sortedSalles = salles.stream()
+                            .sorted(Comparator.comparing(Salle::getNbr_client))
+                            .collect(Collectors.toList());
+                } else if (newValue.equals("Trier par nombre de client (descendant)")) {
+                    sortedSalles = salles.stream()
+                            .sorted(Comparator.comparing(Salle::getNbr_client).reversed())
+                            .collect(Collectors.toList());
+                } else {
+                    return;
                 }
-                GridPane.setMargin(pane, new Insets(10));
+                updatePagination(sortedSalles);
+                populateGrid(sortedSalles);
+            } catch (IOException  e) {
+                e.printStackTrace();
             }
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+        });
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                List<Salle> filteredSalles = salles.stream()
+                        .filter(salle -> salle.getNom().toLowerCase().contains(newValue.toLowerCase()))
+                        .collect(Collectors.toList());
+
+                updatePagination(filteredSalles);
+                populateGrid(filteredSalles);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    } catch (SQLException | IOException e) {
+        e.printStackTrace();
+    }
+}    private void populateGrid(List<Salle> salles) throws IOException {
+        GridSalle.getChildren().clear();
+        int columns = 0;
+        int row = 0; // Start from row 0 for each new page
+        for (Salle salle : salles) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneSalle.fxml"));
+            Pane pane = fxmlLoader.load(); // Load as Pane
+            uneSalleController oneSalle = fxmlLoader.getController();
+            oneSalle.setData(salle);
+            GridSalle.add(pane, columns, row); // Use the loaded Pane
+            columns++;
+            if (columns > 2) {
+                columns = 0;
+                row++;
+            }
+            GridPane.setMargin(pane, new Insets(10));
         }
+    }
+    private void createPagination() {
+        int totalItems = salles.size();
+        int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
+
+        pagination = new Pagination(totalPages);
+        pagination.setPageFactory(pageIndex -> {
+            int fromIndex = pageIndex * ITEMS_PER_PAGE;
+            int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, totalItems);
+            List<Salle> pageSalles = salles.subList(fromIndex, toIndex);
+
+            try {
+                populateGrid(pageSalles);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return new  Pane();
+        });
+
+        list.setBottom(pagination);
     }
     private List<Salle> getData() throws SQLException {
-        List<Salle> salleList = new ArrayList<>();
-        SalleService salleService = new SalleService();
+            List<Salle> salleList = new ArrayList<>();
+            SalleService salleService = new SalleService();
 
-        // Assuming getAllSalle() returns a List<Salle>
-        for (Salle salle : salleService.getAllSalle()) {
-            Salle newSalle = new Salle();
-            newSalle.setNom(salle.getNom());
-            newSalle.setAddresse(salle.getAddresse());
-            newSalle.setNum_tel(salle.getNum_tel());
-            newSalle.setLogo_salle(salle.getLogo_salle());
-            newSalle.setCapacite(salle.getCapacite());
-            newSalle.setDescription(salle.getDescription());
-            newSalle.setNbr_client(salle.getNbr_client());
-            newSalle.setId(salle.getId());
-            // Add more properties if available
+            // Assuming getAllSalle() returns a List<Salle>
+            for (Salle salle : salleService.getAllSalle()) {
+                Salle newSalle = new Salle();
+                newSalle.setNom(salle.getNom());
+                newSalle.setAddresse(salle.getAddresse());
+                newSalle.setNum_tel(salle.getNum_tel());
+                newSalle.setLogo_salle(salle.getLogo_salle());
+                newSalle.setCapacite(salle.getCapacite());
+                newSalle.setDescription(salle.getDescription());
+                newSalle.setNbr_client(salle.getNbr_client());
+                newSalle.setId(salle.getId());
+                // Add more properties if available
 
-            salleList.add(newSalle);
+                salleList.add(newSalle);
+            }
+
+            return salleList;
         }
-
-        return salleList;
-    }
     @FXML
     private void showGestionPane() {
         gestion.setVisible(true);
@@ -179,6 +255,14 @@ public class SalleController implements Initializable {
             alert.showAndWait();
             return;
         }
+        SalleService salleService = new SalleService();
+
+        if (!salleService.isUnique(name.getText(), addresse.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Une salle avec le même nom et adresse existe déjà.");
+            alert.showAndWait();
+            return;
+        }
+
 
         // If all checks pass, proceed with the rest of the method
         Salle newSalle = new Salle();
@@ -189,7 +273,8 @@ public class SalleController implements Initializable {
         newSalle.setDescription(description.getText());
         newSalle.setNbr_client(Integer.parseInt(nbrclients.getText()));
         newSalle.setLogo_salle(imagePath);
-        SalleService salleService = new SalleService();
+
+
         try {
             salleService.addEvent(newSalle);
             hideGestionPane();
@@ -249,5 +334,46 @@ public class SalleController implements Initializable {
 
         }
     }
+    private void updatePagination(List<Salle> salles) {
+    // Clear the existing pagination
+    list.setBottom(null);
+
+
+        // Create a new pagination
+        int totalItems = salles.size();
+        int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
+
+        pagination = new Pagination(totalPages);
+        pagination.setPageFactory(pageIndex -> {
+            int fromIndex = pageIndex * ITEMS_PER_PAGE;
+            int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, totalItems);
+            List<Salle> pageSalles = salles.subList(fromIndex, toIndex);
+
+            try {
+                populateGrid(pageSalles);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return new Pane();
+        });
+
+        // Set the new pagination to the list
+        list.setBottom(pagination);
+
+    }
+    private void trierSalle(String option) throws IOException, SQLException {
+        if (option.equals("Trier par nom (ascendant)")) {
+            // Trier les salles en ordre ascendant
+            salles.sort(Comparator.comparing(Salle::getNom));
+        } else if (option.equals("Trier par nom (descendant)")) {
+            // Trier les salles en ordre descendant
+            salles.sort(Comparator.comparing(Salle::getNom).reversed());
+        }
+
+        // Mettre à jour la grille avec les salles triées
+        populateGrid(salles);
+    }
+
 
 }
