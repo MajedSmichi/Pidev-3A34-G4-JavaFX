@@ -1,29 +1,29 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬J$c1bf1fc1-fa0b-4d30-bf82-acd0ee7557f0
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬J$4b5cee70-f405-41f9-890b-3debc4e149cb
 z
-java:S1854)">Remove this useless assignment to local variable "connection".(ì·³óJ$70da6200-3ee3-4d8b-8b01-0569442a84d9
-~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8¼•Æ²ñ1J$39ab32f4-c806-4465-af6b-b94a352eddad
+java:S1854)">Remove this useless assignment to local variable "connection".(ì·³óJ$f6d2dfa3-d904-4e4a-92a6-d54e0ae80f56
+~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8¼•Æ²ñ1J$079b5d5f-8abe-41b3-b48b-fa7223300bb9
 k
-java:S1481)"/Remove this unused "connection" local variable.(ì·³óJ$ef20e4e6-0b93-43d3-bcb6-9ed26869850c
+java:S1481)"/Remove this unused "connection" local variable.(ì·³óJ$6e817045-78aa-4cb0-bc48-ec1b45ae0e5f
 ~
-java:S1128"6Remove this unused import 'SportHub.Entity.Evenement'.(îÉºìüÿÿÿÿ8Ç•Æ²ñ1J$c1f93336-8fc1-4865-a27a-dcff652de0e0
+java:S1128"6Remove this unused import 'SportHub.Entity.Evenement'.(îÉºìüÿÿÿÿ8Ç•Æ²ñ1J$e15f8578-3181-4505-b3d6-041430aaf7a5
 {
-java:S1128"3Remove this unused import 'SportHub.Entity.Ticket'.(ªŒÄüÿÿÿÿ8Ç•Æ²ñ1J$68fea789-51eb-4317-b0d6-a0f4d5f2465a
+java:S1128"3Remove this unused import 'SportHub.Entity.Ticket'.(ªŒÄüÿÿÿÿ8Ç•Æ²ñ1J$06f7525e-6a61-4667-9133-c5dd1e743e97
 ‡
-java:S1128"?Remove this unused import 'SportHub.Services.EvenementService'.(À–ê¢øÿÿÿÿ8È•Æ²ñ1J$5d9ef532-f9f2-4e9f-8810-12bf03e0f59a
+java:S1128"?Remove this unused import 'SportHub.Services.EvenementService'.(À–ê¢øÿÿÿÿ8È•Æ²ñ1J$288df53e-726b-4f26-9f24-8ca78fb5db62
 x
-java:S1128"5Remove this unused import 'SportHub.Entity.Category'.(‡šäé8È•Æ²ñ1J$d87f1a16-4f75-46ac-8a72-b881c53aec95
+java:S1128"5Remove this unused import 'SportHub.Entity.Category'.(‡šäé8È•Æ²ñ1J$9ea1a5bb-1ec6-45d9-a40f-92e35008b5f2
 †
-java:S1128">Remove this unused import 'SportHub.Services.CategoryService'.(‚Ïœùÿÿÿÿ8È•Æ²ñ1J$56e09cc1-6503-422a-afda-ddb288471787
+java:S1128">Remove this unused import 'SportHub.Services.CategoryService'.(‚Ïœùÿÿÿÿ8È•Æ²ñ1J$fb6521d8-55c9-478e-8873-d3d83e299596
 „
-java:S1128"<Remove this unused import 'SportHub.Services.TicketService'.(¤±Óüÿÿÿÿ8È•Æ²ñ1J$f32b8370-37c7-4a91-897e-77221c483d46
+java:S1128"<Remove this unused import 'SportHub.Services.TicketService'.(¤±Óüÿÿÿÿ8È•Æ²ñ1J$512a9190-2b2e-4e54-b43a-719d58c74b72
 f
-java:S1128"Remove this duplicated import.(À‡ô³úÿÿÿÿ8ôÜ³Ûğ1J$a739edfe-3449-4f62-b34a-9a329c2fd7b9
+java:S1128"Remove this duplicated import.(À‡ô³úÿÿÿÿ8ôÜ³Ûğ1J$03066fb1-036b-46d8-8cca-32f6e69b89a3
 „
-java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8È•Æ²ñ1J$4282a8c1-ec05-44e0-9120-79d4eb4a12df
+java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8È•Æ²ñ1J$8d5d539b-4e32-4cf4-9e94-b806f92da87f
 m
-java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8É•Æ²ñ1J$7c5f459b-b316-4c56-86e4-c4956c059703
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8É•Æ²ñ1J$59076303-3887-490c-b0f8-b70849f365b1
 u
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8É•Æ²ñ1J$ef61c214-0e00-400a-83f7-d8ed7b42cde5
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8É•Æ²ñ1J$58b5397b-39d7-48bb-ba26-f749f84f29c4
 s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8É•Æ²ñ1J$96ebadfd-4c24-4b75-8ede-846b066288b9
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8É•Æ²ñ1J$dd57603e-d5bc-477b-9d3a-2a2fe98ff35c

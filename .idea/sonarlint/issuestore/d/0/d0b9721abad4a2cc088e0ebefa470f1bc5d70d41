@@ -1,8 +1,0 @@
-
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÂÜ’ýÿÿÿÿ8ï‘Ðµñ1J$ab7c2827-597a-4184-b56c-0f43ab1486fc
-¯
-java:S1450("gRemove the "categoriesObservableList" field and declare it as a local variable in the relevant methods.(ñë¨—ùÿÿÿÿ8»’Ðµñ1J$95a74df8-16cf-4db0-b23a-7555c8071553
-¡
-java:S1171@"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ì’Ðµñ1J$4131e3e9-0b76-45d8-88ca-d0af329835ac
-t
-java:S3011i",This accessibility update should be removed.(Åë¿‹ùÿÿÿÿ8Ù’Ðµñ1J$999199cb-e9c2-4c89-ba2b-b0b79d03ead7

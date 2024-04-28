@@ -1,8 +1,8 @@
 
-L
-java:S3740"/Provide the parametrized type for this generic.(κΖφ™8’» ιρ1
-΅	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( ΛΆδόÿÿÿÿ8ε±ΰθρ1J$ee2e7b08-ee25-4637-9d17-e52bb5fe3174
-{
-java:S1171U"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒΜβ–ψÿÿÿÿ8Έ» ιρ1
-b
-java:S1193v"@Replace the usage of the "instanceof" operator by a catch block.(ρ›»‹όÿÿÿÿ8Ό» ιρ1
+r
+java:S3740"/Provide the parametrized type for this generic.(κΖφ™8’» ιρ1J$503245d1-a415-4d19-8171-deb16248b759
+΅	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( ΛΆδόÿÿÿÿ8ε±ΰθρ1J$7b8fc8bf-f0a5-4d02-beb8-074854c46298
+΅
+java:S1171U"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒΜβ–ψÿÿÿÿ8Έ» ιρ1J$af5409d3-7ddd-47e0-9637-7d0101be27dd
+
+java:S1193v"@Replace the usage of the "instanceof" operator by a catch block.(ρ›»‹όÿÿÿÿ8Ό» ιρ1J$c0c4da79-e671-4fbe-8434-2229ef48c092

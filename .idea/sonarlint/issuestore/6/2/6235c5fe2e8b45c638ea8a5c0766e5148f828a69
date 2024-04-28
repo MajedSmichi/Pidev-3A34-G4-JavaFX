@@ -1,2 +1,4 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8†€ÂÍñ1J$dc927824-4083-4047-8d68-04c7ac2a39b1
+”
+java:S1192@"LDefine a constant instead of duplicating this literal "description" 4 times.(â€ğÙûÿÿÿÿ8¢ÖØªò1J$a76bb602-e209-4cbd-9afc-281529329eef
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8†€ÂÍñ1J$5bc4bb0c-c172-4ef9-af8c-1227c08a3e11

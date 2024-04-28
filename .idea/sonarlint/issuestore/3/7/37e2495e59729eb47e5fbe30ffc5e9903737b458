@@ -1,9 +1,9 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8¢ØÏçñ1J$e75e33b6-2839-4ae7-b9ba-a638de619728
-m	java:S106T"+Replace this use of System.err by a logger.(ÿêË8ÅØÏçñ1J$5d658de3-a612-478f-941f-9f330f0b995e
-r	java:S106_"+Replace this use of System.out by a logger.(§’–üÿÿÿÿ8ÆØÏçñ1J$e82f22cf-e14d-488a-8ed8-1da81a7d32a1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8¢ØÏçñ1J$184cb038-4ed1-4c11-a1c1-c52c57544948
+m	java:S106T"+Replace this use of System.err by a logger.(ÿêË8ÅØÏçñ1J$c4abd169-db2d-4b66-95da-d38f48d8c368
+r	java:S106_"+Replace this use of System.out by a logger.(§’–üÿÿÿÿ8ÆØÏçñ1J$e7b06083-154f-486d-a416-f0da92ed68f8
 „
-java:S1172{"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8ÉØÏçñ1J$b544aa22-e8c6-4bbb-ad9c-c21387f7cd55
-r	java:S106}"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ÉØÏçñ1J$757d68d0-43b9-4c9e-b0c8-16c86b7d217e
+java:S1172{"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8ÉØÏçñ1J$1bb6fe54-50e6-4ffe-81c4-6c8875e4085c
+r	java:S106}"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ÉØÏçñ1J$30826cb1-5a7e-417f-8356-2b524b939498
 v
-java:S1068."3Remove this unused "categoryService" private field.(å³Î8ÚØÏçñ1J$302023a3-6167-4a8b-8c02-5ed922afbb4c
+java:S1068."3Remove this unused "categoryService" private field.(å³Î8ÚØÏçñ1J$09b6d076-e3f0-449b-8060-6d76d0451a56

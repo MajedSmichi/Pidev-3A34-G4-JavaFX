@@ -1,6 +1,6 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ðµñ1J$ff86adc0-a486-4540-aa8a-63a296adcecb
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ï‘Ðµñ1J$c0337534-b174-4aae-8ac3-1f6f446b774b
 ¡
-java:S1171C"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8±Ãçýñ1J$e5eb8ab7-5d5f-4411-a63a-04926017b6f7
+java:S1171C"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8±Ãçýñ1J$7d37fc9e-4d19-42a3-b325-6b545cf417d7
 ‰
-java:S1193‚"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8»Ãçýñ1J$e2c777b5-0036-4667-87fb-a57eb8a64a38
+java:S1193‚"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8»Ãçýñ1J$874ded73-4ffb-4070-b8c7-ef99edbd4d52

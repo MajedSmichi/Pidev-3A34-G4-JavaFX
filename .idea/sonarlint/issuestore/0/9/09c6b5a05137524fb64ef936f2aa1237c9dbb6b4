@@ -1,0 +1,16 @@
+
+ª
+java:S1104"bMake backToCategoriesButton a static final constant or non-public and provide accessors if needed.(â™ıÿÿÿÿ8¡·ß±ò1J$ecabd5bb-e937-4567-a81e-225fd09753b8
+¥
+java:S1104"]Make categoryTableView a static final constant or non-public and provide accessors if needed.(£º›øÿÿÿÿ8¡·ß±ò1J$10918b52-038c-4a10-9f3f-51824c35f86c
+¦
+java:S1104"^Make categoryNameColumn a static final constant or non-public and provide accessors if needed.(¦ÙµÄúÿÿÿÿ8¢·ß±ò1J$02174f65-8974-4f78-85b8-dd3d8bb3c2e3
+¨
+java:S1104"eMake categoryDescriptionColumn a static final constant or non-public and provide accessors if needed.(øæÖÖ8¢·ß±ò1J$5f9de844-1d66-460e-968f-086bc85bc6db
+œ
+java:S1104"YMake exploreColumn a static final constant or non-public and provide accessors if needed.(¯±˜€8¢·ß±ò1J$3439a68c-ec2c-43e4-90a5-6a211253ef42
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8õ£±ò1J$6d4acb15-e198-491f-9a7d-0f56f7ace4c8
+¡
+java:S1171("YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Å·ß±ò1J$a849bb99-9f36-446c-b89b-e2e3e6fd03d8
+u
+java:S1128"-Remove this unused import 'javafx.fxml.FXML'.(ÃÚ¢„şÿÿÿÿ8Êõ£±ò1J$9de193d5-8db6-4bfd-b5ce-897eb623e6ae

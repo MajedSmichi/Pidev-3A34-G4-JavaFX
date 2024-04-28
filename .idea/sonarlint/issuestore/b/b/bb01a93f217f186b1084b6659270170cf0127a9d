@@ -1,9 +1,13 @@
 
-΅	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( ΛΆδόÿÿÿÿ8¶Γβρ1J$a572f93f-fd86-412d-8e32-43856cafd0db
-m	java:S106I"+Replace this use of System.err by a logger.(ÿκΛ8ϋΓβρ1J$a92a10b1-17fa-44b8-b502-a6f65b76421d
-r	java:S106T"+Replace this use of System.out by a logger.(§’–όÿÿÿÿ8όΓβρ1J$09fdea8e-e102-4a2e-9d20-c598dadac02c
-„
-java:S1172g"<Remove these unused method parameters "name", "description".(ε„‹ύÿÿÿÿ8ÿΓβρ1J$7024a9ab-3a8f-4954-93b7-1e34d7994861
-r	java:S106i"+Replace this use of System.out by a logger.(όσ‰ωÿÿÿÿ8€Δβρ1J$95c78c69-62dc-4c28-ad12-ddf2b4d27d3e
-v
-java:S1068."3Remove this unused "categoryService" private field.(ε³Ξ8΅Δβρ1J$05ab85cf-31a1-44dc-b8f6-bf31fc990325
+
+java:S1192R"FDefine a constant instead of duplicating this literal "Error" 3 times.(«όβY8® δώρ1J$c3b51c24-5be6-43be-8940-fdd22bd27867
+΅	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( ΛΆδόÿÿÿÿ8± δώρ1J$be69ad73-0583-467f-9915-0605ff548636
+x
+java:S2209@"5Change this instance-reference to a static reference.(ΤÒΗϋ8Ρ δώρ1J$e105efb1-47f3-4ef7-8ff5-42e014ae5dd7
+m	java:S106H"+Replace this use of System.err by a logger.(ÿκΛ8Ò δώρ1J$5c624ab7-71fe-4a59-9a0a-6e359ccb91c5
+_
+java:S1854p"=Remove this useless assignment to local variable "coursList".(ί“άήώÿÿÿÿ8Ί¦ζώρ1
+P
+java:S1481n".Remove this unused "coursList" local variable.(„ϊÿÿÿÿ8»¦ζώρ1
+†
+java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(Δά€ιόÿÿÿÿ8ΕΪδώρ1J$33cfe6e5-7682-4742-8913-3bb3292c92f0

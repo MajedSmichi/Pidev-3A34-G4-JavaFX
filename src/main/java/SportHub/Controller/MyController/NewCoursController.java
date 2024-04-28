@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -60,52 +61,59 @@ public class NewCoursController {
 
     private void loadCategories() {
         try {
-            List<Category> categories = CategoryService.getAllCategories();
-            ObservableList<Category> categoryList = FXCollections.observableArrayList(categories);
-            categoryChoiceBox.setItems(categoryList);
+            List<Category> categories = categoryService.getAllCategories();
+            categoryChoiceBox.setItems(FXCollections.observableArrayList(categories));
         } catch (SQLException e) {
             handleSQLException(e);
         }
     }
 
     private void handleSQLException(SQLException e) {
-        // Display error message to the user or log the error
         System.err.println("Error loading categories: " + e.getMessage());
     }
 
     @FXML
     public void addCours(MouseEvent event) {
-        String name = coursNameField.getText();
-        String description = coursDescriptionField.getText();
+        String name = coursNameField.getText().trim();
+        String description = coursDescriptionField.getText().trim();
         Category selectedCategory = categoryChoiceBox.getValue();
 
+        if (name.isEmpty() || description.isEmpty() || selectedCategory == null) {
+            showAlert("Error", "Please fill in all fields and select a category.");
+            return;
+        }
+
         try {
-            if (selectedCategory == null) {
-                System.out.println("Please select a category.");
-                return; // Exit the method if category is null
+            if (coursService.courseExists(name)) {
+                showAlert("Error", "Course with this name already exists.");
+                return;
             }
 
-            int categoryId = selectedCategory.getId(); // Assuming getId() returns the ID of the category
-
-            if (validateInputs(name, description, categoryId)) {
-                String pdfFilePath = pdfFile.getAbsolutePath();
-                String coverImageFilePath = coverImageFile.getAbsolutePath();
-
-                Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory, categoryId);
-                coursService.addCours(newCours);
-                closeWindow();
+            if (coursService.courseNameExistsInCategory(name, selectedCategory.getId())) {
+                showAlert("Error", "Course with this name already exists in the selected category.");
+                return;
             }
+
+            String pdfFilePath = pdfFile != null ? pdfFile.getAbsolutePath() : "";
+            String coverImageFilePath = coverImageFile != null ? coverImageFile.getAbsolutePath() : "";
+
+            Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory, selectedCategory.getId());
+            coursService.addCours(newCours);
+            closeWindow();
+            refreshCoursList(); // Refresh the list of courses after adding
         } catch (SQLException e) {
             handleSQLException(e);
         }
     }
 
-    private boolean validateInputs(String name, String description, int categoryId) {
-        if (categoryId <= 0 || pdfFile == null || coverImageFile == null) {
-            System.out.println("Please select category and upload both PDF and cover image.");
-            return false;
+    private void refreshCoursList() {
+        List<Cours> coursList;
+        try {
+            coursList = coursService.getAllCours();
+            // You can update the UI with the refreshed course list here
+        } catch (SQLException e) {
+            handleSQLException(e);
         }
-        return true;
     }
 
     @FXML
@@ -138,7 +146,6 @@ public class NewCoursController {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            // Handle FXML loading error
             e.printStackTrace();
         }
     }
@@ -146,5 +153,13 @@ public class NewCoursController {
     private void closeWindow() {
         Stage stage = (Stage) addCoursButton.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
