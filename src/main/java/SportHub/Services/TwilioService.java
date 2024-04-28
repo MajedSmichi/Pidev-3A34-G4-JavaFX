@@ -7,8 +7,8 @@ import com.twilio.type.PhoneNumber;
 public class TwilioService {
 
     // These are your Twilio Account SID and Auth Token
-    private static final String ACCOUNT_SID = "ACcabe995c392f3c6ac59a663e22e7b326";
-    private static final String AUTH_TOKEN = "acc309941bff8fe69b3ea7ffca7b7407";
+    private static final String ACCOUNT_SID = "";
+    private static final String AUTH_TOKEN = "";
 
     public void sendSms(String to, String from, String body) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
