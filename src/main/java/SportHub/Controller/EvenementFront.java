@@ -2,9 +2,7 @@ package SportHub.Controller;
 
 import SportHub.Entity.Evenement;
 import SportHub.Entity.Ticket;
-import SportHub.Services.EvenementService;
-import SportHub.Services.TicketService;
-import SportHub.Services.WeatherService;
+import SportHub.Services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +24,8 @@ public class EvenementFront {
     private GridPane eventContainer; // This is the container where you will add the event cards
 
     private WeatherService weatherService;
+    private TwilioService twilioService = new TwilioService();
+
 
     public void initialize() {
         try {
@@ -210,6 +210,7 @@ private GridPane createEventCard(Evenement event) {
         // Add the back button to the detailed card
         detailedCard.add(backButton, 1, 6);
 
+
         return detailedCard;
     }
 
@@ -254,9 +255,21 @@ private GridPane createEventCard(Evenement event) {
 
 
             // Create a back button with text
-            Button backButton = new Button("PARTICIPATE");
-            // Add the back button to the ticket card
-            ticketCard.add(backButton, 0, 7);
+            Button participateButton = new Button("PARTICIPATE");
+
+            // Add an action to the "PARTICIPATE" button
+            participateButton.setOnAction(e -> {
+                String to = "+21628913441";  // Replace with the phone number of the user
+                String from = "+14194929057";  // Replace with your Twilio number
+                String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
+                        + "Event Date: " + event.getDateEvenement().toString() + "\n"
+                        + "Ticket Type: " + ticket.getType() + "\n"
+                        + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
+                twilioService.sendSms(to, from, body);
+            });
+
+            // Add the button to the ticket card
+            ticketCard.add(participateButton, 0, 7);
 
         } else {
             // Handle the case where the ticket is null

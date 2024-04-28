@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 public class EvenementBack {
@@ -67,6 +68,12 @@ public class EvenementBack {
     private TextField event_titre;
     @FXML
     private AnchorPane root1;
+    @FXML
+    private TextField searchField;
+@FXML
+private ComboBox<String> sortComboBox;
+
+
 
     private TextField nom_image;
     private File file = null;
@@ -89,14 +96,77 @@ public class EvenementBack {
             ajouterPane.setVisible(false);
         });
         try {
-            displayEvents();
-        } catch (SQLException | IOException e) {
+List<Evenement> events = evenementService.getAllEvents();
+displayEvents(events);        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                searchEvents();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+
+        sortComboBox.getItems().addAll("Sort by Name", "Sort by Lieu");
+        sortComboBox.setPromptText("Sort");
+
+        sortComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            switch (newValue) {
+                case "Sort by Name":
+                    try {
+                        sortEventsByName();
+                    } catch (SQLException | IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    break;
+                case "Sort by Lieu":
+                    try {
+                        sortEventsByLieu();
+                    } catch (SQLException | IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    break;
+            }
+        });
+
+
     }
 
-    private void displayEvents() throws SQLException, IOException {
-        List<Evenement> events = evenementService.getAllEvents();
+@FXML
+private void sortEventsByName() throws SQLException, IOException {
+    List<Evenement> events = evenementService.getAllEvents();
+    events.sort(Comparator.comparing(Evenement::getNom)); // Sort events by name
+    displayEvents(events);
+}
+
+@FXML
+private void sortEventsByLieu() throws SQLException, IOException {
+    List<Evenement> events = evenementService.getAllEvents();
+    events.sort(Comparator.comparing(Evenement::getLieu)); // Sort events by lieu
+    displayEvents(events);
+}
+@FXML
+private void searchEvents() throws SQLException, IOException {
+    String searchTerm = searchField.getText();
+    List<Evenement> events = evenementService.searchEvents(searchTerm);
+    eventContainerBack.getChildren().clear();
+    if (events.isEmpty()) {
+        Label label = new Label("Aucun événement ne correspond à votre recherche");
+        label.getStyleClass().add("error-message"); // Add a style class to style the error message
+        eventContainerBack.add(label, 0, 0);
+    } else {
+        displayEvents(events);
+    }
+}
+
+
+    private void displayEvents(List<Evenement> events) throws SQLException, IOException {
+        eventContainerBack.getChildren().clear();
+
         for (int i = 0; i < events.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml"));
@@ -165,8 +235,8 @@ public void eventAdd() {
             alert.setContentText("Successfully Added!");
             alert.showAndWait();
 
-            displayEvents();
-        }
+            List<Evenement> events = evenementService.getAllEvents();
+            displayEvents(events);        }
     } catch (Exception e) {
         e.printStackTrace();
     }

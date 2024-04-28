@@ -1,13 +1,20 @@
 package SportHub.Entity;
+import com.google.gson.annotations.Expose;
+
 import java.sql.Date;
 
 public class Evenement {
+    @Expose
     private int id;
+    @Expose
     private String nom;
+    @Expose
     private String description;
+    @Expose
     private String lieu;
+    @Expose
     private Date dateEvenement;
-    //private Collection<Ticket> tickets;
+    @Expose
     private String imageEvenement;
 
     public Evenement() {
