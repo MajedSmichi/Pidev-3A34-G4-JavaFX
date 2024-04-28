@@ -70,8 +70,8 @@ public class EvenementBack {
     private AnchorPane root1;
     @FXML
     private TextField searchField;
-@FXML
-private ComboBox<String> sortComboBox;
+    @FXML
+    private ComboBox<String> sortComboBox;
 
 
 
@@ -96,8 +96,8 @@ private ComboBox<String> sortComboBox;
             ajouterPane.setVisible(false);
         });
         try {
-List<Evenement> events = evenementService.getAllEvents();
-displayEvents(events);        } catch (SQLException | IOException e) {
+            List<Evenement> events = evenementService.getAllEvents();
+            displayEvents(events);        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 
@@ -136,32 +136,32 @@ displayEvents(events);        } catch (SQLException | IOException e) {
 
     }
 
-@FXML
-private void sortEventsByName() throws SQLException, IOException {
-    List<Evenement> events = evenementService.getAllEvents();
-    events.sort(Comparator.comparing(Evenement::getNom)); // Sort events by name
-    displayEvents(events);
-}
-
-@FXML
-private void sortEventsByLieu() throws SQLException, IOException {
-    List<Evenement> events = evenementService.getAllEvents();
-    events.sort(Comparator.comparing(Evenement::getLieu)); // Sort events by lieu
-    displayEvents(events);
-}
-@FXML
-private void searchEvents() throws SQLException, IOException {
-    String searchTerm = searchField.getText();
-    List<Evenement> events = evenementService.searchEvents(searchTerm);
-    eventContainerBack.getChildren().clear();
-    if (events.isEmpty()) {
-        Label label = new Label("Aucun événement ne correspond à votre recherche");
-        label.getStyleClass().add("error-message"); // Add a style class to style the error message
-        eventContainerBack.add(label, 0, 0);
-    } else {
+    @FXML
+    private void sortEventsByName() throws SQLException, IOException {
+        List<Evenement> events = evenementService.getAllEvents();
+        events.sort(Comparator.comparing(Evenement::getNom)); // Sort events by name
         displayEvents(events);
     }
-}
+
+    @FXML
+    private void sortEventsByLieu() throws SQLException, IOException {
+        List<Evenement> events = evenementService.getAllEvents();
+        events.sort(Comparator.comparing(Evenement::getLieu)); // Sort events by lieu
+        displayEvents(events);
+    }
+    @FXML
+    private void searchEvents() throws SQLException, IOException {
+        String searchTerm = searchField.getText();
+        List<Evenement> events = evenementService.searchEvents(searchTerm);
+        eventContainerBack.getChildren().clear();
+        if (events.isEmpty()) {
+            Label label = new Label("Aucun événement ne correspond à votre recherche");
+            label.getStyleClass().add("error-message"); // Add a style class to style the error message
+            eventContainerBack.add(label, 0, 0);
+        } else {
+            displayEvents(events);
+        }
+    }
 
 
     private void displayEvents(List<Evenement> events) throws SQLException, IOException {
@@ -188,59 +188,59 @@ private void searchEvents() throws SQLException, IOException {
     }
 
 
-public void eventAdd() {
-    try {
-        Alert alert;
+    public void eventAdd() {
+        try {
+            Alert alert;
 
-        if (event_titre.getText().isEmpty()
-                || event_description.getText().isEmpty() || event_lieu.getText().isEmpty()
-                || event_date.getValue() == null
-        ) {
+            if (event_titre.getText().isEmpty()
+                    || event_description.getText().isEmpty() || event_lieu.getText().isEmpty()
+                    || event_date.getValue() == null
+            ) {
 
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Les champs sont obligatoires");
-            alert.showAndWait();
-        } else if (event_date.getValue().isBefore(LocalDate.now())) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Date doit être supérieure à la date actuelle");
-            alert.showAndWait();
-        } else if (evenementService.eventExists(event_titre.getText())) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Evènement nom déjà existe, merci de le changer");
-            alert.showAndWait();
-        } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Les champs sont obligatoires");
+                alert.showAndWait();
+            } else if (event_date.getValue().isBefore(LocalDate.now())) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Date doit être supérieure à la date actuelle");
+                alert.showAndWait();
+            } else if (evenementService.eventExists(event_titre.getText())) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Evènement nom déjà existe, merci de le changer");
+                alert.showAndWait();
+            } else {
 
-            Evenement event = new Evenement();
-            event.setNom(event_titre.getText());
-            event.setDescription(event_description.getText());
-            event.setLieu(event_lieu.getText());
-            event.setDateEvenement(Date.valueOf(event_date.getValue()));
+                Evenement event = new Evenement();
+                event.setNom(event_titre.getText());
+                event.setDescription(event_description.getText());
+                event.setLieu(event_lieu.getText());
+                event.setDateEvenement(Date.valueOf(event_date.getValue()));
 
-            if (file != null) {
-                event.setImageEvenement(file.getPath()); // Set the image path
-            }
+                if (file != null) {
+                    event.setImageEvenement(file.getPath()); // Set the image path
+                }
 
-            EvenementService service = new EvenementService();
-            service.addEvent(event);
+                EvenementService service = new EvenementService();
+                service.addEvent(event);
 
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Successfully Added!");
-            alert.showAndWait();
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Added!");
+                alert.showAndWait();
 
-            List<Evenement> events = evenementService.getAllEvents();
-            displayEvents(events);        }
-    } catch (Exception e) {
-        e.printStackTrace();
+                List<Evenement> events = evenementService.getAllEvents();
+                displayEvents(events);        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 
 
 
@@ -256,11 +256,11 @@ public void eventAdd() {
         }
     }
 
-private void openDetails(Evenement event) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/DetailsEvenementBack.fxml"));
-    Parent detailsRoot = fxmlLoader.load();
-    DetailsEvenementBack controller = fxmlLoader.getController();
-    controller.setEvent(event);
-    root1.getChildren().setAll(detailsRoot);
-}
+    private void openDetails(Evenement event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/DetailsEvenementBack.fxml"));
+        Parent detailsRoot = fxmlLoader.load();
+        DetailsEvenementBack controller = fxmlLoader.getController();
+        controller.setEvent(event);
+        root1.getChildren().setAll(detailsRoot);
+    }
 }

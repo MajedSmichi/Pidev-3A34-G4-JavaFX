@@ -7,8 +7,8 @@ import kong.unirest.json.JSONObject;
 
 public class WeatherService {
 
-    private static final String BASE_URL = "vv";
-    private static final String API_KEY = "vv"; // Replace with your actual API key
+    //private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/weather";
+    //private static final String API_KEY = "100139112fc443f511bf72a8c6f8024f";
 
     public JSONObject getWeatherByCity(String city) {
         HttpResponse<JsonNode> response = Unirest.get(BASE_URL)

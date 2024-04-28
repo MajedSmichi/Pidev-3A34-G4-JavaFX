@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import SportHub.Services.WeatherService;
 import kong.unirest.json.JSONObject;
@@ -65,9 +67,12 @@ private GridPane createEventCard(Evenement event) {
     if (weatherData != null) {
         // Extract the weather information from the JSON object
         String weatherDescription = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
-        double temperature = weatherData.getJSONObject("main").getDouble("temp");
+        double temperatureInKelvin = weatherData.getJSONObject("main").getDouble("temp");
 
-        weatherInfo = "Weather: " + weatherDescription + ", Temperature: " + temperature;
+        // Convert the temperature to Celsius
+        double temperatureInCelsius = temperatureInKelvin - 273.15;
+
+        weatherInfo = " " + weatherDescription + ",  " + String.format("%.2f", temperatureInCelsius) + "°C";
     }
 
     Label weatherLabel = new Label(weatherInfo);
@@ -210,78 +215,106 @@ private GridPane createEventCard(Evenement event) {
         // Add the back button to the detailed card
         detailedCard.add(backButton, 1, 6);
 
+        // Calculate the number of days left for the event
+        LocalDate currentDate = LocalDate.now();
+        LocalDate evenementDate = event.getDateEvenement().toLocalDate();
+        long daysLeft = ChronoUnit.DAYS.between(currentDate, evenementDate);
+
+        // Create a label to display the number of days left
+        Label daysLeftLabel = new Label("Days left for the event: " + daysLeft);
+        detailedCard.add(daysLeftLabel, 0, 7); // Adjust the index as per your layout
 
         return detailedCard;
     }
 
 
-    private GridPane createTicketCard(Evenement event) throws SQLException {
-        GridPane ticketCard = new GridPane();
-        ticketCard.getStyleClass().add("ticket-card"); // Add the style class
+private GridPane createTicketCard(Evenement event) throws SQLException {
+    GridPane ticketCard = new GridPane();
+    ticketCard.getStyleClass().add("ticket-card"); // Add the style class
 
-        // Create a TicketService instance to fetch the ticket details
-        TicketService ticketService = new TicketService();
-        Ticket ticket = ticketService.getTicketByEventId(event.getId());
+    // Create a TicketService instance to fetch the ticket details
+    TicketService ticketService = new TicketService();
+    Ticket ticket = ticketService.getTicketByEventId(event.getId());
 
-        // Check if the ticket is not null before accessing it
-        if (ticket != null) {
-            // Add the ticket details to the card
+    // Check if the ticket is not null before accessing it
+    if (ticket != null && ticket.getNbreTicket() > 0) {
+        // Add the ticket details to the card
+        Label eventName = new Label("Event Name: " + event.getNom());
+        eventName.getStyleClass().add("ticket-label");
 
+        Label eventTitle = new Label("     VOTRE TICKET ");
+        Label eventTi = new Label("------------------------------- ");
+        Label eventTi1 = new Label("------------------------------- ");
 
-            Label eventName = new Label("Event Name: " + event.getNom());
-            eventName.getStyleClass().add("ticket-label");
+        Label ticketType = new Label("Ticket Type: " + ticket.getType());
+        ticketType.getStyleClass().add("ticket-label");
 
-            Label eventTitle = new Label("     VOTRE TICKET ");
-            Label eventTi = new Label("------------------------------- ");
-            Label eventTi1 = new Label("------------------------------- ");
+        Label ticketPrice = new Label("Ticket Price: " + ticket.getPrix() + " DT");
+        ticketPrice.getStyleClass().add("ticket-label");
 
+        Label ticketQuantity = new Label("Ticket Quantity: " + ticket.getNbreTicket());
+        ticketQuantity.getStyleClass().add("ticket-label");
 
-            Label ticketType = new Label("Ticket Type: " + ticket.getType());
-            ticketType.getStyleClass().add("ticket-label");
+        ticketCard.add(eventTitle, 0, 0);
+        ticketCard.add(eventTi, 0, 1);
+        ticketCard.add(eventName, 0, 2);
+        ticketCard.add(ticketType, 0, 3);
+        ticketCard.add(ticketPrice, 0, 4);
+        ticketCard.add(ticketQuantity, 0, 5);
+        ticketCard.add(eventTi1, 0, 6);
 
-            Label ticketPrice = new Label("Ticket Price: " + ticket.getPrix() + " DT");
-            ticketPrice.getStyleClass().add("ticket-label");
+        // Create a back button with text
+        Button participateButton = new Button("PARTICIPATE");
 
-            Label ticketQuantity = new Label("Ticket Quantity: " + ticket.getNbreTicket());
-            ticketQuantity.getStyleClass().add("ticket-label");
+        // Add an action to the "PARTICIPATE" button
+        participateButton.setOnAction(e -> {
+            // Decrease the ticket quantity by one
+            ticket.setNbreTicket(ticket.getNbreTicket() - 1);
 
-            ticketCard.add(eventTitle, 0, 0);
-            ticketCard.add(eventTi, 0, 1);
-            ticketCard.add(eventName, 0, 2);
-            ticketCard.add(ticketType, 0, 3);
-            ticketCard.add(ticketPrice, 0, 4);
-            ticketCard.add(ticketQuantity, 0, 5);
-            ticketCard.add(eventTi1, 0, 6);
+            // Extract the parameters from the Ticket object
+            int id = ticket.getId();
+            Integer evenement_id = ticket.getEvenementId();
+            Integer prix = ticket.getPrix();
+            String type = ticket.getType();
+            Integer nbre_ticket = ticket.getNbreTicket();
 
+            // Update the ticket in the database
+            try {
+                ticketService.updateTicket(id, evenement_id, prix, type, nbre_ticket);
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            }
+            // Refresh the ticket card
+            eventContainer.getChildren().remove(ticketCard);
+            try {
+                GridPane newTicketCard = createTicketCard(event);
+                eventContainer.add(newTicketCard, 1, 0);
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            }
 
-            // Create a back button with text
-            Button participateButton = new Button("PARTICIPATE");
+            // Send SMS
+            String to = "+21628913441";  // Replace with the phone number of the user
+            String from = "+14194929057";  // Replace with your Twilio number
+            String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
+                    + "Event Date: " + event.getDateEvenement().toString() + "\n"
+                    + "Ticket Type: " + ticket.getType() + "\n"
+                    + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
+            twilioService.sendSms(to, from, body);
+        });
 
-            // Add an action to the "PARTICIPATE" button
-            participateButton.setOnAction(e -> {
-                String to = "+21628913441";  // Replace with the phone number of the user
-                String from = "+14194929057";  // Replace with your Twilio number
-                String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
-                        + "Event Date: " + event.getDateEvenement().toString() + "\n"
-                        + "Ticket Type: " + ticket.getType() + "\n"
-                        + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
-                twilioService.sendSms(to, from, body);
-            });
+        // Add the button to the ticket card
+        ticketCard.add(participateButton, 0, 7);
 
-            // Add the button to the ticket card
-            ticketCard.add(participateButton, 0, 7);
-
-        } else {
-            // Handle the case where the ticket is null
-            Label noTicketLabel = new Label("No ticket available .");
-            noTicketLabel.getStyleClass().add("ticket-label");
-            ticketCard.add(noTicketLabel, 0, 0);
-        }
-
-
-        return ticketCard;
+    } else {
+        // Handle the case where the ticket is null or sold out
+        Label noTicketLabel = new Label("Ticket épuisé.");
+        noTicketLabel.getStyleClass().add("ticket-label");
+        ticketCard.add(noTicketLabel, 0, 0);
     }
 
+    return ticketCard;
+}
     private List<Evenement> fetchEventsFromDatabase() throws SQLException {
         EvenementService service = new EvenementService();
         return service.getAllEvents();

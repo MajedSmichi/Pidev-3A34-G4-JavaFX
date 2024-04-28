@@ -82,27 +82,27 @@ public class EvenementService {
         }
     }
 
-public List<Evenement> getAllEvents() throws SQLException {
-    List<Evenement> events = new ArrayList<>();
-    String query = "SELECT * FROM evenement";
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery(query);
-    while (resultSet.next()) {
-        Evenement event = new Evenement();
-        event.setId(resultSet.getInt("id"));
-        event.setNom(resultSet.getString("nom"));
-        event.setDescription(resultSet.getString("description"));
-        event.setLieu(resultSet.getString("lieu"));
-        event.setDateEvenement(resultSet.getDate("date_evenement"));
-        event.setImageEvenement(resultSet.getString("image_evenement"));
-        events.add(event);
+    public List<Evenement> getAllEvents() throws SQLException {
+        List<Evenement> events = new ArrayList<>();
+        String query = "SELECT * FROM evenement";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            Evenement event = new Evenement();
+            event.setId(resultSet.getInt("id"));
+            event.setNom(resultSet.getString("nom"));
+            event.setDescription(resultSet.getString("description"));
+            event.setLieu(resultSet.getString("lieu"));
+            event.setDateEvenement(resultSet.getDate("date_evenement"));
+            event.setImageEvenement(resultSet.getString("image_evenement"));
+            events.add(event);
+        }
+
+        // Print the events for debugging
+        System.out.println(events);
+
+        return events;
     }
-
-    // Print the events for debugging
-    System.out.println(events);
-
-    return events;
-}
 
 
     public List<String> getAllEventNames() throws SQLException {
@@ -176,43 +176,42 @@ public List<Evenement> getAllEvents() throws SQLException {
     }
 
 
-public String convertEventsToJson(List<Evenement> events) {
-    List<Map<String, Object>> formattedEvents = new ArrayList<>();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"); // Adjusted date format
-    for (Evenement event : events) {
-        Map<String, Object> formattedEvent = new HashMap<>();
-        formattedEvent.put("title", event.getNom());
-        formattedEvent.put("start", sdf.format(event.getDateEvenement()));
-        // Add more fields as needed
-        formattedEvents.add(formattedEvent);
+    public String convertEventsToJson(List<Evenement> events) {
+        List<Map<String, Object>> formattedEvents = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"); // Adjusted date format
+        for (Evenement event : events) {
+            Map<String, Object> formattedEvent = new HashMap<>();
+            formattedEvent.put("title", event.getNom());
+            formattedEvent.put("start", sdf.format(event.getDateEvenement()));
+            // Add more fields as needed
+            formattedEvents.add(formattedEvent);
+        }
+        Gson gson = new GsonBuilder().create();
+        return gson.toJson(formattedEvents);
     }
-    Gson gson = new GsonBuilder().create();
-    return gson.toJson(formattedEvents);
-}
 
 
-public List<Evenement> searchEvents(String searchTerm) throws SQLException {
-    List<Evenement> events = new ArrayList<>();
-    String query = "SELECT * FROM evenement WHERE nom LIKE ?";
-    PreparedStatement preparedStatement = connection.prepareStatement(query);
-    preparedStatement.setString(1, "%" + searchTerm + "%");
-    ResultSet resultSet = preparedStatement.executeQuery();
-    while (resultSet.next()) {
-        Evenement event = new Evenement();
-        event.setId(resultSet.getInt("id"));
-        event.setNom(resultSet.getString("nom"));
-        event.setDescription(resultSet.getString("description"));
-        event.setLieu(resultSet.getString("lieu"));
-        event.setDateEvenement(resultSet.getDate("date_evenement"));
-        event.setImageEvenement(resultSet.getString("image_evenement"));
-        events.add(event);
+    public List<Evenement> searchEvents(String searchTerm) throws SQLException {
+        List<Evenement> events = new ArrayList<>();
+        String query = "SELECT * FROM evenement WHERE nom LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, "%" + searchTerm + "%");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Evenement event = new Evenement();
+            event.setId(resultSet.getInt("id"));
+            event.setNom(resultSet.getString("nom"));
+            event.setDescription(resultSet.getString("description"));
+            event.setLieu(resultSet.getString("lieu"));
+            event.setDateEvenement(resultSet.getDate("date_evenement"));
+            event.setImageEvenement(resultSet.getString("image_evenement"));
+            events.add(event);
+        }
+        return events;
     }
-    return events;
-}
 
 
 }
-
 
 
 
