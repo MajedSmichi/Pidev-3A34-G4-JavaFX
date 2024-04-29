@@ -1,0 +1,25 @@
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+.label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #333;
+}
+
+.button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.table-view {
+    -fx-background-color: #fff;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-column {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: transparent;
+}

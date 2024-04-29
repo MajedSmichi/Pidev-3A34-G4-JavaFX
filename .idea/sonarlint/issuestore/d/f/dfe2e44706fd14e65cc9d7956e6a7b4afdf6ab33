@@ -1,7 +1,17 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Ó×Ü³ò1
-q
-java:S2095•"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(°§¿ƒøÿÿÿÿ8÷×Ü³ò1
-p	java:S100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ãçÿÿÿÿÿ8‹ØÜ³ò1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Ô‰¬¹ò1J$9ab05b12-72fd-44b2-b219-6cd862762f35
+—
+java:S2095‘"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(°§¿ƒøÿÿÿÿ8Æñ‰ºò1J$e8e2dfb1-6f25-42e6-afde-8b8bc67c4050
+n	java:S106•"+Replace this use of System.out by a logger.(áÄ¸›8ƒò‰ºò1J$79e3eacc-cb64-46db-87c1-c6536ecca600
+s	java:S106˜"+Replace this use of System.out by a logger.(¢Ò×±üÿÿÿÿ8…ò‰ºò1J$169caaa3-a1c0-4aef-970f-2d95350d6f90
+s	java:S106š"+Replace this use of System.out by a logger.(©òßêÿÿÿÿÿ8‡ò‰ºò1J$6900acbe-9cbc-4556-91f1-720fa65b773a
+s	java:S106œ"+Replace this use of System.out by a logger.(í€Ëªûÿÿÿÿ8‰ò‰ºò1J$2bd4677a-27ff-409d-992b-5b8771a1f4d7
+–	java:S100¡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ãçÿÿÿÿÿ8Ç‡Ó¹ò1J$a9afdd4a-e60b-4348-bcf8-fc227f6a4252
+^
+java:S1128"<Remove this unused import 'javafx.embed.swing.SwingFXUtils'.(‡Ç›†ıÿÿÿÿ8ĞŠºò1
 W
-java:S1128	"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8›ØÜ³ò1
+java:S1128	"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8‘ĞŠºò1
+O
+java:S1128"2Remove this unused import 'javax.imageio.ImageIO'.(‘çÔû8’ĞŠºò1
+[
+java:S1128"9Remove this unused import 'java.awt.image.BufferedImage'.(×íĞ‡şÿÿÿÿ8’ĞŠºò1

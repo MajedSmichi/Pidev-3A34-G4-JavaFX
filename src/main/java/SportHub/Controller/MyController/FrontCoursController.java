@@ -25,10 +25,7 @@ import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -68,9 +65,19 @@ public class FrontCoursController {
     @FXML
     private void displayCategoryName() {
         if (selectedCategory != null) {
-            categoryNameLabel.setText(selectedCategory.getType().toUpperCase()+" Courses");
+            categoryNameLabel.setText(selectedCategory.getType().toUpperCase() + " Courses");
         }
     }
+
+    private ImageView loadImage(String imagePath) {
+    try {
+        Image image = new Image(new FileInputStream(imagePath));
+        return new ImageView(image);
+    } catch (IOException e) {
+        e.printStackTrace();
+        return new ImageView(); // Return an empty ImageView if image loading fails
+    }
+}
 
     @FXML
     public void initialize() {
@@ -120,41 +127,35 @@ public class FrontCoursController {
             // Handle SQLException if needed
         }
     }
-    @FXML
-    private ImageView loadImage(String imageData) {
-        try {
-            byte[] imageBytes = java.util.Base64.getDecoder().decode(imageData);
-            BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            return new ImageView(image);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ImageView(); // Return an empty ImageView if image loading fails
-        }
-    }
-    @FXML
-    private void downloadPDF(Cours course) {
-        try {
-            // Convert PDF data from base64 to bytes
-            byte[] pdfBytes = java.util.Base64.getDecoder().decode(course.getPdfFileData());
 
-            // Choose where to save the PDF file
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save PDF File");
-            fileChooser.setInitialFileName(course.getName().toUpperCase() + ".pdf");
-            File file = fileChooser.showSaveDialog(stage);
+@FXML
+private void downloadPDF(Cours course) {
+    try {
+        // Convert PDF data from base64 to bytes
+        byte[] pdfBytes = java.util.Base64.getDecoder().decode(course.getPdfFileData());
 
-            if (file != null) {
-                // Save the PDF file
-                FileOutputStream outputStream = new FileOutputStream(file);
-                outputStream.write(pdfBytes);
-                outputStream.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle IOException if needed
+        // Choose where to save the PDF file
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save PDF File");
+        fileChooser.setInitialFileName(course.getName().toUpperCase() + ".pdf");
+        File file = fileChooser.showSaveDialog(stage);
+
+        if (file != null) {
+            // Save the PDF file
+            FileOutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(pdfBytes);
+            outputStream.close();
+        } else {
+            System.out.println("File selection was cancelled.");
         }
+    } catch (IllegalArgumentException e) {
+        System.out.println("Failed to decode base64 PDF data: " + e.getMessage());
+    } catch (FileNotFoundException e) {
+        System.out.println("Failed to create output file: " + e.getMessage());
+    } catch (IOException e) {
+        System.out.println("Failed to write to output file: " + e.getMessage());
     }
+}
 
     @FXML
     public void GotoCategories(MouseEvent actionEvent) throws IOException {

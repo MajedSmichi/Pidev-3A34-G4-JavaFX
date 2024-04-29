@@ -6,6 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -14,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Map;
 
 public class FrontCategoryController {
     public Button backToCategoriesButton;
@@ -72,6 +78,34 @@ public class FrontCategoryController {
             // Handle exception as needed
         }
     }
+    @FXML
+    private void handleStatsButton(ActionEvent event) {
+    try {
+        // Fetch the data from the database
+        Map<String, Integer> categoryStats = coursService.getTop5Categories();
+
+        // Create a dataset for the bar chart
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<String, Integer> entry : categoryStats.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        barChart.getData().add(series);
+
+        // Create a new stage and scene to display the bar chart
+        Stage stage = new Stage();
+        Scene scene = new Scene(barChart, 800, 600);
+        stage.setScene(scene);
+        stage.show();
+    } catch (Exception e) {
+        e.printStackTrace();
+        // Handle exception as needed
+    }
+}
 
     public void setFrontCoursController(FrontCoursController frontCoursController) {
         this.frontCoursController = frontCoursController;

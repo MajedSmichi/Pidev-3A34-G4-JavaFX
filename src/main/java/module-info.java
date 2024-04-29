@@ -6,6 +6,7 @@ module com.example.gestionreclamation {
     requires java.sql;
     requires java.persistence;
     requires javafx.swing;
+    requires java.desktop;
     opens SportHub to javafx.fxml;
     exports SportHub;
     exports connectionSql;

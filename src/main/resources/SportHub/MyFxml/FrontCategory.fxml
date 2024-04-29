@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCategoryController">
    <children>
       <Label layoutX="44.0" layoutY="38.0" prefHeight="17.0" prefWidth="177.0" text="Categories">
@@ -25,5 +26,10 @@
             <TableColumn fx:id="exploreColumn" minWidth="0.0" prefWidth="222.0" text="C2" />
         </columns>
       </TableView>
+       <Button fx:id="statsButton" layoutX="200.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#handleStatsButton" prefHeight="25.0" prefWidth="200.0" text="Show Category Stats">
+           <font>
+               <Font name="Roboto Black" size="12.0" />
+           </font>
+       </Button>
    </children>
 </AnchorPane>

@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CoursService {
     private Connection connection;
@@ -136,6 +138,22 @@ public class CoursService {
         return courses;
     }
 
+    public Map<String, Integer> getTop5Categories() throws SQLException {
+        String query = "SELECT c.type, COUNT(*) as course_count FROM cours co JOIN category c ON co.category_id = c.id GROUP BY c.type ORDER BY course_count DESC LIMIT 5";
+        Map<String, Integer> topCategories = new LinkedHashMap<>();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String categoryName = resultSet.getString("type");
+                int courseCount = resultSet.getInt("course_count");
+                topCategories.put(categoryName, courseCount);
+            }
+        }
+
+        return topCategories;
+    }
     public List<Category> getAllCategories() throws SQLException {
         List<Category> categories = new ArrayList<>();
         String query = "SELECT id, type, description FROM category";
