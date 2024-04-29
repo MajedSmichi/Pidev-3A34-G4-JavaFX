@@ -105,11 +105,17 @@ public void LoginButtonAction() {
             User user = getUserByEmail(email);
             SessionManager.getInstance().setCurrentUser(user);
 
+            // Check if the user is verified
+            if (!user.isVerified()) {
+                errorLabel.setText("Your account is banned.");
+                return;
+            }
+
             if (Arrays.asList(user.getRoles()).contains("ROLE_CLIENT")) {
-    navigateToFrontView();
-} else {
-    navigateToUserList(email);
-}
+                navigateToFrontView();
+            } else {
+                navigateToUserList(email);
+            }
         } else {
             errorLabel.setText("Invalid credentials");
         }
@@ -118,7 +124,6 @@ public void LoginButtonAction() {
         errorLabel.setText("Error connecting to the database.");
     }
 }
-
 
     private void navigateToUserList(String userEmail) {
         try {
