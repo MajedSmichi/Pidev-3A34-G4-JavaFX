@@ -16,6 +16,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class FrontCategoryController {
     public TableColumn<Category, Void> exploreColumn; // Added Explore column
 
     private final CoursService coursService;
+    public Button statsButton;
     private FrontCoursController frontCoursController;
 
     public FrontCategoryController() {
@@ -79,7 +81,7 @@ public class FrontCategoryController {
         }
     }
     @FXML
-    private void handleStatsButton(ActionEvent event) {
+    private void handleStatsButton(MouseEvent event) {
     try {
         // Fetch the data from the database
         Map<String, Integer> categoryStats = coursService.getTop5Categories();

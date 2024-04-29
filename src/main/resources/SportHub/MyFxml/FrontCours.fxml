@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="styles.css" fx:controller="SportHub.Controller.MyController.FrontCoursController" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCoursController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label fx:id="categoryNameLabel" prefHeight="30.0" prefWidth="480.0" text="   Category Name">
+                  <Label fx:id="categoryNameLabel" prefHeight="30.0" prefWidth="461.0" text="    Category Name">
                      <font>
                         <Font name="Roboto Black" size="25.0" />
                      </font>
@@ -27,7 +27,7 @@
                   </Button>
                </children>
             </HBox>
-            <TableView fx:id="coursesTable" prefHeight="524.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="coursesTable" prefHeight="524.0" prefWidth="453.0" VBox.vgrow="ALWAYS">
                <columns>
                   <TableColumn fx:id="nameColumn" prefWidth="150.0" text="Name" />
                   <TableColumn fx:id="descriptionColumn" prefWidth="206.0" text="Description" />
