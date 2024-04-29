@@ -87,71 +87,74 @@ public class SalleController implements Initializable {
 
     private List<Salle> salles = new ArrayList<>();
 
-public void initialize(URL url, ResourceBundle resourceBundle) {
-    try {
-        salles = getData();
-        createPagination();
-        populateGrid(salles);
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            salles = getData();
+            createPagination();
+            populateGrid(salles);
 
-        // Add sorting options to the filter ComboBox
-        // Add sorting options to the filter ComboBox
-        filter.getItems().addAll("Trier par nombre de client (ascendant)", "Trier par nombre de client (descendant)", "Par défaut");
+            // Add sorting options to the filter ComboBox
+            // Add sorting options to the filter ComboBox
+            filter.getItems().addAll("Trier par nombre de client (ascendant)", "Trier par nombre de client (descendant)", "Par défaut");
 
-        // Add a listener to the filter ComboBox
-        filter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            try {
-                List<Salle> sortedSalles;
-                if (newValue.equals("Trier par nombre de client (ascendant)")) {
-                    sortedSalles = salles.stream()
-                            .sorted(Comparator.comparing(Salle::getNbr_client))
-                            .collect(Collectors.toList());
-                } else if (newValue.equals("Trier par nombre de client (descendant)")) {
-                    sortedSalles = salles.stream()
-                            .sorted(Comparator.comparing(Salle::getNbr_client).reversed())
-                            .collect(Collectors.toList());
-                } else {
-                    return;
+            // Add a listener to the filter ComboBox
+            filter.valueProperty().addListener((observable, oldValue, newValue) -> {
+                try {
+                    List<Salle> sortedSalles;
+                    if (newValue.equals("Trier par nombre de client (ascendant)")) {
+                        sortedSalles = salles.stream()
+                                .sorted(Comparator.comparing(Salle::getNbr_client))
+                                .collect(Collectors.toList());
+                    } else if (newValue.equals("Trier par nombre de client (descendant)")) {
+                        sortedSalles = salles.stream()
+                                .sorted(Comparator.comparing(Salle::getNbr_client).reversed())
+                                .collect(Collectors.toList());
+                    } else {
+                        return;
+                    }
+                    updatePagination(sortedSalles);
+                    populateGrid(sortedSalles);
+                } catch (IOException  e) {
+                    e.printStackTrace();
                 }
-                updatePagination(sortedSalles);
-                populateGrid(sortedSalles);
-            } catch (IOException  e) {
-                e.printStackTrace();
-            }
-        });
+            });
 
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
-            try {
-                List<Salle> filteredSalles = salles.stream()
-                        .filter(salle -> salle.getNom().toLowerCase().contains(newValue.toLowerCase()))
-                        .collect(Collectors.toList());
+            search.textProperty().addListener((observable, oldValue, newValue) -> {
+                try {
+                    List<Salle> filteredSalles = salles.stream()
+                            .filter(salle -> salle.getNom().toLowerCase().contains(newValue.toLowerCase()))
+                            .collect(Collectors.toList());
 
-                updatePagination(filteredSalles);
-                populateGrid(filteredSalles);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-    } catch (SQLException | IOException e) {
-        e.printStackTrace();
-    }
-}    private void populateGrid(List<Salle> salles) throws IOException {
-        GridSalle.getChildren().clear();
-        int columns = 0;
-        int row = 0; // Start from row 0 for each new page
-        for (Salle salle : salles) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneSalle.fxml"));
-            Pane pane = fxmlLoader.load(); // Load as Pane
-            uneSalleController oneSalle = fxmlLoader.getController();
-            oneSalle.setData(salle);
-            GridSalle.add(pane, columns, row); // Use the loaded Pane
-            columns++;
-            if (columns > 2) {
-                columns = 0;
-                row++;
-            }
-            GridPane.setMargin(pane, new Insets(10));
+                    updatePagination(filteredSalles);
+                    populateGrid(filteredSalles);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
         }
     }
+
+    private void populateGrid(List<Salle> salles) throws IOException {
+            GridSalle.getChildren().clear();
+            int columns = 0;
+            int row = 0; // Start from row 0 for each new page
+            for (Salle salle : salles) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/uneSalle.fxml"));
+                Pane pane = fxmlLoader.load(); // Load as Pane
+                uneSalleController oneSalle = fxmlLoader.getController();
+                oneSalle.setData(salle);
+                GridSalle.add(pane, columns, row); // Use the loaded Pane
+                columns++;
+                if (columns > 2) {
+                    columns = 0;
+                    row++;
+                }
+                GridPane.setMargin(pane, new Insets(10));
+            }
+        }
+
     private void createPagination() {
         int totalItems = salles.size();
         int totalPages = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
@@ -174,6 +177,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 
         list.setBottom(pagination);
     }
+
     private List<Salle> getData() throws SQLException {
             List<Salle> salleList = new ArrayList<>();
             SalleService salleService = new SalleService();
@@ -205,7 +209,6 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
     private void hideGestionPane() {
         gestion.setVisible(false);
     }
-
 
     @FXML
     void ajouterSalle(ActionEvent event) {
@@ -266,6 +269,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // If all checks pass, proceed with the rest of the method
         Salle newSalle = new Salle();
+        newSalle.setId(1);
         newSalle.setNom(name.getText());
         newSalle.setAddresse(addresse.getText());
         newSalle.setNum_tel(Integer.parseInt(numtel.getText()));
@@ -296,6 +300,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
             e.printStackTrace();
         }
     }
+
     private void refreshGridPane() throws SQLException {
         GridSalle.getChildren().clear(); // Clear the GridPane
         salles = getData(); // Get the updated data
@@ -321,7 +326,6 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
     }
     private String imagePath = null;
 
-
     @FXML
     void importimage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -334,6 +338,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 
         }
     }
+
     private void updatePagination(List<Salle> salles) {
     // Clear the existing pagination
     list.setBottom(null);
@@ -362,6 +367,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
         list.setBottom(pagination);
 
     }
+
     private void trierSalle(String option) throws IOException, SQLException {
         if (option.equals("Trier par nom (ascendant)")) {
             // Trier les salles en ordre ascendant

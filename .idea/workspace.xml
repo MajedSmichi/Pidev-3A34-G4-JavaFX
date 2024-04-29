@@ -5,34 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite 3">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/ActiviteCard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/EmailUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ExcelExporter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ReservationCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/ReservationCard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontSalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/SalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailFrontSalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Salle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Entity/Salle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/detailActiviteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/ActiviteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Services/SalleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/ActiviteCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/ActiviteCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Dash.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontActivite.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontSalle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Frontview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Frontview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Salle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Salle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/SalleCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontActivite.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/FrontView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailActivite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailActivite.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/salle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/salle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -214,7 +205,8 @@
       <workItem from="1713837944020" duration="5245000" />
       <workItem from="1713860675907" duration="1318000" />
       <workItem from="1713862018462" duration="3072000" />
-      <workItem from="1714056707228" duration="42004000" />
+      <workItem from="1714056707228" duration="42183000" />
+      <workItem from="1714322488657" duration="24666000" />
     </task>
     <task id="LOCAL-00001" summary="crud activite">
       <option name="closed" value="true" />

@@ -2,8 +2,11 @@ package GestionSalle.Controller;
 
 import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
+import GestionSalle.Entity.User;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -87,7 +91,20 @@ public class detailActiviteController {
 
     @FXML
     private ImageView updimage;
+
+    @FXML
+    private TableColumn<User, String> userNom;
+
+    @FXML
+    private TableColumn<User, String> numTel;
+
+    @FXML
+    private AnchorPane tabel;
+
+    @FXML
+    private TableView<User> listUser;
     private Activite activite;
+
     private Activite currentActivite;
     public void setCurrentActivite(Activite activite) {
     this.currentActivite = activite;
@@ -130,6 +147,8 @@ public class detailActiviteController {
         // Assuming 'modifier' is the AnchorPane you want to show
         boolean isVisible = modifier.isVisible();
         modifier.setVisible(!isVisible);
+        boolean is = tabel.isVisible();
+        tabel.setVisible(!is);
 
         // If the modifier AnchorPane is being shown, set the fields to the values of the currentActivite
         if (!isVisible && currentActivite != null) {
@@ -257,12 +276,33 @@ public class detailActiviteController {
         dateact.setText(formattedDate);
         nbrmaxact.setText(String.valueOf(activite.getNbr_max()));
         coachact.setText(activite.getCoach());
-        salleact.setText(String.valueOf(activite.getSalle_id()));
+        SalleService salleService = new SalleService();
+        try {
+            Salle salle = salleService.getSalleById(activite.getSalle_id());
+            if (salle != null) {
+                salleact.setText(salle.getNom());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         try {
             imageact.setImage(new Image(activite.getImage()));
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid URL or resource not found: " + activite.getImage());
+        }
+        listUser.setPlaceholder(new Label("Aucun utilisateur trouvé"));
+
+
+        // Récupérer la liste des utilisateurs associés à l'activité
+        ActiviteService activiteService = new ActiviteService();
+        try {
+            List<User> users = activiteService.getUsersByActiviteId(activite.getId());
+
+            // Peupler le TableView avec la liste des utilisateurs
+            populateUserTable(users);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -277,6 +317,15 @@ public class detailActiviteController {
             this.updimage.setImage(image); // Assuming 'image' is the ImageView in your ActiviteController
             imagePath = selectedFile.getPath(); // Assuming 'imagePath' is a field in your ActiviteController
         }
+    }
+
+    private void populateUserTable(List<User> users) {
+        // Assuming userNom and numTel are the TableColumn objects in your TableView
+        userNom.setCellValueFactory(new PropertyValueFactory<>("nom")); // Replace "nom" with the actual property name in the User class
+        numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
+        // Convert the List to an ObservableList and set it as the items of the TableView
+        ObservableList<User> observableList = FXCollections.observableArrayList(users);
+        listUser.setItems(observableList);
     }
 
 }

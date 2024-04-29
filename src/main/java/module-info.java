@@ -1,9 +1,14 @@
-module com.example.gestionreclamation {
+module com.example.GestionSalle {
     requires javafx.controls;
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
     requires java.sql;
+    requires java.mail;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.poi;
+
+
     //requires java.persistence;
     opens GestionSalle to javafx.fxml;
     exports GestionSalle;

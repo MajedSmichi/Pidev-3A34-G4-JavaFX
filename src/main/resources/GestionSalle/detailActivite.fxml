@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -71,5 +73,23 @@
          <Font name="System Bold Italic" size="21.0" />
       </font>
    </Label>
+   <AnchorPane fx:id="tabel" layoutX="539.0" layoutY="79.0" prefHeight="598.0" prefWidth="324.0">
+      <children>
+         <TableView fx:id="listUser" layoutX="54.0" layoutY="120.0" prefHeight="242.0" prefWidth="234.0" visible="true">
+            <columns>
+               <TableColumn fx:id="userNom" prefWidth="111.20001220703125" text="Name" />
+               <TableColumn fx:id="numTel" prefWidth="114.40001220703124" text="Num Téléphone" />
+            </columns>
+            <columnResizePolicy>
+               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+         </TableView>
+         <Label layoutX="54.0" layoutY="86.0" text="Liste des réservations">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
 
 </AnchorPane>

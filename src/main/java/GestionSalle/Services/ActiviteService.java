@@ -1,6 +1,7 @@
 package GestionSalle.Services;
 
 import GestionSalle.Entity.Activite;
+import GestionSalle.Entity.User;
 import connectionSql.ConnectionSql;
 
 import java.sql.*;
@@ -99,4 +100,64 @@ public class ActiviteService {
         updateStmt.setInt(1, activiteId);
         updateStmt.executeUpdate();
     }
+
+    public List<User> getUsersByActiviteId(int activiteId) throws SQLException {
+    List<User> users = new ArrayList<>();
+    String query = "SELECT u.* FROM user u JOIN activite_user au ON u.id = au.user_id WHERE au.activite_id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, activiteId);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    while (resultSet.next()) {
+        User user = new User();
+        // Assuming User class has id, name, and numTel fields.
+        // Replace these with the actual fields in your User class.
+        user.setId(resultSet.getInt("id"));
+        user.setNom(resultSet.getString("nom"));
+        user.setNumTele(resultSet.getInt("num_Tele"));
+        users.add(user);
+    }
+    return users;
+    }
+    public Activite getActiviteById(int id) throws SQLException {
+    String query = "SELECT * FROM activite WHERE id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, id);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+        Activite activite = new Activite();
+        activite.setId(resultSet.getInt("id"));
+        activite.setSalle_id(resultSet.getInt("salle_id"));
+        activite.setNom(resultSet.getString("nom"));
+        activite.setDate(resultSet.getTimestamp("date"));
+        activite.setNbr_max(resultSet.getInt("nbr_max"));
+        activite.setDescription(resultSet.getString("description"));
+        activite.setImage(resultSet.getString("image_activte"));
+        activite.setCoach(resultSet.getString("coach"));
+        return activite;
+    }
+    return null;
+}
+    public List<Activite> getActivitesByUserId(int userId) throws SQLException {
+        List<Activite> activites = new ArrayList<>();
+        String query = "SELECT * FROM activite_user WHERE user_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int activiteId = resultSet.getInt("activite_id");
+            Activite activite = getActiviteById(activiteId);
+            if (activite != null) {
+                activites.add(activite);
+            }
+        }
+        return activites;
+    }
+    public void deleteActiviteUser(int activiteId, int userId) throws SQLException {
+        String query = "DELETE FROM activite_user WHERE activite_id = ? AND user_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, activiteId);
+        preparedStatement.setInt(2, userId);
+        preparedStatement.executeUpdate();
+    }
+
 }

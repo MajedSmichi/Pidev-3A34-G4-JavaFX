@@ -2,14 +2,18 @@ package GestionSalle.Controller;
 
 import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
+import GestionSalle.Entity.User;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -118,16 +122,29 @@ public class ActiviteController {
 
     @FXML
     private ComboBox<String> updatesalle;
+
     @FXML
     private ImageView updimage;
+
     @FXML
     private TextField saerch;
+
+    @FXML
+    private TableColumn<User, String> userNom;
+
+    @FXML
+    private TableColumn<User, String> numTel;
+
+    @FXML
+    private AnchorPane tabel;
+
+    @FXML
+    private TableView<User> listUser;
 
 
 
     public void initialize() {
-
-
+        listUser.setPlaceholder(new Label("Aucune réservation n'est trouvé"));
         try {
             // Populate the ComboBox with the names of all Salle objects
             SalleService salleService = new SalleService();
@@ -136,21 +153,17 @@ public class ActiviteController {
                 this.salle.getItems().add(salle.getNom());
                 this.updatesalle.getItems().add(salle.getNom());
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
             List<Activite> activites = getData();
             populateGrid(activites);
-
             // Add a listener to the search TextField
             saerch.textProperty().addListener((observable, oldValue, newValue) -> {
                 List<Activite> filteredActivites = activites.stream()
                         .filter(activite -> activite.getNom().toLowerCase().contains(newValue.toLowerCase()))
                         .collect(Collectors.toList());
-
                 try {
                     populateGrid(filteredActivites);
                 } catch (IOException e) {
@@ -161,6 +174,7 @@ public class ActiviteController {
             e.printStackTrace();
         }
     }
+
     private  void populateGrid(List<Activite> activites) throws IOException {
         GridActivite.getChildren().clear();
         int row = 0;
@@ -308,41 +322,49 @@ public class ActiviteController {
         ajout.setVisible(!isVisible);
         detail.setVisible(false);
         modifier.setVisible(false);
+        tabel.setVisible(false);
     }
     private Activite currentActivite;
     private void displayActiviteDetails(Activite activite) {
-        nameact.setText(activite.getNom());
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = formatter.format(activite.getDate());
-        dateact.setText(formattedDate);
-        descriptionact.setText(activite.getDescription());
-        nbrmaxact.setText(String.valueOf(activite.getNbr_max()));
-        coachact.setText(activite.getCoach());
-        salleact.setText(String.valueOf(activite.getSalle_id()));
-        SalleService salleService = new SalleService();
-        try {
-            Salle salle = salleService.getSalleById(activite.getSalle_id());
-            if (salle != null) {
-                salleact.setText(salle.getNom());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    nameact.setText(activite.getNom());
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    String formattedDate = formatter.format(activite.getDate());
+    dateact.setText(formattedDate);
+    descriptionact.setText(activite.getDescription());
+    nbrmaxact.setText(String.valueOf(activite.getNbr_max()));
+    coachact.setText(activite.getCoach());
+    salleact.setText(String.valueOf(activite.getSalle_id()));
+    SalleService salleService = new SalleService();
+    try {
+        Salle salle = salleService.getSalleById(activite.getSalle_id());
+        if (salle != null) {
+            salleact.setText(salle.getNom());
         }
-
-
-        try {
-            imageact.setImage(new Image(activite.getImage()));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid URL or resource not found: " + activite.getImage());
-        }
-
-        // Show the details AnchorPane
-        detail.setVisible(true);
-        ajout.setVisible(false);
-        modifier.setVisible(false);
-        this.currentActivite = activite;
-
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    try {
+        imageact.setImage(new Image(activite.getImage()));
+    } catch (IllegalArgumentException e) {
+        System.out.println("Invalid URL or resource not found: " + activite.getImage());
+    }
+
+    // Fetch the users related to the activite and populate the listUser TableView
+    ActiviteService activiteService = new ActiviteService();
+    try {
+        List<User> users = activiteService.getUsersByActiviteId(activite.getId());
+        populateUserTable(users);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    // Show the details AnchorPane
+    detail.setVisible(true);
+    tabel.setVisible(true);
+    ajout.setVisible(false);
+    modifier.setVisible(false);
+
+}
     @FXML
     void deleteActivite(ActionEvent event) {
         // Use the currentActivite field instead of selectedActivite
@@ -373,6 +395,9 @@ public class ActiviteController {
         // Assuming 'modifier' is the AnchorPane you want to show
         boolean isVisible = modifier.isVisible();
         modifier.setVisible(!isVisible);
+        boolean is = tabel.isVisible();
+        tabel.setVisible(!is);
+
 
         // If the modifier AnchorPane is being shown, set the fields to the values of the currentActivite
         if (!isVisible && currentActivite != null) {
@@ -485,6 +510,33 @@ public class ActiviteController {
             Image image = new Image(selectedFile.toURI().toString());
             updimage.setImage(image); // Set the ImageView in the modifier AnchorPane
             imagePath = selectedFile.getPath(); // Store the image path
+        }
+    }
+
+    private void populateUserTable(List<User> users) {
+        // Assuming userNom and numTel are the TableColumn objects in your TableView
+        userNom.setCellValueFactory(new PropertyValueFactory<>("nom")); // Replace "nom" with the actual property name in the User class
+        numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
+        // Convert the List to an ObservableList and set it as the items of the TableView
+        ObservableList<User> observableList = FXCollections.observableArrayList(users);
+        listUser.setItems(observableList);
+    }
+            @FXML
+    void exportToExcel(ActionEvent event) {
+        List<User> users = listUser.getItems();
+        ExcelExporter excelExporter = new ExcelExporter();
+
+        // Create a FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
+        fileChooser.setInitialFileName("users.xlsx");
+
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(((Node) event.getSource()).getScene().getWindow());
+
+        if (file != null) {
+            excelExporter.export(users, file.getAbsolutePath());
+            System.out.println("Exported to Excel successfully!");
         }
     }
 
