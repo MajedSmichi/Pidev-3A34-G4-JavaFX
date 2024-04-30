@@ -11,10 +11,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 import static Services.UserService.selectAllUsers;
 
@@ -138,19 +142,52 @@ public class UserCardController {
             ((SampleController) this.refreshListener).showViewUser(currentUser);
         }
     }
+   @FXML
+private void handleActivateUser() {
+    if (this.currentUser != null) {
+        boolean newStatus = !this.currentUser.isVerified();
+        if (UserService.updateUserActiveStatus(this.currentUser.getId(), newStatus)) {
+            System.out.println("User active status updated successfully");
+            this.currentUser.setVerified(newStatus);
+            activateButton.setText(newStatus ? "Deactivate" : "Activate");
 
-    @FXML
-    private void handleActivateUser() {
-        if (this.currentUser != null) {
-            boolean newStatus = !this.currentUser.isVerified();
-            if (UserService.updateUserActiveStatus(this.currentUser.getId(), newStatus)) {
-                System.out.println("User active status updated successfully");
-                this.currentUser.setVerified(newStatus);
-                activateButton.setText(newStatus ? "Deactivate" : "Activate");
-            } else {
-                System.out.println("Failed to update user active status");
-            }
+            // Send an email to the user
+            String host = "smtp.gmail.com"; // Gmail SMTP server
+            String from = "smichimajed@gmail.com"; // replace with your email
+            String password = "oxaxivwyxzrnzelz"; // replace with your email password
+
+            Properties properties = System.getProperties();
+            properties.put("mail.smtp.host", host);
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
+
+            Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(from, password);
+                }
+            });
+
+            try {
+    MimeMessage message = new MimeMessage(session);
+    message.setFrom(new InternetAddress(from));
+    message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.currentUser.getEmail()));
+    message.setSubject("Account Status Change");
+
+    // HTML message
+    String htmlMessage = "<h1 style='color:blue;'>Account Status Change</h1>" +
+                         "<p>Your account has been <strong>" + (newStatus ? "activated" : "deactivated") + "</strong> from our system.</p>";
+
+    message.setContent(htmlMessage, "text/html");
+
+    Transport.send(message);
+    System.out.println("Email sent successfully");
+} catch (MessagingException e) {
+    e.printStackTrace();
+}
+        } else {
+            System.out.println("Failed to update user active status");
         }
     }
+}
 
 }
