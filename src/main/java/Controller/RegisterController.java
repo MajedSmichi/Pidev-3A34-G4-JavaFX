@@ -90,6 +90,31 @@ public class RegisterController {
         WebEngine engine = captchaWebView.getEngine();
         engine.load("http://localhost/captcha.html");
 
+        passwordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+
+            if (newValue.contains(firstName) || newValue.contains(lastName)) {
+                passworderror.setText("PWD must not contain first name or last name.");
+            } else if (!newValue.matches("^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$")) {
+                passworderror.setText("PWD must contain at least letter,number, and be at least 6 characters long.");
+            } else {
+                int strength = calculatePasswordStrength(newValue);
+                switch (strength) {
+                    case 0:
+                    case 1:
+                        passworderror.setText("Weak password");
+                        break;
+                    case 2:
+                        passworderror.setText("Medium password");
+                        break;
+                    case 3:
+                        passworderror.setText("Strong password");
+                        break;
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -129,6 +154,24 @@ public class RegisterController {
         }
     }
 
+    private int calculatePasswordStrength(String password) {
+        int strength = 0;
+
+        // If it has at least one number, one lowercase letter, one uppercase letter, and at least 8 characters, it is strong
+        if (password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}")) {
+            strength = 3;
+        }
+        // If it has at least one number, one letter, and at least 6 characters, it is medium
+        else if (password.matches("(?=.*[0-9])(?=.*[a-zA-Z]).{6,}")) {
+            strength = 2;
+        }
+        // If it has at least one number or one letter, and at least 4 characters, it is weak
+        else if (password.matches("(?=.*[0-9a-zA-Z]).{4,}")) {
+            strength = 1;
+        }
+
+        return strength;
+    }
 
     @FXML
     private void handleRegisterButtonAction() {
