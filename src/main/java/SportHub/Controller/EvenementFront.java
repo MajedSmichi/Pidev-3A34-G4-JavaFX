@@ -3,9 +3,10 @@ package SportHub.Controller;
 import SportHub.Entity.Evenement;
 import SportHub.Entity.Ticket;
 import SportHub.Services.*;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +15,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
+
 import SportHub.Services.WeatherService;
+import javafx.scene.layout.VBox;
 import kong.unirest.json.JSONObject;
 
 
@@ -293,14 +297,29 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
                 sqlException.printStackTrace();
             }
 
-            // Send SMS
-            String to = "+21628913441";  // Replace with the phone number of the user
-            String from = "+14194929057";  // Replace with your Twilio number
-            String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
-                    + "Event Date: " + event.getDateEvenement().toString() + "\n"
-                    + "Ticket Type: " + ticket.getType() + "\n"
-                    + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
-            twilioService.sendSms(to, from, body);
+
+
+            System.out.println("Button clicked");
+
+// Assuming you have an instance of EvenementFront
+EvenementFront evenementFront = new EvenementFront();
+
+// Create a PaymentConfirmation instance
+PaymentConfirmation paymentConfirmation = new PaymentConfirmation();
+
+// Create a StripeService instance
+StripeService stripeService = new StripeService();
+
+try {
+    // Create a payment intent and get the client secret
+    String clientSecret = stripeService.createPaymentIntent(ticket.getPrix());
+
+    // Open the payment form
+    paymentConfirmation.confirmPayment(clientSecret, evenementFront);
+} catch (StripeException stripeException) {
+    stripeException.printStackTrace();
+}
+
         });
 
         // Add the button to the ticket card
@@ -315,6 +334,21 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
 
     return ticketCard;
 }
+
+
+
+    public void showSuccessMessage() {
+        // Clear the event container
+        eventContainer.getChildren().clear();
+
+        // Create a success message label
+        Label successLabel = new Label("Payment Successful!");
+        successLabel.getStyleClass().add("success-label"); // Add a CSS class for styling
+
+        // Add the success message label to the event container
+        eventContainer.add(successLabel, 0, 0);
+    }
+
     private List<Evenement> fetchEventsFromDatabase() throws SQLException {
         EvenementService service = new EvenementService();
         return service.getAllEvents();

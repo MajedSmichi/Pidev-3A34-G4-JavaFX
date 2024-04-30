@@ -9,6 +9,7 @@ module com.example.gestionreclamation {
     requires javafx.web;
     requires com.google.gson;
     requires twilio;
+    requires stripe.java;
 
 
     opens SportHub.Entity to com.google.gson;
