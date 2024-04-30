@@ -54,3 +54,14 @@
     -fx-background-color: #0365e3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
+
+#export {
+    -fx-background-color: #7299d5;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#export:hover {
+    -fx-background-color: #26487c;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+

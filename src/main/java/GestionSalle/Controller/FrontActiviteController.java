@@ -4,21 +4,36 @@ import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class FrontActiviteController {
@@ -220,6 +235,13 @@ public class FrontActiviteController {
             String content = "You have successfully reserved the activity: " + currentActivite.getNom();
             EmailUtil.sendEmail(userEmail, subject, content);
 
+
+
+
+            int code = userId * 33 +17;
+            String reservationInfo = "Code confédentiel : " + code;// Replace with actual reservation ID
+            showReservationConfirmation(reservationInfo);
+
         } catch (SQLException | IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Vous avez déjà réservé cette activité.");
@@ -277,6 +299,34 @@ public class FrontActiviteController {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erreur lors de l'annulation de la réservation.");
             alert.showAndWait();
+        }
+    }
+    public void showReservationConfirmation(String reservationInfo) {
+        try {
+            // Generate QR code
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            Map<EncodeHintType, ErrorCorrectionLevel> hints = new HashMap<>();
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+            BitMatrix bitMatrix = qrCodeWriter.encode(reservationInfo, BarcodeFormat.QR_CODE, 200, 200, hints);
+
+            // Save QR code to a ByteArrayOutputStream
+            ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+            MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+            byte[] pngData = pngOutputStream.toByteArray();
+
+            // Create a new stage and scene
+            Stage stage = new Stage();
+            StackPane pane = new StackPane();
+
+            // Load the QR code into an ImageView and add it to the scene
+            Image qrCodeImage = new Image(new ByteArrayInputStream(pngData));
+            ImageView qrCodeImageView = new ImageView(qrCodeImage);
+            pane.getChildren().add(qrCodeImageView);
+
+            stage.setScene(new Scene(pane, 200, 200));
+            stage.show();
+        } catch (WriterException | IOException e) {
+            System.out.println("Could not generate QR Code: " + e.getMessage());
         }
     }
 

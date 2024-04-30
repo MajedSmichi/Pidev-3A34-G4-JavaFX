@@ -5,6 +5,8 @@ import GestionSalle.Entity.Salle;
 import GestionSalle.Entity.User;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -134,6 +136,9 @@ public class ActiviteController {
 
     @FXML
     private TableColumn<User, String> numTel;
+
+    @FXML
+    private TableColumn<User, String> code;
 
     @FXML
     private AnchorPane tabel;
@@ -513,15 +518,17 @@ public class ActiviteController {
         }
     }
 
-    private void populateUserTable(List<User> users) {
-        // Assuming userNom and numTel are the TableColumn objects in your TableView
-        userNom.setCellValueFactory(new PropertyValueFactory<>("nom")); // Replace "nom" with the actual property name in the User class
-        numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
-        // Convert the List to an ObservableList and set it as the items of the TableView
-        ObservableList<User> observableList = FXCollections.observableArrayList(users);
-        listUser.setItems(observableList);
-    }
-            @FXML
+private void populateUserTable(List<User> users) {
+    userNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+    numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
+    code.setCellValueFactory(cellData -> {
+        User user = cellData.getValue();
+        int codeValue = user.getId() * 33 +17;
+        return new ReadOnlyStringWrapper(Integer.toString(codeValue)).getReadOnlyProperty();
+    });
+    ObservableList<User> observableList = FXCollections.observableArrayList(users);
+    listUser.setItems(observableList);
+}            @FXML
     void exportToExcel(ActionEvent event) {
         List<User> users = listUser.getItems();
         ExcelExporter excelExporter = new ExcelExporter();

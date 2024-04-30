@@ -7,6 +7,9 @@ module com.example.GestionSalle {
     requires java.mail;
     requires org.apache.poi.ooxml;
     requires org.apache.poi.poi;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
+
 
 
     //requires java.persistence;
