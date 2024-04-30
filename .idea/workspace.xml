@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite 3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ExcelExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/ExcelExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/Controller/FrontActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionSalle/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/Activite.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GestionSalle/detailFrontSalle.css" afterDir="false" />
-    </list>
+    <list default="true" id="4a60e732-3cf6-41a9-b762-3843dff0d444" name="Changes" comment="crud activite 3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +189,7 @@
       <workItem from="1714322488657" duration="24892000" />
       <workItem from="1714401746057" duration="182000" />
       <workItem from="1714427501347" duration="590000" />
-      <workItem from="1714428205960" duration="6881000" />
+      <workItem from="1714428205960" duration="7105000" />
     </task>
     <task id="LOCAL-00001" summary="crud activite">
       <option name="closed" value="true" />
