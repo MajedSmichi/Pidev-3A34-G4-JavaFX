@@ -31,33 +31,32 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class RegisterController {
-    private User user=new User();
-
+    private User user = new User();
 
 
     @FXML
-    private Label loginLink=new Label();
+    private Label loginLink = new Label();
 
     private static String recipientEmail;
 
     @FXML
     private TextField firstNameTextField, lastNameTextField, emailTextField, phoneTextField, adressTextField;
     @FXML
-    private PasswordField passwordTextField=new PasswordField(),confirmPasswordTextField=new PasswordField();
+    private PasswordField passwordTextField = new PasswordField(), confirmPasswordTextField = new PasswordField();
 
     @FXML
-    private Label firstNameError, LastNameerror, emailError, passworderror, phoneError, adresserror, registererror,succesLabel;
+    private Label firstNameError, LastNameerror, emailError, passworderror, phoneError, adresserror, registererror, succesLabel;
 
     private final UserController userController = new UserController();
 
     @FXML
-    private Button registerButton=new Button();
+    private Button registerButton = new Button();
 
     @FXML
-    private ImageView passwordToggleImageView,confirmPasswordToggleImageView;
+    private ImageView passwordToggleImageView, confirmPasswordToggleImageView;
 
     @FXML
-    private TextField plainPasswordField=new TextField(),plainConfirmPasswordField=new TextField();
+    private TextField plainPasswordField = new TextField(), plainConfirmPasswordField = new TextField();
 
     @FXML
     private CheckBox checkBoxTerms;
@@ -65,8 +64,7 @@ public class RegisterController {
     @FXML
     private Label errorTerms;
 
-    @FXML
-    private WebView recaptchaWebView;
+    public WebView captchaWebView;
 
 
     @FXML
@@ -89,21 +87,14 @@ public class RegisterController {
         confirmPasswordTextField.managedProperty().bind(confirmPasswordTextField.visibleProperty());
         plainConfirmPasswordField.visibleProperty().bind(confirmPasswordTextField.visibleProperty().not());
         plainConfirmPasswordField.textProperty().bindBidirectional(confirmPasswordTextField.textProperty());
-//        WebEngine webEngine = recaptchaWebView.getEngine();
-//        webEngine.loadContent("<html>\n" +
-//                "  <head>\n" +
-//                "    <script src='https://www.google.com/recaptcha/api.js'></script>\n" +
-//                "  </head>\n" +
-//                "  <body>\n" +
-//                "    <div class='g-recaptcha' data-sitekey='6Ld1QIEpAAAAAFXkv9jOb2mdwYyz5OzLwnR4NysB'></div>\n" +
-//                "  </body>\n" +
-//                "</html>");
+        WebEngine engine = captchaWebView.getEngine();
+        engine.load("http://localhost/captcha.html");
+
     }
 
     @FXML
     private ImageView avatarImageView;
     private String avatarFilePath;
-
 
 
     @FXML
@@ -115,11 +106,15 @@ public class RegisterController {
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
-            File destFile = new File("src/main/resources/avatars/" + file.getName());
+            File destDir = new File("src/main/resources/avatars/");
+            if (!destDir.exists()) {
+                destDir.mkdirs(); // Create the directory if it does not exist
+            }
+
+            File destFile = new File(destDir, file.getName());
             try {
                 Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
-                System.out.println("Failed to copy file to avatars directory.");
                 e.printStackTrace();
                 return;
             }
@@ -135,15 +130,33 @@ public class RegisterController {
     }
 
 
-
-
-
     @FXML
     private void handleRegisterButtonAction() {
         clearErrors();
         if (!validateInput()) {
             registererror.setText("Please fill in all fields correctly.");
             return;
+        }
+
+        try {
+            WebEngine engine = captchaWebView.getEngine();
+            String result = (String) engine.executeScript(
+                    "function isRecaptchaVerified() {" +
+                            " var isVerified = grecaptcha.getResponse().length > 0;" +
+                            " return String(isVerified);" +
+                            "} " +
+                            "isRecaptchaVerified();"
+            );
+            if(result.equals("false")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("captcha");
+                alert.setContentText("Please check the captcha.");
+                alert.showAndWait();
+                System.out.println("erreur");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         // Assign user details from form
@@ -155,11 +168,7 @@ public class RegisterController {
         this.user.setAdresse(adressTextField.getText());
         this.user.setAvatar(avatarFilePath);
 
-        // Check if the email is already registered
-        if (UserService.emailExists(this.user.getEmail())) {
-            registererror.setText("This email is already registered.");
-            return;
-        }
+
 
         // Continue with registration and send email
         String code = generateVerificationCode();
@@ -177,8 +186,6 @@ public class RegisterController {
             e.printStackTrace();
         }
     }
-
-
 
 
     private boolean validateInput() {
@@ -263,6 +270,7 @@ public class RegisterController {
         adresserror.setText("");
         registererror.setText("");
     }
+
     private void navigateToCodeVerificationView(User user) {
         try {
             FXMLLoader codeVerificationViewLoader = new FXMLLoader(getClass().getResource("Register/codeConfirm.fxml"));
@@ -286,6 +294,7 @@ public class RegisterController {
             registererror.setText("Error navigating to the verification form." + e.getMessage());
         }
     }
+
     public void sendEmail(String recipientEmail, String code) throws MessagingException {
         final String username = "smichimajed@gmail.com";
         final String password = "oxaxivwyxzrnzelz";
@@ -321,27 +330,6 @@ public class RegisterController {
         return String.format("%06d", num);
     }
 
-
-
-
-    @FXML
-    private void handleSendEmail() {
-        recipientEmail = emailTextField.getText(); // Get email from TextField
-        if (recipientEmail.isEmpty()) {
-            registererror.setText("Please enter an email address."); // Prompt for an email
-            return;
-        }
-
-        String code = generateVerificationCode();
-        CodeVerificationController.verificationCodeEmail = code;
-        try {
-            sendEmail(recipientEmail, code);
-            navigateToCodeVerificationView(user);
-        } catch (MessagingException e) {
-            registererror.setText("Failed to send email. Please try again."); // Display error message
-            e.printStackTrace();
-        }
-    }
 
 
 }

@@ -14,6 +14,8 @@ module Controller {
     requires com.google.api.client;
     requires google.api.client;
     requires com.google.api.client.json.jackson2;
+    requires jdk.httpserver;
+    requires java.json;
 
     opens Controller to javafx.fxml;
     opens Entity to javafx.base;

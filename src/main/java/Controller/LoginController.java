@@ -6,12 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -28,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 public class LoginController {
 
     public Label forgetPassword;
+
     @FXML
     private TextField emailTextField;
 
@@ -59,6 +59,7 @@ public class LoginController {
         passwordTextField.managedProperty().bind(passwordTextField.visibleProperty());
         plainPasswordField.visibleProperty().bind(passwordTextField.visibleProperty().not());
         plainPasswordField.textProperty().bindBidirectional(passwordTextField.textProperty());
+
     }
 
     @FXML
@@ -76,7 +77,8 @@ public class LoginController {
     }
 
 
-public void LoginButtonAction() {
+public void LoginButtonAction()  {
+
     String email = emailTextField.getText();
     String password = passwordTextField.getText();
 
