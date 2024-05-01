@@ -1,16 +1,16 @@
 
-ª
-java:S1104"bMake backToCategoriesButton a static final constant or non-public and provide accessors if needed.(âŽ™ýÿÿÿÿ8¡·ß±ò1J$7358a4a7-9fbe-4c92-90ad-331c9ed0abd1
-¥
-java:S1104"]Make categoryTableView a static final constant or non-public and provide accessors if needed.(£º›øÿÿÿÿ8¡·ß±ò1J$91c2d32b-a1fb-4a03-b64b-126dc06a1fde
+¤
+java:S1104"\Make categoryFlowPane a static final constant or non-public and provide accessors if needed.(îØÃÊþÿÿÿÿ8ª€Å¥ó1J$6e825560-fff2-445b-8ef5-f833fb077eed
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8È¨¥ó1J$6d00c0f3-4e73-44b7-91c4-eae62cda235f
 ¦
-java:S1104"^Make categoryNameColumn a static final constant or non-public and provide accessors if needed.(¦ÙµÄúÿÿÿÿ8¢·ß±ò1J$8800c6ba-05b0-46a6-a07b-fdba1477513b
-¨
-java:S1104"eMake categoryDescriptionColumn a static final constant or non-public and provide accessors if needed.(øæÖÖ8¢·ß±ò1J$bd7193be-8cf7-4fc5-9a09-93eeca929920
-œ
-java:S1104"YMake exploreColumn a static final constant or non-public and provide accessors if needed.(¯±˜€8¦öººò1J$92c099ff-0a83-438e-a883-1ed013df088c
-š
-java:S1104!"WMake statsButton a static final constant or non-public and provide accessors if needed.(´¸©ÿ8†¤ÇÌò1J$00120d37-4cc2-4cce-860b-f8e3aced09c6
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8õ£±ò1J$e109c61d-3394-4202-9295-aec285c47297
-¡
-java:S11710"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8îöººò1J$90742c1d-cb84-4007-89e6-b503b63b1eac
+java:S1450"cRemove the "frontCoursController" field and declare it as a local variable in the relevant methods.(ãòì¶8³€Å¥ó1J$0f7e4702-a957-4bc8-ad32-46bc947da0a1
+
+java:S1117]"HRename "frontCoursController" which hides the field declared at line 29.(øåÌûûÿÿÿÿ8àÄ §ó1J$45f8d945-ec03-4c67-8968-5723309e1635
+Z
+java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ8Â§¡§ó1
+`
+java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8Ã§¡§ó1
+\
+java:S1128":Remove this unused import 'javafx.scene.input.MouseEvent'.(˜¬‹æÿÿÿÿÿ8Ã§¡§ó1
+{
+java:S1068"8Remove this unused "frontCoursController" private field.(ãòì¶8Ù€Å¥ó1J$e6ca1860-04aa-47ba-a503-e2c92b2b6522

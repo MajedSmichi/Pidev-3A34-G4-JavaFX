@@ -59,3 +59,7 @@ Hsrc/main/java/SportHub/Controller/MyController/FrontCoursController.java,d\f\d
 Ksrc/main/java/SportHub/Controller/MyController/FrontCategoryController.java,0\9\09c6b5a05137524fb64ef936f2aa1237c9dbb6b4
 e
 5src/main/java/SportHub/Controller/EvenementFront.java,3\5\35ba85f651acbfe176e46d8bfc7524034e3228fb
+z
+Jsrc/main/java/SportHub/Controller/MyController/CategoryCardController.java,a\0\a04806067c7378d274fb2afbdbfdcc704e024066
+w
+Gsrc/main/java/SportHub/Controller/MyController/CoursCardController.java,1\a\1ae4030fbcc386ed86cdfdfa3ec01005e983bb81

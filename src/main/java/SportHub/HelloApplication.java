@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,7 +24,8 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SportHub/MyFxml/FrontCours.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SportHub/MyFxml/FrontCategory.fxml"));
+        //VBox root = fxmlLoader.load();
         AnchorPane root = fxmlLoader.load();
         //ScrollPane root = fxmlLoader.load();
 

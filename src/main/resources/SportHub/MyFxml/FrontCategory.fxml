@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCategoryController">
-   <children>
-      <Label layoutX="44.0" layoutY="38.0" prefHeight="17.0" prefWidth="177.0" text="Categories">
-         <font>
-            <Font name="Roboto Black" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="44.0" layoutY="68.0" prefHeight="17.0" prefWidth="273.0" text="Choose a category to explore courses">
-         <font>
-            <Font name="Roboto Light" size="15.0" />
-         </font>
-      </Label>
-      <TableView fx:id="categoryTableView" layoutX="44.0" layoutY="100.0" prefHeight="218.0" prefWidth="509.0">
-        <columns>
-          <TableColumn fx:id="categoryNameColumn" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="categoryDescriptionColumn" prefWidth="244.0" text="C2" />
-            <TableColumn fx:id="exploreColumn" minWidth="0.0" prefWidth="222.0" text="C2" />
-        </columns>
-      </TableView>
-       <Button fx:id="statsButton" layoutX="353.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#handleStatsButton" prefHeight="25.0" prefWidth="200.0" text="Show Category Stats">
-           <font>
-               <Font name="Roboto Black" size="12.0" />
-           </font>
-       </Button>
-   </children>
+   <Button onAction="#handleStatsButton" prefHeight="25.0" prefWidth="207.0" text="Show Stats" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <font>
+         <Font name="Roboto Black" size="12.0" />
+      </font></Button>
+   <FlowPane fx:id="categoryFlowPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" VBox.vgrow="ALWAYS">
+      <!-- Cards will be dynamically added here -->
+   </FlowPane>
 </AnchorPane>
