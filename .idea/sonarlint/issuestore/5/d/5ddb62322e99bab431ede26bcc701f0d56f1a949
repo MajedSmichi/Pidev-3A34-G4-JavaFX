@@ -1,32 +1,32 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$a38b1597-0964-4bd5-84d8-d973a6477976
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$06956b16-3af7-4005-af36-f12e15310e62
 
-java:S1854+">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$f4a0fd65-a251-418a-9bcc-8f8bd340fbe2
-~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$7c8d54cd-7be9-439c-affa-9246cc0f5c34
-~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8¼¨òòò1J$8ad694c2-0158-4bec-a164-6238805f3249
+java:S1854+">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$75c0a0b9-6f91-47c8-b0d9-870a0ee88cf1
+~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$fde3e650-c14c-4155-ae21-3d86692b44df
+~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8¼¨òòò1J$5f90bae7-02b7-4e84-affe-8f9dce12b899
 r
-java:S1481+"/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$4bfc5f4a-bd9f-4d9c-8014-54d514655a88
+java:S1481+"/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$25f0daf9-1f1a-42bb-9d49-7323ccf95f61
 ~
-java:S1128"6Remove this unused import 'SportHub.Entity.Evenement'.(îÉºìüÿÿÿÿ8†à÷¦ó1J$776112c2-5c81-44cc-9759-0e3b74e4ce4a
+java:S1128"6Remove this unused import 'SportHub.Entity.Evenement'.(îÉºìüÿÿÿÿ8†à÷¦ó1J$326c7dc5-32e8-480e-a257-741c5840c2a3
 {
-java:S1128"3Remove this unused import 'SportHub.Entity.Ticket'.(ªŒÄüÿÿÿÿ8†à÷¦ó1J$a52f001b-50ba-4a7c-92e1-aa827d851ab9
+java:S1128"3Remove this unused import 'SportHub.Entity.Ticket'.(ªŒÄüÿÿÿÿ8†à÷¦ó1J$f504fa94-4d14-4269-a3d8-b8d02095ab9f
 ‡
-java:S1128"?Remove this unused import 'SportHub.Services.EvenementService'.(À–ê¢øÿÿÿÿ8†à÷¦ó1J$b7cf8a6b-12c8-46c7-b1e2-f5088e04466c
+java:S1128"?Remove this unused import 'SportHub.Services.EvenementService'.(À–ê¢øÿÿÿÿ8†à÷¦ó1J$6db7776a-7285-40d8-8b3d-af0df89d42ad
 x
-java:S1128"5Remove this unused import 'SportHub.Entity.Category'.(‡šäé8†à÷¦ó1J$2eb83b86-5124-4683-8a37-6d7eec4d92b6
+java:S1128"5Remove this unused import 'SportHub.Entity.Category'.(‡šäé8†à÷¦ó1J$168918d8-7a1c-4f67-8dc3-ff4c02ddaa2d
 †
-java:S1128">Remove this unused import 'SportHub.Services.CategoryService'.(‚Ïœùÿÿÿÿ8‡à÷¦ó1J$4d2573d6-e55b-470c-8c72-11becc9f6128
+java:S1128">Remove this unused import 'SportHub.Services.CategoryService'.(‚Ïœùÿÿÿÿ8‡à÷¦ó1J$cc0de635-993d-45e6-aa37-96032fbb2786
 „
-java:S1128"<Remove this unused import 'SportHub.Services.TicketService'.(¤±Óüÿÿÿÿ8‡à÷¦ó1J$7ad9764f-fcdf-431d-b415-1ac2c915e51e
+java:S1128"<Remove this unused import 'SportHub.Services.TicketService'.(¤±Óüÿÿÿÿ8‡à÷¦ó1J$d31124a1-7ba1-44b1-b09d-ce00f9eb005a
 f
-java:S1128"Remove this duplicated import.(À‡ô³úÿÿÿÿ8Î¨òòò1J$36fdafe3-a563-47c8-a54f-f5f01505962c
+java:S1128"Remove this duplicated import.(À‡ô³úÿÿÿÿ8Î¨òòò1J$9a090969-4e42-4e75-9723-a4b8f50a5743
 „
-java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8‡à÷¦ó1J$eb9529a2-f0e5-41b7-87ed-b0dd3323c997
+java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8‡à÷¦ó1J$9226b327-33b9-4e83-8ab5-d3d3c186dc8e
 }
-java:S1128"5Remove this unused import 'javafx.scene.layout.VBox'.(íÆáÂùÿÿÿÿ8‡à÷¦ó1J$c4a90a9f-72b4-4368-acd6-5d3d14b91a12
+java:S1128"5Remove this unused import 'javafx.scene.layout.VBox'.(íÆáÂùÿÿÿÿ8‡à÷¦ó1J$6c38f74e-531d-4bc5-9a98-878c8187de2b
 m
-java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8‡à÷¦ó1J$1349f76c-e220-40a8-86e5-76f05e2c9cc6
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8‡à÷¦ó1J$7d080521-8d73-4f8f-a713-8bd464950b27
 u
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ˆà÷¦ó1J$41a29213-08df-43a0-9800-c1cece2f44e2
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ˆà÷¦ó1J$69e4906c-aa88-427d-b2a5-7c59ed776b22
 s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ˆà÷¦ó1J$07b9ca0e-a382-493b-a817-caea9c9168d8
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ˆà÷¦ó1J$54979429-bc0d-42bc-9cc5-a9c76a7bf002

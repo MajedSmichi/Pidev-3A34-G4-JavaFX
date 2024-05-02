@@ -3,11 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="SportHub.Controller.MyController.FrontCoursController"
             prefHeight="400.0" prefWidth="600.0">
-    <Label fx:id="categoryNameLabel" layoutY="20.0" />
-    <FlowPane fx:id="coursesFlowPane" layoutY="40.0" />
-    <Label fx:id="noCoursesLabel" layoutY="60.0" />
+    <Label fx:id="categoryNameLabel" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <FlowPane fx:id="coursesFlowPane" layoutY="60.0" vgap="10" hgap="10" >
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+        </padding>
+    </FlowPane>
+    <Label fx:id="noCoursesLabel" layoutY="80.0" style="-fx-font-size: 18px; -fx-text-fill: red;" />
 </AnchorPane>

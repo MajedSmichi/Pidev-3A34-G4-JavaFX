@@ -29,7 +29,6 @@ public class CategoryCardController extends AnchorPane {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/CategoryCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {

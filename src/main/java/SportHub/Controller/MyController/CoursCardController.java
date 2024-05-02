@@ -7,64 +7,54 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.function.Consumer;
 
-public class CoursCardController extends AnchorPane {
+public class CoursCardController {
     @FXML
-    private Label coursNameLabel;
+    private ImageView coverImage;
     @FXML
-    private Label coursDescriptionLabel;
+    private Label courseNameLabel;
     @FXML
-    private ImageView coursCoverImageView;
+    private Label descriptionLabel;
     @FXML
     private Button downloadButton;
 
-    private Cours cours;
+    private Cours course;
+    private Consumer<Cours> downloadPDFCallback;
 
     public CoursCardController() {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/CoursCard.fxml"));
-    fxmlLoader.setController(this);
-
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/CoursCard.fxml"));
+        fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
-    public void setCours(Cours cours) {
-        this.cours = cours;
-        coursNameLabel.setText(cours.getName());
-        coursDescriptionLabel.setText(cours.getDescription());
-        Image image = new Image(cours.getCoverImageData());
-        coursCoverImageView.setImage(image);
 
-        downloadButton.setOnAction(event -> downloadPDF());
+    public void initialize(Cours course, Consumer<Cours> downloadPDFCallback) {
+        this.course = course;
+        this.downloadPDFCallback = downloadPDFCallback;
+        courseNameLabel.setText(course.getName());
+        descriptionLabel.setText(course.getDescription());
+        setCoverImageFromFilePath(course.getCoverImageData());
     }
 
-    private void downloadPDF() {
+    private void setCoverImageFromFilePath(String filePath) {
         try {
-            byte[] pdfBytes = java.util.Base64.getDecoder().decode(cours.getPdfFileData());
-
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save PDF File");
-            fileChooser.setInitialFileName(cours.getName() + ".pdf");
-            File file = fileChooser.showSaveDialog(null);
-
-            if (file != null) {
-                FileOutputStream outputStream = new FileOutputStream(file);
-                outputStream.write(pdfBytes);
-                outputStream.close();
-            } else {
-                System.out.println("File selection was cancelled.");
-            }
-        } catch (IllegalArgumentException | IOException e) {
+            Image image = new Image(filePath);
+            coverImage.setImage(image);
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Failed to download PDF: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void downloadPDF() {
+        if (downloadPDFCallback != null && course != null) {
+            downloadPDFCallback.accept(course);
         }
     }
 }

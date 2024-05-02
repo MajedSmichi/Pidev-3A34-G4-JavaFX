@@ -80,11 +80,7 @@ public class FrontCategoryController {
         this.frontCoursController = frontCoursController;
     }
 
-    public void setNavigationButton(Button navigationButton) {
-        // No need for TableView navigation in CardView
-    }
-
-public void navigateToCourses(Category category) {
+    public void navigateToCourses(Category category) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCours.fxml"));
         AnchorPane pane = loader.load();

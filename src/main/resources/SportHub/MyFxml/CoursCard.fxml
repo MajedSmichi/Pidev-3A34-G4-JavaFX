@@ -4,21 +4,26 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<fx:root type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="SportHub.Controller.MyController.CoursCardController">
-<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <ImageView fx:id="coursCoverImageView" fitHeight="175.0" fitWidth="250.0" layoutX="25.0" />
-    <Label fx:id="coursNameLabel" layoutX="54.0" layoutY="175.0" prefHeight="17.0" prefWidth="192.0">
-      <font>
-         <Font name="Roboto Black" size="12.0" />
-      </font></Label>
-    <Label fx:id="coursDescriptionLabel" layoutX="54.0" layoutY="195.0" prefHeight="17.0" prefWidth="192.0">
-      <font>
-         <Font name="Roboto Black" size="12.0" />
-      </font></Label>
-    <Button fx:id="downloadButton" layoutX="14.0" layoutY="220.0" prefHeight="25.0" prefWidth="272.0" text="Download PDF">
-      <font>
-         <Font name="Roboto Medium" size="12.0" />
-      </font></Button>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml">
+    <VBox prefHeight="150.0" prefWidth="200.0">
+        <ImageView fx:id="coverImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="courseNameLabel" style="-fx-font-weight: bold;" text="Course Name">
+            <font>
+                <Font name="Roboto" size="12.0" />
+            </font>
+        </Label>
+        <Button fx:id="downloadButton" mnemonicParsing="false" text="Download PDF">
+            <font>
+                <Font name="Roboto" size="12.0" />
+            </font>
+        </Button>
+        <Label fx:id="descriptionLabel" prefHeight="16.0" prefWidth="270.0" text="Course Description" wrapText="true">
+            <font>
+                <Font name="Roboto" size="12.0" />
+            </font>
+        </Label>
+    </VBox>
 </AnchorPane>
-</fx:root>
