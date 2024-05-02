@@ -1,17 +1,34 @@
 package SportHub.Services;
 import SportHub.Controller.EvenementFront;
+import javafx.application.Platform;
+import javafx.concurrent.Worker;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import netscape.javascript.JSObject;
 
 
 public class PaymentConfirmation {
+
+    public class JavaApp {
+        private Stage stage;
+
+        public JavaApp(Stage stage) {
+            this.stage = stage;
+        }
+
+        public void print(String message) {
+            if (message.equals("Payment succeeded!")) {
+                Platform.runLater(() -> stage.close());
+            }
+        }
+    }
+
     public void confirmPayment(String clientSecret, EvenementFront evenementFront) {
         WebView webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         webEngine.setJavaScriptEnabled(true); // Enable JavaScript
-
         String html = "<html>\n" +
                 "<body>\n" +
                 "<script src=\"https://js.stripe.com/v3/\"></script>\n" +
@@ -53,7 +70,6 @@ public class PaymentConfirmation {
                 "        } else {\n" +
                 "          if (confirmResult.paymentIntent.status === 'succeeded') {\n" +
                 "            console.log('Payment succeeded!');\n" +
-                "            window.location.href = 'paymentSuccess.html';\n" +
                 "          }\n" +
                 "        }\n" +
                 "      });\n" +
@@ -72,14 +88,14 @@ public class PaymentConfirmation {
         paymentStage.show();
 
         // Add a change listener to the location property of the webEngine
-        webEngine.locationProperty().addListener((observable, oldValue, newValue) -> {
-            if ("paymentSuccess.html".equals(newValue)) {
-                // Close the payment stage
-                paymentStage.close();
-
-                // Show the success message
-                evenementFront.showSuccessMessage();
+        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == Worker.State.SUCCEEDED) {
+                JSObject window = (JSObject) webEngine.executeScript("window");
+                window.setMember("app", new JavaApp(paymentStage));
+                webEngine.executeScript("console.log = function(message){ app.print(message); };");
             }
         });
+
+
     }
 }

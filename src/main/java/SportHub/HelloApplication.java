@@ -26,9 +26,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Frontview.fxml"));
 
         //VBox root = (VBox) FXMLLoader.load(getClass().getResource("CalendarView.fxml"));
-
-       // AnchorPane root = fxmlLoader.load();
-        ScrollPane root = fxmlLoader.load();
+        //AnchorPane root = fxmlLoader.load();
+       ScrollPane root = fxmlLoader.load();
 
 
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("CalendarView.fxml"));

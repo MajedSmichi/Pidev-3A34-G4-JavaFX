@@ -168,11 +168,11 @@ private GridPane createEventCard(Evenement event) {
 
         Label eventLieu = new Label("Event Lieu: " + event.getLieu());
         //eventDate.setStyle("-fx-font-size: 14;");
-        detailedCard.add(eventLieu, 0, 3);
+        detailedCard.add(eventLieu, 0, 4);
 
         Label eventDescription = new Label("Event Description: " + event.getDescription());
        // eventDescription.setStyle("-fx-font-size: 14;");
-        detailedCard.add(eventDescription, 0, 4);
+        detailedCard.add(eventDescription, 0, 7);
 
 
         Button getTicketButton = new Button("Get Ticket");
@@ -187,7 +187,7 @@ private GridPane createEventCard(Evenement event) {
             //eventContainer.getChildren().clear(); // Clear the event container
             eventContainer.add(ticketCard, 1, 0); // Add the ticket card to the event container
         });
-        detailedCard.add(getTicketButton, 0, 6); // Add the button to the detailed card
+        detailedCard.add(getTicketButton, 0, 8); // Add the button to the detailed card
 
 
         // Create a back button with text
@@ -217,7 +217,7 @@ private GridPane createEventCard(Evenement event) {
         });
 
         // Add the back button to the detailed card
-        detailedCard.add(backButton, 1, 6);
+        detailedCard.add(backButton, 1, 8);
 
         // Calculate the number of days left for the event
         LocalDate currentDate = LocalDate.now();
@@ -226,7 +226,7 @@ private GridPane createEventCard(Evenement event) {
 
         // Create a label to display the number of days left
         Label daysLeftLabel = new Label("Days left for the event: " + daysLeft);
-        detailedCard.add(daysLeftLabel, 0, 7); // Adjust the index as per your layout
+        detailedCard.add(daysLeftLabel, 0, 3); // Adjust the index as per your layout
 
         return detailedCard;
     }
@@ -275,6 +275,8 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
             // Decrease the ticket quantity by one
             ticket.setNbreTicket(ticket.getNbreTicket() - 1);
 
+
+
             // Extract the parameters from the Ticket object
             int id = ticket.getId();
             Integer evenement_id = ticket.getEvenementId();
@@ -299,26 +301,25 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
 
 
 
-            System.out.println("Button clicked");
+            // Send a confirmation message to the user
+            // Assuming you have an instance of EvenementFront
+            EvenementFront evenementFront = new EvenementFront();
 
-// Assuming you have an instance of EvenementFront
-EvenementFront evenementFront = new EvenementFront();
+            // Create a PaymentConfirmation instance
+            PaymentConfirmation paymentConfirmation = new PaymentConfirmation();
 
-// Create a PaymentConfirmation instance
-PaymentConfirmation paymentConfirmation = new PaymentConfirmation();
+            // Create a StripeService instance
+            StripeService stripeService = new StripeService();
 
-// Create a StripeService instance
-StripeService stripeService = new StripeService();
+            try {
+                // Create a payment intent and get the client secret
+                String clientSecret = stripeService.createPaymentIntent(ticket.getPrix());
 
-try {
-    // Create a payment intent and get the client secret
-    String clientSecret = stripeService.createPaymentIntent(ticket.getPrix());
-
-    // Open the payment form
-    paymentConfirmation.confirmPayment(clientSecret, evenementFront);
-} catch (StripeException stripeException) {
-    stripeException.printStackTrace();
-}
+                // Open the payment form
+                paymentConfirmation.confirmPayment(clientSecret, evenementFront);
+            } catch (StripeException stripeException) {
+                stripeException.printStackTrace();
+            }
 
         });
 
