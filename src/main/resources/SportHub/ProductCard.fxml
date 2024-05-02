@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="PaneProduct" prefHeight="312.0" prefWidth="255.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.ProductCard">
     <children>
@@ -12,8 +13,14 @@
                 <ImageView fx:id="imageProduit" fitHeight="202.0" fitWidth="185.0" layoutX="23.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </Pane>
-        <Label fx:id="price" layoutX="108.0" layoutY="264.0" prefHeight="30.0" prefWidth="155.0" text="Label" />
-        <Label layoutX="69.0" layoutY="268.0" prefHeight="21.0" prefWidth="36.0" text="Prix : " />
+        <Label fx:id="price" layoutX="125.0" layoutY="264.0" prefHeight="30.0" prefWidth="155.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <Label layoutX="81.0" layoutY="269.0" prefHeight="21.0" prefWidth="36.0" text="Prix : ">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
 
     </children>
 </Pane>

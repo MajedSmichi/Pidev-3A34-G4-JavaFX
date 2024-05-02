@@ -59,6 +59,7 @@ public class CategorieController {
                 alert.setContentText("Êtes-vous sûr de vouloir supprimer la catégorie : " + categorie.getName() + "?");
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
+                    // Appeler la méthode supprimer de Servicecategorie pour supprimer la catégorie et ses produits associés
                     categorieService.supprimer(categorie.getId());
                     showListCategorie();
                     showAlert(Alert.AlertType.INFORMATION, "Information Message", null, "Supprimé avec succès!");
@@ -107,13 +108,14 @@ public class CategorieController {
         Categorie_p categorie = categorieTableView.getSelectionModel().getSelectedItem();
         if (categorie != null) {
             try {
-                if (!categorie_name.getText().isEmpty()) {
-                    categorie.setName(categorie_name.getText());
+                String newName = categorie_name.getText().trim(); // Obtenez le nouveau nom de la catégorie et supprimez les espaces inutiles
+                if (!newName.isEmpty()) { // Vérifiez si le nouveau nom n'est pas vide
+                    categorie.setName(newName);
                     categorieService.modifier(categorie);
                     showListCategorie();
                     showAlert(Alert.AlertType.INFORMATION, "Information Message", null, "Mise à jour réussie!");
                 } else {
-                    showAlert(Alert.AlertType.ERROR, "Error Message", null, "Le nom de la catégorie est requis");
+                    showAlert(Alert.AlertType.ERROR, "Error Message", null, "Le nom de la catégorie ne peut pas être vide");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

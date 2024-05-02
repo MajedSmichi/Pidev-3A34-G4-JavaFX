@@ -23,7 +23,7 @@
             <Label layoutX="24.0" layoutY="219.0" text="Nom" />
             <Label layoutX="26.0" layoutY="274.0" prefHeight="18.0" prefWidth="31.0" text="Prix" />
             <Label layoutX="22.0" layoutY="451.0" text="Description" />
-            <Label layoutX="24.0" layoutY="336.0" text="Quantite" />
+            <Label layoutX="23.0" layoutY="333.0" text="Quantite" />
             <Label layoutX="10.0" layoutY="14.0" text="Image" />
             <TextField fx:id="product_name" layoutX="31.0" layoutY="237.0" prefHeight="30.0" prefWidth="264.0" promptText="Nom" styleClass="label-info" />
             <TextField fx:id="product_price" layoutX="32.0" layoutY="295.0" prefHeight="30.0" prefWidth="264.0" promptText="Prix" styleClass="label-info" />
@@ -51,28 +51,55 @@
       <Button fx:id="hide" layoutX="296.0" layoutY="18.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0" />
       <Pane fx:id="PaneDetail" layoutX="494.0" layoutY="133.0" maxHeight="642.0" maxWidth="542.0" prefHeight="535.0" prefWidth="510.0" stylesheets="@Back.css">
          <children>
-            <ImageView fx:id="imageProduct" fitHeight="291.0" fitWidth="361.0" layoutX="76.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="name1" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" prefHeight="45.0" prefWidth="350.0" text="ProductName" />
-            <Label fx:id="Price" layoutX="236.0" layoutY="366.0" prefHeight="30.0" prefWidth="155.0" text="Label">
+            <ImageView fx:id="imageProduct" fitHeight="284.0" fitWidth="467.0" layoutX="26.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="name1" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" prefHeight="45.0" prefWidth="350.0" text="ProductName">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="Price" layoutX="229.0" layoutY="330.0" prefHeight="30.0" prefWidth="61.0" text="Label">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="Description" layoutX="120.0" layoutY="396.0" prefHeight="130.0" prefWidth="302.0" text="Label" />
+            <Label fx:id="Description" contentDisplay="CENTER" layoutX="229.0" layoutY="364.0" prefHeight="68.0" prefWidth="222.0" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="Quantity" layoutX="229.0" layoutY="445.0" prefHeight="30.0" prefWidth="52.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="110.0" layoutY="328.0" prefHeight="35.0" prefWidth="77.0" text="Prix : ">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="110.0" layoutY="380.0" prefHeight="35.0" prefWidth="100.0" text="Description : ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="115.0" layoutY="442.0" prefHeight="35.0" prefWidth="91.0" text="Quantite :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+
          </children>
       </Pane>
       <Button fx:id="modifier" layoutX="193.0" layoutY="16.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" />
-      <ImageView fx:id="modifiericon1" fitHeight="31.0" fitWidth="35.0" layoutX="162.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="modifiericon1" fitHeight="31.0" fitWidth="35.0" layoutX="182.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/edit.png" />
          </image>
       </ImageView>
-      <Button fx:id="supprimer" layoutX="243.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="38.0" prefWidth="46.0" />
-      <ImageView fx:id="suppicon" fitHeight="45.0" fitWidth="34.0" layoutX="206.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="supprimer" layoutX="213.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="38.0" prefWidth="46.0" />
+      <ImageView fx:id="suppicon" fitHeight="45.0" fitWidth="34.0" layoutX="219.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/supp.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="modifiericon" fitHeight="26.0" fitWidth="28.0" layoutX="254.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="modifiericon" fitHeight="26.0" fitWidth="28.0" layoutX="259.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/cancel.png" />
          </image>

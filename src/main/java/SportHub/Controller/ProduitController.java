@@ -5,6 +5,8 @@ import SportHub.Entity.Product;
 import SportHub.Services.ProductService;
 import SportHub.Services.Servicecategorie;
 import javafx.beans.binding.IntegerBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +19,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ProduitController {
     private ProductService serviceProduit;
@@ -68,6 +73,9 @@ public class ProduitController {
     @FXML
     private AnchorPane root1;
 
+    @FXML
+    private TextField searchField;
+
 
     @FXML
     private Button produit_import;
@@ -78,16 +86,16 @@ public class ProduitController {
     private Image image = null;
 
 
-     private Servicecategorie serviceCategorie;
-     private Product product;
+    private Servicecategorie serviceCategorie;
+    private Product product;
 
 
     public void initialize() {
-         serviceProduit = new ProductService();
-         serviceCategorie = new Servicecategorie();
+        serviceProduit = new ProductService();
+        serviceCategorie = new Servicecategorie();
         try {
             Set<Categorie_p> categories = serviceCategorie.getAllC();
-            if (categories!=null && !categories.isEmpty()) {
+            if (categories != null && !categories.isEmpty()) {
                 choicebox.setConverter(new StringConverter<>() {
                     @Override
                     public String toString(Categorie_p objet) {
@@ -106,10 +114,30 @@ public class ProduitController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                // Si le champ de recherche est vide, affichez tous les produits
+                try {
+                    displayProduct();
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // Sinon, effectuez la recherche en utilisant la méthode search de ProductService
+                try {
+                    List<Product> filteredProducts = serviceProduit.search(newValue);
 
-         hide.visibleProperty().bind(ajouterPane.visibleProperty());
-         ajouterPane.setVisible(false); // Make ajouterPane not visible
-         ajouterProduit.setOnAction(e -> {
+                    // Mettez à jour l'interface utilisateur avec les produits filtrés
+                    displayFilteredProducts(filteredProducts);
+                } catch (SQLException  | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        hide.visibleProperty().bind(ajouterPane.visibleProperty());
+        ajouterPane.setVisible(false); // Make ajouterPane not visible
+        ajouterProduit.setOnAction(e -> {
             ajouterPane.setVisible(true);
         });
         hide.setOnAction(e -> {
@@ -121,10 +149,9 @@ public class ProduitController {
             e.printStackTrace();
         }
     }
-
-    private void displayProduct() throws SQLException, IOException {
-       List<Product>products = serviceProduit.getAll();
-       for (int i = 0; i < products.size(); i++) {
+    private void displayFilteredProducts(List<Product> products) throws IOException {
+        produitContainer.getChildren().clear(); // Clear the existing products
+        for (int i = 0; i < products.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/SportHub/ProductCard.fxml"));
             Pane pane = fxmlLoader.load();
@@ -132,12 +159,32 @@ public class ProduitController {
             controller.setData(products.get(i));
 
             pane.setOnMouseClicked(e -> {
-               try {
-                   openDetails(controller.getProduct());
-               } catch (IOException ex) {
-                   ex.printStackTrace();
-               }
-           });
+                try {
+                    openDetails(controller.getProduct());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            produitContainer.add(pane, i % 3, i / 3);
+        }
+    }
+
+    private void displayProduct() throws SQLException, IOException {
+        List<Product> products = serviceProduit.getAll();
+        for (int i = 0; i < products.size(); i++) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/SportHub/ProductCard.fxml"));
+            Pane pane = fxmlLoader.load();
+            ProductCard controller = fxmlLoader.getController();
+            controller.setData(products.get(i));
+
+            pane.setOnMouseClicked(e -> {
+                try {
+                    openDetails(controller.getProduct());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
             produitContainer.add(pane, i % 3, i / 3);
         }
     }
@@ -155,38 +202,36 @@ public class ProduitController {
                 alert.setHeaderText(null);
                 alert.setContentText("Tous les champs sont obligatoires");
                 alert.showAndWait();
+            } else if (serviceProduit.productExist(produit_nom.getText())) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Produit nom déjà existe, merci de le changer");
+                alert.showAndWait();
             } else {
-                String name = produit_nom.getText();
-                if (serviceProduit.productExist(name)) {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Produit nom déjà existe, merci de le changer");
-                    alert.showAndWait();
-                } else {
 
-                    Product product = new Product();
-                    product.setName(produit_nom.getText());
-                    product.setDescription(produit_description.getText());
-                    product.setPrice((int) Double.parseDouble(produit_prix.getText()));
-                    product.setCategory(choicebox.getValue());
-                    product.setQuantite(Integer.parseInt(produit_quantity.getText()));
+                Product product = new Product();
+                product.setName(produit_nom.getText());
+                product.setDescription(produit_description.getText());
+                product.setPrice((int) Double.parseDouble(produit_prix.getText()));
+                product.setCategory(choicebox.getValue());
+                product.setQuantite(Integer.parseInt(produit_quantity.getText()));
 
-                    if (file != null) {
-                        product.setImage(file.getPath()); // Set the image path
-                    }
-
-                    serviceProduit.ajouter(product);
-
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Produit ajouté avec succès!");
-                    alert.showAndWait();
-
-                    displayProduct();
+                if (file != null) {
+                    product.setImage(file.getPath()); // Set the image path
                 }
+                ProductService service = new ProductService();
+                service.ajouter(product);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Produit ajouté avec succès!");
+                alert.showAndWait();
+
+                displayProduct();
             }
+
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }

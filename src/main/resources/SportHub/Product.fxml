@@ -14,6 +14,7 @@
 
 <AnchorPane fx:id="root1" prefHeight="762.0" prefWidth="1356.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.ProduitController">
     <Button fx:id="ajouterProduit" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="95.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Ajouter Produit" textAlignment="CENTER" />
+    <TextField fx:id="searchField" layoutX="724.0" layoutY="96.0" prefHeight="30.0" prefWidth="465.0" promptText="Rechercher un produit..." styleClass="search" />
     <AnchorPane fx:id="ajouterPane" layoutX="24.0" layoutY="65.0" prefHeight="671.0" prefWidth="350.0" stylesheets="@dashboardDesign.css">
         <styleClass>
             <String fx:value="shadow" />

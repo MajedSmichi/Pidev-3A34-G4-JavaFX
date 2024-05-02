@@ -1,7 +1,7 @@
 package SportHub.Controller;
 
 import SportHub.Entity.Product;
-import SportHub.Services .ProductService;
+import SportHub.Services.ProductService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.sql.SQLException;
 
 public class ProductCard {
@@ -29,28 +30,36 @@ public class ProductCard {
     @FXML
     private Button supprimer;
 
-    private Product produit;
+    private Product product;
     private ProductService produittService = new ProductService();
 
-    public void setData(Product produit) {
-        this.produit = produit;
-        price.setText(String.valueOf(produit.getPrice()));
-        name.setText(produit.getName()); // Assuming FullName is a Label
-        // Set the image
-        String imageUrl = produit.getImage();
-        if (imageUrl != null && !imageUrl.isEmpty()) {
-            Image image = new Image(imageUrl);
-            imageProduit.setImage(image);
-        } else {
-            // Handle the case when imageUrl is null or empty
-            // For example, set a default image
+    public void setData(Product product) {
+        this.product = product;
+        name.setText(product.getName());
+        price.setText(String.valueOf(product.getPrice()));
+
+        // Load the image
+        try {
+            if (product.getImage() != null) {
+                File file = new File(product.getImage());
+                if (file.exists()) {
+                    Image image = new Image(file.toURI().toString());
+                    imageProduit.setImage(image);
+                } else {
+                    System.err.println("Image file does not exist: " + product.getImage());
+                }
+            } else {
+                System.err.println("Image path is null");
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading image: " + e.getMessage());
+            e.printStackTrace();
         }
-
-
     }
 
+
     public Product getProduct() {
-        return this.produit;
+        return this.product;
     }
 
 }

@@ -114,8 +114,37 @@ public class ProductService {
         String image = rs.getString("image");
         return new Product(id,categorie,quantite, price,name,description,image);
     }
+    public List<Product> search(String searchTerm) throws SQLException {
+        String query = "SELECT * FROM product WHERE name LIKE ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, "%" + searchTerm + "%");
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Product> products = new ArrayList<>();
+        while (resultSet.next()) {
+            Product product = new Product();
+            product.setId(resultSet.getInt("id"));
+            product.setName(resultSet.getString("name"));
+            product.setDescription(resultSet.getString("description"));
+            product.setPrice((int) resultSet.getDouble("price"));
+            product.setQuantite(resultSet.getInt("quantite"));
+            product.setImage(resultSet.getString("image"));
+            // Récupérer la catégorie du produit à partir de la table de catégorie
+            int categoryId = resultSet.getInt("categorie_p_id");
+            String categoryQuery = "SELECT name FROM categorie_p WHERE id = ?";
+            PreparedStatement categoryStatement = conn.prepareStatement(categoryQuery);
+            categoryStatement.setInt(1, categoryId);
+            ResultSet categoryResult = categoryStatement.executeQuery();
+            if (categoryResult.next()) {
+                product.setCategory(categoryResult.getString("name"));
+            }
+
+            products.add(product);
+        }
+        return products;
+    }
     public boolean productExist(String productName) throws SQLException {
-        String query = "SELECT COUNT(*) FROM evenement WHERE nom = ?";
+        String query = "SELECT COUNT(*) FROM product WHERE name = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1,productName );
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -124,4 +153,31 @@ public class ProductService {
         }
         return false;
     }
+
+    public List<String> getCategories() throws SQLException {
+        String query = "SELECT name FROM categorie_p";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<String> categories = new ArrayList<>();
+        while (resultSet.next()) {
+            categories.add(resultSet.getString("name"));
+        }
+        return categories;
+    }
+
+    public List<Product> getByCategory(String category) throws SQLException {
+        String query = "SELECT * FROM product WHERE categorie_p_id = (SELECT id FROM categorie_p WHERE name = ?)";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, category);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Product> products = new ArrayList<>();
+        while (resultSet.next()) {
+            Product product = getProduit(resultSet.getInt("id"), resultSet);
+            products.add(product);
+        }
+        return products;
+    }
+
 }

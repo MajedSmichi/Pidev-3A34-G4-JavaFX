@@ -18,8 +18,10 @@ import javafx.util.StringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DetailsProductBack {
     @FXML
@@ -56,6 +58,9 @@ public class DetailsProductBack {
     private TextField product_name;
 
     @FXML
+    private ChoiceBox<Categorie_p> choicebox;
+
+    @FXML
     private Button product_update;
 
     @FXML
@@ -81,14 +86,13 @@ public class DetailsProductBack {
 
     @FXML
     private AnchorPane root2;
-    @FXML
-    private ChoiceBox<Categorie_p> choicebox;
 
     @FXML
     private ImageView suppicon;
 
     @FXML
     private Button supprimer;
+
 
     private TextField nom_image;
     private File file = null;
@@ -100,7 +104,8 @@ public class DetailsProductBack {
 
     // Initialize method
     public void initialize() {
-        modifierPane.setVisible(false); // Initially set the modifierPane to not visible
+        modifierPane.setVisible(false);
+        // Initially set the modifierPane to not visible
 
         // Add a click listener to the modifiericon1
         modifiericon1.setOnMouseClicked(e -> {
@@ -113,9 +118,22 @@ public class DetailsProductBack {
             product_price.setText(Price.getText());
             // Set the image in the ImageView
             product_image.setImage(imageProduct.getImage());
-            choicebox.setValue(product.getCategory());
-        });
 
+            Set<Categorie_p> categories = servicecategorie.getAllC();
+            choicebox.setConverter(new StringConverter<>() {
+                @Override
+                public String toString(Categorie_p objet) {
+                    // Retourne la représentation en String de l'objet que vous voulez afficher
+                    return objet.getName();
+                }
+
+                @Override
+                public Categorie_p fromString(String s) {
+                    return null;
+                }
+            });
+            choicebox.setItems(FXCollections.observableArrayList(categories));
+            choicebox.setValue(product.getCategory());        });
         // Add a click listener to the hide button
         hide.setOnMouseClicked(e -> {
             modifierPane.setVisible(false);
@@ -132,47 +150,113 @@ public class DetailsProductBack {
         File file = new File(product.getImage());
         Image image = new Image(file.toURI().toString());
         imageProduct.setImage(image);
-        Set<Categorie_p> categories = servicecategorie.getAllC();
-        choicebox.setConverter(new StringConverter<>() {
-            @Override
-            public String toString(Categorie_p objet) {
-                // Retourne la représentation en String de l'objet que vous voulez afficher
-                return objet.getName();
-            }
-
-            @Override
-            public Categorie_p fromString(String s) {
-                return null;
-            }
-        });
-        choicebox.setItems(FXCollections.observableArrayList(categories));
         choicebox.setValue(product.getCategory());
 
     }
     @FXML
     void productUpdate()   {
+        Alert alert;
+
+        // Vérifiez si les champs sont vides
+        if (product_name.getText().isEmpty() || product_description.getText().isEmpty()
+                || product_price.getText().isEmpty() || product_quantity.getText().isEmpty()
+                || choicebox.getValue() == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Tous les champs sont obligatoires");
+            alert.showAndWait();
+            return;
+        }
         // Step 1: Get the values from the text fields, choice box, and other input fields
         String name = product_name.getText();
         int price =  Integer.parseInt(product_price.getText());
         int quantite = Integer.parseInt(product_quantity.getText());
         String description = product_description.getText();
         String image = (url_image != null) ? url_image : product.getImage();
-        Categorie_p category = choicebox.getValue();
+        Categorie_p categorie = choicebox.getValue();
+    try {
+            price = Integer.parseInt(product_price.getText());
+
+            if (price < 0) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Le prix doit être une valeur numérique positive");
+                alert.showAndWait();
+                return;
+            }
+        } catch (NumberFormatException e) {
+            // Si le prix ne peut pas être converti en entier, affichez une erreur
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Le prix doit être une valeur numérique valide");
+            alert.showAndWait();
+            return;
+        }
+
+        // Vérifiez si la quantité est numérique et qu'elle ne dépasse pas 10
+        try {
+            if (product_quantity.getText().isEmpty()) {
+                // La quantité est laissée vide, utilisez null
+                product.setQuantite(0);
+            } else {
+                int quantity = Integer.parseInt(product_quantity.getText());
+
+                if (quantity < 0 || quantity > 10) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("La quantité doit être une valeur numérique entre 0 et 10");
+                    alert.showAndWait();
+                    return;
+                }
+
+                product.setQuantite(quantity);
+            }
+        } catch (NumberFormatException e) {
+            // Si la quantité ne peut pas être convertie en entier, affichez une erreur
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("La quantité doit être une valeur numérique valide");
+            alert.showAndWait();
+            return;
+        }
+
 
         if (product == null) {
             // Initialize the event object
             product = new Product();
         }
 
-        Product updatedProduct = new Product(product.getId(), name, quantite, price, category, description, image);
+
+        Product updatedProduct = new Product(product.getId(), name, quantite, price, categorie, description, image);
 
         // Step 3: Call the updateProduct method from ProductService
         ProductService productService = new ProductService();
+        // Vérifiez si le prix est numérique et non négatif
+
+        try {
+            if (productService.productExist(name) && !name.equals(product.getName())) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Un produit avec le même nom existe déjà. Veuillez saisir un autre nom.");
+                alert.showAndWait();
+                return;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérez l'exception selon vos besoins
+        }
         productService.modifier(updatedProduct.getId(), updatedProduct.getName(), updatedProduct.getDescription(), updatedProduct.getQuantite(), updatedProduct.getPrice(), updatedProduct.getImage(), updatedProduct.getCategory());
         name1.setText(updatedProduct.getName());
         Price.setText(String.valueOf(updatedProduct.getPrice()));
         Description.setText(updatedProduct.getDescription());
-
+        Quantity.setText(String.valueOf(updatedProduct.getQuantite()));
+        choicebox.setValue(updatedProduct.getCategory());
         // Step 5: Update the imageEvnement ImageView
         if (updatedProduct.getImage() != null) {
             File file = new File(updatedProduct.getImage());

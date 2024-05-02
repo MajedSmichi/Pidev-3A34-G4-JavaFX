@@ -43,7 +43,7 @@ public void loadTicketLayout() {
     @FXML
     public void loadGestionCategroiesLayout() {
         try {
-            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Categrie.fxml"));
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Categorie.fxml"));
             anchor.getChildren().setAll(gestionProduitsLayout);
         } catch (IOException e) {
             e.printStackTrace();
