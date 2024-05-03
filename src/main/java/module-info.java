@@ -3,6 +3,7 @@ module Controller {
     requires javafx.fxml;
     requires javafx.graphics;
     requires javafx.web;
+
     requires mysql.connector.java;
 
     requires org.controlsfx.controls;
@@ -16,6 +17,8 @@ module Controller {
     requires com.google.api.client.json.jackson2;
     requires jdk.httpserver;
     requires java.json;
+    requires org.apache.poi.poi;
+
 
     opens Controller to javafx.fxml;
     opens Entity to javafx.base;

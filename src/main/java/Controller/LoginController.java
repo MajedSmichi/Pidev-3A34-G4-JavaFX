@@ -20,9 +20,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Properties;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import javax.mail.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class LoginController {
 
@@ -48,6 +54,8 @@ public class LoginController {
 
     @FXML
     private Label createAccountLabel;
+
+    private int failedLoginAttempts = 0;
 
 
     @FXML
@@ -103,7 +111,7 @@ public void LoginButtonAction()  {
         storedPasswordHash = convertBcryptPrefixTo2a(storedPasswordHash);
 
         if (BCrypt.checkpw(password, storedPasswordHash)) {
-
+            failedLoginAttempts = 0;
             User user = getUserByEmail(email);
             SessionManager.getInstance().setCurrentUser(user);
 
@@ -119,6 +127,12 @@ public void LoginButtonAction()  {
                 navigateToUserList(email);
             }
         } else {
+            failedLoginAttempts++;
+            if (failedLoginAttempts >= 3) {
+                // Send an email to the user
+                sendEmail(email);
+                failedLoginAttempts = 0;
+            }
             errorLabel.setText("Invalid credentials");
         }
     } catch (Exception e) {
@@ -126,6 +140,44 @@ public void LoginButtonAction()  {
         errorLabel.setText("Error connecting to the database.");
     }
 }
+
+    private void sendEmail(String email) {
+        // Your email sending code here...
+        String host = "smtp.gmail.com"; // Gmail SMTP server
+        String from = "smichimajed@gmail.com"; // replace with your email
+        String password = "oxaxivwyxzrnzelz"; // replace with your email password
+
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
+
+        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setSubject("Account Login Attempt");
+
+            // HTML message
+            String htmlMessage = "<h1 style='color:blue;'>Account Login Attempt</h1>" +
+                    "<p>There have been multiple failed login attempts on your account. If this was not you, please click the 'No' button below.</p>" +
+                    "<a href='http://localhost:80443/response?email=" + email + "&action=yes'>Yes</a>" +
+                    "<a href='http://localhost:80443/response?email=" + email + "&action=no'>No</a>";
+
+            message.setContent(htmlMessage, "text/html");
+
+            Transport.send(message);
+            System.out.println("Email sent successfully");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void navigateToUserList(String userEmail) {
         try {

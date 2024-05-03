@@ -19,7 +19,7 @@
             <children>
                 <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
                     <children>
-                        <Button alignment="BASELINE_LEFT" onAction="#handleProfileEdit"  graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Profile" textFill="WHITE" >
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleProfileEdit" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Profile" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -117,7 +117,7 @@
                                 <Insets left="40.0" />
                             </padding>
                         </Button>
-                        <Button fx:id="logoutButton" alignment="CENTER" onAction="#logout" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Logout" textFill="WHITE" >
+                        <Button fx:id="logoutButton" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Logout" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -133,7 +133,7 @@
                 </VBox>
                 <Pane layoutY="86.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
                     <children>
-                        <Label layoutX="71.0" layoutY="17.0" text="Dashboard" onMouseClicked="#loadUserCreationStatistics" textFill="WHITE">
+                        <Label layoutX="71.0" layoutY="17.0" onMouseClicked="#loadUserCreationStatistics" text="Dashboard" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -158,12 +158,13 @@
             </children></AnchorPane>
         <ScrollPane fx:id="userListScrollPane" layoutX="269.0" layoutY="74.0" prefHeight="600" prefWidth="2000" style="-fx-border: none;" visible="false" AnchorPane.bottomAnchor="10.0">
             <content>
-                <TilePane fx:id="HBoxList" vgap="10" prefColumns="3" style="-fx-border: none;">
+                <TilePane fx:id="HBoxList" prefColumns="3" style="-fx-border: none;" vgap="10">
                 </TilePane>
             </content>
         </ScrollPane>
-        <TextField fx:id="searchField" layoutX="269.0" layoutY="74.0" prefWidth="900" promptText="Search with email" style="-fx-padding: 8px;            -fx-border-radius: 5px;            -fx-border-color: #cccccc;            -fx-border-width: 2;            -fx-background-color: #ffffff;            -fx-text-inner-color: #000000;            -fx-font-size: 14px;" visible="false">
+        <TextField fx:id="searchField" layoutX="269.0" layoutY="74.0" prefHeight="41.0" prefWidth="789.0" promptText="Search with email" style="-fx-padding: 8px;            -fx-border-radius: 5px;            -fx-border-color: #cccccc;            -fx-border-width: 2;            -fx-background-color: #ffffff;            -fx-text-inner-color: #000000;            -fx-font-size: 14px;" visible="false">
         </TextField>
+        <Button fx:id="exportButton" layoutX="1077.0" layoutY="77.0" prefHeight="34.0" prefWidth="110.0" text="Import UserList" />
         <AnchorPane fx:id="EditField" layoutX="401.0" layoutY="215.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@viewUser.css" visible="false">
             <children>
                 <Pane layoutX="29.0" layoutY="-16.0" styleClass="card">
@@ -229,7 +230,7 @@
                 </Pane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="anchor" layoutX="351.0" layoutY="100.0" prefHeight="600" prefWidth="800"  visible="false">
+        <AnchorPane fx:id="anchor" layoutX="351.0" layoutY="100.0" prefHeight="600" prefWidth="800" visible="false">
 
         </AnchorPane>
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="677.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
+<AnchorPane prefHeight="677.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
    <children>
       <ImageView fitHeight="411.0" fitWidth="226.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -57,7 +57,7 @@
       <Label fx:id="firstNameError" layoutX="256.0" layoutY="86.0" textFill="#f40909" />
       <Label fx:id="LastNameerror" layoutX="406.0" layoutY="86.0" textFill="#ef0505" />
       <Label fx:id="emailError" layoutX="257.0" layoutY="142.0" textFill="#e70909" />
-      <Label fx:id="passworderror" layoutX="257.0" layoutY="198.0" textFill="#f40e0e" />
+      <Label fx:id="passworderror" layoutX="244.0" layoutY="198.0" textFill="#f40e0e" />
       <Label fx:id="phoneError" layoutX="256.0" layoutY="254.0" textFill="#f40e0e" />
       <Label fx:id="adresserror" layoutX="409.0" layoutY="253.0" textFill="#f40e0e" />
       <Label fx:id="registererror" layoutX="380.0" layoutY="272.0" textFill="#f40e0e" />
@@ -66,7 +66,7 @@
       <Label layoutX="280.0" layoutY="300.0" text="i agree to the terms and conditions" />
       <Label fx:id="errorTerms" layoutX="257.0" layoutY="318.0" textFill="#ea0909" />
       <ImageView fx:id="avatarImageView" fitHeight="26.0" fitWidth="74.0" layoutX="408.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
-      <WebView fx:id="captchaWebView" layoutX="262.0" layoutY="394.0" prefHeight="282.0" prefWidth="326.0" />
+      <WebView fx:id="captchaWebView" layoutX="283.0" layoutY="394.0" prefHeight="282.0" prefWidth="326.0" />
       <Button layoutX="494.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleUploadAvatar" text="Upload Avatar" />
       <ImageView fitHeight="408.0" fitWidth="226.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -2,29 +2,34 @@ package Controller;
 
 import Entity.User;
 import Services.UserService;
+import javafx.scene.control.*;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 import connectionSql.ConnectionSql;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import java.io.FileOutputStream;
 import org.mindrot.jbcrypt.BCrypt;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +60,8 @@ public class SampleController implements UserCardRefreshListener {
     @FXML
     private TextField searchField = new TextField();
     private UserService userService = new UserService();
+    @FXML
+    private Button exportButton;
 
     public void initialize() {
         EditField.setVisible(false);
@@ -65,6 +72,8 @@ public class SampleController implements UserCardRefreshListener {
         logoutButton.setOnAction(event -> logout());
         Circle clip = new Circle(avatarImageView.getFitWidth() / 2, avatarImageView.getFitHeight() / 2, Math.min(avatarImageView.getFitWidth(), avatarImageView.getFitHeight()) / 2);
         avatarImageView.setClip(clip);
+        exportButton.setOnAction(event -> exportToExcel());
+
 
     }
 
@@ -73,6 +82,7 @@ public class SampleController implements UserCardRefreshListener {
         userListScrollPane.setVisible(true);
         searchField.setVisible(true);
         anchor.setVisible(false);
+        exportButton.setVisible(true);
     }
 
     @FXML
@@ -90,6 +100,56 @@ public class SampleController implements UserCardRefreshListener {
         }
     }
 
+private void exportToExcel() {
+    System.out.println("Export to Excel method called");
+    UserService userService = new UserService();
+    List<User> users = userService.selectAllUsers();
+    System.out.println("Users fetched: " + users.size());
+
+    Workbook workbook = new HSSFWorkbook();
+    Sheet sheet = workbook.createSheet("Users");
+
+    Row headerRow = (Row) sheet.createRow(0);
+    headerRow.createCell(0).setCellValue("ID");
+    headerRow.createCell(1).setCellValue("First Name");
+    headerRow.createCell(2).setCellValue("Last Name");
+    headerRow.createCell(3).setCellValue("Email");
+    headerRow.createCell(4).setCellValue("Phone");
+    headerRow.createCell(5).setCellValue("Adrees");
+    headerRow.createCell(6).setCellValue("CreatedAt");
+
+    for (int i = 0; i < users.size(); i++) {
+        User user = users.get(i);
+        Row row = sheet.createRow(i + 1);
+        row.createCell(0).setCellValue(user.getId());
+        row.createCell(1).setCellValue(user.getPrenom());
+        row.createCell(2).setCellValue(user.getNom());
+        row.createCell(3).setCellValue(user.getEmail());
+        row.createCell(4).setCellValue(user.getNumTele());
+        row.createCell(5).setCellValue(user.getAdresse());
+        row.createCell(6).setCellValue(user.getCreatedAt().toString());
+    }
+
+    String homeDirectory = System.getProperty("user.home");
+    String filePath = homeDirectory + "/Downloads/users.xls";
+
+    if (Files.exists(Paths.get(filePath))) {
+        // If file exists, append a timestamp to the filename
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+        filePath = homeDirectory + "/Downloads/users_" + timestamp + ".xls";
+    }
+
+    try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+        workbook.write(fileOut);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Export to Excel");
+        alert.setHeaderText(null);
+        alert.setContentText("Excel file has been downloaded successfully!");
+        alert.showAndWait();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     @Override
     public void refreshUserList() {
         loadUserListLayout();
@@ -123,6 +183,7 @@ public class SampleController implements UserCardRefreshListener {
         this.currentUser = user;
         userListScrollPane.setVisible(false);
         searchField.setVisible(false);
+        exportButton.setVisible(false);
         EditField.setVisible(true);
         DataView.setVisible(false);
         updateEmailText.setText(user.getEmail());
@@ -218,6 +279,7 @@ public class SampleController implements UserCardRefreshListener {
         userListScrollPane.setVisible(false);
         searchField.setVisible(false);
         EditField.setVisible(false);
+        exportButton.setVisible(false);
 
         // Set user details in view labels
         viewFirstNameLabel.setText(user.getPrenom());
@@ -260,6 +322,7 @@ public class SampleController implements UserCardRefreshListener {
         DataView.setVisible(false);
         userListScrollPane.setVisible(true);
         searchField.setVisible(true);
+        exportButton.setVisible(true);
     }
 
     @FXML
@@ -323,6 +386,7 @@ public class SampleController implements UserCardRefreshListener {
             anchor.setVisible(true);
             userListScrollPane.setVisible(false);
             searchField.setVisible(false);
+            exportButton.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -439,6 +503,7 @@ public class SampleController implements UserCardRefreshListener {
         anchor.setVisible(true);
         searchField.setVisible(false);
         userListScrollPane.setVisible(false);
+        exportButton.setVisible(false);
     } catch (IOException e) {
         e.printStackTrace();
     }
