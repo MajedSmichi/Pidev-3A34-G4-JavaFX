@@ -7,6 +7,7 @@ import connectionSql.ConnectionSql;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ProductService {
@@ -107,12 +108,19 @@ public class ProductService {
     private Product getProduit(int id, ResultSet rs) throws SQLException {
         int categorie_p_id = rs.getInt("categorie_p_id");
         Categorie_p categorie = serviceCategorie.getOneById(categorie_p_id);
-        String name = rs.getString("nom");
-        double price = rs.getDouble("prix");
+        String name = rs.getString("name");
+        double price = rs.getDouble("price");
         int quantite = rs.getInt("quantite");
         String description = rs.getString("description");
         String image = rs.getString("image");
-        return new Product(id,categorie,quantite, price,name,description,image);
+
+
+        // Assurez-vous que tous les champs sont correctement initialisés
+        if (categorie == null || name == null || description == null || image == null) {
+            throw new SQLException("One or more fields are null");
+        }
+
+        return new Product(id, categorie, quantite, price, name, description, image);
     }
     public List<Product> search(String searchTerm) throws SQLException {
         String query = "SELECT * FROM product WHERE name LIKE ?";
@@ -143,6 +151,7 @@ public class ProductService {
         }
         return products;
     }
+
     public boolean productExist(String productName) throws SQLException {
         String query = "SELECT COUNT(*) FROM product WHERE name = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -168,16 +177,28 @@ public class ProductService {
 
     public List<Product> getByCategory(String category) throws SQLException {
         String query = "SELECT * FROM product WHERE categorie_p_id = (SELECT id FROM categorie_p WHERE name = ?)";
+        System.out.println("Executing query: " + query); // Add logging
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, category);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         List<Product> products = new ArrayList<>();
         while (resultSet.next()) {
+            System.out.println("ResultSet: " + resultSet.toString()); // Add logging
             Product product = getProduit(resultSet.getInt("id"), resultSet);
             products.add(product);
         }
         return products;
     }
+    public List<Product> getByPrice(double price) throws SQLException {
+        // Récupérer tous les produits
+        List<Product> allProducts = getAll();
 
+        // Filtrer les produits par prix
+        List<Product> filteredProducts = allProducts.stream()
+                .filter(product -> product.getPrice() <= price)
+                .collect(Collectors.toList());
+
+        return filteredProducts;
+    }
 }

@@ -30,8 +30,12 @@ public class ItemController {
         this.product = product;
         nameLabel.setText(product.getName());
         priceLabel.setText("$" + product.getPrice());
-        img.setImage(new Image(product.getImage()));
-    }
+        if (product.getImage() != null) {
+            img.setImage(new Image(product.getImage()));
+        } else {
+            // Handle the case where the image is null
+            // For example, you can set a default image or leave the ImageView empty
+        }    }
     public void setMyListener(MyListener myListener) {
         this.myListener = myListener;
     }

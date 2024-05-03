@@ -11,9 +11,33 @@ public class Product {
 
     public Product(){}
 
-    public Product(int id, Categorie_p categorie, int quantite, double price, String name, String description, String image){}
+    public Product(int id, Categorie_p categorie, int quantite, double price, String name, String description, String image){
+        this.id = id;
+        this.category = categorie;
+        this.quantite = quantite;
+        this.price = (int) price;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
 
-    public Product (Categorie_p category, int quantite, double price, String name, String description, String image) {
+    public Product (Categorie_p category, int quantite, int price, String name, String description, String image) {
+        this.category = category;
+        this.quantite = quantite;
+        this.price =  price;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Product(int id, Categorie_p category, int quantite, int price, String name, String description, String image) {
+        this.id = id;
+        this.category = category;
+        this.quantite = quantite;
+        this.price = price;
+        this.name = name;
+        this.description = description;
+        this.image = image;
     }
 
     public Product(int id, String name, int quantite, int price,  Categorie_p category, String description, String image) {
@@ -25,6 +49,7 @@ public class Product {
         this.description = description;
         this.image = image;
     }
+
 
     public int getId() {
         return id;

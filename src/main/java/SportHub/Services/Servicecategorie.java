@@ -77,8 +77,8 @@ public class Servicecategorie {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
-                String nom = rs.getString("nom");
-                categorie = new Categorie_p(id,nom);
+                String name = rs.getString("name");
+                categorie = new Categorie_p(id,name);
             }
 
         } catch (SQLException e) {
