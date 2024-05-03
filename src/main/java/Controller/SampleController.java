@@ -61,7 +61,7 @@ public class SampleController implements UserCardRefreshListener {
     private TextField searchField = new TextField();
     private UserService userService = new UserService();
     @FXML
-    private Button exportButton;
+    private Button exportButton=new Button();
 
     public void initialize() {
         EditField.setVisible(false);
