@@ -19,6 +19,7 @@ import SportHub.Services.CoursService;
 import SportHub.Services.CategoryService;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,6 +46,8 @@ public class NewCoursController {
 
     private final CoursService coursService;
     private final CategoryService categoryService;
+    private ListCoursController listCoursController;
+
 
     private File pdfFile;
     private File coverImageFile;
@@ -52,6 +55,9 @@ public class NewCoursController {
     public NewCoursController() {
         this.coursService = new CoursService();
         this.categoryService = new CategoryService();
+    }
+    public void setListCoursController(ListCoursController listCoursController) {
+        this.listCoursController = listCoursController;
     }
 
     @FXML
@@ -70,6 +76,19 @@ public class NewCoursController {
 
     private void handleSQLException(SQLException e) {
         System.err.println("Error loading categories: " + e.getMessage());
+    }
+
+    private byte[] convertFileToByteArray(File file) {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            byte[] byteArray = new byte[(int) file.length()];
+            fis.read(byteArray);
+            fis.close();
+            return byteArray;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new byte[0];
+        }
     }
 
     @FXML
@@ -93,14 +112,17 @@ public class NewCoursController {
                 showAlert("Error", "Course with this name already exists in the selected category.");
                 return;
             }
+            byte[] pdfFileData = pdfFile != null ? convertFileToByteArray(pdfFile) : new byte[0];
+            byte[] coverImageData = coverImageFile != null ? convertFileToByteArray(coverImageFile) : new byte[0];
 
-            String pdfFilePath = pdfFile != null ? pdfFile.getAbsolutePath() : "";
-            String coverImageFilePath = coverImageFile != null ? coverImageFile.getAbsolutePath() : "";
+            Cours newCours = new Cours(name, description, pdfFileData, coverImageData, selectedCategory, selectedCategory.getId());
 
-            Cours newCours = new Cours(name, description, pdfFilePath, coverImageFilePath, selectedCategory, selectedCategory.getId());
             coursService.addCours(newCours);
             closeWindow();
-            refreshCoursList(); // Refresh the list of courses after adding
+
+            if (listCoursController != null) {
+                listCoursController.refreshCoursList(); // Refresh the list of courses after adding
+            }
         } catch (SQLException e) {
             handleSQLException(e);
         }
@@ -153,7 +175,9 @@ public class NewCoursController {
     private void closeWindow() {
         Stage stage = (Stage) addCoursButton.getScene().getWindow();
         stage.close();
+        refreshCoursList(); // Refresh the list before closing the window
     }
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

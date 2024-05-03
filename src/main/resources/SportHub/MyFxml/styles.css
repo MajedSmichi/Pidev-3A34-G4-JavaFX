@@ -1,25 +1,37 @@
-.root {
-    -fx-background-color: #f0f0f0;
+/* Common styles for both CoursCard.fxml and CategoryCard.fxml */
+.card {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.label {
-    -fx-font-size: 20px;
-    -fx-text-fill: #333;
+.card-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
-.button {
-    -fx-background-color: #007bff;
-    -fx-text-fill: #fff;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+.card-description {
+    font-size: 14px;
+    color: #666;
 }
 
-.table-view {
-    -fx-background-color: #fff;
-    -fx-table-cell-border-color: transparent;
+.card-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 10px 24px;
+    border-radius: 5px;
 }
 
-.table-column {
-    -fx-background-color: #f8f8f8;
-    -fx-border-color: transparent;
+.card-button:hover {
+    background-color: #0069d9;
+    color: white;
 }

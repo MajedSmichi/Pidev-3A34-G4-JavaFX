@@ -2,6 +2,7 @@ package SportHub.Controller.MyController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,8 @@ import java.util.List;
 import static SportHub.Services.CategoryService.getAllCategories;
 
 public class CategoryListController {
+    @FXML
+    public Button goToCoursesButton;
     @FXML
     private TableView<Category> categoryTableView;
 
@@ -154,4 +157,18 @@ public class CategoryListController {
 
         stage.show();
     }
+
+    public void goToCourses(MouseEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCours.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+}
 }

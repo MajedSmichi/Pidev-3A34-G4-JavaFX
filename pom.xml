@@ -14,6 +14,11 @@
 <junit.version>5.9.2</junit.version>  </properties>
 
   <dependencies>
+      <dependency>
+          <groupId>com.sendgrid</groupId>
+          <artifactId>sendgrid-java</artifactId>
+          <version>4.7.2</version>
+      </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>

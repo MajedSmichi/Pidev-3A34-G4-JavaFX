@@ -7,6 +7,10 @@ module com.example.gestionreclamation {
     requires java.persistence;
     requires javafx.swing;
     requires java.desktop;
+    //requires activation;
+    //requires java.mail;
+    //requires sendgrid.java;
+    //requires java.http.client;
     opens SportHub to javafx.fxml;
     exports SportHub;
     exports connectionSql;

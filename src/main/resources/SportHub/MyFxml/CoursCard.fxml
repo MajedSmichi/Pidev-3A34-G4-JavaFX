@@ -8,22 +8,22 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml">
-    <VBox prefHeight="150.0" prefWidth="200.0">
+    <VBox prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #A9A9A9; -fx-border-radius: 10px; -fx-padding: 10px;">
         <ImageView fx:id="coverImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="courseNameLabel" style="-fx-font-weight: bold;" text="Course Name">
+        <Label fx:id="courseNameLabel" text="Course Name" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #333;">
             <font>
                 <Font name="Roboto" size="12.0" />
             </font>
         </Label>
-        <Button fx:id="downloadButton" mnemonicParsing="false" text="Download PDF">
+        <Label fx:id="descriptionLabel" text="Course Description" style="-fx-font-size: 14px; -fx-text-fill: #666;">
+            <font>
+                <Font name="Roboto" size="12.0" />
+            </font>
+        </Label>
+        <Button fx:id="downloadButton" onAction="#downloadPDF" mnemonicParsing="false" text="Download PDF" style="-fx-background-color: #007bff; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px;">
             <font>
                 <Font name="Roboto" size="12.0" />
             </font>
         </Button>
-        <Label fx:id="descriptionLabel" prefHeight="16.0" prefWidth="270.0" text="Course Description" wrapText="true">
-            <font>
-                <Font name="Roboto" size="12.0" />
-            </font>
-        </Label>
     </VBox>
 </AnchorPane>

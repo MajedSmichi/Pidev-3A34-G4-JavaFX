@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="SportHub.Controller.MyController.FrontCoursController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Label fx:id="categoryNameLabel" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-    <FlowPane fx:id="coursesFlowPane" layoutY="60.0" vgap="10" hgap="10" >
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCoursController">
+    <Label fx:id="categoryNameLabel" layoutX="34.0" layoutY="25.0" prefHeight="35.0" prefWidth="119.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <FlowPane fx:id="coursesFlowPane" hgap="10" layoutX="34.0" layoutY="60.0" vgap="10">
         <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
+            <Insets bottom="10" left="10" right="10" top="10" />
         </padding>
     </FlowPane>
-    <Label fx:id="noCoursesLabel" layoutY="80.0" style="-fx-font-size: 18px; -fx-text-fill: red;" />
+    <Label fx:id="noCoursesLabel" layoutX="14.0" layoutY="80.0" prefWidth="240.0" style="-fx-font-size: 18px; -fx-text-fill: red;" />
 </AnchorPane>

@@ -1,8 +1,10 @@
 
-r
-java:S3740"/Provide the parametrized type for this generic.(êÆö™8’» éñ1J$503245d1-a415-4d19-8171-deb16248b759
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8å±àèñ1J$7b8fc8bf-f0a5-4d02-beb8-074854c46298
-¡
-java:S1171U"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¸» éñ1J$af5409d3-7ddd-47e0-9637-7d0101be27dd
-ˆ
-java:S1193v"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8¼» éñ1J$c0c4da79-e671-4fbe-8434-2229ef48c092
+L
+java:S3740"/Provide the parametrized type for this generic.(êÆö™8ä¹‚ìó1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8è¹‚ìó1
+{
+java:S1171n"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¶º‚ìó1
+c
+java:S1193"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8¿º‚ìó1
+X
+java:S1144Y"6Remove this unused private "byteArrayToString" method.(œ‘‚µøÿÿÿÿ8×º‚ìó1

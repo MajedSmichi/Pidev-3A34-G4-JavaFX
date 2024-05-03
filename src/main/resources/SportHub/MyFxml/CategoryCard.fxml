@@ -8,17 +8,17 @@
 <?import javafx.scene.text.Font?>
 
 <fx:root type="AnchorPane" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx">
-    <VBox prefHeight="150.0" prefWidth="200.0" styleClass="category-card" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+    <VBox prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #A9A9A9; -fx-border-radius: 10px; -fx-padding: 10px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <ImageView fx:id="categoryImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
-        <Label fx:id="categoryNameLabel" styleClass="category-name" text="Category Name" VBox.vgrow="NEVER">
+        <Label fx:id="categoryNameLabel" text="Category Name" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #333;" VBox.vgrow="NEVER">
          <font>
             <Font name="Roboto Black" size="12.0" />
          </font></Label>
-        <Label fx:id="categoryDescriptionLabel" styleClass="category-description" text="Category Description" VBox.vgrow="ALWAYS">
+        <Label fx:id="categoryDescriptionLabel" text="Category Description" style="-fx-font-size: 14px; -fx-text-fill: #666;" VBox.vgrow="ALWAYS">
          <font>
             <Font name="Roboto Black" size="12.0" />
          </font></Label>
-        <Button fx:id="exploreButton" onAction="#handleExploreButtonAction" prefHeight="22.0" prefWidth="200.0" text="Explore!" VBox.vgrow="NEVER">
+        <Button fx:id="exploreButton" onAction="#handleExploreButtonAction" prefHeight="22.0" prefWidth="200.0" text="Explore!" style="-fx-background-color: #007bff; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px;" VBox.vgrow="NEVER">
          <font>
             <Font name="Roboto Black" size="12.0" />
          </font></Button>

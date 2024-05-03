@@ -1,4 +1,6 @@
 
-”
-java:S1192B"LDefine a constant instead of duplicating this literal "description" 4 times.(â€ğÙûÿÿÿÿ8¢ÖØªò1J$a868f5ba-1913-4bd7-8810-b616be2fe973
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8†€ÂÍñ1J$7c5b55f4-bd3d-44f2-bfb4-14d0b4658ea1
+n
+java:S1192G"LDefine a constant instead of duplicating this literal "description" 4 times.(â€ğÙûÿÿÿÿ8áë¤ëó1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿ8äë¤ëó1
+X	java:S125"<This block of commented-out lines of code should be removed.(ÿ †‡8óë¤ëó1
+Y	java:S125µ"<This block of commented-out lines of code should be removed.(èÂôß8–ì¤ëó1

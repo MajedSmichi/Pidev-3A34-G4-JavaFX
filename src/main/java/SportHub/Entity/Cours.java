@@ -6,32 +6,30 @@ public class Cours {
     private final IntegerProperty id;
     private final StringProperty name;
     private final StringProperty description;
-    private final StringProperty pdfFileData;
-    private final StringProperty coverImageData;
+    private final ObjectProperty<byte[]> pdfFileData;
+    private final ObjectProperty<byte[]> coverImageData;
     private final ObjectProperty<Category> category;
     private final IntegerProperty categoryId;
 
-    public Cours(String name, String description, String pdfFileData, String coverImageData, Category category, int categoryId) {
+    public Cours(String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category, int categoryId) {
         this.id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.pdfFileData = new SimpleStringProperty(pdfFileData);
-        this.coverImageData = new SimpleStringProperty(coverImageData);
+        this.pdfFileData = new SimpleObjectProperty<>(pdfFileData);
+        this.coverImageData = new SimpleObjectProperty<>(coverImageData);
         this.category = new SimpleObjectProperty<>(category);
         this.categoryId = new SimpleIntegerProperty(categoryId);
     }
 
-    public Cours(int id, String name, String description, String pdfFileData, String coverImageData, Category category, int categoryId) {
+    public Cours(int id, String name, String description, byte[] pdfFileData, byte[] coverImageData, Category category, int categoryId) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.pdfFileData = new SimpleStringProperty(pdfFileData);
-        this.coverImageData = new SimpleStringProperty(coverImageData);
+        this.pdfFileData = new SimpleObjectProperty<>(pdfFileData);
+        this.coverImageData = new SimpleObjectProperty<>(coverImageData);
         this.category = new SimpleObjectProperty<>(category);
         this.categoryId = new SimpleIntegerProperty(categoryId);
     }
-
-
 
     public IntegerProperty idProperty() {
         return id;
@@ -69,27 +67,27 @@ public class Cours {
         this.description.set(description);
     }
 
-    public StringProperty pdfFileDataProperty() {
+    public ObjectProperty<byte[]> pdfFileDataProperty() {
         return pdfFileData;
     }
 
-    public String getPdfFileData() {
+    public byte[] getPdfFileData() {
         return pdfFileData.get();
     }
 
-    public void setPdfFileData(String pdfFileData) {
+    public void setPdfFileData(byte[] pdfFileData) {
         this.pdfFileData.set(pdfFileData);
     }
 
-    public StringProperty coverImageDataProperty() {
+    public ObjectProperty<byte[]> coverImageDataProperty() {
         return coverImageData;
     }
 
-    public String getCoverImageData() {
+    public byte[] getCoverImageData() {
         return coverImageData.get();
     }
 
-    public void setCoverImageData(String coverImageData) {
+    public void setCoverImageData(byte[] coverImageData) {
         this.coverImageData.set(coverImageData);
     }
 

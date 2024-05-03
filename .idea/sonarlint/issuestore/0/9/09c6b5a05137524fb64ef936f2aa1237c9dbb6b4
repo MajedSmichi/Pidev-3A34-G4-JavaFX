@@ -1,18 +1,16 @@
 
 ¤
-java:S1104"\Make categoryFlowPane a static final constant or non-public and provide accessors if needed.(îØÃÊşÿÿÿÿ8ª€Å¥ó1J$6b644c90-a8f9-48cb-8c75-af483c971d0e
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8È¨¥ó1J$6f20d2d0-1592-40ba-8233-c85bb8153374
+java:S1104"\Make categoryFlowPane a static final constant or non-public and provide accessors if needed.(îØÃÊşÿÿÿÿ8ª€Å¥ó1J$b40f996a-1fb7-4a8a-8726-7dc29dd06e63
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8È¨¥ó1J$4c7d3c98-0c5a-4ddf-8501-89a275493be7
 ¦
-java:S1450"cRemove the "frontCoursController" field and declare it as a local variable in the relevant methods.(ãòì¶8³€Å¥ó1J$b36d2826-a788-4e8d-bb1c-82c441e49f1c
+java:S1450"cRemove the "frontCoursController" field and declare it as a local variable in the relevant methods.(ãòì¶8³€Å¥ó1J$8c4c6625-901c-4d93-9c12-a556ba69958b
 
-java:S1117Y"HRename "frontCoursController" which hides the field declared at line 29.(øåÌûûÿÿÿÿ8àÄ §ó1J$0e5cd1b2-ad40-4d17-b038-9bbaae0ca040
-€
-java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ8Â§¡§ó1J$b2f07588-f8cf-4633-b4c4-0648552c3562
-†
-java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8Ã§¡§ó1J$45206341-23c7-421d-80ff-2275918eb146
-€
-java:S1128"8Remove this unused import 'javafx.scene.control.Button'.(Ë Í‹øÿÿÿÿ8õ§¹Äó1J$683e7f60-c654-4702-b41a-491c5f74b04c
-‚
-java:S1128":Remove this unused import 'javafx.scene.input.MouseEvent'.(˜¬‹æÿÿÿÿÿ8Ã§¡§ó1J$f1dd4598-09ce-4fc9-97ea-b5762ae26a0a
+java:S1117["HRename "frontCoursController" which hides the field declared at line 31.(øåÌûûÿÿÿÿ8àÄ §ó1J$84bc3686-445c-47f4-913a-193f4892b524
+Z
+java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ8ùóÒìó1
+`
+java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8ùóÒìó1
+\
+java:S1128":Remove this unused import 'javafx.scene.input.MouseEvent'.(˜¬‹æÿÿÿÿÿ8ùóÒìó1
 {
-java:S1068"8Remove this unused "frontCoursController" private field.(ãòì¶8Ù€Å¥ó1J$a9af60fa-e53c-482c-bc48-05280e8388c2
+java:S1068"8Remove this unused "frontCoursController" private field.(ãòì¶8Ù€Å¥ó1J$24bd3e81-6993-4741-9324-e4868011936d

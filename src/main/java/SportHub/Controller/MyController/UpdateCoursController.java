@@ -18,6 +18,7 @@ import SportHub.Services.CoursService;
 import SportHub.Services.CategoryService;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -104,12 +105,14 @@ public class UpdateCoursController {
 
                 // Update PDF file if selected
                 if (pdfFile != null) {
-                    selectedCours.setPdfFileData(pdfFile.getAbsolutePath());
+                    byte[] pdfFileData = convertFileToByteArray(pdfFile);
+                    selectedCours.setPdfFileData(pdfFileData);
                 }
 
                 // Update cover image if selected
                 if (coverImageFile != null) {
-                    selectedCours.setCoverImageData(coverImageFile.getAbsolutePath());
+                    byte[] coverImageData = convertFileToByteArray(coverImageFile);
+                    selectedCours.setCoverImageData(coverImageData);
                 }
 
                 coursService.updateCours(selectedCours);
@@ -117,7 +120,17 @@ public class UpdateCoursController {
             }
         } catch (SQLException e) {
             handleSQLException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
+
+    private byte[] convertFileToByteArray(File file) throws IOException {
+        byte[] fileData = new byte[(int) file.length()];
+        FileInputStream fileInputStream = new FileInputStream(file);
+        fileInputStream.read(fileData);
+        fileInputStream.close();
+        return fileData;
     }
 
     private boolean validateInputs(String name, String description, int categoryId) {

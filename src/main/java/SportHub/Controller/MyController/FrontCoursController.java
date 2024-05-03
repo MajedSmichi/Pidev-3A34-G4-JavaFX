@@ -7,13 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class FrontCoursController {
         this.selectedCategory = category;
         displayCategoryName();
         loadCourses();
+
     }
 
     private void displayCategoryName() {
@@ -67,9 +69,9 @@ public class FrontCoursController {
         }
     }
 
-   private void displayCourses(List<Cours> courses) {
+    private void displayCourses(List<Cours> courses) {
     coursesFlowPane.getChildren().clear();
-     try {
+    try {
         for (Cours course : courses) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/CoursCard.fxml"));
             CoursCardController cardController = new CoursCardController();
@@ -81,24 +83,32 @@ public class FrontCoursController {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    }
+}
     private void downloadPDF(Cours course) {
-        try {
-            File pdfFile = new File(course.getPdfFileData());
-            if (pdfFile.exists()) {
-                if (Desktop.isDesktopSupported()) {
-                    Desktop.getDesktop().open(pdfFile);
-                } else {
-                    System.out.println("Awt Desktop is not supported!");
-                }
-            } else {
-                System.out.println("File does not exist!");
+    System.out.println("Download PDF callback triggered");
+    byte[] pdfData = course.getPdfFileData();
+    if (pdfData != null && pdfData.length > 0) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save PDF File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        // Set the initial file name to the course name plus ".pdf"
+        fileChooser.setInitialFileName(course.getName().toUpperCase() + ".pdf");
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if (selectedFile != null) {
+            try (FileOutputStream fos = new FileOutputStream(selectedFile)) {
+                fos.write(pdfData);
+                fos.flush();
+            } catch (IOException e) {
+                // Show an error message to the user
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Failed to download PDF");
+                alert.setContentText("An error occurred while trying to download the PDF. Please try again.");
+                alert.showAndWait();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
-
+}
     @FXML
     public void goToCategories() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));

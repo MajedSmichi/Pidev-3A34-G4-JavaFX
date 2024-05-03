@@ -2,6 +2,7 @@ package SportHub.Controller.MyController;
 
 import SportHub.Entity.Cours;
 import SportHub.Services.CoursService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -60,11 +61,35 @@ public class ListCoursController {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        pdfColumn.setCellValueFactory(cellData -> cellData.getValue().pdfFileDataProperty());
-        coverColumn.setCellValueFactory(cellData -> cellData.getValue().coverImageDataProperty());
+
+        coverColumn.setCellValueFactory(cellData -> {
+            String coverStatus = cellData.getValue().getCoverImageData() != null ? "Available" : "Not Available";
+            return new SimpleStringProperty(coverStatus);
+        });
+
+        pdfColumn.setCellValueFactory(cellData -> {
+            String pdfStatus = cellData.getValue().getPdfFileData() != null ? "Available" : "Not Available";
+            return new SimpleStringProperty(pdfStatus);
+        });
+
         categoryColumn.setCellValueFactory(cellData -> cellData.getValue().categoryProperty().getValue().typeProperty());
         setupActionsColumn();
     }
+    public void refreshCoursList() {
+        try {
+            List<Cours> updatedCoursList = coursService.getAllCours();
+            coursTableView.getItems().clear(); // Clear the existing items
+            coursTableView.getItems().addAll(updatedCoursList); // Add the updated items
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException if needed
+        }
+    }
+
+    private String byteArrayToString(byte[] byteArray) {
+        return byteArray != null ? new String(byteArray) : "";
+    }
+
 
     private void loadCours() {
         try {
@@ -147,8 +172,14 @@ public class ListCoursController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/NewCours.fxml"));
         Parent root = loader.load();
 
+        // Set this controller instance in NewCoursController
+        NewCoursController newCoursController = loader.getController();
+        newCoursController.setListCoursController(this);
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
     }
 }
+
+

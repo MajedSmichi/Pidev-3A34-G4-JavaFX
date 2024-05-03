@@ -5,15 +5,18 @@ import SportHub.Entity.Cours;
 import connectionSql.ConnectionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+/*import com.sendgrid.*;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.*;*/
+
+import java.io.IOException;
+import java.nio.file.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CoursService {
     private Connection connection;
@@ -27,25 +30,27 @@ public class CoursService {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, cours.getName());
             preparedStatement.setString(2, cours.getDescription());
-            preparedStatement.setString(3, cours.getPdfFileData());
-            preparedStatement.setString(4, cours.getCoverImageData());
+            preparedStatement.setBytes(3, cours.getPdfFileData());
+            preparedStatement.setBytes(4, cours.getCoverImageData());
             preparedStatement.setInt(5, cours.getCategoryId());
             preparedStatement.executeUpdate();
         }
     }
+
 
     public void updateCours(Cours cours) throws SQLException {
         String query = "UPDATE cours SET name = ?, description = ?, pdf = ?, cover = ?, category_id = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, cours.getName());
             preparedStatement.setString(2, cours.getDescription());
-            preparedStatement.setString(3, cours.getPdfFileData());
-            preparedStatement.setString(4, cours.getCoverImageData());
+            preparedStatement.setBytes(3, cours.getPdfFileData());
+            preparedStatement.setBytes(4, cours.getCoverImageData());
             preparedStatement.setInt(5, cours.getCategoryId());
             preparedStatement.setInt(6, cours.getId());
             preparedStatement.executeUpdate();
         }
     }
+
 
     public void deleteCours(int courseId) throws SQLException {
         String query = "DELETE FROM cours WHERE id = ?";
@@ -64,8 +69,8 @@ public class CoursService {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
-                String pdfFileData = resultSet.getString("pdf");
-                String coverImageData = resultSet.getString("cover");
+                byte[] pdfFileData = resultSet.getBytes("pdf");
+                byte[] coverImageData = resultSet.getBytes("cover");
                 int categoryId = resultSet.getInt("category_id");
                 Category category = getCategoryById(categoryId);
                 coursList.add(new Cours(id, name, description, pdfFileData, coverImageData, category, categoryId));
@@ -73,6 +78,7 @@ public class CoursService {
         }
         return coursList;
     }
+
 
     public boolean courseExists(String coursName) throws SQLException {
         String query = "SELECT COUNT(*) FROM cours WHERE name = ?";
@@ -129,14 +135,15 @@ public class CoursService {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
-                String pdfFileData = resultSet.getString("pdf");
-                String coverImageData = resultSet.getString("cover");
+                byte[] pdfFileData = resultSet.getBytes("pdf");
+                byte[] coverImageData = resultSet.getBytes("cover");
                 courses.add(new Cours(id, name, description, pdfFileData, coverImageData, null, categoryId));
             }
         }
 
         return courses;
     }
+
 
     public Map<String, Integer> getTop5Categories() throws SQLException {
         String query = "SELECT c.type, COUNT(*) as course_count FROM cours co JOIN category c ON co.category_id = c.id GROUP BY c.type ORDER BY course_count DESC LIMIT 5";
@@ -168,4 +175,39 @@ public class CoursService {
         }
         return categories;
     }
+
+
+
+    /*public void sendPdfToEmail(Cours course, String email) {
+    Email from = new Email("your-email@example.com");
+    String subject = "PDF File of " + course.getName();
+    Email to = new Email(email);
+    Content content = new Content("text/plain", "Here is the PDF file of the course " + course.getName());
+    Mail mail = new Mail(from, subject, to, content);
+
+    // Assuming that the PDF data is stored in a byte array in the course object
+    byte[] pdfData = course.getPdfFileData();
+    Attachments attachments = new Attachments();
+    Base64.Encoder encoder = Base64.getEncoder();
+    String pdfDataEncoded = encoder.encodeToString(pdfData);
+    attachments.setContent(pdfDataEncoded);
+    attachments.setType("application/pdf");
+    attachments.setFilename(course.getName() + ".pdf");
+    attachments.setDisposition("attachment");
+    mail.addAttachments(attachments);
+
+    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+    Request request = new Request();
+    try {
+        request.setMethod(Method.POST);
+        request.setEndpoint("mail/send");
+        request.setBody(mail.build());
+        Response response = sg.api(request);
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody());
+        System.out.println(response.getHeaders());
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+    }*/
 }

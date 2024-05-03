@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class FrontCategoryController {
     public FlowPane categoryFlowPane;
+    @FXML
+    private Button showStatsButton;
     private final CoursService coursService;
     private FrontCoursController frontCoursController;
 
@@ -93,6 +95,8 @@ public class FrontCategoryController {
 
         // Replace the content of the current scene with the new pane
         categoryFlowPane.getChildren().setAll(pane);
+        showStatsButton.setVisible(false);
+
     } catch (IOException e) {
         e.printStackTrace();
     }

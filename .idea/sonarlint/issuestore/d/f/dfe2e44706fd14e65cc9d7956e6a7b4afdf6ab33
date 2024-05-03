@@ -1,8 +1,5 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8›§é¦ó1J$ead07a83-e55b-48d8-8e96-0648350bdd39
-m	java:S106\"+Replace this use of System.out by a logger.(…À£8¢´•¯ó1J$248e373d-20ca-49e4-8660-09d81237f334
-m	java:S106_"+Replace this use of System.out by a logger.(¡Êµá8¤´•¯ó1J$d981e9de-5357-414a-8090-aa15edc79597
-x
-java:S1128"5Remove this unused import 'javafx.stage.FileChooser'.(–¹ë8¼´•¯ó1J$bbbdfacc-626f-4a5e-8a0a-1cf7014c92e6
-w
-java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg8½´•¯ó1J$28a71e08-f455-4aab-9a27-c35dba656580
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Ìü¢Çó1J$32f48dab-95c7-4a62-a6e5-c5b45f55c49f
+r	java:S106X"+Replace this use of System.out by a logger.(‰í„ºüÿÿÿÿ8ı¢Çó1J$16d80320-33c2-4dd0-a2f4-5f26122d902f
+[
+java:S1128"9Remove this unused import 'java.io.ByteArrayInputStream'.(Ëôæ±ûÿÿÿÿ8°œÓìó1
