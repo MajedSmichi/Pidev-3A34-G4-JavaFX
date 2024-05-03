@@ -188,7 +188,7 @@ public static List<User> selectAllUsers() {
         }
     }
 
-    public User findUserByEmail(String email) {
+    public static User findUserByEmail(String email) {
         User user = null;
         try (Connection connection = ConnectionSql.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email = ?")) {

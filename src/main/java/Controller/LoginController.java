@@ -1,6 +1,7 @@
 package Controller;
 
 import Entity.User;
+import Services.UserService;
 import connectionSql.ConnectionSql;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.Random;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -31,6 +34,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class LoginController {
+    private int verificationCode;
 
     public Label forgetPassword;
 
@@ -112,7 +116,7 @@ public void LoginButtonAction()  {
 
         if (BCrypt.checkpw(password, storedPasswordHash)) {
             failedLoginAttempts = 0;
-            User user = getUserByEmail(email);
+            User user = UserService.findUserByEmail(email);
             SessionManager.getInstance().setCurrentUser(user);
 
             // Check if the user is verified
@@ -128,10 +132,22 @@ public void LoginButtonAction()  {
             }
         } else {
             failedLoginAttempts++;
-            if (failedLoginAttempts >= 3) {
-                // Send an email to the user
-                sendEmail(email);
+            if (failedLoginAttempts == 2) {
+                errorLabel.setText("This is your last try.");
+            } else if (failedLoginAttempts >= 3){
+                errorLabel.setText("Your account is banned.");
+                User user = UserService.findUserByEmail(email);
+                SessionManager.getInstance().setCurrentUser(user);
+                user.setVerified(false);
+                UserService.updateUserActiveStatus(user.getId(),user.isVerified());
+                System.out.println("user: " + user);
+                verificationCode = new Random().nextInt(900000) + 100000;
+                String numTele = "+216" + user.getNumTele();
+                WhatsAppSender.main(new String[]{String.valueOf(verificationCode), numTele});
+                showVerificationCodeAlert();
                 failedLoginAttempts = 0;
+                errorLabel.setText("Your account is banned.");
+                return;
             }
             errorLabel.setText("Invalid credentials");
         }
@@ -141,43 +157,42 @@ public void LoginButtonAction()  {
     }
 }
 
-    private void sendEmail(String email) {
-        // Your email sending code here...
-        String host = "smtp.gmail.com"; // Gmail SMTP server
-        String from = "smichimajed@gmail.com"; // replace with your email
-        String password = "oxaxivwyxzrnzelz"; // replace with your email password
+private void showVerificationCodeAlert() {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Verification Code");
+    dialog.setHeaderText("Enter the verification code sent to your WhatsApp:");
+    dialog.setContentText("Verification Code:");
 
-        Properties properties = System.getProperties();
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
+    Optional<String> result = dialog.showAndWait();
+    result.ifPresent(code -> {
+        if (code.isEmpty()) {
+            // Display an alert when the code is empty
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Verification Failed");
+            alert.setHeaderText(null);
+            alert.setContentText("No code entered. Please enter the verification code.");
+            alert.showAndWait();
+        } else {
+            int enteredCode = Integer.parseInt(code);
+            User user = SessionManager.getInstance().getCurrentUser();
 
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
+            if (enteredCode == verificationCode) {
+                user.setVerified(true);
+                UserService.updateUserActiveStatus(user.getId(),user.isVerified());
+            } else {
+                user.setVerified(false);
+                UserService.updateUserActiveStatus(user.getId(),user.isVerified());
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Verification Failed");
+                alert.setHeaderText(null);
+                alert.setContentText("The code is incorrect. Your account is banned.");
+                alert.showAndWait();
+                errorLabel.setText("The code is incorrect.");
             }
-        });
-
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setSubject("Account Login Attempt");
-
-            // HTML message
-            String htmlMessage = "<h1 style='color:blue;'>Account Login Attempt</h1>" +
-                    "<p>There have been multiple failed login attempts on your account. If this was not you, please click the 'No' button below.</p>" +
-                    "<a href='http://localhost:80443/response?email=" + email + "&action=yes'>Yes</a>" +
-                    "<a href='http://localhost:80443/response?email=" + email + "&action=no'>No</a>";
-
-            message.setContent(htmlMessage, "text/html");
-
-            Transport.send(message);
-            System.out.println("Email sent successfully");
-        } catch (MessagingException e) {
-            e.printStackTrace();
         }
-    }
+    });
+}
+
 
     private void navigateToUserList(String userEmail) {
         try {
@@ -244,40 +259,40 @@ public void LoginButtonAction()  {
         }
     }
 
-    private User getUserByEmail(String email) {
-        User user = null;
-
-        try {
-            Connection conn = ConnectionSql.getConnection();
-            PreparedStatement getUserStmt = conn.prepareStatement(
-                    "SELECT id, nom, prenom, email, roles, num_tele, Password, adresse, avatar, created_at, updated_at, is_verified FROM user WHERE email = ?"
-            );
-            getUserStmt.setString(1, email);
-
-            ResultSet rs = getUserStmt.executeQuery();
-
-            if (rs.next()) {
-                String id = rs.getString("id");
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                String roleJson = rs.getString("roles");
-                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
-                int numTele = rs.getInt("num_tele");
-                String Password = rs.getString("Password");
-                String adresse = rs.getString("adresse");
-                String avatar = rs.getString("avatar");
-                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
-                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
-                boolean isVerified = rs.getBoolean("is_verified");
-
-                user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return user;
-    }
+//    private User getUserByEmail(String email) {
+//        User user = null;
+//
+//        try {
+//            Connection conn = ConnectionSql.getConnection();
+//            PreparedStatement getUserStmt = conn.prepareStatement(
+//                    "SELECT id, nom, prenom, email, roles, num_tele, Password, adresse, avatar, created_at, updated_at, is_verified FROM user WHERE email = ?"
+//            );
+//            getUserStmt.setString(1, email);
+//
+//            ResultSet rs = getUserStmt.executeQuery();
+//
+//            if (rs.next()) {
+//                String id = rs.getString("id");
+//                String nom = rs.getString("nom");
+//                String prenom = rs.getString("prenom");
+//                String roleJson = rs.getString("roles");
+//                String[] roles = new Gson().fromJson(roleJson, new TypeToken<String[]>(){}.getType());
+//                int numTele = rs.getInt("num_tele");
+//                String Password = rs.getString("Password");
+//                String adresse = rs.getString("adresse");
+//                String avatar = rs.getString("avatar");
+//                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+//                LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
+//                boolean isVerified = rs.getBoolean("is_verified");
+//
+//                user = new User(id, nom, prenom, email, roles, numTele, Password, adresse, avatar, createdAt, updatedAt, isVerified);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return user;
+//    }
 
 
 
