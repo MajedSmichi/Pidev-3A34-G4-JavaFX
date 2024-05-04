@@ -5,106 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="activate and desactivate user">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/image/logout.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CodeVerificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/CodeVerificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ForgetPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/ForgetPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FrontViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/FrontViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ResponseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/ResponseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SessionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/TestConnectionSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/TestConnectionSql.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/UserCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserCardRefreshListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/UserCardRefreshListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserCreationStatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/UserCreationStatisticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/WhatsAppSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/WhatsAppSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AfficherReclamtion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AfficherReclamtion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AjouterReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AjouterReclamation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AjouterRepense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/AjouterRepense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/DetailReclamation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/DetailReclamation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/DetailReponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/DetailReponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/ReclamationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/ReclamationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Assets/hide.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Assets/hide.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Assets/view.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Assets/view.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Dashbord.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/FrontView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/FrontView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Frontview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Frontview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Login/download (7).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Login/download (7).jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Login/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Login/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Login/view.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Login/view.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Register/codeConfirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Register/codeConfirm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Register/download (9).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Register/download (9).jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Register/fp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Register/fp.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Register/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Register/register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/UserCreationStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/UserCreationStatistics.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/card.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/updateClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/updateClient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/updateProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/updateProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/updateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/updateUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/userList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/UserCrud/userList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/changePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/forgetPassword/changePassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/codeConfirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/forgetPassword/codeConfirm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/fp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/forgetPassword/fp.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/sendEmail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/forgetPassword/sendEmail.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/fullpackstyling.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/breadcrumb-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/breadcrumb-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/cours.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/cours.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/evenement.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/evenement.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/group.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/group.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/home.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/logout.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/logout.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/produit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/produit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/reclamaton.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/reclamaton.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/sale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/ticket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/ticket.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/viewUser.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/viewUser.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dashbord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dashbord.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/dash.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/fullpackstyling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/fullpackstyling.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/2022-11-16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/2022-11-16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-01-29 230804.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-01-29 230804.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-02-14 233813.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-02-14 233813.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-02-14 235843.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-02-14 235843.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-02-19 204839.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-02-19 204839.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-03-07 013057.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-03-07 013057.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-03-11 094922.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-03-11 094922.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-04-15 141916.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-04-15 141916.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot 2024-04-16 224236.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot 2024-04-16 224236.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/Screenshot_20240422_021944.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/Screenshot_20240422_021944.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/carte_etudiant.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/carte_etudiant.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/default.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/default.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-1154421677-21305057.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-1154421677-21305057.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-adriano-marquez-763912820-20985362.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-adriano-marquez-763912820-20985362.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-alina-chernii-682289345-21529784.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-alina-chernii-682289345-21529784.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-andrea-roman-291935393-15475219.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-andrea-roman-291935393-15475219.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-daria-kaats-899701864-22741673.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-daria-kaats-899701864-22741673.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-dung-lee-901360365-19882695.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-dung-lee-901360365-19882695.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-fidan-nazim-qizi-134456769-22031751.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-fidan-nazim-qizi-134456769-22031751.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-itzel-zarate-1170413563-22858523.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-itzel-zarate-1170413563-22858523.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-jorjo-tav-569235-9152934.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-jorjo-tav-569235-9152934.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avatars/pexels-marcelo-gonzalez-1141370437-23196871.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/avatars/pexels-marcelo-gonzalez-1141370437-23196871.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,12 +59,12 @@
     &quot;assignee&quot;: &quot;MajedSmichi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git",
-    "accountId": "c6bbbcb0-5fc6-462e-817c-1b2bbad08779"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
+    &quot;accountId&quot;: &quot;c6bbbcb0-5fc6-462e-817c-1b2bbad08779&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -176,34 +85,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Gestionreclamation.Controller.Main.executor": "Run",
-    "Application.Gestionreclamation.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.Pidev-3A34-G4 [clean].executor": "Run",
-    "Maven.Pidev-3A34-G4 [install].executor": "Run",
-    "Maven.Pidev-3A34-G4 [verify].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Gestionreclamation.Controller.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Gestionreclamation.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
@@ -223,8 +132,10 @@
   </component>
   <component name="RunManager" selected="Application.Gestionreclamation.Controller.Main">
     <configuration name="Gestionreclamation.Controller.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Gestionreclamation.Controller.Main" />
-      <module name="GestionReclamation" />
+      <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Gestionreclamation.Controller.*" />
@@ -265,7 +176,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Controller.Main" />
-      <module name="GestionReclamation" />
+      <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="connectionSql.*" />
@@ -582,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="User Static Crud" />
     <MESSAGE value="Screen of login nd register" />
     <MESSAGE value="img login nd register" />
@@ -605,7 +515,8 @@
     <MESSAGE value="fix id in symfony and java" />
     <MESSAGE value="add UserService" />
     <MESSAGE value="activate and desactivate user" />
-    <option name="LAST_COMMIT_MESSAGE" value="activate and desactivate user" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -618,7 +529,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java</url>
           <line>36</line>
-          <properties class="Gestionreclamation.HelloApplication" method="main">
+          <properties class="Gestionreclamation.HelloApplication">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
