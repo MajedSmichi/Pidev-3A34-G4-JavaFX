@@ -1,0 +1,17 @@
+Index: src/main/java/Gestionreclamation/Services/openIAsevice.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Gestionreclamation.Services;\r\n\r\nimport com.mashape.unirest.http.HttpResponse;\r\nimport com.mashape.unirest.http.Unirest;\r\nimport com.mashape.unirest.http.exceptions.UnirestException;\r\nimport org.json.JSONObject;\r\n\r\n\r\nimport java.io.File;\r\n\r\npublic class openIAsevice {\r\n\r\n    public String executeService(String filePath) {\r\n        String transcription = null;\r\n\r\n        try {\r\n            HttpResponse<String> response = Unirest.post(\"https://api.openai.com/v1/audio/transcriptions\")\r\n                    .header(\"Authorization\", \"Bearer \" + \"h\")\r\n                    .field(\"file\", new File(filePath))\r\n                    .field(\"model\", \"whisper-1\")\r\n                    .asString();\r\n            System.out.println(\"Response Body: \" + response.getBody()); // Print the response body\r\n\r\n            JSONObject jsonResponse = new JSONObject(response.getBody());\r\n            transcription = jsonResponse.getString(\"text\");\r\n            System.out.println(transcription);\r\n            System.out.println(\"valid\");\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return transcription;\r\n    }\r\n\r\n}
+===================================================================
+diff --git a/src/main/java/Gestionreclamation/Services/openIAsevice.java b/src/main/java/Gestionreclamation/Services/openIAsevice.java
+--- a/src/main/java/Gestionreclamation/Services/openIAsevice.java	
++++ b/src/main/java/Gestionreclamation/Services/openIAsevice.java	
+@@ -15,7 +15,7 @@
+ 
+         try {
+             HttpResponse<String> response = Unirest.post("https://api.openai.com/v1/audio/transcriptions")
+-                    .header("Authorization", "Bearer " + "h")
++                    .header("Authorization", "Bearer " + "sk-proj-G1z5RUUZZYqKubgIlctLT3BlbkFJ7OjOHO5Afd9OvoUFK7W6")
+                     .field("file", new File(filePath))
+                     .field("model", "whisper-1")
+                     .asString();
