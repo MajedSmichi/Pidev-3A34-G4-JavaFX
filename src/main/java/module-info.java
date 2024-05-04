@@ -19,6 +19,8 @@ module Controller {
     requires java.json;
     requires org.apache.poi.poi;
     requires twilio;
+    requires java.net.http;
+    requires org.json;
 
 
     opens Controller to javafx.fxml;
