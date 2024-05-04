@@ -90,7 +90,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "MajedSmichi-3A34-G4",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
@@ -142,7 +141,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Controller.Main" />
-      <module name="Pidev-3A34-G4" />
+      <module name="GestionReclamation" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="connectionSql.*" />
