@@ -1,24 +1,12 @@
 package SportHub;
-import SportHub.Entity.Evenement;
-import SportHub.Entity.Ticket;
-import SportHub.Services.EvenementService;
-import SportHub.Entity.Category;
-import SportHub.Services.CategoryService;
-import SportHub.Services.TicketService;
-import connectionSql.ConnectionSql;
+import connectionSql.Myconnection.ConnectionSql;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
 
 
 public class HelloApplication extends Application {

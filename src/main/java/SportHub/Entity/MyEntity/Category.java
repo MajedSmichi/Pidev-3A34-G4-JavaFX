@@ -1,4 +1,4 @@
-package SportHub.Entity;
+package SportHub.Entity.MyEntity;
 
 import javafx.beans.property.*;
 

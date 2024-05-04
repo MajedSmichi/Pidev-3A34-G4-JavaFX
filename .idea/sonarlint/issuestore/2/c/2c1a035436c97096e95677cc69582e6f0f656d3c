@@ -1,0 +1,8 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿJ$14997711-fd08-4f5c-8adb-cce04d74a4fe
+k	java:S106"+Replace this use of System.out by a logger.(ñæƒıÿÿÿÿJ$43c756f0-6f88-4dd3-a9eb-c50c7eb47e21
+k	java:S106""+Replace this use of System.out by a logger.(Š™´ÙüÿÿÿÿJ$307378d5-e595-4f0a-b44f-029745f45aa8
+r
+java:S1128"6Remove this unused import 'javafx.scene.control.Menu'.(’’ŞÃJ$1f3b458b-44f0-42cf-815b-f976c69c0039
+}
+java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿJ$62bf709d-198a-4bb1-ba2b-1e22f12a1cf9

@@ -1,9 +1,7 @@
 package SportHub.Controller.MyController;
 
-import SportHub.Entity.Category;
-import SportHub.Services.CoursService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Services.MyServices.CoursService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,6 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;

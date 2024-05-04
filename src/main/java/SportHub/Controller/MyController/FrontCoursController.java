@@ -1,20 +1,20 @@
 package SportHub.Controller.MyController;
 
-import SportHub.Entity.Category;
-import SportHub.Entity.Cours;
-import SportHub.Services.CoursService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Entity.MyEntity.Cours;
+import SportHub.Services.MyServices.CoursService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,6 +32,7 @@ public class FrontCoursController {
     public ScrollPane coursesScrollPane;
 
     private final CoursService coursService;
+    public Button goToCategoriesButton;
     private Category selectedCategory;
     private Stage stage;
 
@@ -48,7 +49,7 @@ public class FrontCoursController {
 
     private void displayCategoryName() {
         if (selectedCategory != null) {
-            categoryNameLabel.setText(selectedCategory.getType().toUpperCase() + " Courses");
+            categoryNameLabel.setText(selectedCategory.getType().toUpperCase() + " COURSES");
         }
     }
 

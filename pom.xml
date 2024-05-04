@@ -15,9 +15,9 @@
 
   <dependencies>
       <dependency>
-          <groupId>com.sendgrid</groupId>
-          <artifactId>sendgrid-java</artifactId>
-          <version>4.7.2</version>
+        <groupId>com.sendgrid</groupId>
+        <artifactId>sendgrid-java</artifactId>
+        <version>4.7.2</version>
       </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>

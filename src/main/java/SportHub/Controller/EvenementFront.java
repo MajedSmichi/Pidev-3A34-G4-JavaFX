@@ -1,9 +1,9 @@
 package SportHub.Controller;
 
-import SportHub.Entity.Evenement;
-import SportHub.Entity.Ticket;
-import SportHub.Services.EvenementService;
-import SportHub.Services.TicketService;
+import SportHub.Entity.MyEntity.Evenement;
+import SportHub.Entity.MyEntity.Ticket;
+import SportHub.Services.MyServices.EvenementService;
+import SportHub.Services.MyServices.TicketService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

@@ -12,10 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import SportHub.Entity.Category;
-import SportHub.Entity.Cours;
-import SportHub.Services.CoursService;
-import SportHub.Services.CategoryService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Entity.MyEntity.Cours;
+import SportHub.Services.MyServices.CoursService;
+import SportHub.Services.MyServices.CategoryService;
 
 import java.io.File;
 import java.io.FileInputStream;

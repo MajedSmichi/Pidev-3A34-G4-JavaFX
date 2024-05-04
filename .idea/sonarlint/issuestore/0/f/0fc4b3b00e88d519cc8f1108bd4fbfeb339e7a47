@@ -1,32 +1,24 @@
 
 ‹
-java:S1192Z"ODefine a constant instead of duplicating this literal "date_evenement" 3 times.(âÀÄıJ$63f5cc82-d281-4b93-a798-e38abfaabb42
+java:S1192Z"ODefine a constant instead of duplicating this literal "date_evenement" 3 times.(âÀÄıJ$9ce70384-be0e-4558-84be-6cdf1276df14
 
-java:S1192X"LDefine a constant instead of duplicating this literal "description" 3 times.(¨»§÷ùÿÿÿÿJ$ddad9135-3470-4703-9b54-72dbc5ceab5a
+java:S1192X"LDefine a constant instead of duplicating this literal "description" 3 times.(¨»§÷ùÿÿÿÿJ$43bd6277-eff1-4ff4-8eec-e1a2a68ff8a9
 ‘
-java:S1192["PDefine a constant instead of duplicating this literal "image_evenement" 3 times.(Ä¬îœÿÿÿÿÿJ$baad1fd7-70de-492d-a2dc-957aa96d6b7f
-‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$c8be4ac9-ffeb-4eb6-a94d-5947b7c2713f
-‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$b51ae203-b186-4414-bb2c-53a7fd1a0738
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿJ$ec4be45c-55ab-4540-8b79-9c17d7bcb58d
-ˆ
-java:S2095R"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°ÁµşÿÿÿÿJ$10f595dd-6759-4ce5-a47a-232dfdeabacc
-r
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿ8ö§»ï1
-i
-java:S2095f"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°Áµşÿÿÿÿ8õ§»ï1
-q
-java:S2095p"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿ8ö§»ï1
+java:S1192["PDefine a constant instead of duplicating this literal "image_evenement" 3 times.(Ä¬îœÿÿÿÿÿJ$c741de94-0a3c-468a-a0e2-0bd41371325f
+‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$b90ebe8b-c31a-4a60-9344-96f70cf727d3
+‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$76a60d5a-cf7c-4ef7-bda2-1824344cf80c
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿJ$5b5ecff3-82d5-4c17-bde3-b2238691d394
 ‹
-java:S2095!"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ıé¼ÆJ$8dc86af2-1269-4bcc-a900-668bca0cd099
+java:S2095!"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ıé¼ÆJ$4dd80b01-957e-45d2-90b2-861085ee2fff
 ‹
-java:S2095'"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¥²¾±J$36928f3a-746f-4826-abc7-3adcd8163659
+java:S2095'"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¥²¾±J$6c2e98b5-d32d-42a0-acb6-553777dca04c
 
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$a9e457c5-0672-4600-b410-204e33797f93
-
-java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$ac4bee67-afbc-4448-bc75-1b49e73c14f2
-r
-java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿ8ö§»ï1
-|	java:S125-"<This block of commented-out lines of code should be removed.(´¼¿ØùÿÿÿÿJ$6309ece8-6a01-4215-a056-f1e52ad2bd8b
-k	java:S106D"+Replace this use of System.out by a logger.(©Ô°ĞûÿÿÿÿJ$5ddacd9c-bad6-4bc7-abd4-7c6e15e3006a
-k	java:S106I"+Replace this use of System.out by a logger.(¹êÙôüÿÿÿÿJ$720dc289-46d0-47c3-b76d-b57775a1228e
-f	java:S106K"+Replace this use of System.out by a logger.(©ú›ØJ$ee8980ff-f6d9-49f8-9189-1a92d6baf65c
+java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$1a8baff7-2b9c-4c8d-8607-0f99607c5abd
+
+java:S2095f"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°Áµşÿÿÿÿ8õ§»ï1J$947115fb-9f48-44c0-9066-32d6d60071be
+˜
+java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿ8ö§»ï1J$9ae95d45-73e0-4311-a8ae-f2b2820e6333
+|	java:S125-"<This block of commented-out lines of code should be removed.(´¼¿ØùÿÿÿÿJ$8dd88cdf-bd65-459c-9258-84946aac8dc0
+k	java:S106D"+Replace this use of System.out by a logger.(©Ô°ĞûÿÿÿÿJ$0eaad775-c0fd-44cb-a7d5-d20b6dac1ae4
+k	java:S106I"+Replace this use of System.out by a logger.(¹êÙôüÿÿÿÿJ$762770a8-87cb-4673-9618-ce9b1e9a90fb
+f	java:S106K"+Replace this use of System.out by a logger.(©ú›ØJ$22fdb115-ce4c-484c-a06e-f479eec83051

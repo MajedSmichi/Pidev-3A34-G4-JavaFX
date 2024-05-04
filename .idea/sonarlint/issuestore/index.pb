@@ -63,3 +63,9 @@ z
 Jsrc/main/java/SportHub/Controller/MyController/CategoryCardController.java,a\0\a04806067c7378d274fb2afbdbfdcc704e024066
 w
 Gsrc/main/java/SportHub/Controller/MyController/CoursCardController.java,1\a\1ae4030fbcc386ed86cdfdfa3ec01005e983bb81
+j
+:src/main/java/SportHub/Controller/FrontViewController.java,2\c\2c1a035436c97096e95677cc69582e6f0f656d3c
+l
+<src/main/java/SportHub/Services/MyServices/CoursService.java,c\8\c882d36be22475d24489a4754c262518d97c43d5
+p
+@src/main/java/SportHub/Services/MyServices/EvenementService.java,3\6\364b70ec47b95fe52e7464ffc67955ab2be0cd6f

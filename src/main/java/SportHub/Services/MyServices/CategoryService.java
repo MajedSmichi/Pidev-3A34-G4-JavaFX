@@ -1,7 +1,7 @@
-package SportHub.Services;
+package SportHub.Services.MyServices;
 
-import SportHub.Entity.Category;
-import connectionSql.ConnectionSql;
+import SportHub.Entity.MyEntity.Category;
+import connectionSql.Myconnection.ConnectionSql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

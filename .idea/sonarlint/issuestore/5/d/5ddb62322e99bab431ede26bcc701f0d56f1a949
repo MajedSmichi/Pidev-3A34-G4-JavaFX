@@ -1,32 +1,8 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$dbc9ae5a-d2c0-459f-82ed-1a47e4df07ba
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$9419698d-b1d0-4761-9170-0931f591491f
 
-java:S1854+">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$076712d9-2b9a-43da-a10a-bf17adbfd6cb
-~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$8943648a-62bb-4b41-bfed-92b7b054971e
-~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8¼¨òòò1J$5c83dbe1-54ba-45b6-a4dc-0294b51ab84e
+java:S1854">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$fe00d563-e259-4852-8d03-57e281c91dba
+~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$33e4b795-adfa-463b-a263-18ef11b3c271
+~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8“ğõ¢ô1J$60421b93-c6de-44bd-bd3b-f60583695435
 r
-java:S1481+"/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$2730d99f-4b67-4639-8fb7-f1053a7d39b9
-X
-java:S1128"6Remove this unused import 'SportHub.Entity.Evenement'.(îÉºìüÿÿÿÿ8ËËìó1
-U
-java:S1128"3Remove this unused import 'SportHub.Entity.Ticket'.(ªŒÄüÿÿÿÿ8ËËìó1
-a
-java:S1128"?Remove this unused import 'SportHub.Services.EvenementService'.(À–ê¢øÿÿÿÿ8‚ËËìó1
-R
-java:S1128"5Remove this unused import 'SportHub.Entity.Category'.(‡šäé8‚ËËìó1
-`
-java:S1128">Remove this unused import 'SportHub.Services.CategoryService'.(‚Ïœùÿÿÿÿ8‚ËËìó1
-^
-java:S1128"<Remove this unused import 'SportHub.Services.TicketService'.(¤±Óüÿÿÿÿ8‚ËËìó1
-f
-java:S1128"Remove this duplicated import.(À‡ô³úÿÿÿÿ8Î¨òòò1J$3b862aa8-6b62-4af3-bb2c-6dbdef20e92f
-^
-java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8‚ËËìó1
-W
-java:S1128"5Remove this unused import 'javafx.scene.layout.VBox'.(íÆáÂùÿÿÿÿ8ƒËËìó1
-G
-java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8ƒËËìó1
-O
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ƒËËìó1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ƒËËìó1
+java:S1481"/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$bca6830e-02e2-47b7-a18d-da1a9497db5f

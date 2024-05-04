@@ -3,6 +3,8 @@ module com.example.gestionreclamation {
     requires javafx.fxml;
 
     //requires com.dlsc.formsfx;
+
+
     requires java.sql;
     requires java.persistence;
     requires javafx.swing;
@@ -13,13 +15,18 @@ module com.example.gestionreclamation {
     //requires java.http.client;
     opens SportHub to javafx.fxml;
     exports SportHub;
-    exports connectionSql;
-    opens connectionSql to javafx.fxml;
+    exports connectionSql.Myconnection;
+    opens connectionSql.Myconnection to javafx.fxml;
     exports SportHub.Controller;
     opens SportHub.Controller to javafx.fxml;
 
+
     exports SportHub.Controller.MyController;
     opens SportHub.Controller.MyController to javafx.fxml;
-    exports SportHub.Entity;
-    opens SportHub.Entity to javafx.fxml;
+    exports SportHub.Entity.MyEntity;
+    opens SportHub.Entity.MyEntity to javafx.fxml;
+    exports SportHub.Services.MyServices;
+    opens SportHub.Services.MyServices to javafx.fxml;
+
+
 }

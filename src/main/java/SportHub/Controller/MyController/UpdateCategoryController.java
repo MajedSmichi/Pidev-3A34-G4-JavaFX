@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import SportHub.Entity.Category;
-import SportHub.Services.CategoryService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Services.MyServices.CategoryService;
 
 import java.io.IOException;
 import java.sql.SQLException;

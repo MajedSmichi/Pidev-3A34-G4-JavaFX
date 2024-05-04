@@ -1,9 +1,9 @@
 /*package SportHub.Controller;
 
-import SportHub.Entity.Category;
-import SportHub.Entity.Cours;
-import SportHub.Services.CategoryService;
-import SportHub.Services.CoursService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Entity.MyEntity.Cours;
+import SportHub.Services.MyServices.CategoryService;
+import SportHub.Services.MyServices.CoursService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

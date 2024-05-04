@@ -1,16 +1,13 @@
-package SportHub.Services;
+package SportHub.Services.MyServices;
 
-import SportHub.Entity.Category;
-import SportHub.Entity.Cours;
-import connectionSql.ConnectionSql;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Entity.MyEntity.Cours;
+import connectionSql.Myconnection.ConnectionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 /*import com.sendgrid.*;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.*;*/
-
-import java.io.IOException;
-import java.nio.file.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

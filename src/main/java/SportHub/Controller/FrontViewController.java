@@ -25,7 +25,7 @@ public class FrontViewController {
     @FXML
     public void loadEvenementFront() {
         try {
-            AnchorPane evenementFront = FXMLLoader.load(getClass().getResource("/SportHub/EvenementFront.fxml"));
+            AnchorPane evenementFront = FXMLLoader.load(getClass().getResource("/SportHub/MyController/FrontCategory.fxml"));
             evenementFront.getStyleClass().add("center-content"); // Add the CSS class
             achorfront.getChildren().setAll(evenementFront);
             System.out.println("Evenement front view loaded successfully");

@@ -2,7 +2,6 @@ package SportHub.Controller.MyController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,15 +11,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import SportHub.Entity.Category;
-import SportHub.Services.CategoryService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Services.MyServices.CategoryService;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
-import static SportHub.Services.CategoryService.getAllCategories;
+import static SportHub.Services.MyServices.CategoryService.getAllCategories;
 
 public class CategoryListController {
     @FXML

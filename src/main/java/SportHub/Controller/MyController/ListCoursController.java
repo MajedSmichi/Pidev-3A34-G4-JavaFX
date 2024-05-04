@@ -1,7 +1,7 @@
 package SportHub.Controller.MyController;
 
-import SportHub.Entity.Cours;
-import SportHub.Services.CoursService;
+import SportHub.Entity.MyEntity.Cours;
+import SportHub.Services.MyServices.CoursService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

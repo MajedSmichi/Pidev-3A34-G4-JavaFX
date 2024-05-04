@@ -1,7 +1,7 @@
-package SportHub.Services;
+package SportHub.Services.MyServices;
 
-import connectionSql.ConnectionSql;
-import SportHub.Entity.Ticket;
+import connectionSql.Myconnection.ConnectionSql;
+import SportHub.Entity.MyEntity.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

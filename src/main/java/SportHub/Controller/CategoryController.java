@@ -1,14 +1,12 @@
 package SportHub.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import SportHub.Entity.Category;
-import SportHub.Services.CategoryService;
+import SportHub.Entity.MyEntity.Category;
+import SportHub.Services.MyServices.CategoryService;
 
 import java.sql.SQLException;
 import java.util.List;

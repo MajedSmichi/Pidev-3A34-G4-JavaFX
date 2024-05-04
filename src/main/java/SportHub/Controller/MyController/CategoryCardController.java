@@ -1,6 +1,6 @@
 package SportHub.Controller.MyController;
 
-import SportHub.Entity.Category;
+import SportHub.Entity.MyEntity.Category;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

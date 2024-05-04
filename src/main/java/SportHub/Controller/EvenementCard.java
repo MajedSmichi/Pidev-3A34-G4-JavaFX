@@ -1,7 +1,7 @@
 package SportHub.Controller;
 
-import SportHub.Entity.Evenement;
-import SportHub.Services .EvenementService;
+import SportHub.Entity.MyEntity.Evenement;
+import SportHub.Services.MyServices.EvenementService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
-import java.sql.SQLException;
 
 public class EvenementCard {
 

@@ -1,19 +1,17 @@
 package SportHub.Controller.MyController;
 
-import SportHub.Entity.Cours;
-import SportHub.Services.CoursService;
+import SportHub.Entity.MyEntity.Cours;
+import SportHub.Services.MyServices.CoursService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CoursCardController {
