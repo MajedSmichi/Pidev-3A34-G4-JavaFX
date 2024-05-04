@@ -103,4 +103,33 @@ public Ticket testTicketByEventId(int eventId, int currentTicketId) throws SQLEx
     ResultSet resultSet = preparedStatement.executeQuery();
     return resultSet.next();
 }*/
+
+
+
+public void registerUserTicket(int ticketId, String userId) throws SQLException {
+    String query = "INSERT INTO ticket_user (ticket_id, user_id) VALUES (?, ?)";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, ticketId);
+    preparedStatement.setString(2, userId);
+    preparedStatement.executeUpdate();
+}
+
+
+public List<Ticket> getUserTickets(String userId) throws SQLException {
+    List<Ticket> tickets = new ArrayList<>();
+    String query = "SELECT * FROM ticket_user JOIN ticket ON ticket_user.ticket_id = ticket.id WHERE user_id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setString(1, userId);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    while (resultSet.next()) {
+        Ticket ticket = new Ticket();
+        ticket.setId(resultSet.getInt("id"));
+        ticket.setEvenementId(resultSet.getInt("evenement_id"));
+        ticket.setPrix(resultSet.getInt("prix"));
+        ticket.setType(resultSet.getString("type"));
+        ticket.setNbreTicket(resultSet.getInt("nbre_ticket"));
+        tickets.add(ticket);
+    }
+    return tickets;
+}
 }

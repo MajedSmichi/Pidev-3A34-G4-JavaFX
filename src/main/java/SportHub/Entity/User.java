@@ -1,37 +1,49 @@
 package SportHub.Entity;
 
-import java.util.Collection;
-import java.util.ArrayList;
+import java.time.LocalDateTime; // Import LocalDateTime for createdAt and updatedAt fields
+import java.util.Arrays;
+import java.util.UUID;
 
 public class User {
-    private int id;
+    private String id;
     private String nom;
     private String prenom;
     private String email;
-    private String role;
+    private String[] roles;
     private int numTele;
-    private String motDePass;
+    private String password;
     private String adresse;
-    private Collection<Reclamation> reclamations;
-    //private Collection<Reponse> reponses;
+    private String avatar;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private boolean isVerified;
 
+    public User() {
+
+    }
 
     // Constructors
-    public User() {
-        // Default constructor
-        this.reclamations = new ArrayList<>();
-        //this.reponses = new ArrayList<>();
-
+    public User(String id, String nom, String prenom, String email, String[] roles, int numTele, String password, String adresse, String avatar, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isVerified) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.roles = roles;
+        this.numTele = numTele;
+        this.password = password;
+        this.adresse = adresse;
+        this.avatar = avatar;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.isVerified = isVerified;
     }
 
     // Getters and Setters
-    // Implement your getters and setters here...
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,14 +71,13 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
+    public String[] getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
-
     public int getNumTele() {
         return numTele;
     }
@@ -75,12 +86,12 @@ public class User {
         this.numTele = numTele;
     }
 
-    public String getMotDePass() {
-        return motDePass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMotDePass(String motDePass) {
-        this.motDePass = motDePass;
+    public void setPassword(String Password) {
+        this.password = Password;
     }
 
     public String getAdresse() {
@@ -91,23 +102,53 @@ public class User {
         this.adresse = adresse;
     }
 
-    public Collection<Reclamation> getReclamations() {
-        return reclamations;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setReclamations(Collection<Reclamation> reclamations) {
-        this.reclamations = reclamations;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-  /*  public Collection<Reponse> getReponses() {
-        return reponses;
-    }*/
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-/*    public void setReponses(Collection<Reponse> reponses) {
-        this.reponses = reponses;
-    }*/
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
-    // Add and remove methods for relations...
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + Arrays.toString(roles) +
+                ", numTele=" + numTele +
+                ", password='" + password + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", isVerified=" + isVerified +
+                '}';
+    }
 }

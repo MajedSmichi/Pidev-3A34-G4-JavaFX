@@ -29,7 +29,7 @@
                   <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="128.0" text="Reclamation" />
                </children>
             </HBox>
-            <Button fx:id="calendar" visible="false" layoutX="585.0" layoutY="350.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="175.0" text="Calendar" />
+            <Button fx:id="mes_tickets" onAction="#loadUserTickets"  layoutX="687.0" layoutY="350.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="194.0" text="Mes Tickets" visible="false" />
          </children>
       </AnchorPane>
    </content>

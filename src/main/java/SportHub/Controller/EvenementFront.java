@@ -232,7 +232,7 @@ private GridPane createEventCard(Evenement event) {
     }
 
 
-private GridPane createTicketCard(Evenement event) throws SQLException {
+public GridPane createTicketCard(Evenement event) throws SQLException {
     GridPane ticketCard = new GridPane();
     ticketCard.getStyleClass().add("ticket-card"); // Add the style class
 
@@ -273,7 +273,20 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
         // Add an action to the "PARTICIPATE" button
         participateButton.setOnAction(e -> {
             // Decrease the ticket quantity by one
-            ticket.setNbreTicket(ticket.getNbreTicket() - 1);
+            //ticket.setNbreTicket(ticket.getNbreTicket() - 1);
+
+
+
+            // Register the user for the ticket
+            int ticketId = ticket.getId();
+            //String userId = getCurrentUserId();
+            String userId = "1f04f48b-5c95-4f98-97a8-0f9302114b0a"; // Assuming the user ID is "1" for testing purposes
+
+            try {
+                ticketService.registerUserTicket(ticketId, userId);
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            }
 
 
 
@@ -316,7 +329,7 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
                 String clientSecret = stripeService.createPaymentIntent(ticket.getPrix());
 
                 // Open the payment form
-                paymentConfirmation.confirmPayment(clientSecret, evenementFront);
+paymentConfirmation.confirmPayment(clientSecret, event, evenementFront, eventContainer);
             } catch (StripeException stripeException) {
                 stripeException.printStackTrace();
             }
@@ -336,9 +349,21 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
     return ticketCard;
 }
 
+public void decreaseTicketQuantity(Ticket ticket) {
+    TicketService ticketService = new TicketService();
+    try {
+        if (ticket != null && ticket.getNbreTicket() > 0) {
+            ticket.setNbreTicket(ticket.getNbreTicket() - 1);
+            ticketService.updateTicket(ticket.getId(), ticket.getEvenementId(), ticket.getPrix(), ticket.getType(), ticket.getNbreTicket());
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
-
-    public void showSuccessMessage() {
+public void showSuccessMessage() {
+    // Check if eventContainer is not null before clearing it
+    if (eventContainer != null) {
         // Clear the event container
         eventContainer.getChildren().clear();
 
@@ -348,9 +373,11 @@ private GridPane createTicketCard(Evenement event) throws SQLException {
 
         // Add the success message label to the event container
         eventContainer.add(successLabel, 0, 0);
+    } else {
+        // Handle the case where eventContainer is null
+        System.out.println("eventContainer is null. Please ensure it is properly initialized before calling showSuccessMessage.");
     }
-
-    private List<Evenement> fetchEventsFromDatabase() throws SQLException {
+}    private List<Evenement> fetchEventsFromDatabase() throws SQLException {
         EvenementService service = new EvenementService();
         return service.getAllEvents();
     }

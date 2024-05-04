@@ -10,7 +10,10 @@ module com.example.gestionreclamation {
     requires com.google.gson;
     requires twilio;
     requires stripe.java;
-
+    requires com.google.zxing;
+    requires java.desktop;
+    requires javafx.graphics;
+    requires javafx.swing;
 
     opens SportHub.Entity to com.google.gson;
 

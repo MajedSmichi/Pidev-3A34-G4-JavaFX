@@ -102,7 +102,7 @@
 }
 
 .ticket-card:hover {
-    -fx-background-color: #000000; /* Change hover background color to black */
+    -fx-background-color: #ffb337; /* Change hover background color to black */
 }
 
 .ticket-card:hover .button {
