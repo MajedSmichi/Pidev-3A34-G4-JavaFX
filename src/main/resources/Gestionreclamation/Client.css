@@ -1,0 +1,100 @@
+/* General Styles */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-base: #FFFFFF;
+}
+
+/* ScrollPane Styles */
+.scroll-pane {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #4a4a4a;
+}
+
+/* ImageView Styles */
+.image-view {
+    -fx-pref-width: 100%;
+    -fx-fit-width: true;
+}
+
+/* Button Styles */
+.button {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #FFA500;
+    -fx-background-radius: 5;
+    -fx-font-family: 'Verdana'; /* Change this to your preferred font */
+    -fx-font-size: 17px; /* Adjust size as needed */
+//-fx-font-weight: bold; /* Makes the text bold */
+}
+.button:hover {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: #ffffff;
+
+}
+
+/* AnchorPane Styles */
+.anchor-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+#anchorpane1 {
+    -fx-background-color: #000000;
+}
+/* Center Content Styles */
+.center-content {
+    -fx-alignment: center;
+}
+
+
+.card {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px; /* Adjust this value to change the roundness of the corners */
+    -fx-background-radius: 20px; /* This should match the border radius */
+    -fx-padding: 15px;
+    -fx-spacing: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgb(89, 93, 90), 10, 0, 0, 0);
+    transition: all 0.3s ease-in-out;
+}
+.card-image {
+    -fx-background-radius: 20px; /* This should match the card's radius */
+    -fx-border-radius: 20px; /* This should match the card's radius */
+}
+.label {
+    -fx-font-family: 'Arial';
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+.card-label {
+    -fx-font-size: 16px; /* Adjust size as needed */
+    -fx-font-weight: bold; /* Makes the text bold */
+    -fx-text-fill: #333333; /* Change the text color */
+    -fx-padding: 5px; /* Add some padding */
+}
+.pretty-button {
+    -fx-background-color: #FFA500; /* Change to your preferred color */
+    -fx-text-fill: white; /* Change the text color to white */
+    -fx-font-size: 16px; /* Adjust size as needed */
+    -fx-padding: 10px 24px; /* Add some padding */
+    -fx-border-radius: 4px; /* Add rounded corners */
+    -fx-cursor: pointer; /* Change the cursor to a hand when you hover over the button */
+    -fx-border: none; /* Remove the border */
+}
+
+.pretty-button:hover {
+    -fx-background-color: #a8771e; /* Change the color when you hover over the button */
+}
+
+.selected-page-button {
+    -fx-background-color: #a8771e; /* Change to your preferred color */
+    -fx-text-fill: white; /* Change the text color to white */
+}
+.title {
+    -fx-font-family: 'Arial';
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFA500;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
+}

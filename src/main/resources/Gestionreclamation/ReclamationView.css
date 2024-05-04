@@ -1,0 +1,88 @@
+/* Style for the treated reclamations progress bar */
+#recTraite .bar {
+    -fx-accent: green; /* Change this to the color you want */
+}
+
+/* Style for the pending reclamations progress bar */
+#recNonTraite .bar {
+    -fx-accent: red; /* Change this to the color you want */
+}
+#paneNonTraite{
+    -fx-background-color: linear-gradient(to bottom, #FFB6C1, #FF1493); /* gradient from light pink to deep pink */
+    -fx-padding: 10px; /* padding inside the pane */
+    -fx-background-radius: 10px; /* rounded corners */
+}
+
+#paneTraite{
+    -fx-background-color: linear-gradient(to bottom, #90EE90, #008000); /* gradient from light green to green */
+    -fx-padding: 10px; /* padding inside the pane */
+    -fx-background-radius: 10px; /* rounded corners */
+}
+#paneNonTraite Text, #paneNonTraite Label {
+    -fx-font-family: "Arial"; /* Set the font family */
+    -fx-font-size: 16px; /* Set the font size */
+    -fx-font-weight: bold; /* Make the text bold */
+    -fx-fill: #000000; /* Set the text color to black */
+}
+
+#paneTraite Text, #paneTraite Label {
+    -fx-font-family: "Arial"; /* Set the font family */
+    -fx-font-size: 16px; /* Set the font size */
+    -fx-font-weight: bold; /* Make the text bold */
+    -fx-fill: #000000; /* Set the text color to black */
+}
+.chart {
+    -fx-background-color: #ffffff; /* White background for the chart */
+    -fx-padding: 10px; /* Padding inside the chart */
+    -fx-background-radius: 10px; /* Rounded corners */
+}
+
+.chart-plot-background {
+    -fx-background-color: #f0f0f0; /* Light gray background for the plot area */
+}
+
+.chart-series-line {
+    -fx-stroke: #0078d7; /* Blue color for the line */
+    -fx-stroke-width: 2px; /* Thicker line */
+}
+
+.chart-line-symbol {
+    -fx-background-color: #0078d7, #ffffff; /* Blue color for the data points with a white border */
+    -fx-background-insets: 0, 2; /* Insets for the background colors */
+    -fx-background-radius: 5px; /* Rounded data points */
+    -fx-padding: 5px; /* Size of the data points */
+}
+
+.axis-label {
+    -fx-font-size: 10px; /* Larger font size for the axis labels */
+    -fx-font-weight: bold; /* Bold font for the axis labels */
+    -fx-text-fill: #333333; /* Dark gray color for the axis labels */
+}
+
+.axis-tick-label {
+    -fx-font-size: 10px; /* Slightly larger font size for the tick labels */
+    -fx-text-fill: #666666; /* Medium gray color for the tick labels */
+}
+.filter-menu-button {
+
+    -fx-background-color: #0078d7; /* Blue background */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-font-size: 12px; /* Font size */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-background-radius: 5px; /* Rounded corners */
+}
+
+
+
+.filter-menu-button:hover {
+    -fx-background-color: #005a9e; /* Darker blue background when hovered */
+}
+
+.filter-menu-button .context-menu .menu-item {
+    -fx-padding: 5px 10px; /* Padding inside the menu items */
+}
+
+.filter-menu-button .context-menu .menu-item:hover {
+    -fx-background-color: #e0e0e0; /* Light gray background for menu items when hovered */
+}
