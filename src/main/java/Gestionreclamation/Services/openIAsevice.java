@@ -15,7 +15,7 @@ public class openIAsevice {
 
         try {
             HttpResponse<String> response = Unirest.post("https://api.openai.com/v1/audio/transcriptions")
-                    .header("Authorization", "Bearer " + "sk-proj-G1z5RUUZZYqKubgIlctLT3BlbkFJ7OjOHO5Afd9OvoUFK7W6")
+                    .header("Authorization", "Bearer " + "h")
                     .field("file", new File(filePath))
                     .field("model", "whisper-1")
                     .asString();
