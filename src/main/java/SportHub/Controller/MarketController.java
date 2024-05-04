@@ -1,9 +1,12 @@
 package SportHub.Controller;
 
 import SportHub.Services.Servicecategorie;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,16 +16,19 @@ import SportHub.Entity.Product;
 import SportHub.Services.ProductService;
 import SportHub.Services.MyListener;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import SportHub.Services.FavoriteListener;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class MarketController implements Initializable {
+public class MarketController implements Initializable,FavoriteListener {
 
     @FXML
     private GridPane grid;
@@ -38,6 +44,10 @@ public class MarketController implements Initializable {
 
     @FXML
     private Label product_quantity;
+
+    @FXML
+    private ImageView soldOutImage; // Assurez-vous que cette variable correspond à l'ID de votre ImageView dans le fichier FXML
+
 
     @FXML
     private Label cartIndicator;
@@ -65,6 +75,9 @@ public class MarketController implements Initializable {
     private MyListener myListener;
     private List<Product> products;
 
+    private Product chosenProduct;
+    private List<Product> favorites = new ArrayList<>(); // Add this line
+
     private Servicecategorie serviceCategorie;
 
     private ProductService productService;
@@ -74,15 +87,25 @@ public class MarketController implements Initializable {
         this.serviceCategorie = new Servicecategorie();
     }
     private void setChosenProduct(Product product) {
-        Product_name.setText(product.getName());
-        Product_price.setText("$" + product.getPrice());
-        Product_image.setImage(new Image(product.getImage()));
-        product_quantity.setText(String.valueOf(product.getQuantite()));
-        product_quantity.setVisible(true); // Rendre le label visible lorsque un produit est sélectionné
+        try {
+            // Fetch the latest product details from the database
+            Product latestProduct = productService.getProductById(product.getId());
+
+            chosenProduct = latestProduct; // Update the chosenProduct when a product is selected
+            Product_name.setText(latestProduct.getName());
+            Product_price.setText("$" + latestProduct.getPrice());
+            Product_image.setImage(new Image(latestProduct.getImage()));
+            product_quantity.setText(String.valueOf(latestProduct.getQuantite()));
+            product_quantity.setVisible(true); // Rendre le label visible lorsque un produit est sélectionné
+            updateSoldOutImageVisibility(latestProduct);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        soldOutImage = new ImageView();
         MyListener myListener = new MyListener() {
             @Override
             public void onClickListener(Product product) {
@@ -164,6 +187,9 @@ public class MarketController implements Initializable {
                 itemController.setProduct(products.get(i));
                 itemController.setMyListener(myListener);
 
+                itemController.setFavoriteListener(this);
+
+
                 if (column == 3) {
                     column = 0;
                     row++;
@@ -240,18 +266,91 @@ public class MarketController implements Initializable {
             }
         }
     }
+    private void updateSoldOutImageVisibility(Product product) {
+        System.out.println("Product quantity: " + product.getQuantite()); // Print the product quantity for debugging
+        if (soldOutImage != null) {
+            if (product.getQuantite() <= 0) {
+                soldOutImage.setVisible(true);
+            } else {
+                soldOutImage.setVisible(false);
+            }
+        } else {
+            System.out.println("soldOutImage is not initialized");
+        }
+    }
     @FXML
     private void addToCart() {
-        // Récupérer la quantité sélectionnée
+        System.out.println("addToCart method called"); // Print statement for debugging
+
+        // Retrieve the selected quantity
         int selectedQuantity = quantitySpinner.getValue();
 
-        // Ajouter le produit au panier
-        // Vous devrez implémenter la logique pour ajouter le produit et la quantité au panier
-        // Par exemple, si vous avez une classe Cart, vous pouvez faire quelque chose comme :
-        // Cart.add(Product_name.getText(), selectedQuantity);
+        // Check if the product quantity is greater than 0
+        int currentProductQuantity = Integer.parseInt(product_quantity.getText());
+        if (currentProductQuantity <= 0) {
+            // Display an error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("The stock for this product is exhausted.");
+            alert.showAndWait();
+        } else {
+            try {
+                productService.decrementQuantity(chosenProduct, selectedQuantity);
+                // Update the product quantity display
+                int newQuantity = currentProductQuantity - selectedQuantity;
+                product_quantity.setText(String.valueOf(newQuantity));
+                // Update the image visibility
+                if (newQuantity == 0){
+                    updateSoldOutImageVisibility(chosenProduct);
+                }
+                // Increment cartIndicator
+                int currentQuantity = 0;
+                if (!cartIndicator.getText().isEmpty()) {
+                    currentQuantity = Integer.parseInt(cartIndicator.getText());
+                }
+                int newCartIndicatorValue = currentQuantity + selectedQuantity;
+                Platform.runLater(() -> {
+                    cartIndicator.setText(String.valueOf(newCartIndicatorValue));
+                });
+                System.out.println("cartIndicator updated to: " + newCartIndicatorValue); // Print statement for debugging
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-        // Mettre à jour l'indicateur du panier
-        int currentQuantity = Integer.parseInt(cartIndicator.getText());
-        cartIndicator.setText(String.valueOf(currentQuantity + selectedQuantity));
+
+    @FXML
+    private void openMyFavors() {
+        try {
+            // Load the FXML file for the favorites window
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/favorites.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller of the favorites window
+            FavoritesController favoritesController = loader.getController();
+
+            // Pass the list of favorite products to the favorites controller
+            favoritesController.setFavorites(favorites);
+
+            // Create a new stage for the favorites window
+            Stage favoritesStage = new Stage();
+            favoritesStage.setTitle("My Favorites");
+            favoritesStage.setScene(new Scene(root));
+
+            // Show the favorites window
+            favoritesStage.show();
+        } catch (IOException e) {
+            System.out.println("Erreur lors de l'ouverture de la fenêtre des favoris : " + e.getMessage());
+        }
+    }
+    @Override
+    public void onFavoriteToggle(Product product, boolean isFavorite) {
+        if (isFavorite) {
+            favorites.add(product);
+        } else {
+            favorites.remove(product);
+        }
     }
 }

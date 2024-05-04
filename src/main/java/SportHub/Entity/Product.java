@@ -8,6 +8,8 @@ public class Product {
     private String description;
     private SportHub.Entity.Categorie_p category;
     private String image;
+    private double total;
+
 
     public Product(){}
 
@@ -72,9 +74,12 @@ public class Product {
     }
 
     public void setQuantite(int quantite) {
+        if (quantite < 0) {
+            this.quantite = 0;
+            throw new IllegalArgumentException("La quantité ne peut pas être inférieure à 0");
+        }
         this.quantite = quantite;
     }
-
     public int getPrice() {
         return price;
     }
@@ -121,5 +126,8 @@ public class Product {
     }
 
     public void setCategory(String name) {
+    }
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

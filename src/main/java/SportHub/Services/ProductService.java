@@ -201,4 +201,53 @@ public class ProductService {
 
         return filteredProducts;
     }
+    public void decrementQuantity(Product product, int quantite) throws SQLException {
+        // Get the current quantity of the product
+        int currentQuantity = product.getQuantite();
+
+        // Check if the quantity to decrement is greater than the current quantity
+        if (quantite > currentQuantity) {
+            // If it is, set the quantity to 0
+            quantite = currentQuantity;
+        }
+
+        // Check if the quantity is less than or equal to 0 before decrementing it in the database
+        if (currentQuantity <= 0) {
+            return;
+        }
+
+        // Create a SQL query to update the quantity of the product
+        String query = "UPDATE product SET quantite = quantite - ? WHERE id = ?";
+
+        // Prepare the SQL query
+        PreparedStatement stmt = conn.prepareStatement(query);
+
+        // Set the quantity and the product ID in the PreparedStatement
+        stmt.setInt(1, quantite);
+        stmt.setInt(2, product.getId());
+
+        // Execute the update query
+        stmt.executeUpdate();
+    }
+    public Product getProductById(int id) throws SQLException {
+        Product product = null;
+
+        String query = "SELECT * FROM product WHERE id = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            product = new Product();
+            product.setId(resultSet.getInt("id"));
+            product.setName(resultSet.getString("name"));
+            product.setPrice((int) resultSet.getDouble("price"));
+            product.setQuantite(resultSet.getInt("quantite"));
+            product.setImage(resultSet.getString("image"));
+            // Add other product attributes if they exist
+        }
+
+        return product;
+    }
 }

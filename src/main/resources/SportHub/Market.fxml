@@ -165,6 +165,7 @@
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </Label>
+                                <Button fx:id="myFavorsButton" text="My Favors" onAction="#openMyFavors" /> <!-- Add this line -->
                                 <StackPane>
                                     <Label fx:id="cartIndicator" layoutX="35" layoutY="0" text="0" textFill="RED">
                               <font>
