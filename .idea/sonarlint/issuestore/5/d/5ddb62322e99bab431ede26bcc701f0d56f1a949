@@ -1,8 +1,9 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$9419698d-b1d0-4761-9170-0931f591491f
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$7813599e-9fe2-4c82-aa07-64ea4e50bc1a
 
-java:S1854">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$fe00d563-e259-4852-8d03-57e281c91dba
-~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$33e4b795-adfa-463b-a263-18ef11b3c271
-~	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8“ğõ¢ô1J$60421b93-c6de-44bd-bd3b-f60583695435
+java:S1854 ">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$51187dbc-f982-4c78-9032-e3314008085b
+~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$f4e82204-b01a-4ed2-835e-a5b645e38225
 r
-java:S1481"/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$bca6830e-02e2-47b7-a18d-da1a9497db5f
+java:S1481 "/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$f4845012-b918-4902-b05e-19eedda8b98a
+X
+java:S1128";Remove this unused import 'javafx.scene.layout.AnchorPane'.(Ø µ8öê«ô1
