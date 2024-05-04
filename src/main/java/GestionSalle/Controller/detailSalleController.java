@@ -4,6 +4,7 @@ import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -86,80 +90,104 @@ public class detailSalleController {
 
     @FXML
     private TextField numtel;
+
     @FXML
     private GridPane GridActivite;
+    @FXML
+    private Button statistique;
+
+    @FXML
+    private AnchorPane statique;
+    @FXML
+    private StackedBarChart<String, Integer> stat;
     private Activite currentActivite;
+
+
 
     private Salle salle;
     public void setData(Salle salle) {
-        this.salle=salle;
-        nameLabel.setText(salle.getNom());
-        addressLabel.setText(salle.getAddresse());
-        numTelLabel.setText(String.valueOf(salle.getNum_tel()));
-        capaciteLabel.setText(String.valueOf(salle.getCapacite()));
-        nbrClientLabel.setText(String.valueOf(salle.getNbr_client()));
-        descriptionLabel.setText(salle.getDescription());
+    this.salle = salle;
+    nameLabel.setText(salle.getNom());
+    addressLabel.setText(salle.getAddresse());
+    numTelLabel.setText(String.valueOf(salle.getNum_tel()));
+    capaciteLabel.setText(String.valueOf(salle.getCapacite()));
+    nbrClientLabel.setText(String.valueOf(salle.getNbr_client()));
+    descriptionLabel.setText(salle.getDescription());
 
-        // Set the text fields
-        name.setText(salle.getNom());
-        addresse.setText(salle.getAddresse());
-        numtel.setText(String.valueOf(salle.getNum_tel()));
-        capacite.setText(String.valueOf(salle.getCapacite()));
-        nbrclients.setText(String.valueOf(salle.getNbr_client()));
-        description.setText(salle.getDescription());
+    // Set the text fields
+    name.setText(salle.getNom());
+    addresse.setText(salle.getAddresse());
+    numtel.setText(String.valueOf(salle.getNum_tel()));
+    capacite.setText(String.valueOf(salle.getCapacite()));
+    nbrclients.setText(String.valueOf(salle.getNbr_client()));
+    description.setText(salle.getDescription());
 
-        try {
-            logoImageView.setImage(new Image(salle.getLogo_salle()));
-            logoSalle.setImage(new Image(salle.getLogo_salle()));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid URL or resource not found: " + salle.getLogo_salle());
-        }
-        try {
-            List<Activite> activites = getData();
-            int row = 0;
-            for (Activite activite : activites) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/ActiviteCard.fxml"));
-                Pane pane = fxmlLoader.load();
-
-                ActiviteCardController oneActivite = fxmlLoader.getController();
-                oneActivite.setData(activite);
-pane.setOnMouseClicked(event -> {
     try {
-        currentActivite = activite;
-        // Load detailActivite.fxml
-        FXMLLoader detailLoader = new FXMLLoader(getClass().getResource("/GestionSalle/detailActivite.fxml"));
-        Parent detailActivite = detailLoader.load();
+        logoImageView.setImage(new Image(salle.getLogo_salle()));
+        logoSalle.setImage(new Image(salle.getLogo_salle()));
+    } catch (IllegalArgumentException e) {
+        System.out.println("Invalid URL or resource not found: " + salle.getLogo_salle());
+    }
+    try {
+        stat.getStylesheets().add(getClass().getResource("/GestionSalle/Chart.css").toExternalForm());
+        List<Activite> activites = getData();
+        int row = 0;
+        for (Activite activite : activites) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GestionSalle/ActiviteCard.fxml"));
+            Pane pane = fxmlLoader.load();
 
-        // Get the controller of detailActivite.fxml
-        detailActiviteController controller = detailLoader.getController();
+            ActiviteCardController oneActivite = fxmlLoader.getController();
+            oneActivite.setData(activite);
+            pane.setOnMouseClicked(event -> {
+                try {
+                    currentActivite = activite;
+                    // Load detailActivite.fxml
+                    FXMLLoader detailLoader = new FXMLLoader(getClass().getResource("/GestionSalle/detailActivite.fxml"));
+                    Parent detailActivite = detailLoader.load();
 
-        // Pass the Activite data to the controller
-        controller.setData(activite);
+                    // Get the controller of detailActivite.fxml
+                    detailActiviteController controller = detailLoader.getController();
 
-        // Pass the currentActivite to the controller
-        controller.setCurrentActivite(currentActivite);
+                    // Pass the Activite data to the controller
+                    controller.setData(activite);
 
-        // Get the current scene
-        Scene currentScene = ((Node) event.getSource()).getScene();
+                    // Pass the currentActivite to the controller
+                    controller.setCurrentActivite(currentActivite);
 
-        // Find the AnchorPane in the current scene
-        AnchorPane anchorPane = (AnchorPane) currentScene.lookup("#anchor");
+                    // Get the current scene
+                    Scene currentScene = ((Node) event.getSource()).getScene();
 
-        // Set detailActivite as the content of the AnchorPane
-        anchorPane.getChildren().setAll(detailActivite);
+                    // Find the AnchorPane in the current scene
+                    AnchorPane anchorPane = (AnchorPane) currentScene.lookup("#anchor");
 
-    } catch (IOException e) {
+                    // Set detailActivite as the content of the AnchorPane
+                    anchorPane.getChildren().setAll(detailActivite);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            GridActivite.add(pane, 0, row); // Always add to the first column
+            row++;
+            GridPane.setMargin(pane, new Insets(10));
+            ActiviteService activiteService = new ActiviteService();
+
+            // Get the number of reservations for the activity
+            int nbrReservations = activiteService.getUsersByActiviteId(activite.getId()).size(); // Make sure this method exists in your Activite class
+            // Create a new series for each activity
+            // Create a new series for each activity
+            XYChart.Series<String, Integer> series = new XYChart.Series<>();
+            series.getData().add(new XYChart.Data<>(activite.getNom(), nbrReservations));
+            // Add the series to the BarChart
+            stat.getData().add(series);
+
+
+        }
+    } catch (IOException | SQLException e) {
         e.printStackTrace();
     }
-});
-                GridActivite.add(pane, 0, row); // Always add to the first column
-                row++;
-                GridPane.setMargin(pane, new Insets(10));
-            }
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
+}
     private List<Activite> getData() throws SQLException {
         ActiviteService activiteService = new ActiviteService();
         return activiteService.getActiviteBySalle(salle.getId());
@@ -312,6 +340,23 @@ pane.setOnMouseClicked(event -> {
         gestion.setVisible(!isVisible);
         boolean isListVisible = list.isVisible();
         list.setVisible(!isListVisible);
+        statique.setVisible(false);
+
+    }
+
+    @FXML
+    void stat(ActionEvent event) {
+        boolean isVisible = statique.isVisible();
+        if (!isVisible) {
+            list.setVisible(false);
+            statique.setVisible(true);
+            gestion.setVisible(false);
+        } else {
+            statique.setVisible(false);
+            list.setVisible(true);
+        }
+
+        gestion.setVisible(false);
 
     }
 }

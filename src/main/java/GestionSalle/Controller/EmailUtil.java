@@ -33,8 +33,8 @@ public class EmailUtil {
                     InternetAddress.parse(to)
             );
             message.setSubject(subject);
-            message.setText(content);
-
+// set the email content to be HTML
+            message.setContent(content, "text/html");
             Transport.send(message);
 
             System.out.println("Done");

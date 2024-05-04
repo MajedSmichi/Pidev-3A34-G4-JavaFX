@@ -28,14 +28,17 @@
         -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 #aloo {
-    -fx-background-color: #ff901a;
-    -fx-background-radius: 16px; /* Adjust as needed */
+    -fx-background-color: #cbc6c6;
+    -fx-background-radius: 14px; /* Adjust as needed */
     -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
 }
 
 #aloo:hover {
-    -fx-background-color: #656161;
-    -fx-effect: dropshadow(three-pass-box, rgb(248, 185, 126), 10, 0, 0, 0);
+    -fx-background-color: #ff9e37;
+    -fx-text-fill: #000000;
+    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 10, 0, 0, 0);
 }
 
 

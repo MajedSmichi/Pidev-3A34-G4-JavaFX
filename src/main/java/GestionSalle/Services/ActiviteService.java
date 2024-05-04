@@ -158,6 +158,11 @@ public class ActiviteService {
         preparedStatement.setInt(1, activiteId);
         preparedStatement.setInt(2, userId);
         preparedStatement.executeUpdate();
+
+        String updateQuery = "UPDATE activite SET nbr_max = nbr_max + 1 WHERE id = ?";
+        PreparedStatement updateStmt = connection.prepareStatement(updateQuery);
+        updateStmt.setInt(1, activiteId);
+        updateStmt.executeUpdate();
     }
 
 }

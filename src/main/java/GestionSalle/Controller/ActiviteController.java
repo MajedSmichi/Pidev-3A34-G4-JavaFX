@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -145,6 +146,12 @@ public class ActiviteController {
 
     @FXML
     private TableView<User> listUser;
+    @FXML
+    private RadioButton filterButton;
+
+
+    @FXML
+    private PieChart stat;
 
 
 
@@ -178,6 +185,26 @@ public class ActiviteController {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean showAll = true;
+    @FXML
+    private void filterActivities(ActionEvent event) throws SQLException, IOException {
+        ActiviteService activiteService = new ActiviteService();
+        List<Activite> allActivites = activiteService.getAllActivite();
+
+        if (showAll) {
+            List<Activite> filteredActivites = allActivites.stream()
+                    .filter(a -> a.getNbr_max() != 0)
+                    .collect(Collectors.toList());
+
+            populateGrid(filteredActivites);
+        } else {
+            populateGrid(allActivites);
+        }
+
+        // Toggle the showAll flag for the next click
+        showAll = !showAll;
     }
 
     private  void populateGrid(List<Activite> activites) throws IOException {
@@ -331,6 +358,7 @@ public class ActiviteController {
     }
     private Activite currentActivite;
     private void displayActiviteDetails(Activite activite) {
+    currentActivite = activite;
     nameact.setText(activite.getNom());
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     String formattedDate = formatter.format(activite.getDate());
@@ -356,12 +384,30 @@ public class ActiviteController {
 
     // Fetch the users related to the activite and populate the listUser TableView
     ActiviteService activiteService = new ActiviteService();
-    try {
-        List<User> users = activiteService.getUsersByActiviteId(activite.getId());
-        populateUserTable(users);
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+        try {
+            List<User> users = activiteService.getUsersByActiviteId(activite.getId());
+            populateUserTable(users);
+            int nbrReservations = users.size();
+
+            int total = activite.getNbr_max()+nbrReservations;
+            // Create a list to hold the PieChart.Data objects
+            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+            // Create PieChart.Data objects and add them to the list
+            PieChart.Data reservationsData = new PieChart.Data("Reservés: " +nbrReservations , (double) (nbrReservations * 100) /total);
+            PieChart.Data maxParticipantsData = new PieChart.Data("Disponibles:" + activite.getNbr_max(), (double) (activite.getNbr_max() * 100) /total);
+            pieChartData.addAll(reservationsData, maxParticipantsData);
+
+            // Set the data to the PieChart
+            stat.setData(pieChartData);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
 
     // Show the details AnchorPane
     detail.setVisible(true);
@@ -402,7 +448,6 @@ public class ActiviteController {
         modifier.setVisible(!isVisible);
         boolean is = tabel.isVisible();
         tabel.setVisible(!is);
-
 
         // If the modifier AnchorPane is being shown, set the fields to the values of the currentActivite
         if (!isVisible && currentActivite != null) {
@@ -505,7 +550,6 @@ public class ActiviteController {
         }
     }
 
-
     @FXML
     void updateimage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -518,17 +562,18 @@ public class ActiviteController {
         }
     }
 
-private void populateUserTable(List<User> users) {
-    userNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-    numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
-    code.setCellValueFactory(cellData -> {
-        User user = cellData.getValue();
-        int codeValue = user.getId() * 33 +17;
-        return new ReadOnlyStringWrapper(Integer.toString(codeValue)).getReadOnlyProperty();
-    });
-    ObservableList<User> observableList = FXCollections.observableArrayList(users);
-    listUser.setItems(observableList);
-}            @FXML
+    private void populateUserTable(List<User> users) {
+        userNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
+        code.setCellValueFactory(cellData -> {
+            User user = cellData.getValue();
+            int codeValue = user.getId() * 33 +17;
+            return new ReadOnlyStringWrapper(Integer.toString(codeValue)).getReadOnlyProperty();
+        });
+        ObservableList<User> observableList = FXCollections.observableArrayList(users);
+        listUser.setItems(observableList);
+    }
+    @FXML
     void exportToExcel(ActionEvent event) {
         List<User> users = listUser.getItems();
         ExcelExporter excelExporter = new ExcelExporter();

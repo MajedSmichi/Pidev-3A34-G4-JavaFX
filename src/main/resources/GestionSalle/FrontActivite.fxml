@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="756.0" prefWidth="1062.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.FrontActiviteController">
+<AnchorPane prefHeight="811.0" prefWidth="1062.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.FrontActiviteController">
    <ScrollPane fx:id="list" layoutX="37.0" layoutY="66.0" prefHeight="618.0" prefWidth="506.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent; " visible="true">
       <content>
          <GridPane fx:id="GridActivite" alignment="CENTER" style="-fx-background-color: transparent; ">
@@ -22,7 +23,7 @@
          </GridPane>
       </content>
    </ScrollPane>
-   <Pane fx:id="detail" layoutX="607.0" layoutY="59.0" prefHeight="611.0" prefWidth="395.0" stylesheets="@detailFrontSalle.css" visible="false">
+   <Pane fx:id="detail" layoutX="607.0" layoutY="59.0" prefHeight="737.0" prefWidth="395.0" stylesheets="@detailFrontSalle.css" visible="false">
       <children>
          <HBox layoutX="30.0" layoutY="147.0" prefHeight="22.0" prefWidth="226.0" />
          <HBox layoutX="112.0" layoutY="242.0" prefHeight="22.0" prefWidth="226.0">
@@ -92,6 +93,7 @@
                <Font size="14.0" />
             </font>
          </Button>
+         <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="200.0" layoutX="138.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </Pane>
    <Label layoutX="27.0" layoutY="14.0" text="Liste Activites " textFill="WHITE">
@@ -109,9 +111,10 @@
          </GridPane>
       </content>
    </ScrollPane>
-   <Pane layoutX="419.0" layoutY="5.0" prefHeight="40.0" prefWidth="226.0" stylesheets="@detailFrontSalle.css">
+   <Pane layoutX="396.0" layoutY="10.0" prefHeight="40.0" prefWidth="615.0" stylesheets="@detailFrontSalle.css">
       <children>
-         <Button fx:id="aloo" layoutX="24.0" mnemonicParsing="false" onAction="#visibilite" prefHeight="40.0" prefWidth="179.0" stylesheets="@detailFrontSalle.css" text="Mes réservation" />
+         <RadioButton fx:id="filterButton" layoutX="7.0" layoutY="11.0" mnemonicParsing="false" onAction="#filterActivities" prefHeight="18.0" prefWidth="144.0" text="Disponible" textFill="WHITE" />
+         <Button fx:id="aloo" layoutX="415.0" mnemonicParsing="false" onAction="#visibilite" prefHeight="40.0" prefWidth="200.0" stylesheets="@detailFrontSalle.css" text="Mes réservation" />
       </children>
    </Pane>
    <Pane fx:id="detail1" layoutX="617.0" layoutY="69.0" prefHeight="611.0" prefWidth="395.0" stylesheets="@detailFrontSalle.css" visible="false">

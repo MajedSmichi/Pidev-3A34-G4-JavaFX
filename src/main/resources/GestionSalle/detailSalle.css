@@ -49,3 +49,12 @@
 #list {
     -fx-background-color: transparent;
 }
+#statistique {
+    -fx-background-color: #7299d5;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#statistique:hover {
+    -fx-background-color: #0ea8ff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}

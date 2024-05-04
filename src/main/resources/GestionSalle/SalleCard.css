@@ -12,7 +12,8 @@
 #PaneSalle {
     -fx-width: 300px;
     -fx-height: 220px;
-    -fx-border-radius: 8px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px; /* Add this line */
     -fx-padding: 20px 30px;
     -fx-position: relative;
     -fx-overflow: hidden;
@@ -21,7 +22,6 @@
     /* Add transition for smoother hover effect */
     -fx-transition: all 0.3s ease;
 }
-
 /* Style du titre */
 #name {
     -fx-font-size: 1.2em; /* Taille de police */

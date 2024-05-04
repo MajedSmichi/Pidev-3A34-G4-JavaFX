@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -104,8 +107,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-
-                                             </content>
+         </content>
       </ScrollPane>
 
       <Button fx:id="delete" layoutX="416.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteSalle" prefHeight="26.0" prefWidth="114.0" text="Supprimer" />
@@ -115,5 +117,18 @@
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
-      </Label>   </children>
+      </Label>
+      <AnchorPane fx:id="statique" layoutX="542.0" layoutY="90.0" prefHeight="554.0" prefWidth="554.0" visible="false">
+         <children>
+            <StackedBarChart fx:id="stat" layoutX="14.0" layoutY="77.0" title="Nombre de réservation de chaque activitée">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+         </children>
+      </AnchorPane>
+      <Button fx:id="statistique" layoutX="416.0" layoutY="396.0" mnemonicParsing="false" onAction="#stat" prefHeight="26.0" prefWidth="114.0" text="Statistique" />   </children>
 </AnchorPane>

@@ -10,8 +10,6 @@ module com.example.GestionSalle {
     requires com.google.zxing;
     requires com.google.zxing.javase;
 
-
-
     //requires java.persistence;
     opens GestionSalle to javafx.fxml;
     exports GestionSalle;

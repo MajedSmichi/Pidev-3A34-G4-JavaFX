@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="688.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailFrontActiviteController">
-   <Pane fx:id="detail" layoutX="284.0" layoutY="14.0" prefHeight="592.0" prefWidth="362.0" stylesheets="@detailFrontSalle.css">
+<AnchorPane prefHeight="811.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.detailFrontActiviteController">
+   <Pane fx:id="detail" layoutX="284.0" layoutY="14.0" prefHeight="730.0" prefWidth="362.0" stylesheets="@detailFrontSalle.css">
       <children>
          <HBox layoutX="86.0" layoutY="244.0" prefHeight="22.0" prefWidth="226.0">
             <children>
@@ -78,6 +78,7 @@
                <Font size="14.0" />
             </font>
          </Button>
+         <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </Pane>
 

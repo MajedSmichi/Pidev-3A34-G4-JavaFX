@@ -1,5 +1,6 @@
 package GestionSalle.Services;
 
+import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
 import connectionSql.ConnectionSql;
 
@@ -47,12 +48,23 @@ public class SalleService {
     }
 
     public void deleteSalle(int id) throws SQLException {
+        // Create an instance of ActiviteService
+        ActiviteService activiteService = new ActiviteService();
+
+        // Get all activities associated with the salle
+        List<Activite> activites = activiteService.getActiviteBySalle(id);
+
+        // Delete all activities
+        for (Activite activite : activites) {
+            activiteService.deleteActiviteUser(activite.getId(), id);
+        }
+
+        // Delete the salle
         String query = "DELETE FROM salle WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, id);
         preparedStatement.executeUpdate();
     }
-
     public void updateSalle(int id, String nom, String addresse, int num_tel , int capacite, String description, int nbr_client, String logo_salle ) throws SQLException {
         String query = "UPDATE salle SET nom = ?, addresse = ?, num_tel = ?, capacite = ?, description= ?, nbr_client = ?, logo_salle = ? WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);

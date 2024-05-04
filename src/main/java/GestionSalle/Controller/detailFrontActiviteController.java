@@ -4,6 +4,13 @@ import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,8 +21,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class detailFrontActiviteController {
 
@@ -42,8 +54,12 @@ public class detailFrontActiviteController {
 
     @FXML
     private Label salleact;
+
     @FXML
     private Button reserver;
+
+    @FXML
+    private ImageView qrCodeImageView;
 
 
     public void setData(Activite activite) {
@@ -84,12 +100,51 @@ public class detailFrontActiviteController {
             }
             int userId = 1; // Replace this with actual method to get logged in user id
             activiteUserService.reserverActivite(currentActivite.getId(), userId);
+
+            // Send email
+            String userEmail = "belhouchet.koussay@esprit.tn"; // replace with the user's email
+            String subject = "Reservation Confirmation";
+            String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
+                    "<h1 style='color: black;'>Cher utilisateur,</h1>" +
+                    "<p style='color: black;'>Vous avez réservé avec succès l'activité : " + currentActivite.getNom() + "</p>" +
+                    "<p style='color: black;'>Cordialement,</p>" +
+                    "<p style='color: black;'>Votre équipe</p>" +
+                    "</div>";
+            EmailUtil.sendEmail(userEmail, subject, content);
+
+
+            int code = userId * 33 +17;
+            String reservationInfo = "Code confédentiel : " + code;// Replace with actual reservation ID
+            showReservationConfirmation(reservationInfo);
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Activité réservée avec succès.");
             alert.showAndWait();
+
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Vous avez déjà réservé cette activité.");
             alert.showAndWait();
+        }
+    }
+
+    public void showReservationConfirmation(String reservationInfo) {
+        try {
+            // Generate QR code
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            Map<EncodeHintType, ErrorCorrectionLevel> hints = new HashMap<>();
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+            BitMatrix bitMatrix = qrCodeWriter.encode(reservationInfo, BarcodeFormat.QR_CODE, 200, 200, hints);
+
+            // Save QR code to a ByteArrayOutputStream
+            ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+            MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+            byte[] pngData = pngOutputStream.toByteArray();
+
+            // Load the QR code into an ImageView
+            Image qrCodeImage = new Image(new ByteArrayInputStream(pngData));
+            qrCodeImageView.setImage(qrCodeImage);
+        } catch (WriterException | IOException e) {
+            System.out.println("Could not generate QR Code: " + e.getMessage());
         }
     }
 
