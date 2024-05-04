@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="585.0" prefWidth="656.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.UserCreationStatisticsController">
+    <children>
+        <AnchorPane prefHeight="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <BarChart fx:id="barChart" prefHeight="305.0" prefWidth="656.0" styleClass="chart" AnchorPane.bottomAnchor="-105.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" side="LEFT" />
+                </yAxis>
+            </BarChart>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0">
+            <PieChart fx:id="verifiedUsersPieChart" layoutY="-68.8" prefHeight="269.0" prefWidth="656.0" styleClass="chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-69.0" />
+        </AnchorPane>
+    </children>
+</AnchorPane>

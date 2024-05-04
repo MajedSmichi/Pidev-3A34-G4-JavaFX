@@ -120,7 +120,7 @@ public class AjouterRepense {
             alert.setContentText("The response has been added successfully.");
             alert.showAndWait();
             try {
-                Dash.getInstance().loadRep();
+                SampleController.getInstance().loadRep();
             } catch (IOException e) {
                 e.printStackTrace();
             }

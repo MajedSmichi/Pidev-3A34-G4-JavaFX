@@ -1,4 +1,4 @@
-module Controller {
+module com.example.gestionreclamation {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
@@ -22,21 +22,12 @@ module Controller {
     requires org.json;
 
 
-    opens Controller to javafx.fxml;
-    opens Entity to javafx.base;
-    exports Controller;
     exports connectionSql;
     opens connectionSql to javafx.fxml;
-    requires mysql.connector.java;
     requires unirest.java;
-    requires json;
-    requires javax.mail.api;
-    requires java.net.http;
     requires assemblyai.java;
     opens Gestionreclamation to javafx.fxml;
     exports Gestionreclamation;
-    exports connectionSql;
-    opens connectionSql to javafx.fxml;
     exports Gestionreclamation.Controller;
     opens Gestionreclamation.Controller to javafx.fxml;
     exports Gestionreclamation.Entity;

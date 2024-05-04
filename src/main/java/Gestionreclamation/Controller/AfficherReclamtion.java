@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AfficherReclamtion {
     private VBox vbox;
@@ -30,8 +31,13 @@ public class AfficherReclamtion {
     private ReclamationService reclamationService; // Define reclamationService as an instance variable
 
     public AfficherReclamtion() {
+        String currentUserId = SessionManager.getInstance().getCurrentUser().getId();
+
         this.reclamationService = new ReclamationService(); // Assign to the instance variable
         reclamations = reclamationService.afficherreclamation();
+        reclamations = reclamationService.afficherreclamation().stream()
+                .filter(reclamation -> reclamation.getUtilisateur().getId().equals(currentUserId))
+                .collect(Collectors.toList());
 
         vbox = new VBox();
 

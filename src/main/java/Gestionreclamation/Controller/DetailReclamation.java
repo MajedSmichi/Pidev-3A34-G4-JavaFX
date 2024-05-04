@@ -97,7 +97,7 @@ public class DetailReclamation {
             alert.showAndWait();
 
             detailanchpane.getChildren().clear();
-            Dash.getInstance().loadRec();
+            SampleController.getInstance().loadRec();
 
         }
     }

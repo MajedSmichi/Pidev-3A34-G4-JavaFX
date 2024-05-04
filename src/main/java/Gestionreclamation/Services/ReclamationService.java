@@ -73,7 +73,7 @@ public class ReclamationService {
         try {
             PreparedStatement preparedStatement = cnx.prepareStatement(req);
             // Définir les valeurs des paramètres dans la requête
-            preparedStatement.setInt(1, r.getUtilisateur().getId());
+            preparedStatement.setString(1, r.getUtilisateur().getId());
             preparedStatement.setString(2, r.getNom());
             preparedStatement.setString(3, r.getEmail());
             preparedStatement.setInt(4, r.getNumTele());

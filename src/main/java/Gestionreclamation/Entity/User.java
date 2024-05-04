@@ -1,33 +1,27 @@
-package Entity;
+package Gestionreclamation.Entity;
 
 import java.time.LocalDateTime; // Import LocalDateTime for createdAt and updatedAt fields
 import java.util.Arrays;
-import java.util.UUID;
-import Gestionreclamation.Entity.Reclamation;
-import Gestionreclamation.Entity.Reponse;
 
 import java.util.Collection;
 import java.util.ArrayList;
 
 public class User {
-    private int id;
+    private String id;
     private String nom;
     private String prenom;
     private String email;
-    private String role;
+    private String[] roles;
     private int numTele;
-    private String motDePass;
+    private String password;
     private String adresse;
     private String avatar;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private boolean isVerified;
-
-    public User() {
     private Collection<Reclamation> reclamations;
     private Collection<Reponse> reponses;
 
-    }
 
 
     // Constructors
@@ -55,12 +49,12 @@ public class User {
     // Getters and Setters
     // Implement your getters and setters here...
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = String.valueOf(id);
     }
 
     public String getNom() {
@@ -87,12 +81,12 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
+    public String[] getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
 
     public int getNumTele() {
@@ -103,12 +97,12 @@ public class User {
         this.numTele = numTele;
     }
 
-    public String getMotDePass() {
-        return motDePass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMotDePass(String motDePass) {
-        this.motDePass = motDePass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAdresse() {
@@ -181,6 +175,7 @@ public class User {
                 ", updatedAt=" + updatedAt +
                 ", isVerified=" + isVerified +
                 '}';
+
 
 
 

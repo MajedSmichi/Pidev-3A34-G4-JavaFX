@@ -76,7 +76,7 @@ public class DetailReponse {
         ReponseService reponseService = new ReponseService();
         reponseService.supprimerReponse(rep);
         detailanchpane.getChildren().clear();
-        Dash.getInstance().loadRep();
+        SampleController.getInstance().loadRep();
 
     }
 

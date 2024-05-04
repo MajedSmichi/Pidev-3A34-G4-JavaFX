@@ -30,9 +30,19 @@
                     </children>
                 </HBox>
             <Pane layoutX="479.0" layoutY="720.0" prefHeight="102.0" prefWidth="200.0" />
-            <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="1483.0" layoutY="32.0" onMouseClicked="#listeReclamtion" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="31.0" layoutX="1396.0" layoutY="31.0" onMouseClicked="#listeReclamtion" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/mail.png" />
+               </image>
+            </ImageView>
+                <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="1427.0" layoutY="32.0" onMouseClicked="#loadUpdateClient" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/profileUser.png" />
+               </image>
+            </ImageView>
+                <ImageView  fx:id="logoutButton"   onMouseClicked="#logout" fitHeight="27.0" fitWidth="62.0" layoutX="1478.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/logout.png" />
                </image>
             </ImageView>
             </children>

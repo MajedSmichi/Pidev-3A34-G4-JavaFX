@@ -17,6 +17,7 @@ import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 
@@ -124,15 +125,7 @@ public class AjouterReclamation implements Initializable {
     void ajouterText(ActionEvent event) {
         boolean isValidInput = true;
 
-        User user = new User();
-        user.setId(1);
-        user.setNom("iyed");
-        user.setPrenom("wederni");
-        user.setEmail("wed@gmail.com");
-        user.setNumTele(12345678);
-        user.setRole("admin");
-        user.setMotDePass("12345678");
-        user.setAdresse("tunis");
+        User user = SessionManager.getInstance().getCurrentUser();
 
         Reclamation NewReclamation = new Reclamation();
         String descriptionValue = description.getText();
@@ -229,8 +222,8 @@ public class AjouterReclamation implements Initializable {
             user.setPrenom("wederni");
             user.setEmail("wed@gmail.com");
             user.setNumTele(12345678);
-            user.setRole("admin");
-            user.setMotDePass("12345678");
+            user.setRoles(new String[]{"admin"});
+            user.setPassword("12345678");
             user.setAdresse("tunis");
 
             Reclamation NewReclamation = new Reclamation();

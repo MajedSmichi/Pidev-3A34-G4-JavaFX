@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.SampleController">
+   <Label layoutX="210.0" prefHeight="26.0" prefWidth="224.0" text="Update UserData">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+   <Label layoutX="153.0" layoutY="32.0" text="Email" />
+   <TextField fx:id="updateEmailText" layoutX="153.0" layoutY="50.0" prefHeight="26.0" prefWidth="294.0" />
+   <Label layoutX="153.0" layoutY="94.0" text="FirsatName" />
+   <Label fx:id="updateEmailError" layoutX="153.0" layoutY="73.0" textFill="#ea0b0b" />
+   <TextField fx:id="updateFirstNameText" layoutX="153.0" layoutY="112.0" prefHeight="26.0" prefWidth="294.0" />
+   <Label layoutX="153.0" layoutY="158.0" text="LastName" />
+   <TextField fx:id="updateLastNameText" layoutX="153.0" layoutY="173.0" prefHeight="26.0" prefWidth="294.0" />
+   <Label fx:id="updateFirstNameError" layoutX="153.0" layoutY="136.0" textFill="#ec0a0a" />
+   <Label fx:id="updateLastNameError" layoutX="154.0" layoutY="196.0" textFill="#ef0f0f" />
+   <Label layoutX="154.0" layoutY="220.0" text="Phone" />
+   <TextField fx:id="updatePhoneText" layoutX="153.0" layoutY="235.0" prefHeight="26.0" prefWidth="294.0" />
+   <Label fx:id="updatePhoneError" layoutX="154.0" layoutY="258.0" textFill="#ef0f0f" />
+   <Label layoutX="154.0" layoutY="277.0" text="Adress" />
+   <TextField fx:id="updateAdressText" layoutX="153.0" layoutY="294.0" prefHeight="26.0" prefWidth="294.0" />
+   <Label fx:id="updateAdressError" layoutX="155.0" layoutY="319.0" textFill="#e41010" />
+   <Button fx:id="updateDataButton" layoutX="193.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleUpdateAction" prefHeight="26.0" prefWidth="224.0" text="Update Data" />
+</AnchorPane>
