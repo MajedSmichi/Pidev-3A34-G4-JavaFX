@@ -6,11 +6,15 @@ import SportHub.Services.*;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -18,7 +22,10 @@ import java.util.List;
 import java.util.Optional;
 
 import SportHub.Services.WeatherService;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import kong.unirest.json.JSONObject;
 
 
@@ -33,31 +40,57 @@ public class EvenementFront {
     private TwilioService twilioService = new TwilioService();
 
 
-    public void initialize() {
-        try {
-            weatherService = new WeatherService();
+public void initialize() {
+    try {
+        weatherService = new WeatherService();
 
-            List<Evenement> events = fetchEventsFromDatabase();
+        List<Evenement> events = fetchEventsFromDatabase();
 
-            int column = 0;
-            int row = 0;
+        int column = 0;
+        int row = 0;
 
-            for (Evenement event : events) {
-                GridPane eventCard = createEventCard(event);
-                eventContainer.add(eventCard, column, row);
+        for (Evenement event : events) {
+            GridPane eventCard = createEventCard(event);
+            eventContainer.add(eventCard, column, row);
 
-                column++;
-                if (column > 2) {
-                    column = 0;
-                    row++;
-                }
+            column++;
+            if (column > 2) {
+                column = 0;
+                row++;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-    }
+        // Set the horizontal gap between the columns in the GridPane
+        eventContainer.setHgap(40); // Adjust the value as needed
 
-private GridPane createEventCard(Evenement event) {
+        // Fetch the most popular events
+        TicketService ticketService = new TicketService();
+        List<Evenement> popularEvents = ticketService.getMostPopularEvents();
+
+        VBox vbox = new VBox();
+        vbox.setSpacing(10); // Set the space between the cards
+        vbox.setMaxHeight(Region.USE_PREF_SIZE); // Set the VBox to not grow beyond its preferred size
+        vbox.setPadding(new Insets(20, 0, 0, 0)); // 20 units of space at the top
+
+
+        // Create a label for the title
+        Label titleLabel = new Label("THE MOST POPULAR EVENTS");
+        titleLabel.setFont(new Font("Arial", 30)); // Set the font size to 30
+        //titleLabel.setTextFill(Color.RED); // Set the text color to red
+
+        // Add the title label to the VBox
+        vbox.getChildren().add(titleLabel);
+
+        for (Evenement popularEvent : popularEvents) {
+            GridPane popularEventCard = createPopularEventCard(popularEvent);
+            vbox.getChildren().add(popularEventCard);
+        }
+
+        eventContainer.add(vbox, column + 1, 0); // Add the VBox to the right of the existing cards
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}public GridPane createEventCard(Evenement event) {
     GridPane eventCard = new GridPane();
     eventCard.getStyleClass().add("card"); // Add the style class
 
@@ -381,4 +414,31 @@ public void showSuccessMessage() {
         EvenementService service = new EvenementService();
         return service.getAllEvents();
     }
+
+    public GridPane createPopularEventCard(Evenement event) {
+    GridPane popularEventCard = new GridPane();
+    popularEventCard.getStyleClass().add("popular-event-card"); // Add the style class
+
+
+
+    // Create an ImageView for the event image
+    ImageView eventImage = new ImageView(new Image(event.getImageEvenement()));
+    eventImage.setFitWidth(100); // Adjust the width as needed
+    eventImage.setFitHeight(100); // Adjust the height as needed
+
+    // Create a Label for the event name
+    Label eventName = new Label(event.getNom());
+    eventName.getStyleClass().add("event-name"); // Add a CSS class for styling
+
+    // Create a Label for the event date
+    Label eventDate = new Label(event.getDateEvenement().toString());
+    eventDate.getStyleClass().add("event-date"); // Add a CSS class for styling
+
+    // Add the ImageView and Labels to the GridPane
+    popularEventCard.add(eventImage, 0, 0, 1, 2); // Span 2 rows
+    popularEventCard.add(eventName, 1, 0); // Top right
+    popularEventCard.add(eventDate, 1, 1); // Bottom right
+
+    return popularEventCard;
+}
 }

@@ -1,5 +1,6 @@
 package SportHub.Services;
 
+import SportHub.Entity.Evenement;
 import connectionSql.ConnectionSql;
 import SportHub.Entity.Ticket;
 import java.sql.*;
@@ -131,5 +132,36 @@ public List<Ticket> getUserTickets(String userId) throws SQLException {
         tickets.add(ticket);
     }
     return tickets;
+}
+
+
+public List<Evenement> getMostPopularEvents() throws SQLException {
+    // Create a Statement object
+    Statement statement = connection.createStatement();
+
+    // Create an EvenementService object
+    EvenementService evenementService = new EvenementService();
+
+    // Query to get the 4 events with the most unique users
+    String query = "SELECT ticket.evenement_id, COUNT(DISTINCT ticket_user.user_id) as user_count " +
+                   "FROM ticket_user " +
+                   "JOIN ticket ON ticket_user.ticket_id = ticket.id " +
+                   "GROUP BY ticket.evenement_id " +
+                   "ORDER BY user_count DESC LIMIT 4";
+
+    // Execute the query and get the results
+    ResultSet rs = statement.executeQuery(query);
+
+    // Create a list to store the most popular events
+    List<Evenement> mostPopularEvents = new ArrayList<>();
+
+    // For each result, get the event and add it to the list
+    while (rs.next()) {
+        int eventId = rs.getInt("evenement_id");
+        Evenement event = evenementService.getEventById(eventId);
+        mostPopularEvents.add(event);
+    }
+
+    return mostPopularEvents;
 }
 }

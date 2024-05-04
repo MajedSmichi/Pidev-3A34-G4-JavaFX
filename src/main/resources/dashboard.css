@@ -127,3 +127,22 @@
 
 }
 
+
+.popular-event-card {
+    /* Add your styles here */
+    -fx-background-color: rgba(157, 157, 157, 0.81); /* Set default background to orange */
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 120, 171, 0.81), 5, 0, 0, 5);
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-min-width: 290px;  /* Set minimum width */
+    -fx-min-height: 150px; /* Set minimum height */
+    -fx-max-width: 290px;  /* Set maximum width */
+    -fx-max-height: 150px; /* Set maximum height */
+    -fx-alignment: center; /* Center all elements */
+    -fx-transition: all 0.3s ease;
+
+}
+
+

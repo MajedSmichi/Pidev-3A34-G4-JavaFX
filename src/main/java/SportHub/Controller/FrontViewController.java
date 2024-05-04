@@ -30,6 +30,8 @@ public class FrontViewController {
     @FXML
     private Button mes_tickets;
 
+    @FXML
+    private Label list_event;
 
 
 
@@ -43,6 +45,7 @@ public class FrontViewController {
             achorfront.getChildren().setAll(evenementFront);
             System.out.println("Evenement front view loaded successfully");
             mes_tickets.setVisible(true);
+            list_event.setVisible(true);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error while loading the evenement front view");
@@ -101,5 +104,13 @@ public void loadUserTickets() {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+}
+
+
+
+@FXML
+public void loadEvenementAndMostPopularEvents() {
+    loadEvenementFront();
+   // loadMostPopularEvents();
 }
 }
