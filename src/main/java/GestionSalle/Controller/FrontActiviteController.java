@@ -260,12 +260,12 @@ public class FrontActiviteController {
             String userEmail = "belhouchet.koussay@esprit.tn"; // replace with the user's email
             String subject = "Reservation Confirmation";
             String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
-                    "<h1 style='color: black;'>Cher utilisateur,</h1>" +
-                    "<p style='color: black;'>Vous avez réservé avec succès l'activité : " + currentActivite.getNom() + "</p>" +
-                    "<p style='color: black;'>Cordialement,</p>" +
-                    "<p style='color: black;'>Votre équipe</p>" +
-                    "<img src='data:image/png;base64, " + base64Image + "' />" +
-                    "</div>";
+                                        "<h1 style='color: black;'>Cher utilisateur,</h1>" +
+                                        "<p style='color: black;'>Vous avez réservé avec succès l'activité : " + currentActivite.getNom() + "</p>" +
+                                        "<p style='color: black;'>Cordialement,</p>" +
+                                        "<p style='color: black;'>Votre équipe</p>" +
+                                        "<img src='data:image/png;base64, " + base64Image + "' style='display: block; margin: auto;' />" +
+                                        "</div>";
             EmailUtil.sendEmail(userEmail, subject, content);
 
 

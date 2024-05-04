@@ -3,6 +3,7 @@ import GestionSalle.Entity.Activite;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,15 @@ import java.util.List;
 
 
 public class HelloApplication extends Application {
+    private static HelloApplication instance;
+
+    public HelloApplication() {
+        instance = this;
+    }
+
+    public static HelloApplication getInstance() {
+        return instance;
+    }
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dash.fxml"));
@@ -41,7 +51,11 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         launch();
         }
+
+    public HostServices getHostService() {
+        return getHostServices();
     }
+}
 
 
 

@@ -3,8 +3,11 @@ package GestionSalle.Controller;
 import GestionSalle.Entity.Activite;
 import GestionSalle.Entity.Salle;
 import GestionSalle.Entity.User;
+import GestionSalle.HelloApplication;
 import GestionSalle.Services.ActiviteService;
 import GestionSalle.Services.SalleService;
+import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -440,7 +443,6 @@ public class ActiviteController {
             alert.showAndWait();
         }
     }
-
        @FXML
     void showUpdate(ActionEvent event) {
         // Assuming 'modifier' is the AnchorPane you want to show
@@ -589,7 +591,11 @@ public class ActiviteController {
         if (file != null) {
             excelExporter.export(users, file.getAbsolutePath());
             System.out.println("Exported to Excel successfully!");
+            // Open the file
+            HelloApplication mainApp = HelloApplication.getInstance();
+            HostServices hostServices = mainApp.getHostService();
+            hostServices.showDocument(file.getAbsolutePath());
+        }
         }
     }
 
-}
