@@ -8,6 +8,8 @@ module com.example.gestionreclamation {
     requires unirest.java;
     requires json;
     requires javax.mail.api;
+    requires java.net.http;
+    requires assemblyai.java;
     opens Gestionreclamation to javafx.fxml;
     exports Gestionreclamation;
     exports connectionSql;

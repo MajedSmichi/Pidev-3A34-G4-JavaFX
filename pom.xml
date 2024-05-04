@@ -21,6 +21,11 @@
             <version>1.6.2</version>
         </dependency>
         <dependency>
+            <groupId>com.assemblyai</groupId>
+            <artifactId>assemblyai-java</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
             <version>1.1.1</version>

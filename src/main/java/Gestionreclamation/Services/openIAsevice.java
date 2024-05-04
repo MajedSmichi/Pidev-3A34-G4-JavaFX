@@ -9,15 +9,17 @@ import org.json.JSONObject;
 import java.io.File;
 
 public class openIAsevice {
+
     public String executeService(String filePath) {
         String transcription = null;
 
         try {
             HttpResponse<String> response = Unirest.post("https://api.openai.com/v1/audio/transcriptions")
-                    .header("Authorization", "Bearer " + "aa")
+                    .header("Authorization", "Bearer " + "sk-proj-G1z5RUUZZYqKubgIlctLT3BlbkFJ7OjOHO5Afd9OvoUFK7W6")
                     .field("file", new File(filePath))
                     .field("model", "whisper-1")
                     .asString();
+            System.out.println("Response Body: " + response.getBody()); // Print the response body
 
             JSONObject jsonResponse = new JSONObject(response.getBody());
             transcription = jsonResponse.getString("text");
@@ -29,4 +31,5 @@ public class openIAsevice {
 
         return transcription;
     }
+
 }
