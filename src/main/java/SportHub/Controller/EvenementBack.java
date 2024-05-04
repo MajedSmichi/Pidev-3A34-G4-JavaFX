@@ -73,6 +73,10 @@ public class EvenementBack {
     @FXML
     private ComboBox<String> sortComboBox;
 
+    @FXML
+    private Pagination pagination;
+
+    //private static final int ITEMS_PER_PAGE = 6;
 
 
     private TextField nom_image;
@@ -164,29 +168,47 @@ public class EvenementBack {
     }
 
 
-    private void displayEvents(List<Evenement> events) throws SQLException, IOException {
-        eventContainerBack.getChildren().clear();
+private void displayEvents(List<Evenement> events) throws SQLException, IOException {
+    int itemsPerPage = 6; // Set the number of items per page
+    int totalItems = events.size(); // Get the total number of items
+    int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage); // Calculate the total number of pages
 
-        for (int i = 0; i < events.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml"));
-            Pane pane = fxmlLoader.load();
+    pagination.setPageCount(totalPages); // Set the total number of pages
 
-            EvenementCard controller = fxmlLoader.getController();
-            controller.setData(events.get(i));
+    pagination.setPageFactory((pageIndex) -> {
+        int fromIndex = pageIndex * itemsPerPage; // Calculate the index of the first item on the current page
+        int toIndex = Math.min(fromIndex + itemsPerPage, totalItems); // Calculate the index of the last item on the current page
 
-            pane.setOnMouseClicked(e -> {
-                try {
-                    openDetails(controller.getEvent());
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
+        GridPane gridPane = new GridPane(); // Create a new GridPane
+        gridPane.setHgap(10); // Set horizontal gap
+        gridPane.setVgap(10); // Set vertical gap
 
-            eventContainerBack.add(pane, i % 3, i / 3);
+        for (int i = fromIndex; i < toIndex; i++) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/SportHub/EvenementCard.fxml"));
+                Pane pane = fxmlLoader.load();
+
+                EvenementCard controller = fxmlLoader.getController();
+                controller.setData(events.get(i));
+
+                pane.setOnMouseClicked(e -> {
+                    try {
+                        openDetails(controller.getEvent());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+
+                gridPane.add(pane, i % 3, i / 3); // Add the event to the GridPane
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
+        return gridPane; // Return the GridPane as the page content
+    });
+}
 
     public void eventAdd() {
         try {
@@ -263,4 +285,6 @@ public class EvenementBack {
         controller.setEvent(event);
         root1.getChildren().setAll(detailsRoot);
     }
+
+
 }

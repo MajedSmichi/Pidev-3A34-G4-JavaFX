@@ -23,11 +23,11 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Frontview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dash.fxml"));
 
         //VBox root = (VBox) FXMLLoader.load(getClass().getResource("CalendarView.fxml"));
-        //AnchorPane root = fxmlLoader.load();
-       ScrollPane root = fxmlLoader.load();
+        AnchorPane root = fxmlLoader.load();
+       //ScrollPane root = fxmlLoader.load();
 
 
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("CalendarView.fxml"));
@@ -48,7 +48,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
-
 
 
     }

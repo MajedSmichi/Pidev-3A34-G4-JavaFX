@@ -1,7 +1,9 @@
 package SportHub.Controller;
 
 import SportHub.Entity.Evenement;
+import SportHub.Entity.Ticket;
 import SportHub.Services.EvenementService;
+import SportHub.Services.TicketService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,11 +100,20 @@ public class DetailsEvenementBack {
     @FXML
     private Button supprimer;
 
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Label progressBarLabel;
+
+
+
     private TextField nom_image;
     private File file = null;
     private Image image = null;
     private String url_image = null;
     private Evenement event;
+    private TicketService ticketService;
 
     @FXML
     void importImage(MouseEvent event) {
@@ -114,6 +125,7 @@ public class DetailsEvenementBack {
 
         // Initially set the modifierPane to not visible
         modifierPane.setVisible(false);
+
 
         // Add a click listener to the modifiericon1
         modifiericon1.setOnMouseClicked(e -> {
@@ -141,20 +153,38 @@ public class DetailsEvenementBack {
         hide.setOnMouseClicked(e -> {
             modifierPane.setVisible(false);
         });
+
     }
 
 public void setEvent(Evenement event) {
-    this.event = event; // This line sets the event object in the DetailsEvenementBack class
+    this.event = event;
     name.setText(event.getNom());
     Date.setText(event.getDateEvenement().toString());
     Lieu.setText(event.getLieu());
     Description.setText(event.getDescription());
-    // Load the image
     File file = new File(event.getImageEvenement());
     Image image = new Image(file.toURI().toString());
     imageEvnement.setImage(image);
-}
 
+    try {
+        TicketService ticketService = new TicketService();
+        int totalPurchasedTickets = ticketService.getTotalPurchasedTicketsByEventId(event.getId());
+        Ticket ticket = ticketService.getTicketByEventId(event.getId()); // Get the Ticket associated with the event
+        if (ticket != null) {
+            int totalTickets = totalPurchasedTickets + ticket.getNbreTicket(); // Use getNbreTicket from the Ticket entity
+     double progress = (double) totalPurchasedTickets / totalTickets;
+progressBar.setProgress(progress);
+double percentage = progress * 100;
+progressBarLabel.setText(String.format("%.2f%%", percentage));
+        } else {
+            // Handle the case where there is no Ticket associated with the event
+            // For example, you might want to set the progress bar to 0
+            progressBar.setProgress(0);
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
     @FXML
     void eventClear() {
         event_nom.setText("");
@@ -311,4 +341,6 @@ void deleteEvent() {
         }
     }
 }
+
+
 }

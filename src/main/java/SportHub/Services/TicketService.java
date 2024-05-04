@@ -164,4 +164,15 @@ public List<Evenement> getMostPopularEvents() throws SQLException {
 
     return mostPopularEvents;
 }
+
+public int getTotalPurchasedTicketsByEventId(int eventId) throws SQLException {
+    String query = "SELECT COUNT(DISTINCT user_id) as total_tickets FROM ticket_user JOIN ticket ON ticket_user.ticket_id = ticket.id WHERE ticket.evenement_id = ?";
+    PreparedStatement preparedStatement = connection.prepareStatement(query);
+    preparedStatement.setInt(1, eventId);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    if (resultSet.next()) {
+        return resultSet.getInt("total_tickets");
+    }
+    return 0;
+}
 }

@@ -92,7 +92,7 @@ public void loadUserTickets() {
 
 
                 column++;
-                if (column > 2) {
+                if (column > 3) {
                     column = 0;
                     row++;
                 }

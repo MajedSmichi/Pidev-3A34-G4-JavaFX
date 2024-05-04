@@ -5,13 +5,16 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane fx:id="root1" prefHeight="762.0" prefWidth="1356.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementBack">
     <Button fx:id="ajouterEvenement" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Ajouter Evenement" textAlignment="CENTER" />
@@ -51,9 +54,20 @@
         <Button fx:id="event_add" layoutX="40.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="38.0" prefWidth="254.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
     </children>
 </AnchorPane>
-    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="402.0" layoutY="127.0" prefHeight="612.0" prefWidth="892.0" style="-fx-background-color: transparent;" styleClass="scroll-pane">
-        <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="610.0" prefWidth="874.0" style="-fx-background-color: transparent;" stylesheets="@Back.css" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
-        </GridPane>
+    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="409.0" layoutY="153.0" prefHeight="586.0" prefWidth="892.0" style="-fx-background-color: transparent;" styleClass="scroll-pane">
+        <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="534.0" prefWidth="890.0" style="-fx-background-color: transparent;" stylesheets="@Back.css" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         <children>
+             <Pagination fx:id="pagination" GridPane.columnIndex="1" />
+         </children></GridPane>
     </ScrollPane>
     <Button fx:id="hide" layoutX="282.0" layoutY="16.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
         <graphic>
