@@ -6,8 +6,7 @@ module Controller {
 
     requires mysql.connector.java;
 
-    requires org.controlsfx.controls;
-    requires org.kordamp.bootstrapfx.core;
+    requires com.dlsc.formsfx;
     requires java.sql;
     requires jbcrypt;
     requires java.mail;
@@ -28,4 +27,18 @@ module Controller {
     exports Controller;
     exports connectionSql;
     opens connectionSql to javafx.fxml;
+    requires mysql.connector.java;
+    requires unirest.java;
+    requires json;
+    requires javax.mail.api;
+    requires java.net.http;
+    requires assemblyai.java;
+    opens Gestionreclamation to javafx.fxml;
+    exports Gestionreclamation;
+    exports connectionSql;
+    opens connectionSql to javafx.fxml;
+    exports Gestionreclamation.Controller;
+    opens Gestionreclamation.Controller to javafx.fxml;
+    exports Gestionreclamation.Entity;
+    opens Gestionreclamation.Entity to javafx.fxml;
 }

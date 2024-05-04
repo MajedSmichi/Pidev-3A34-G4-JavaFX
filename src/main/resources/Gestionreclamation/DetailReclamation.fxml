@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="detailanchpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="734.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.DetailReclamation">
+   <children>
+      <VBox id="prettyPane" alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="403.0" prefWidth="374.0">
+         <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="291.0" spacing="10.0">
+            <children>
+               <Button id="editButton" fx:id="edit" mnemonicParsing="false" onAction="#handleEditButtonClick" prefHeight="30.0" prefWidth="78.0" text="Edit">
+                  <graphic>
+                     <ImageView fitHeight="15" fitWidth="15" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@image/edit.png" /> <!-- Replace with your icon path -->
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button id="deleteButton" fx:id="delete" mnemonicParsing="false" onAction="#handleSuprimerButtonClick" prefHeight="30.0" prefWidth="121.0" text="Supprimer">
+                    <graphic>
+                         <ImageView fitHeight="15" fitWidth="15" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                             <Image url="@image/delete3.png" /> <!-- Replace with your icon path -->
+                            </image>
+                         </ImageView>
+                    </graphic>
+               </Button>
+               <Button id="reponseButton" fx:id="reponse" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#handleReponseButtonClick" prefHeight="30.0" prefWidth="112.0" text="Reponse">
+                    <graphic>
+                         <ImageView fitHeight="15" fitWidth="15" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                             <Image url="@image/reponse.png" /> <!-- Replace with your icon path -->
+                            </image>
+                         </ImageView>
+                    </graphic>
+               </Button>
+            </children>
+            <padding>
+               <Insets left="20.0" top="-60.0" />
+            </padding>
+         </HBox>
+         <HBox maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="Full Name:" />
+               <Label fx:id="fullname" prefHeight="26.0" prefWidth="203.0" text="non prenom" />
+            </children>
+         </HBox>
+         <HBox maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="Email:" />
+               <Label fx:id="email" prefHeight="26.0" prefWidth="203.0" text="email" />
+            </children>
+         </HBox>
+         <HBox maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="NumTele:" />
+               <Label fx:id="tele" prefHeight="26.0" prefWidth="203.0" text="numTele" />
+            </children>
+         </HBox>
+         <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="Sujet:" />
+               <Label fx:id="sujet" prefHeight="26.0" prefWidth="203.0" text="sujet" />
+            </children>
+         </HBox>
+         <Pane>
+            <children>
+               <HBox maxWidth="-Infinity" prefHeight="80.0" prefWidth="298.0" spacing="10.0">
+                  <Label prefHeight="26.0" prefWidth="104.0" text="Description:" />
+                  <Label fx:id="description" alignment="TOP_LEFT" prefHeight="80.0" prefWidth="203.0" text="description" wrapText="true" />
+               </HBox>
+            </children>
+         </Pane>
+
+         <HBox maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="Date:" />
+               <Label fx:id="date" prefHeight="26.0" prefWidth="203.0" text="date" />
+            </children>
+         </HBox>
+         <HBox maxWidth="-Infinity" spacing="10.0">
+            <children>
+               <Label prefHeight="26.0" prefWidth="104.0" text="Etat:" />
+               <Label fx:id="etat" prefHeight="26.0" prefWidth="203.0" text="etat" />
+            </children>
+         </HBox>
+         <padding>
+            <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+      </VBox>
+      <AnchorPane fx:id="editreponse" layoutX="397.0" layoutY="91.0" prefHeight="403.0" prefWidth="374.0" />
+   </children>
+</AnchorPane>

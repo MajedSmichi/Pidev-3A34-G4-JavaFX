@@ -3,15 +3,20 @@ package Entity;
 import java.time.LocalDateTime; // Import LocalDateTime for createdAt and updatedAt fields
 import java.util.Arrays;
 import java.util.UUID;
+import Gestionreclamation.Entity.Reclamation;
+import Gestionreclamation.Entity.Reponse;
+
+import java.util.Collection;
+import java.util.ArrayList;
 
 public class User {
-    private String id;
+    private int id;
     private String nom;
     private String prenom;
     private String email;
-    private String[] roles;
+    private String role;
     private int numTele;
-    private String password;
+    private String motDePass;
     private String adresse;
     private String avatar;
     private LocalDateTime createdAt;
@@ -19,8 +24,11 @@ public class User {
     private boolean isVerified;
 
     public User() {
+    private Collection<Reclamation> reclamations;
+    private Collection<Reponse> reponses;
 
     }
+
 
     // Constructors
     public User(String id, String nom, String prenom, String email, String[] roles, int numTele, String password, String adresse, String avatar, LocalDateTime createdAt, LocalDateTime updatedAt, boolean isVerified) {
@@ -37,13 +45,21 @@ public class User {
         this.updatedAt = updatedAt;
         this.isVerified = isVerified;
     }
+    public User() {
+        // Default constructor
+        this.reclamations = new ArrayList<>();
+        this.reponses = new ArrayList<>();
+
+    }
 
     // Getters and Setters
-    public String getId() {
+    // Implement your getters and setters here...
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,13 +87,14 @@ public class User {
         this.email = email;
     }
 
-    public String[] getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
+
     public int getNumTele() {
         return numTele;
     }
@@ -86,12 +103,12 @@ public class User {
         this.numTele = numTele;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMotDePass() {
+        return motDePass;
     }
 
-    public void setPassword(String Password) {
-        this.password = Password;
+    public void setMotDePass(String motDePass) {
+        this.motDePass = motDePass;
     }
 
     public String getAdresse() {
@@ -117,6 +134,17 @@ public class User {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+    public Collection<Reclamation> getReclamations() {
+        return reclamations;
+    }
+
+    public void setReclamations(Collection<Reclamation> reclamations) {
+        this.reclamations = reclamations;
+    }
+
+    public Collection<Reponse> getReponses() {
+        return reponses;
+    }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
@@ -132,6 +160,9 @@ public class User {
 
     public void setVerified(boolean verified) {
         isVerified = verified;
+    }
+    public void setReponses(Collection<Reponse> reponses) {
+        this.reponses = reponses;
     }
 
     @Override
@@ -150,5 +181,8 @@ public class User {
                 ", updatedAt=" + updatedAt +
                 ", isVerified=" + isVerified +
                 '}';
-    }
-}
+
+
+
+    // Add and remove methods for relations...
+}}
