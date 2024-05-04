@@ -1,0 +1,535 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
++++ /dev/null	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]" date="1711488864041" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 26/03/2024 22:34 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]/shelved.patch	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
++++ /dev/null	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
+@@ -1,19 +0,0 @@
+-Index: src/main/java/com/example/pidev3a34g4/HelloApplication.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.pidev3a34g4;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class HelloApplication extends Application {\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(\"hello-view.fxml\"));\r\n        Scene scene = new Scene(fxmlLoader.load(), 320, 240);\r\n        stage.setTitle(\"Hello!\");\r\n        stage.setScene(scene);\r\n     //   stage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/main/java/com/example/pidev3a34g4/HelloApplication.java b/src/main/java/com/example/pidev3a34g4/HelloApplication.java
+---- a/src/main/java/com/example/pidev3a34g4/HelloApplication.java	
+-+++ b/src/main/java/com/example/pidev3a34g4/HelloApplication.java	
+-@@ -14,7 +14,7 @@
+-         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+-         stage.setTitle("Hello!");
+-         stage.setScene(scene);
+--     //   stage.show();
+-+       stage.show();
+-     }
+- 
+-     public static void main(String[] args) {
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+--- a/.idea/workspace.xml	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
++++ /dev/null	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
+@@ -1,467 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+-  <component name="ChangeListManager">
+-    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="activate and desactivate user">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RegisterController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SampleController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/UserCardController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/UserController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Controller/Dash.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/Register/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Controller/Register/register.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/updateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/updateUser.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/userList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Controller/UserCrud/userList.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/codeConfirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Controller/forgetPassword/codeConfirm.fxml" afterDir="false" />
+-    </list>
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Interface" />
+-        <option value="Class" />
+-        <option value="FxmlFile" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="Git.Settings">
+-    <excluded-from-favorite>
+-      <branch-storage>
+-        <map>
+-          <entry type="LOCAL">
+-            <value>
+-              <list>
+-                <branch-info repo="$PROJECT_DIR$" source="master" />
+-              </list>
+-            </value>
+-          </entry>
+-        </map>
+-      </branch-storage>
+-    </excluded-from-favorite>
+-    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-      <map>
+-        <entry key="$PROJECT_DIR$" value="MajedSmichi-3A34-G4" />
+-      </map>
+-    </option>
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;MajedSmichi&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
+-    &quot;accountId&quot;: &quot;e8372b73-8ed5-41f0-ac37-ecd68e52e9b4&quot;
+-  }
+-}</component>
+-  <component name="MavenImportPreferences">
+-    <option name="generalSettings">
+-      <MavenGeneralSettings>
+-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+-      </MavenGeneralSettings>
+-    </option>
+-  </component>
+-  <component name="ProblemsViewState">
+-    <option name="selectedTabId" value="CurrentFile" />
+-  </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;customColor&quot;: &quot;&quot;,
+-  &quot;associatedIndex&quot;: 6
+-}</component>
+-  <component name="ProjectId" id="2e6sSPxUsmGtDO7q3aLG6REiL87" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Main.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "MajedSmichi-3A34-G4",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "jdk.selected.JAVA_MODULE": "17",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Artifacts",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "advanced.settings",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\java\Controller" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Login" />
+-    </key>
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Assets" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\java\Controller" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\Assets" />
+-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
+-    </key>
+-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+-      <recent name="Controller" />
+-    </key>
+-  </component>
+-  <component name="RunManager" selected="Application.Main">
+-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Controller.HelloApplication" />
+-      <module name="Pidev-3A34-G4" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="connectionSql.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
+-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+-      <option name="MAIN_CLASS_NAME" value="Controller.Main" />
+-      <module name="Pidev-3A34-G4" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="connectionSql.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="TestConnectionSql" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Controller.TestConnectionSql" />
+-      <module name="Pidev-3A34-G4" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="connectionSql.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <list>
+-      <item itemvalue="Application.Main" />
+-      <item itemvalue="Application.HelloApplication" />
+-      <item itemvalue="Application.TestConnectionSql" />
+-    </list>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="Application.TestConnectionSql" />
+-        <item itemvalue="Application.HelloApplication" />
+-        <item itemvalue="Application.TestConnectionSql" />
+-        <item itemvalue="Application.HelloApplication" />
+-      </list>
+-    </recent_temporary>
+-  </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="" />
+-      <created>1711236364228</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1711236364228</updated>
+-      <workItem from="1711236365239" duration="580000" />
+-      <workItem from="1711238142461" duration="1254000" />
+-      <workItem from="1711409052797" duration="18826000" />
+-      <workItem from="1711499459252" duration="6043000" />
+-      <workItem from="1711505540617" duration="16198000" />
+-      <workItem from="1711714836723" duration="35584000" />
+-      <workItem from="1711891413341" duration="4671000" />
+-      <workItem from="1712007353902" duration="9331000" />
+-      <workItem from="1712045017041" duration="3234000" />
+-      <workItem from="1712851894130" duration="48425000" />
+-      <workItem from="1713125468262" duration="11072000" />
+-      <workItem from="1713140016538" duration="2338000" />
+-      <workItem from="1713216703813" duration="856000" />
+-      <workItem from="1713218052054" duration="449000" />
+-      <workItem from="1713278652929" duration="938000" />
+-      <workItem from="1713304458554" duration="12088000" />
+-      <workItem from="1713392861283" duration="9327000" />
+-      <workItem from="1713481938492" duration="3594000" />
+-      <workItem from="1713514830268" duration="11941000" />
+-      <workItem from="1713546736734" duration="450000" />
+-      <workItem from="1713549069448" duration="1047000" />
+-      <workItem from="1713603550951" duration="2318000" />
+-      <workItem from="1713605886662" duration="13264000" />
+-      <workItem from="1713657572605" duration="29818000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="test">
+-      <option name="closed" value="true" />
+-      <created>1711236561296</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711236561297</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="User Static Crud">
+-      <option name="closed" value="true" />
+-      <created>1711488522808</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711488522808</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="User Static Crud">
+-      <option name="closed" value="true" />
+-      <created>1711488674255</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711488674255</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="Screen of login nd register">
+-      <option name="closed" value="true" />
+-      <created>1711499015675</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711499015675</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="img login nd register">
+-      <option name="closed" value="true" />
+-      <created>1711499535143</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711499535143</updated>
+-    </task>
+-    <task id="LOCAL-00006" summary="login button">
+-      <option name="closed" value="true" />
+-      <created>1711579508888</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711579508888</updated>
+-    </task>
+-    <task id="LOCAL-00007" summary="register button nd form validation">
+-      <option name="closed" value="true" />
+-      <created>1711587044866</created>
+-      <option name="number" value="00007" />
+-      <option name="presentableId" value="LOCAL-00007" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711587044866</updated>
+-    </task>
+-    <task id="LOCAL-00008" summary="checkBoxTerms">
+-      <option name="closed" value="true" />
+-      <created>1711717202340</created>
+-      <option name="number" value="00008" />
+-      <option name="presentableId" value="LOCAL-00008" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711717202340</updated>
+-    </task>
+-    <task id="LOCAL-00009" summary="reset paswword with email code">
+-      <option name="closed" value="true" />
+-      <created>1711849481889</created>
+-      <option name="number" value="00009" />
+-      <option name="presentableId" value="LOCAL-00009" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711849481889</updated>
+-    </task>
+-    <task id="LOCAL-00010" summary="delete user">
+-      <option name="closed" value="true" />
+-      <created>1711894114975</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1711894114975</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="update user">
+-      <option name="closed" value="true" />
+-      <created>1712011074172</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1712011074172</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="list user">
+-      <option name="closed" value="true" />
+-      <created>1712013539476</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1712013539476</updated>
+-    </task>
+-    <task id="LOCAL-00013" summary="login user">
+-      <option name="closed" value="true" />
+-      <created>1712016773127</created>
+-      <option name="number" value="00013" />
+-      <option name="presentableId" value="LOCAL-00013" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1712016773127</updated>
+-    </task>
+-    <task id="LOCAL-00014" summary="fix UserList">
+-      <option name="closed" value="true" />
+-      <created>1713020610785</created>
+-      <option name="number" value="00014" />
+-      <option name="presentableId" value="LOCAL-00014" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713020610785</updated>
+-    </task>
+-    <task id="LOCAL-00015" summary="fix search">
+-      <option name="closed" value="true" />
+-      <created>1713021184694</created>
+-      <option name="number" value="00015" />
+-      <option name="presentableId" value="LOCAL-00015" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713021184694</updated>
+-    </task>
+-    <task id="LOCAL-00016" summary="delete user">
+-      <option name="closed" value="true" />
+-      <created>1713027989435</created>
+-      <option name="number" value="00016" />
+-      <option name="presentableId" value="LOCAL-00016" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713027989435</updated>
+-    </task>
+-    <task id="LOCAL-00017" summary="edit user">
+-      <option name="closed" value="true" />
+-      <created>1713052263771</created>
+-      <option name="number" value="00017" />
+-      <option name="presentableId" value="LOCAL-00017" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713052263771</updated>
+-    </task>
+-    <task id="LOCAL-00018" summary="view user">
+-      <option name="closed" value="true" />
+-      <created>1713056453831</created>
+-      <option name="number" value="00018" />
+-      <option name="presentableId" value="LOCAL-00018" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713056453831</updated>
+-    </task>
+-    <task id="LOCAL-00019" summary="add attributs">
+-      <option name="closed" value="true" />
+-      <created>1713135360725</created>
+-      <option name="number" value="00019" />
+-      <option name="presentableId" value="LOCAL-00019" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713135360725</updated>
+-    </task>
+-    <task id="LOCAL-00020" summary="upload image">
+-      <option name="closed" value="true" />
+-      <created>1713307361678</created>
+-      <option name="number" value="00020" />
+-      <option name="presentableId" value="LOCAL-00020" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713307361678</updated>
+-    </task>
+-    <task id="LOCAL-00021" summary="connect same db with symfony">
+-      <option name="closed" value="true" />
+-      <created>1713318591346</created>
+-      <option name="number" value="00021" />
+-      <option name="presentableId" value="LOCAL-00021" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713318591346</updated>
+-    </task>
+-    <task id="LOCAL-00022" summary="function convertBcryptPrefixTo2a">
+-      <option name="closed" value="true" />
+-      <created>1713394146072</created>
+-      <option name="number" value="00022" />
+-      <option name="presentableId" value="LOCAL-00022" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713394146072</updated>
+-    </task>
+-    <task id="LOCAL-00023" summary="fix id in symfony and java">
+-      <option name="closed" value="true" />
+-      <created>1713401624643</created>
+-      <option name="number" value="00023" />
+-      <option name="presentableId" value="LOCAL-00023" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713401624643</updated>
+-    </task>
+-    <task id="LOCAL-00024" summary="add UserService">
+-      <option name="closed" value="true" />
+-      <created>1713483938656</created>
+-      <option name="number" value="00024" />
+-      <option name="presentableId" value="LOCAL-00024" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713483938656</updated>
+-    </task>
+-    <task id="LOCAL-00025" summary="activate and desactivate user">
+-      <option name="closed" value="true" />
+-      <created>1713485500494</created>
+-      <option name="number" value="00025" />
+-      <option name="presentableId" value="LOCAL-00025" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1713485500494</updated>
+-    </task>
+-    <option name="localTasksCounter" value="26" />
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="test" />
+-    <MESSAGE value="User Static Crud" />
+-    <MESSAGE value="Screen of login nd register" />
+-    <MESSAGE value="img login nd register" />
+-    <MESSAGE value="login button" />
+-    <MESSAGE value="register button nd form validation" />
+-    <MESSAGE value="checkBoxTerms" />
+-    <MESSAGE value="reset paswword with email code" />
+-    <MESSAGE value="update user" />
+-    <MESSAGE value="list user" />
+-    <MESSAGE value="login user" />
+-    <MESSAGE value="fix UserList" />
+-    <MESSAGE value="fix search" />
+-    <MESSAGE value="delete user" />
+-    <MESSAGE value="edit user" />
+-    <MESSAGE value="view user" />
+-    <MESSAGE value="add attributs" />
+-    <MESSAGE value="upload image" />
+-    <MESSAGE value="connect same db with symfony" />
+-    <MESSAGE value="function convertBcryptPrefixTo2a" />
+-    <MESSAGE value="fix id in symfony and java" />
+-    <MESSAGE value="add UserService" />
+-    <MESSAGE value="activate and desactivate user" />
+-    <option name="LAST_COMMIT_MESSAGE" value="activate and desactivate user" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_22\" default=\"true\" project-jdk-name=\"openjdk-22\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 9d8880785374d78d84d03bb8b631c9157c0939f9)
++++ b/.idea/misc.xml	(date 1714856410419)
+@@ -8,7 +8,5 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="17" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34_[Changes]1/shelved.patch
+deleted file mode 100644
