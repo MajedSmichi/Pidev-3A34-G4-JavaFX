@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="PaneSalle" prefHeight="230.0" prefWidth="308.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.Salle.uneSalleController">
+    <children>
+        <Pane layoutX="52.0" layoutY="6.0" prefHeight="65.0" prefWidth="221.0">
+            <children>
+                <Label fx:id="name" alignment="CENTER" layoutY="-8.0" prefHeight="45.0" prefWidth="221.0" text="Name" />
+            </children>
+        </Pane>
+        <HBox alignment="CENTER_LEFT" layoutX="59.0" layoutY="174.0" prefHeight="18.0" prefWidth="454.0" spacing="10.0">
+            <children>
+                <Label prefHeight="18.0" prefWidth="69.0" text="Addresse :" />
+                <Label fx:id="Addresse" prefHeight="18.0" prefWidth="234.0" text="Label" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="198.0" prefHeight="18.0" prefWidth="418.0" spacing="10.0">
+            <children>
+                <Label prefHeight="18.0" prefWidth="69.0" text="Numero Tel :" />
+                <Label fx:id="NumTel" prefHeight="18.0" prefWidth="198.0" text="Label" />
+            </children>
+        </HBox>
+        <ImageView fx:id="logo" fitHeight="123.0" fitWidth="208.0" layoutX="59.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</Pane>

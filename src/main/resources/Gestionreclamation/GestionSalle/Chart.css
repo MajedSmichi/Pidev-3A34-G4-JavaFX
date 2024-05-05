@@ -1,0 +1,129 @@
+.series-0 .chart-bar {
+    -fx-bar-fill: red;
+}
+
+.series-1 .chart-bar {
+    -fx-bar-fill: blue;
+}
+
+.series-2 .chart-bar {
+    -fx-bar-fill: green;
+}
+
+.series-3 .chart-bar {
+    -fx-bar-fill: yellow;
+}
+
+.series-4 .chart-bar {
+    -fx-bar-fill: purple;
+}
+
+.series-5 .chart-bar {
+    -fx-bar-fill: orange;
+}
+
+.series-6 .chart-bar {
+    -fx-bar-fill: pink;
+}
+
+.series-7 .chart-bar {
+    -fx-bar-fill: cyan;
+}
+
+.series-8 .chart-bar {
+    -fx-bar-fill: lime;
+}
+
+.series-9 .chart-bar {
+    -fx-bar-fill: magenta;
+}
+.series-10 .chart-bar {
+    -fx-bar-fill: brown;
+}
+
+.series-11 .chart-bar {
+    -fx-bar-fill: darkblue;
+}
+
+.series-12 .chart-bar {
+    -fx-bar-fill: darkgreen;
+}
+
+.series-13 .chart-bar {
+    -fx-bar-fill: darkred;
+}
+
+.series-14 .chart-bar {
+    -fx-bar-fill: darkcyan;
+}
+
+.series-15 .chart-bar {
+    -fx-bar-fill: darkmagenta;
+}
+
+.series-16 .chart-bar {
+    -fx-bar-fill: darkyellow;
+}
+
+.series-17 .chart-bar {
+    -fx-bar-fill: lightblue;
+}
+
+.series-18 .chart-bar {
+    -fx-bar-fill: lightgreen;
+}
+
+.series-19 .chart-bar {
+    -fx-bar-fill: lightred;
+}
+
+.series-20 .chart-bar {
+    -fx-bar-fill: lightcyan;
+}
+
+.series-21 .chart-bar {
+    -fx-bar-fill: lightmagenta;
+}
+
+.series-22 .chart-bar {
+    -fx-bar-fill: lightyellow;
+}
+
+.series-23 .chart-bar {
+    -fx-bar-fill: darkgray;
+}
+
+.series-24 .chart-bar {
+    -fx-bar-fill: lightgray;
+}
+
+.series-25 .chart-bar {
+    -fx-bar-fill: black;
+}
+
+.series-26 .chart-bar {
+    -fx-bar-fill: white;
+}
+
+.series-27 .chart-bar {
+    -fx-bar-fill: gold;
+}
+
+.series-28 .chart-bar {
+    -fx-bar-fill: silver;
+}
+
+.series-29 .chart-bar {
+    -fx-bar-fill: bronze;
+}
+
+.series-30 .chart-bar {
+    -fx-bar-fill: teal;
+}
+
+/* Add more classes as needed */
+
+.chart-bar {
+    -fx-bar-width: 5px; /* Change this to the width you want */
+    -fx-bar-gap: 5px; /* Change this to the gap you want */
+}

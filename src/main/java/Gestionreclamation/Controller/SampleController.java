@@ -2,6 +2,7 @@ package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.UserService;
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -57,7 +58,11 @@ public class SampleController implements UserCardRefreshListener {
     private UserService userService = new UserService();
     @FXML
     private Button exportButton=new Button();
+    @FXML
+    private Button gestionActivite;
 
+    @FXML
+    private Button gestionSalle;
 
 
 
@@ -87,6 +92,50 @@ public class SampleController implements UserCardRefreshListener {
         exportButton.setOnAction(event -> exportToExcel());
 
 
+    }
+
+    @FXML
+    void openActivite(ActionEvent event) {
+        try {
+            // Load the FXML file
+            Parent activiteView = FXMLLoader.load(getClass().getResource("/Gestionreclamation/GestionSalle/Activite.fxml"));
+
+            // Clear the existing content of the anchor pane and add the loaded FXML
+            anchor.getChildren().setAll(activiteView);
+        } catch (IOException e) {
+            // Handle the exception (e.g., the file is not found)
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void openSalle(ActionEvent event) {
+        try {
+            Parent salleView = FXMLLoader.load(getClass().getResource("/Gestionreclamation/GestionSalle/Salle.fxml"));
+            searchField.setVisible(false);
+            userListScrollPane.setVisible(false);
+            exportButton.setVisible(false);
+            anchor.getChildren().setAll(salleView);
+            anchor.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public AnchorPane getAnchor() {
+        return anchor;
+    }
+    public void refreshSalle() {
+        try {
+            Parent salleView = FXMLLoader.load(getClass().getResource("/Gestionreclamation/GestionSalle/Salle.fxml"));
+            searchField.setVisible(false);
+            userListScrollPane.setVisible(false);
+            exportButton.setVisible(false);
+            anchor.getChildren().setAll(salleView);
+            anchor.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -556,5 +605,7 @@ private void exportToExcel() {
         e.printStackTrace();
     }
 }
+
+
 }
 

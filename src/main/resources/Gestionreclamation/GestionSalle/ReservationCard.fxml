@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<Pane fx:id="PaneActivite" prefHeight="115.0" prefWidth="461.0" stylesheets="@ActiviteCard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.Salle.ReservationCardController">
+    <children>
+        <Pane layoutX="14.0" layoutY="91.0" prefHeight="47.0" prefWidth="134.0" />
+        <HBox alignment="CENTER_LEFT" layoutX="159.0" layoutY="54.0" prefHeight="18.0" prefWidth="454.0" spacing="10.0">
+            <children>
+                <Label prefHeight="18.0" prefWidth="35.0" text="Salle :" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="Salle" prefHeight="18.0" prefWidth="234.0" text="Label" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="158.0" layoutY="72.0" prefHeight="18.0" prefWidth="418.0" spacing="10.0">
+            <children>
+                <Label prefHeight="18.0" prefWidth="36.0" text="Date :" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font></Label>
+                <Label fx:id="Date" prefHeight="18.0" prefWidth="198.0" text="Label" />
+            </children>
+        </HBox>
+        <ImageView fx:id="logo" fitHeight="85.0" fitWidth="127.0" layoutX="17.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="name" alignment="CENTER" layoutX="121.0" prefHeight="45.0" prefWidth="139.0" text="Name" textFill="#d9d6d6">
+            <font>
+                <Font name="System Bold Italic" size="12.0" />
+            </font></Label>
+    </children>
+</Pane>

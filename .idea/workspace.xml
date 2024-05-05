@@ -4,16 +4,83 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="activate and desactivate user">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" afterDir="false" />
+    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ActiviteCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/DashController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/EmailUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ExcelExporter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontSalleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ReservationCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailFrontActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailFrontSalleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailSalleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/uneActiviteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/uneSalleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Entity/Salle/Activite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Entity/Salle/Salle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Entity/Salle/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/GestionSalle/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/Salle/ActiviteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/Salle/SalleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Activite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Activite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/ActiviteCard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/ActiviteCard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Chart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Dash.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/FrontActivite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/FrontSalle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/FrontView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Frontview.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/ReservationCard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/Salle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/SalleCard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/SalleCard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailActivite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailActivite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailFrontActivite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailFrontSalle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailFrontSalle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailSalle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/detailSalle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/fullpackstyling.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/activite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/breadcrumb-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/cancel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/cancel1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/cours.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/evenement.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/group.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/produit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/reclamaton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/sale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/supp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/ticket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/images/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/salle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/uneActivite.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/uneSalle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Dash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Dash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pidev3a34g4/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pidev3a34g4/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectionSql/ConnectionSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionSql/ConnectionSql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +97,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/WederniIyed-3A34-G4" />
+    <option name="BRANCH" value="origin/SaadLouay-3A34-G4" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -62,7 +129,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
-    &quot;accountId&quot;: &quot;c6bbbcb0-5fc6-462e-817c-1b2bbad08779&quot;
+    &quot;accountId&quot;: &quot;e8372b73-8ed5-41f0-ac37-ecd68e52e9b4&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -96,7 +163,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -127,6 +194,7 @@
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Gestionreclamation" />
       <recent name="Controller" />
     </key>
   </component>
@@ -258,6 +326,7 @@
       <workItem from="1713605886662" duration="13264000" />
       <workItem from="1713657572605" duration="29818000" />
       <workItem from="1714828647433" duration="10652000" />
+      <workItem from="1714856685370" duration="5373000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -475,7 +544,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714828769441</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="test">
+      <option name="closed" value="true" />
+      <created>1714856779861</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1714856779861</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
