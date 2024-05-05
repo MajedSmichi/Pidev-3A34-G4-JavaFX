@@ -2,7 +2,7 @@ package Gestionreclamation.Controller.Salle;
 
 import Gestionreclamation.Entity.Salle.Activite;
 import Gestionreclamation.Entity.Salle.Salle;
-import Gestionreclamation.Entity.Salle.User;
+import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.Salle.ActiviteService;
 import Gestionreclamation.Services.Salle.SalleService;
 import javafx.collections.FXCollections;
@@ -236,6 +236,7 @@ public class detailActiviteController {
                 activiteService.updateActivite(currentActivite);
 
                 modifier.setVisible(false); // Hide the modifier AnchorPane
+                tabel.setVisible(true); // Show the TableView
                 setData(currentActivite); // Update the detail AnchorPane with the new values
 
 

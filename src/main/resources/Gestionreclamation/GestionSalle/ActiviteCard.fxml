@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="PaneActivite" prefHeight="115.0" prefWidth="461.0" stylesheets="@ActiviteCard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionSalle.Controller.ActiviteCardController">
+<Pane fx:id="PaneActivite" prefHeight="115.0" prefWidth="461.0" stylesheets="@ActiviteCard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.Salle.ActiviteCardController">
     <children>
         <Pane layoutX="14.0" layoutY="91.0" prefHeight="47.0" prefWidth="134.0" />
         <HBox alignment="CENTER_LEFT" layoutX="159.0" layoutY="54.0" prefHeight="18.0" prefWidth="454.0" spacing="10.0">

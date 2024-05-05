@@ -1,8 +1,9 @@
 package Gestionreclamation.Controller.Salle;
 
+import Gestionreclamation.Controller.Main;
 import Gestionreclamation.Entity.Salle.Activite;
 import Gestionreclamation.Entity.Salle.Salle;
-import Gestionreclamation.Entity.Salle.User;
+import Gestionreclamation.Entity.User;
 import GestionSalle.HelloApplication;
 import Gestionreclamation.Services.Salle.ActiviteService;
 import Gestionreclamation.Services.Salle.SalleService;
@@ -567,7 +568,7 @@ public class ActiviteController {
         numTel.setCellValueFactory(new PropertyValueFactory<>("numTele"));
         code.setCellValueFactory(cellData -> {
             User user = cellData.getValue();
-            int codeValue = user.getId() * 33 +17;
+            int codeValue = Integer.parseInt(user.getId()) * 33 + 17;
             return new ReadOnlyStringWrapper(Integer.toString(codeValue)).getReadOnlyProperty();
         });
         ObservableList<User> observableList = FXCollections.observableArrayList(users);
@@ -590,7 +591,7 @@ public class ActiviteController {
             excelExporter.export(users, file.getAbsolutePath());
             System.out.println("Exported to Excel successfully!");
             // Open the file
-            HelloApplication mainApp = HelloApplication.getInstance();
+            Main mainApp = Main.getInstance();
             HostServices hostServices = mainApp.getHostService();
             hostServices.showDocument(file.getAbsolutePath());
         }

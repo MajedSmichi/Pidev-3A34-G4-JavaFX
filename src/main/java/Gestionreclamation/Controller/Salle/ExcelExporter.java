@@ -1,6 +1,6 @@
 package Gestionreclamation.Controller.Salle;
 
-import Gestionreclamation.Entity.Salle.User;
+import Gestionreclamation.Entity.User;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -28,7 +28,7 @@ public void export(List<User> users, String filename) {
         Row row = sheet.createRow(i + 1);
         row.createCell(0).setCellValue(user.getNom());
         row.createCell(1).setCellValue(user.getNumTele());
-        row.createCell(2).setCellValue(user.getId() * 33+17); // Added this line
+        row.createCell(2).setCellValue( Integer.parseInt(user.getId()) * 33 + 17); // Added this line
     }
 
     // Write to file

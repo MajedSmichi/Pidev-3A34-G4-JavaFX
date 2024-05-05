@@ -1,5 +1,6 @@
 package Gestionreclamation.Controller.Salle;
 
+import Gestionreclamation.Controller.SampleController;
 import Gestionreclamation.Entity.Salle.Salle;
 import Gestionreclamation.Services.Salle.SalleService;
 import javafx.event.ActionEvent;
@@ -281,10 +282,11 @@ public class SalleController implements Initializable {
             salleService.addEvent(newSalle);
             hideGestionPane();
             refreshGridPane();
-            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/GestionSalle/Dash.fxml"));
-            Parent dash = dashLoader.load();
-            DashController dashController = dashLoader.getController();
-            dashController.refreshSalle();
+            updatePagination(getData());
+            FXMLLoader sampleLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/GestionSalle/Dash.fxml"));
+            Parent sample = sampleLoader.load();
+            SampleController sampleController = sampleLoader.getController();
+            sampleController.refreshSalle();
 
             // Clear the fields
             name.clear();

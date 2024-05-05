@@ -1,7 +1,7 @@
 package Gestionreclamation.Services.Salle;
 
 import Gestionreclamation.Entity.Salle.Activite;
-import Gestionreclamation.Entity.Salle.User;
+import Gestionreclamation.Entity.User;
 import connectionSql.ConnectionSql;
 
 import java.sql.*;

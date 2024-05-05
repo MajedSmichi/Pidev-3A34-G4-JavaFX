@@ -1,5 +1,6 @@
 package Gestionreclamation.Controller.Salle;
 
+import Gestionreclamation.Controller.SampleController;
 import Gestionreclamation.Entity.Salle.Salle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,7 +75,7 @@ public class uneSalleController {
             controller.setData(this.salle);
 
             // Load Dash.fxml
-            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/GestionSalle/Dash.fxml"));
+            FXMLLoader dashLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/Dash.fxml"));
             Parent dash;
             try {
                 dash = dashLoader.load();
@@ -84,7 +85,7 @@ public class uneSalleController {
             }
 
             // Get the controller of Dash.fxml
-            DashController dashController = dashLoader.getController();
+            SampleController dashController = dashLoader.getController();
 
             // Set detailSalle as the content of the AnchorPane in Dash.fxml
             dashController.getAnchor().getChildren().setAll(detailSalle);
