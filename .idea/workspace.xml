@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2349ff93-e538-4c47-ad75-97997e1eee7f" name="Changes" comment="delete ticket">
+    <list default="true" id="2349ff93-e538-4c47-ad75-97997e1eee7f" name="Changes" comment="merge gestion evenement">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_05_2024_01_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_05_2024_01_05__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" afterDir="false" />
@@ -16,74 +17,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_05_2024_14_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_05_2024_14_21__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/GrammarCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/GrammarCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/openIAsevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/openIAsevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/sms77io.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/sms77io.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/CalendarViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/CalendarViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/DashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/DashController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/DetailsEvenementBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/DetailsEvenementBack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/EvenementBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementBack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/EvenementCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/EvenementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/EvenementFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementFront.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/FrontViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/FrontViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/TicketBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/TicketBack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/TicketCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/TicketCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Entity/Evenement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Entity/Evenement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Entity/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Entity/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/EvenementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/EvenementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/PaymentConfirmation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/PaymentConfirmation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/QRCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/QRCodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/StripeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/StripeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/TicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/TicketUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/TicketUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/TwilioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/TwilioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SportHub/Services/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Services/WeatherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Back.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Back.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Calendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/CalendarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/CalendarView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Dash.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/DetailsEvenementBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/DetailsEvenementBack.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Evenement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Evenement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/EvenementBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/EvenementBack.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/EvenementCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/EvenementCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/EvenementFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/EvenementFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/FrontView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/FrontView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Frontview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Frontview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/Ticket.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/Ticket.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/TicketBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/TicketBack.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/TicketCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/TicketCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/dashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/dashboardDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/fullpackstyling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/fullpackstyling.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/back.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/breadcrumb-bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/breadcrumb-bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/cancel.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/cancel.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/cours.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/cours.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/edit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/edit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/evenement.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/evenement.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/group.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/group.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/home.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/produit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/produit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/reclamaton.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/reclamaton.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/sale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/supp.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/supp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/ticket.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/ticket.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SportHub/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/SportHub/images/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementFront.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,12 +63,12 @@
     &quot;assignee&quot;: &quot;MajedSmichi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git",
-    "accountId": "71d19957-e87d-4ad9-91d7-cfa2f65b4a14"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
+    &quot;accountId&quot;: &quot;71d19957-e87d-4ad9-91d7-cfa2f65b4a14&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -151,34 +85,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Gestionreclamation.Controller.Main.executor": "Run",
-    "Application.Gestionreclamation.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.Pidev-3A34-G4 [clean].executor": "Run",
-    "Maven.Pidev-3A34-G4 [install].executor": "Run",
-    "Maven.Pidev-3A34-G4 [verify].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4746137",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Gestionreclamation.Controller.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Gestionreclamation.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4746137&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
@@ -611,7 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Screen of login nd register" />
     <MESSAGE value="img login nd register" />
     <MESSAGE value="login button" />
     <MESSAGE value="register button nd form validation" />
@@ -636,7 +569,8 @@
     <MESSAGE value="maerge louay" />
     <MESSAGE value="front salle" />
     <MESSAGE value="delete ticket" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete ticket" />
+    <MESSAGE value="merge gestion evenement" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge gestion evenement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -644,20 +578,11 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java</url>
           <line>36</line>
-          <properties class="Gestionreclamation.HelloApplication" method="main">
+          <properties class="Gestionreclamation.HelloApplication">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/SportHub/Controller/EvenementFront.java</url>
-          <line>50</line>
-          <properties class="Gestionreclamation.SportHub.Controller.EvenementFront" method="initialize">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

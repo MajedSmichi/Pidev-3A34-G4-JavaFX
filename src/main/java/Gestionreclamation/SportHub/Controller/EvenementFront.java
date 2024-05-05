@@ -321,6 +321,13 @@ public GridPane createTicketCard(Evenement event) throws SQLException {
             int ticketId = ticket.getId();
             //String userId = getCurrentUrseId();
             // Assuming the user ID is "1" for testing purposes
+            String to = "+21628913441";  // Replace with the phone number of the user
+            String from = "+14194929057";  // Replace with your Twilio number
+            String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
+                    + "Event Date: " + event.getDateEvenement().toString() + "\n"
+                    + "Ticket Type: " + ticket.getType() + "\n"
+                    + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
+            twilioService.sendSms(to, from, body);
 
             try {
                 ticketService.registerUserTicket(ticketId, userId);
