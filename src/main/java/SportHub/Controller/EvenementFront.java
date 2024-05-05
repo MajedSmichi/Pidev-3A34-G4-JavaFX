@@ -310,6 +310,13 @@ public GridPane createTicketCard(Evenement event) throws SQLException {
             // Decrease the ticket quantity by one
             //ticket.setNbreTicket(ticket.getNbreTicket() - 1);
 
+            String to = "+21628913441";  // Replace with the phone number of the user
+            String from = "+14194929057";  // Replace with your Twilio number
+            String body = "Vous avez participer à  " + event.getNom() + "\n"+ "\n"
+                    + "Event Date: " + event.getDateEvenement().toString() + "\n"
+                    + "Ticket Type: " + ticket.getType() + "\n"
+                    + "Ticket Price: " + ticket.getPrix() + " DT" + "\n" ;
+            twilioService.sendSms(to, from, body);
 
 
             // Register the user for the ticket

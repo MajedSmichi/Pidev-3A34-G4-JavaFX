@@ -23,7 +23,7 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
 public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Frontview.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dash.fxml"));
 
     Parent root = fxmlLoader.load();
 
