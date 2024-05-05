@@ -60,11 +60,11 @@ public class UserCardController {
                     userImage.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
 
-                    userImage.setImage(new Image(getClass().getResource("/Gestionreclamation//avatars/default.png").toExternalForm()));
+                    userImage.setImage(new Image(getClass().getResource("/Gestionreclamation/avatars/default.png").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
 
-                userImage.setImage(new Image(getClass().getResource("/Gestionreclamation//avatars/default.png").toExternalForm()));
+                userImage.setImage(new Image(getClass().getResource("/Gestionreclamation/avatars/default.png").toExternalForm()));
             }
         } else {
 
