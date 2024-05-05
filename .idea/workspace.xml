@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="maerge louay">
+    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="front salle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +57,9 @@
     &quot;accountId&quot;: &quot;e8372b73-8ed5-41f0-ac37-ecd68e52e9b4&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -487,7 +482,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714867347482</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714936371270</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714936371270</updated>
+    </task>
+    <task id="LOCAL-00031" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714936408389</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714936408389</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +540,8 @@
     <MESSAGE value="activate and desactivate user" />
     <MESSAGE value="test" />
     <MESSAGE value="maerge louay" />
-    <option name="LAST_COMMIT_MESSAGE" value="maerge louay" />
+    <MESSAGE value="front salle" />
+    <option name="LAST_COMMIT_MESSAGE" value="front salle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
