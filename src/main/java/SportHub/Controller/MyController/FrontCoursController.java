@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -110,17 +111,31 @@ public class FrontCoursController {
         }
     }
 }
-    @FXML
-    public void goToCategories() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
-        Parent root = loader.load();
 
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
+        // ...
+        private AnchorPane achorfront;
 
-        FrontCategoryController newCategoryController = loader.getController();
-        newCategoryController.setFrontCoursController(this);
+        // ...
 
-        newStage.show();
+        public void setAchorfront(AnchorPane achorfront) {
+            this.achorfront = achorfront;
+        }
+
+        // ...
+
+        @FXML
+        public void goToCategories() throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller of the FrontCategory.fxml
+            FrontCategoryController frontCategoryController = loader.getController();
+
+            // Set achorfront to the FrontCategoryController
+            frontCategoryController.setAchorfront(achorfront);
+
+            // Replace the content of achorfront with the new root
+            achorfront.getChildren().setAll(root);
+        }
     }
-}
+

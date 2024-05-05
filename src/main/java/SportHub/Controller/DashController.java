@@ -1,7 +1,10 @@
 package SportHub.Controller;
 
+import SportHub.Controller.MyController.CategoryListController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Control;
+import javafx.scene.control.SkinBase;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -39,5 +42,24 @@ public void loadTicketLayout() {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+public void loadCourseLayout() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCat.fxml"));
+        AnchorPane courseLayout = loader.load();
+
+        // Pass this DashController instance to CategoryListController
+        CategoryListController categoryListController = loader.getController();
+        categoryListController.setDashController(this);
+
+        anchor.getChildren().setAll(courseLayout);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    public AnchorPane getAnchor() {
+        return anchor;
     }
 }

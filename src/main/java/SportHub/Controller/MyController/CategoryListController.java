@@ -1,5 +1,6 @@
 package SportHub.Controller.MyController;
 
+import SportHub.Controller.DashController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -48,6 +50,11 @@ public class CategoryListController {
         this.categoryService = new CategoryService();
     }
 
+    private DashController dashController;
+
+    public void setDashController(DashController dashController) {
+        this.dashController = dashController;
+    }
     @FXML
     public void initialize() {
         setupTableColumns();
@@ -157,17 +164,17 @@ public class CategoryListController {
         stage.show();
     }
 
-    public void goToCourses(MouseEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCours.fxml"));
-            Parent root = loader.load();
+    @FXML
+public void goToCourses(MouseEvent actionEvent) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCours.fxml"));
+        AnchorPane pane = loader.load();
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+        // Load the ListCours.fxml into the anchor of Dash.fxml
+        dashController.getAnchor().getChildren().setAll(pane);
 
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
 }
 }

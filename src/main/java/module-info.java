@@ -9,6 +9,11 @@ module com.example.gestionreclamation {
     requires java.persistence;
     requires javafx.swing;
     requires java.desktop;
+    requires java.mail;
+    requires activation;
+
+    requires mailgun;
+    requires javax.ws.rs.api;
     //requires activation;
     //requires java.mail;
     //requires sendgrid.java;

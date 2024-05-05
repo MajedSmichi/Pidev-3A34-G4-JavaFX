@@ -4,6 +4,7 @@ package SportHub.Controller;
 import SportHub.Entity.Ticket;
 import SportHub.Services.EvenementService;
 import SportHub.Services.TicketService;*/
+import SportHub.Controller.MyController.FrontCategoryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -108,11 +109,19 @@ public class FrontViewController {
         // loadMostPopularEvents();
     }
 
+
     @FXML
     public void loadCoursesFront() {
         try {
-            AnchorPane coursesFront = FXMLLoader.load(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
-            //coursesFront.getStyleClass().add("center-content"); // Add the CSS class
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
+            AnchorPane coursesFront = loader.load();
+
+            // Get the controller of the FrontCategory.fxml
+            FrontCategoryController frontCategoryController = loader.getController();
+
+            // Set achorfront to the FrontCategoryController
+            frontCategoryController.setAchorfront(achorfront);
+
             achorfront.getChildren().setAll(coursesFront);
             System.out.println("Courses front view loaded successfully");
         } catch (IOException e) {
@@ -120,7 +129,8 @@ public class FrontViewController {
             System.out.println("Error while loading the courses front view");
         }
     }
-
 }
+
+
 
 

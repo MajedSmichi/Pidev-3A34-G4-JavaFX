@@ -14,11 +14,21 @@
 <junit.version>5.9.2</junit.version>  </properties>
 
   <dependencies>
-      <dependency>
-        <groupId>com.sendgrid</groupId>
-        <artifactId>sendgrid-java</artifactId>
-        <version>4.7.2</version>
-      </dependency>
+    <dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version>
+</dependency>
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<dependency>
+    <groupId>net.sargue</groupId>
+    <artifactId>mailgun</artifactId>
+    <version>1.8.0</version>
+</dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
@@ -70,6 +80,11 @@
           <groupId>javax.persistence</groupId>
           <artifactId>javax.persistence-api</artifactId>
           <version>2.2</version> <!-- Or the latest version available -->
+      </dependency>
+      <dependency>
+          <groupId>javax.ws.rs</groupId>
+          <artifactId>javax.ws.rs-api</artifactId>
+          <version>2.0.1</version>
       </dependency>
 
   </dependencies>

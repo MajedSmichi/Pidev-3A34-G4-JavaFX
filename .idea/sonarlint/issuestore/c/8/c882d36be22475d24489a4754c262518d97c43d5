@@ -1,6 +1,39 @@
 
-
-java:S1192D"LDefine a constant instead of duplicating this literal "description" 4 times.(â€ğÙûÿÿÿÿJ$1e432a9c-8a56-4c83-ace6-fa6734c57002
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÌãˆœùÿÿÿÿJ$378e14e6-0390-4228-8ac4-a39f3d05ffd5
-w	java:S125"<This block of commented-out lines of code should be removed.(ÿ †‡J$e1fbae03-b51e-4a18-be05-33af1ccbd8e6
-x	java:S125²"<This block of commented-out lines of code should be removed.(èÂôßJ$32641d03-07de-47ea-8881-4a108c8bafcf
+”
+java:S1192R"LDefine a constant instead of duplicating this literal "description" 5 times.(â€ğÙûÿÿÿÿ8œ…ÄĞô1J$5e5efc9c-5448-4fef-8cd0-996cf4a9cc4f
+‰
+java:S1192T"FDefine a constant instead of duplicating this literal "cover" 3 times.(‡”˜€8…ÄĞô1J$67b5a8f9-e71d-41bf-ab9e-e4a68fe262e7
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ìãˆœùÿÿÿÿ8¦…ÄĞô1J$f4e15c7d-1fe4-4f48-9e7b-440daa5e75ee
+M	java:S106Ü"+Replace this use of System.out by a logger.(õÀ¸Œşÿÿÿÿ8×ûÈÒô1
+M	java:S106Ş"+Replace this use of System.out by a logger.(ƒÇÒüÿÿÿÿ8ØûÈÒô1
+_
+java:S1128	"=Remove this unused import 'net.sargue.mailgun.Configuration'.(œ±ıÕøÿÿÿÿ8ÙûÈÒô1
+V
+java:S1128
+"4Remove this unused import 'net.sargue.mailgun.Mail'.(¿šêµøÿÿÿÿ8ÚûÈÒô1
+]
+java:S1128";Remove this unused import 'net.sargue.mailgun.MailBuilder'.(ÎÓ„ÿÿÿÿÿ8ÚûÈÒô1
+Z
+java:S1128"8Remove this unused import 'net.sargue.mailgun.Response'.(œ§„œúÿÿÿÿ8ÚûÈÒô1
+T
+java:S1128"7Remove this unused import 'javax.ws.rs.core.MediaType'.(œ±‹¡8ÚûÈÒô1
+[
+java:S1128"9Remove this unused import 'java.io.ByteArrayInputStream'.(Ëôæ±ûÿÿÿÿ8ÛûÈÒô1
+I
+java:S1128"'Remove this unused import 'javax.mail'.(ğ†ÌŞùÿÿÿÿ8ÛûÈÒô1
+b
+java:S1128"@Remove this unused import 'javax.mail.internet.InternetAddress'.(–¹“êûÿÿÿÿ8ÛûÈÒô1
+Z
+java:S1128"=Remove this unused import 'javax.mail.internet.MimeBodyPart'.(Œõ²İ8ÛûÈÒô1
+^
+java:S1128"<Remove this unused import 'javax.mail.internet.MimeMessage'.(«ÀÔ€şÿÿÿÿ8ÜûÈÒô1
+Z
+java:S1128">Remove this unused import 'javax.mail.internet.MimeMultipart'.(Ğşÿq8ÜûÈÒô1
+]
+java:S1128"@Remove this unused import 'javax.mail.util.ByteArrayDataSource'.(ÉƒœÂ8ÜûÈÒô1
+U
+java:S1128"9Remove this unused import 'javax.activation.DataHandler'.(ßÕˆ>8ÜûÈÒô1
+S
+java:S1128"1Remove this unused import 'javax.sql.DataSource'.(ÉòÂ¿úÿÿÿÿ8ÜûÈÒô1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8İûÈÒô1

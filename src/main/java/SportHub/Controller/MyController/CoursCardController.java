@@ -5,13 +5,17 @@ import SportHub.Services.MyServices.CoursService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Base64;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CoursCardController {
@@ -23,36 +27,16 @@ public class CoursCardController {
     private Label descriptionLabel;
     @FXML
     private Button downloadButton;
+    @FXML
+    private Button sendPdfButton;
 
     private Cours course;
-
     private Consumer<Cours> downloadPDFCallback;
-    private CoursService coursService; // Add this line
+    private CoursService coursService;
 
-
-    @FXML
-    private Button sendEmailButton;
-
-    //@FXML
-    /*private void handleSendEmailButtonAction() {
-    System.out.println("Send to Email button clicked");
-    if (course != null) {
-        // Show a dialog to the user to enter the email address
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Send PDF to Email");
-        dialog.setHeaderText("Enter the email address to send the PDF to:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(email -> {
-            try {
-                // Send the PDF to the entered email address
-                coursService.sendPdfToEmail(course, email);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-    }*/
     public CoursCardController() {
+        this.coursService = new CoursService();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/CoursCard.fxml"));
         fxmlLoader.setController(this);
         try {
@@ -81,9 +65,41 @@ public class CoursCardController {
 
     @FXML
     private void downloadPDF() {
-    System.out.println("Download PDF button clicked");
-    if (downloadPDFCallback != null && course != null) {
-        downloadPDFCallback.accept(course);
+        System.out.println("Download PDF button clicked");
+        if (downloadPDFCallback != null && course != null) {
+            downloadPDFCallback.accept(course);
+        }
     }
-}
-}
+@FXML
+public void sendPdf() {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Send PDF");
+    dialog.setHeaderText("Enter your email");
+    dialog.setContentText("Email:");
+
+    Optional<String> result = dialog.showAndWait();
+    result.ifPresent(email -> {
+        try {
+            // Get PDF data
+            byte[] pdfData = course.getPdfFileData();
+
+            // Create email content
+            String content = "Here is the PDF file of the course " + course.getName().toUpperCase() + ":";
+
+            // Send email
+            EmailUtil.sendEmail(email, "PDF File of " + course.getName(), content, pdfData, course.getName() + ".pdf");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("PDF sent successfully!");
+            alert.showAndWait();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Failed to send PDF: " + e.getMessage());
+            alert.showAndWait();
+        }
+    });
+}}

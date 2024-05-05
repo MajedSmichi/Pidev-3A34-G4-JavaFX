@@ -1,14 +1,28 @@
 package SportHub.Services.MyServices;
 
+import SportHub.Controller.MyController.EmailUtil;
 import SportHub.Entity.MyEntity.Category;
 import SportHub.Entity.MyEntity.Cours;
 import connectionSql.Myconnection.ConnectionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-/*import com.sendgrid.*;
-import com.sendgrid.helpers.mail.Mail;
-import com.sendgrid.helpers.mail.objects.*;*/
+import net.sargue.mailgun.Configuration;
+import net.sargue.mailgun.Mail;
+import net.sargue.mailgun.MailBuilder;
+import net.sargue.mailgun.Response;
+import javax.ws.rs.core.MediaType;
+import java.io.ByteArrayInputStream;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
+
+import javax.activation.DataHandler;
+import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +33,7 @@ public class CoursService {
     private Connection connection;
 
     public CoursService() {
-        connection = ConnectionSql.getInstance().getConnection();
+        connection =  ConnectionSql.getInstance().getConnection();
     }
 
     public void addCours(Cours cours) throws SQLException {
@@ -172,39 +186,39 @@ public class CoursService {
         }
         return categories;
     }
-
-
-
-    /*public void sendPdfToEmail(Cours course, String email) {
-    Email from = new Email("your-email@example.com");
-    String subject = "PDF File of " + course.getName();
-    Email to = new Email(email);
-    Content content = new Content("text/plain", "Here is the PDF file of the course " + course.getName());
-    Mail mail = new Mail(from, subject, to, content);
-
-    // Assuming that the PDF data is stored in a byte array in the course object
-    byte[] pdfData = course.getPdfFileData();
-    Attachments attachments = new Attachments();
-    Base64.Encoder encoder = Base64.getEncoder();
-    String pdfDataEncoded = encoder.encodeToString(pdfData);
-    attachments.setContent(pdfDataEncoded);
-    attachments.setType("application/pdf");
-    attachments.setFilename(course.getName() + ".pdf");
-    attachments.setDisposition("attachment");
-    mail.addAttachments(attachments);
-
-    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
-    Request request = new Request();
-    try {
-        request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
-        request.setBody(mail.build());
-        Response response = sg.api(request);
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getBody());
-        System.out.println(response.getHeaders());
-    } catch (IOException ex) {
-        ex.printStackTrace();
+    public Cours getMostDownloadedCourse() throws SQLException {
+    String query = "SELECT id, name, description, pdf, cover, category_id FROM cours ORDER BY downloads DESC LIMIT 1";
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String description = resultSet.getString("description");
+            byte[] pdfFileData = resultSet.getBytes("pdf");
+            byte[] coverImageData = resultSet.getBytes("cover");
+            int categoryId = resultSet.getInt("category_id");
+            Category category = getCategoryById(categoryId);
+            return new Cours(id, name, description, pdfFileData, coverImageData, category, categoryId);
+        } else {
+            return null;
+        }
     }
-    }*/
 }
+
+
+public void sendPdfToEmail(Cours course, String recipientEmail) {
+    try {
+        // Get PDF data
+        byte[] pdfData = course.getPdfFileData();
+
+        // Create email content
+        String content = "Here is the PDF file of the course " + course.getName() + ":";
+
+        // Send email
+        EmailUtil.sendEmail(recipientEmail, "PDF File of " + course.getName(), content, pdfData, course.getName() + ".pdf");
+
+        System.out.println("Email sent successfully.");
+    } catch (Exception e) {
+        System.out.println("Failed to send email: " + e.getMessage());
+    }
+}}

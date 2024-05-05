@@ -69,3 +69,7 @@ l
 <src/main/java/SportHub/Services/MyServices/CoursService.java,c\8\c882d36be22475d24489a4754c262518d97c43d5
 p
 @src/main/java/SportHub/Services/MyServices/EvenementService.java,3\6\364b70ec47b95fe52e7464ffc67955ab2be0cd6f
+e
+5src/main/java/SportHub/Controller/DashController.java,d\f\df07b41bf1fd32c17f3b998eced1012646830386
+m
+=src/main/java/SportHub/Controller/MyController/EmailUtil.java,e\4\e4316babe78e1e8a2ee48c968d3c3d8afc614288

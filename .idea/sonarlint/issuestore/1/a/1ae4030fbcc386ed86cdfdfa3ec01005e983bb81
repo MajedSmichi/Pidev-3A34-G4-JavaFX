@@ -1,12 +1,6 @@
 
-	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(ÖîöÕşÿÿÿÿ8Øä¬ëó1J$2de3eaaa-4d89-449d-9709-c36b595b0e38
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Úä¬ëó1J$d421e52c-2c15-4fc9-91a7-cfd9d3179a0e
-ƒ	java:S125'"<This block of commented-out lines of code should be removed.(»”şøÿÿÿÿ8å¬ëó1J$4e5cac12-c536-40dc-b10f-4357eab61894
-r	java:S106V"+Replace this use of System.out by a logger.(Êë´’şÿÿÿÿ8‘å¬ëó1J$0a86369c-7016-43e1-891a-9e54de54565c
-„
-java:S1128
-"ARemove this unused import 'javafx.scene.control.TextInputDialog'.(œ€šğ8šÜ­ëó1J$06f6c32c-e8fb-449a-9f0c-a91a68e5b3d0
-w
-java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8›Ü­ëó1J$45b84cd3-97ef-46c3-bfdf-2f6c4df3ce54
+	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(ÖîöÕşÿÿÿÿ8û…–Éô1J$b1791bd2-724a-4605-8e0c-af99f60adba0
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8ş…–Éô1J$67009f62-190b-437e-88cc-80f22bd73c8f
+r	java:S106D"+Replace this use of System.out by a logger.(Êë´’şÿÿÿÿ8«†–Éô1J$b48f3793-d441-4c1d-be4e-78828ea962fe
 x
-java:S1068 "0Remove this unused "coursService" private field.(†Ô°úÿÿÿÿ8“å¬ëó1J$3dbd8bf5-3549-4d16-bea1-f56f7ad45996
+java:S1068#"0Remove this unused "coursService" private field.(Ä·Ş¡øÿÿÿÿ8Òê¾Ğô1J$06fe4633-71d9-40c5-8120-e34fb7036dbc

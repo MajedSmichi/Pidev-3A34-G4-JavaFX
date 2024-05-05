@@ -1,21 +1,11 @@
 
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ8ŸÆ¬ô1J$4b855200-edca-4f0a-aed7-a90f4be17162
-~	java:S125"<This block of commented-out lines of code should be removed.(ÁÀã—8åŸÆ¬ô1J$5b928b2b-297c-498e-b0ee-a3e37b2f74b1
-—	java:S116"VRename this field "mes_tickets" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±îô8çŸÆ¬ô1J$522c5a3f-5e55-4e28-a9e8-91ca79679ed6
-œ	java:S116""URename this field "list_event" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¨¤†ÿÿÿÿÿ8çŸÆ¬ô1J$0316f5c7-59f7-40fb-9b80-b2d7cc38e0ca
-r	java:S106."+Replace this use of System.out by a logger.(ñæƒıÿÿÿÿ8óŸÆ¬ô1J$9d1aa073-3ebd-4a54-81ae-d6fd4570d274
-r	java:S1063"+Replace this use of System.out by a logger.(Š™´Ùüÿÿÿÿ8õŸÆ¬ô1J$556844a6-dd7d-4230-a20d-95d949e0c3e6
-ƒ	java:S1256"<This block of commented-out lines of code should be removed.(»šÚöÿÿÿÿÿ8ùŸÆ¬ô1J$86e1121e-2e88-4d59-8a1f-679891b43de2
-ƒ	java:S125l"<This block of commented-out lines of code should be removed.(Ï ·˜ÿÿÿÿÿ8ûŸÆ¬ô1J$9fe0e4f1-4ce4-4948-8ff3-20e992414db5
-r	java:S106u"+Replace this use of System.out by a logger.(’Æøıÿÿÿÿ8€ Æ¬ô1J$c1e57a6e-587e-4c0a-b489-482ce0bb644a
-m	java:S106x"+Replace this use of System.out by a logger.(ö­„8‚ Æ¬ô1J$2ab35f79-b0c4-46b7-87e1-384d8776c52b
-y
-java:S1128"6Remove this unused import 'javafx.scene.control.Menu'.(’’ŞÃ8¯ÕÆ¬ô1J$36458a5b-0ca6-4a58-b16b-9e1aef426102
-„
-java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8±ÕÆ¬ô1J$35b3aed2-bf4d-40eb-ba17-27be1e81dfb1
-
-java:S1128"9Remove this unused import 'javafx.scene.layout.GridPane'.(ÖÀ¹¯ûÿÿÿÿ8²ÕÆ¬ô1J$3668291f-c8c5-470f-94fd-9619d97d9e85
-u
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8²ÕÆ¬ô1J$d5e69688-21ed-4a6b-82a0-e1a4d0b27c09
-s
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8²ÕÆ¬ô1J$d4355241-e234-459d-9c6e-eeb2910dee3d
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ8õş Ñô1
+X	java:S125"<This block of commented-out lines of code should be removed.(ÁÀã—8½ÿ Ñô1
+q	java:S116 "VRename this field "mes_tickets" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±îô8¿ÿ Ñô1
+v	java:S116#"URename this field "list_event" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¨¤†ÿÿÿÿÿ8¿ÿ Ñô1
+L	java:S106/"+Replace this use of System.out by a logger.(ñæƒıÿÿÿÿ8Çÿ Ñô1
+L	java:S1064"+Replace this use of System.out by a logger.(Š™´Ùüÿÿÿÿ8Éÿ Ñô1
+]	java:S1257"<This block of commented-out lines of code should be removed.(»šÚöÿÿÿÿÿ8Ëÿ Ñô1
+]	java:S125m"<This block of commented-out lines of code should be removed.(Ï ·˜ÿÿÿÿÿ8Ìÿ Ñô1
+L	java:S106~"+Replace this use of System.out by a logger.(’Æøıÿÿÿÿ8Üÿ Ñô1
+H	java:S106"+Replace this use of System.out by a logger.(ö­„8Şÿ Ñô1

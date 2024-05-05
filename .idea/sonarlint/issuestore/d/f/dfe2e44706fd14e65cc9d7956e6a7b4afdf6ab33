@@ -1,5 +1,7 @@
 
 }
-java:S1104#"`Make goToCategoriesButton a static final constant or non-public and provide accessors if needed.(Ïä§8ßÙİ£ô1
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8™è«¢ô1J$1abcbc14-279e-472e-9e9b-8161a29107f0
-r	java:S106Y"+Replace this use of System.out by a logger.(‰í„ºüÿÿÿÿ8²è«¢ô1J$4b9cac1d-aef0-4586-bc90-7796c5364ff0
+java:S1104$"`Make goToCategoriesButton a static final constant or non-public and provide accessors if needed.(Ïä§8•™·Ñô1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8š™·Ñô1
+L	java:S106Z"+Replace this use of System.out by a logger.(‰í„ºüÿÿÿÿ8…š·Ñô1
+L
+java:S1128	"/Remove this unused import 'javafx.scene.Scene'.(Õü²8’š·Ñô1
