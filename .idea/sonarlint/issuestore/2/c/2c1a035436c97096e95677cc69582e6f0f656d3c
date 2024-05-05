@@ -1,11 +1,21 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(þÆ‘…ùÿÿÿÿ8õþ Ñô1
-X	java:S125"<This block of commented-out lines of code should be removed.(ÁÀã—8½ÿ Ñô1
-q	java:S116 "VRename this field "mes_tickets" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±îô8¿ÿ Ñô1
-v	java:S116#"URename this field "list_event" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¨¤†ÿÿÿÿÿ8¿ÿ Ñô1
-L	java:S106/"+Replace this use of System.out by a logger.(ñæƒýÿÿÿÿ8Çÿ Ñô1
-L	java:S1064"+Replace this use of System.out by a logger.(Š™´Ùüÿÿÿÿ8Éÿ Ñô1
-]	java:S1257"<This block of commented-out lines of code should be removed.(»šÚöÿÿÿÿÿ8Ëÿ Ñô1
-]	java:S125m"<This block of commented-out lines of code should be removed.(Ï ·˜ÿÿÿÿÿ8Ìÿ Ñô1
-L	java:S106~"+Replace this use of System.out by a logger.(’Æøýÿÿÿÿ8Üÿ Ñô1
-H	java:S106"+Replace this use of System.out by a logger.(öž­„8Þÿ Ñô1
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(þÆ‘…ùÿÿÿÿ8õþ Ñô1J$7ae4c722-9b0b-46df-9afc-b52f24b8ccbb
+~	java:S125"<This block of commented-out lines of code should be removed.(ÁÀã—8½ÿ Ñô1J$9d596d32-791f-4380-818c-b4671e75a047
+—	java:S116 "VRename this field "mes_tickets" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±îô8¿ÿ Ñô1J$586aeb6c-512e-4790-a5d6-28f0dd53d9cf
+œ	java:S116#"URename this field "list_event" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¨¤†ÿÿÿÿÿ8¿ÿ Ñô1J$6ea90967-7e71-48ef-9d5e-8da76c9ec006
+r	java:S106/"+Replace this use of System.out by a logger.(ñæƒýÿÿÿÿ8Çÿ Ñô1J$9ef61a0c-3315-414d-bcc8-57da97c88fb6
+r	java:S1064"+Replace this use of System.out by a logger.(Š™´Ùüÿÿÿÿ8Éÿ Ñô1J$e7e9a869-5e10-4624-b63f-d01e1d0263c5
+ƒ	java:S1257"<This block of commented-out lines of code should be removed.(»šÚöÿÿÿÿÿ8Ëÿ Ñô1J$051a4f66-99ee-4f83-bd2f-a37c756cefa1
+ƒ	java:S125m"<This block of commented-out lines of code should be removed.(Ï ·˜ÿÿÿÿÿ8Ìÿ Ñô1J$85903660-8f48-40fb-8c7f-ef42d3a342b9
+r	java:S106~"+Replace this use of System.out by a logger.(’Æøýÿÿÿÿ8Üÿ Ñô1J$ff06c59a-4bf0-454c-ae24-1a33f2f3128f
+n	java:S106"+Replace this use of System.out by a logger.(öž­„8Þÿ Ñô1J$b9131fb4-9740-4f4d-a3fb-17bab353f880
+S
+java:S1128"6Remove this unused import 'javafx.scene.control.Menu'.(’’ÞÃ8ß³ÓÓô1
+^
+java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùþÿÿÿÿ8ß³ÓÓô1
+[
+java:S1128"9Remove this unused import 'javafx.scene.layout.GridPane'.(ÖÀ¹¯ûÿÿÿÿ8à³ÓÓô1
+O
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8á³ÓÓô1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8á³ÓÓô1

@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -62,6 +64,16 @@ public class UpdateCoursController {
         // Set other fields as needed
     }
 
+// ...
+
+private void showAlert(String title, String message) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
+
     @FXML
     public void initialize() {
         loadCategories();
@@ -86,45 +98,49 @@ public class UpdateCoursController {
     }
 
     @FXML
-    public void updateCours(MouseEvent event) {
-        String name = coursNameField.getText();
-        String description = coursDescriptionField.getText();
-        Category selectedCategory = categoryChoiceBox.getValue();
+public void updateCours(MouseEvent event) {
+    String name = coursNameField.getText();
+    String description = coursDescriptionField.getText();
+    Category selectedCategory = categoryChoiceBox.getValue();
 
-        try {
-            if (selectedCategory == null) {
-                System.out.println("Please select a category.");
-                return; // Exit the method if category is null
-            }
-
-            int categoryId = selectedCategory.getId(); // Assuming getId() returns the ID of the category
-
-            if (validateInputs(name, description, categoryId)) {
-
-                selectedCours.setCategoryId(categoryId); // Set the category ID in the Cours object
-
-                // Update PDF file if selected
-                if (pdfFile != null) {
-                    byte[] pdfFileData = convertFileToByteArray(pdfFile);
-                    selectedCours.setPdfFileData(pdfFileData);
-                }
-
-                // Update cover image if selected
-                if (coverImageFile != null) {
-                    byte[] coverImageData = convertFileToByteArray(coverImageFile);
-                    selectedCours.setCoverImageData(coverImageData);
-                }
-
-                coursService.updateCours(selectedCours);
-                closeWindow();
-            }
-        } catch (SQLException e) {
-            handleSQLException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    if (name.isEmpty() || description.isEmpty() || selectedCategory == null) {
+        showAlert("Error", "Please fill in all fields and select a category.");
+        return;
     }
 
+    try {
+        if (coursService.courseExists(name) && !name.equals(selectedCours.getName())) {
+            showAlert("Error", "Course with this name already exists.");
+            return;
+        }
+
+        if (coursService.courseNameExistsInCategory(name, selectedCategory.getId()) && !name.equals(selectedCours.getName())) {
+            showAlert("Error", "Course with this name already exists in the selected category.");
+            return;
+        }
+
+        selectedCours.setName(name);
+        selectedCours.setDescription(description);
+        selectedCours.setCategory(selectedCategory);
+
+        if (pdfFile != null) {
+            byte[] pdfFileData = convertFileToByteArray(pdfFile);
+            selectedCours.setPdfFileData(pdfFileData);
+        }
+
+        if (coverImageFile != null) {
+            byte[] coverImageData = convertFileToByteArray(coverImageFile);
+            selectedCours.setCoverImageData(coverImageData);
+        }
+
+        coursService.updateCours(selectedCours);
+        closeWindow();
+    } catch (SQLException e) {
+        handleSQLException(e);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}
     private byte[] convertFileToByteArray(File file) throws IOException {
         byte[] fileData = new byte[(int) file.length()];
         FileInputStream fileInputStream = new FileInputStream(file);

@@ -23,12 +23,12 @@
         </Label>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-              <Button fx:id="downloadButton" mnemonicParsing="false" onAction="#downloadPDF" prefHeight="28.0" prefWidth="116.0" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;" text="Download PDF">
+              <Button fx:id="downloadButton" mnemonicParsing="false" onAction="#downloadPDF" prefHeight="28.0" prefWidth="89.0" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;" text="Download ">
                   <font>
                       <Font name="Roboto" size="12.0" />
                   </font>
               </Button>
-            <Button fx:id="sendPdfButton" mnemonicParsing="false" onAction="#sendPdf" prefHeight="28.0" prefWidth="83.0" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;" text="Send PDF!">
+            <Button fx:id="sendPdfButton" mnemonicParsing="false" onAction="#sendPdf" prefHeight="28.0" prefWidth="94.0" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;" text="Send PDF!">
                <font>
                   <Font name="Roboto" size="12.0" />
                </font>

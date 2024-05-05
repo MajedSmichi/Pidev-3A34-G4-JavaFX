@@ -31,7 +31,7 @@ public class FrontCategoryController {
     private FrontCoursController frontCoursController;
     public Pagination pagination;
     private List<Category> categories;
-    private static final int ITEMS_PER_PAGE = 3;
+    private static final int ITEMS_PER_PAGE = 2;
     private AnchorPane achorfront;
 
     public FrontCategoryController() {
@@ -42,6 +42,8 @@ public class FrontCategoryController {
         categories = new ArrayList<>();
         loadCategoriesAsCards();
         pagination.setPageFactory(this::createPage);
+        showStatsButton.setDisable(false);
+
     }
 
     private void loadCategoriesAsCards() {
@@ -66,32 +68,61 @@ public class FrontCategoryController {
         return new VBox(categoryFlowPane);
     }
 
-    @FXML
-    private void handleStatsButton(ActionEvent event) {
-        try {
-            Map<String, Integer> categoryStats = coursService.getTop5Categories();
+@FXML
+private void handleStatsButton(ActionEvent event) {
+    try {
+        Map<String, Integer> categoryStats = coursService.getTop5Categories();
 
-            CategoryAxis xAxis = new CategoryAxis();
-            NumberAxis yAxis = new NumberAxis();
-            BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-            XYChart.Series<String, Number> series = new XYChart.Series<>();
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
 
-            for (Map.Entry<String, Integer> entry : categoryStats.entrySet()) {
-                series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
-            }
-
-            barChart.getData().add(series);
-
-            Stage stage = new Stage();
-            Scene scene = new Scene(barChart, 800, 600);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (Map.Entry<String, Integer> entry : categoryStats.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
-    }
 
-    public void setFrontCoursController(FrontCoursController frontCoursController) {
+        barChart.getData().add(series);
+
+        // Clear the achorfront AnchorPane
+        achorfront.getChildren().clear();
+
+        // Add the BarChart to the achorfront AnchorPane
+        achorfront.getChildren().add(barChart);
+
+        // Create the back button
+        Button backButton = new Button("Back to Categories");
+        backButton.setStyle("-fx-background-color: #ffa500; -fx-text-fill: white; -fx-font-family: 'Roboto'; -fx-font-size: 14px; -fx-border-radius: 5px;");
+        backButton.setLayoutX(achorfront.getWidth() - backButton.getWidth() - 10); // 10 is the right margin
+        backButton.setLayoutY(10); // 10 is the top margin
+
+        // Set the onAction event of the back button
+        backButton.setOnAction(e -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
+                AnchorPane pane = loader.load();
+
+                // Get the controller of the FrontCategory.fxml
+                FrontCategoryController frontCategoryController = loader.getController();
+
+                // Set achorfront to the FrontCategoryController
+                frontCategoryController.setAchorfront(achorfront);
+
+                // Replace the content of achorfront with the new pane
+                achorfront.getChildren().setAll(pane);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        // Add the back button to the achorfront AnchorPane
+        achorfront.getChildren().add(backButton);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+public void setFrontCoursController(FrontCoursController frontCoursController) {
         this.frontCoursController = frontCoursController;
     }
 

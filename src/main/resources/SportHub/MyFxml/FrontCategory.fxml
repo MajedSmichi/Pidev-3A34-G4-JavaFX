@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCategoryController">
-   <Button fx:id="showStatsButton" onAction="#handleStatsButton" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #ffa500;" text="Show Stats" textFill="WHITE" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+<AnchorPane prefHeight="299.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCategoryController">
+   <Button fx:id="showStatsButton" layoutX="10.0" layoutY="2.0" onAction="#handleStatsButton" prefHeight="25.0" prefWidth="636.0" style="-fx-background-color: #ffa500;" text="Show Stats" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
       <font>
          <Font name="Roboto Black" size="12.0" />
-      </font></Button>
-   <FlowPane fx:id="categoryFlowPane" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" VBox.vgrow="ALWAYS">
+      </font>
+   </Button>
+   <FlowPane fx:id="categoryFlowPane" layoutY="35.0" prefHeight="182.0" prefWidth="571.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="35.0" VBox.vgrow="ALWAYS">
       <!-- Cards will be dynamically added here -->
    </FlowPane>
-   <Pagination fx:id="pagination" layoutX="20.0" layoutY="50.0" maxPageIndicatorCount="5" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+   <Pagination fx:id="pagination" layoutX="20.0" layoutY="255.0" maxPageIndicatorCount="5" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
 </AnchorPane>

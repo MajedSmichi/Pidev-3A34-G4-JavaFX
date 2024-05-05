@@ -1,14 +1,17 @@
 
-g	java:S112|"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“¢íÅó1
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8¢ØÏçñ1J$31169720-290a-4d09-9f7d-076744cdd042
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸š­Ôô1J$91f79a19-df79-4ffe-9bf7-c95e9bab1e63
+ˆ
+java:S1192k"FDefine a constant instead of duplicating this literal "Error" 3 times.(«üâY8»š­Ôô1J$d9b8b14e-5cf2-4360-ac17-9463e716dce5
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Áš­Ôô1J$254aa5db-1b22-403d-8896-215b801965fc
 ‘
-java:S2095‚"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†š­î8¤óëÅó1J$7fe72d81-92ca-473f-9d94-e5eb147207f2
-m	java:S106U"+Replace this use of System.err by a logger.(ÿêË8ÅØÏçñ1J$ade58526-bfc8-4691-bf4c-2705326cbab5
-r	java:S106`"+Replace this use of System.out by a logger.(§’–üÿÿÿÿ8ÉØÏçñ1J$b07a3f0c-e951-4f50-808f-47cfb35d8095
+java:S2095’"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†š­î8À›­Ôô1J$c2b8c95d-72fa-42ed-bc4b-9d482c9a584f
+m	java:S106a"+Replace this use of System.err by a logger.(ÿêË8Ò›­Ôô1J$930510ad-4b46-422b-8900-6857e509679a
 
-java:S2674ƒ"JCheck the return value of the "read" call to see how many bytes were read.(®²ëª8³óëÅó1J$a3c09863-68d6-4a45-b551-bbbd170df327
+java:S2674“"JCheck the return value of the "read" call to see how many bytes were read.(®²ëª8Ş›­Ôô1J$ad9de0e8-6af4-4df7-b044-eb4df1dbd72e
 …
-java:S1172ˆ"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8ÉØÏçñ1J$535564fe-437f-4e5e-aef0-10fe0cf6abee
-s	java:S106Š"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ËĞëÅó1J$4d7f6fb4-56c1-4a53-9c57-aedef68a4dee
+java:S1172˜"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8á›­Ôô1J$743627f6-6211-403d-baac-374951c77aaa
+s	java:S106š"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ã›­Ôô1J$05baceb5-dcff-456b-ab18-1862bee7ac75
 v
-java:S1068/"3Remove this unused "categoryService" private field.(å³Î8ÚØÏçñ1J$53c4f768-2510-4d69-b11b-1e15470a1323
+java:S10681"3Remove this unused "categoryService" private field.(å³Î8šœ­Ôô1J$f3a448ba-0bc6-4ac2-8849-55840f653617
+|
+java:S1144˜"3Remove this unused private "validateInputs" method.(å„‹ıÿÿÿÿ8›œ­Ôô1J$0c9cb0bc-b4f4-4e68-95c9-f8039a3c9c0d

@@ -18,7 +18,7 @@
         </padding>
     </FlowPane>
     <Label fx:id="noCoursesLabel" layoutX="38.0" layoutY="95.0" prefWidth="240.0" style="-fx-font-size: 20px; -fx-text-fill: #ffa500; -fx-font-weight: bold;" textFill="ORANGE" />
-   <Button fx:id="goToCategoriesButton" layoutX="446.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToCategories" text="Back To Categories" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;">
+   <Button fx:id="goToCategoriesButton"  layoutX="446.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToCategories" text="Back To Categories" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;">
       <font>
          <Font name="Roboto Black" size="12.0" />
       </font>
