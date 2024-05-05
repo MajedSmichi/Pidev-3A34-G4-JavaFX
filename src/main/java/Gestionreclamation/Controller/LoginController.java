@@ -66,7 +66,7 @@ public class LoginController {
     private void togglePasswordVisibility() {
         boolean visibility = passwordTextField.isVisible();
         passwordTextField.setVisible(!visibility);
-        passwordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "Assets/hide.png" : "Assets/view.png").toExternalForm()));
+        passwordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "Gestionreclamation/Assets/hide.png" : "Gestionreclamation/Assets/view.png").toExternalForm()));
     }
 
     private String convertBcryptPrefixTo2a(String hash) {
@@ -131,7 +131,7 @@ public void LoginButtonAction()  {
                 System.out.println("user: " + user);
                 verificationCode = new Random().nextInt(900000) + 100000;
                 String numTele = "+216" + user.getNumTele();
-                WhatsAppSender.main(new String[]{String.valueOf(verificationCode), "+21658076383"});
+                WhatsAppSender.main(new String[]{String.valueOf(verificationCode), numTele});
                 showVerificationCodeAlert();
                 failedLoginAttempts = 0;
                 errorLabel.setText("Your account is banned.");

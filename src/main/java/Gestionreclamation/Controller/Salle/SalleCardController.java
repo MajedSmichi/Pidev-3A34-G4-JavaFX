@@ -1,5 +1,6 @@
 package Gestionreclamation.Controller.Salle;
 
+
 import Gestionreclamation.Entity.Salle.Salle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import Gestionreclamation.Controller.client;
+
+
+
+
 
 import java.io.IOException;
 
@@ -72,7 +78,7 @@ public void setData(Salle salle) {
         controller.setSalle(this.salle);
 
         // Load Frontview.fxml
-        FXMLLoader frontViewLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/GestionSalle/Frontview.fxml"));
+        FXMLLoader frontViewLoader = new FXMLLoader(getClass().getResource("/GestionReclamation/client.fxml"));
         Parent frontView;
         try {
             frontView = frontViewLoader.load();
@@ -82,7 +88,7 @@ public void setData(Salle salle) {
         }
 
         // Get the controller of Frontview.fxml
-        FrontViewController frontViewController = frontViewLoader.getController();
+        client  frontViewController = frontViewLoader.getController();
 
         // Set detailFrontSalle as the content of the AnchorPane in Frontview.fxml
         frontViewController.getAnchor().getChildren().setAll(detailFrontSalle);

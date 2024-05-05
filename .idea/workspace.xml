@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="maerge louay">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ExcelExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/ExcelExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/detailActiviteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/uneSalleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/uneSalleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/Salle/ActiviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/Salle/ActiviteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectionSql/ConnectionSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionSql/ConnectionSql.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Dash.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/ActiviteCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/GestionSalle/ActiviteCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/image/sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/image/sale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/images/sale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/SalleCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/Client.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Gestionreclamation/client.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

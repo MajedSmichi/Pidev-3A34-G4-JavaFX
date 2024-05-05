@@ -1,7 +1,9 @@
 package Gestionreclamation.Controller.Salle;
 
+import Gestionreclamation.Controller.SessionManager;
 import Gestionreclamation.Entity.Salle.Activite;
 import Gestionreclamation.Entity.Salle.Salle;
+import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.Salle.ActiviteService;
 import Gestionreclamation.Services.Salle.SalleService;
 import com.google.zxing.BarcodeFormat;
@@ -110,6 +112,7 @@ public class FrontActiviteController {
 
     }
 
+    User user = SessionManager.getInstance().getCurrentUser();
 
     private Activite currentActivite;
 
@@ -117,7 +120,7 @@ public class FrontActiviteController {
         try {
             ActiviteService activiteService = new ActiviteService();
             List<Activite> allActivites = getData();
-            List<Activite> activitesByUser = activiteService.getActivitesByUserId(1); // Replace 1 with the actual user ID
+            List<Activite> activitesByUser = activiteService.getActivitesByUserId( Integer.parseInt(user.getId())); // Replace 1 with the actual user ID
 
             populateGrid(allActivites);
             populateGrid1(activitesByUser);
@@ -244,7 +247,8 @@ public class FrontActiviteController {
                 alert.showAndWait();
                 return;
             }
-            int userId = 1; // Replace this with actual method to get logged in user id
+
+            int userId = Integer.parseInt(user.getId()); // Replace this with actual method to get logged in user id
             activiteUserService.reserverActivite(currentActivite.getId(), userId);
 
             int code = userId * 33 +17;
@@ -252,7 +256,7 @@ public class FrontActiviteController {
             String base64Image = showReservationConfirmation(reservationInfo);
 
             // Send email
-            String userEmail = "belhouchet.koussay@esprit.tn"; // replace with the user's email
+            String userEmail = user.getEmail(); // replace with the user's email
             String subject = "Reservation Confirmation";
             String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
                                         "<h1 style='color: black;'>Cher utilisateur,</h1>" +
@@ -312,24 +316,27 @@ public class FrontActiviteController {
     void annuler(ActionEvent event) {
         ActiviteService activiteService = new ActiviteService();
         try {
-            int userId = 1; // Replace this with actual method to get logged in user id
+            int userId = Integer.parseInt(user.getId()); // Replace this with actual method to get logged in user id
             activiteService.deleteActiviteUser(currentActivite.getId(), userId);
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Réservation annulée avec succès.");
             alert.showAndWait();
 
             List<Activite> activitesByUser = activiteService.getActivitesByUserId(userId);
             populateGrid1(activitesByUser);
+            detail1.setVisible(false);
+
 
             // Send email
-            String userEmail = "belhouchet.koussay@esprit.tn"; // replace with the user's email
+            String userEmail = user.getEmail(); // replace with the user's email
             String subject = "Reservation Cancellation";
             String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
                     "<h1 style='color: black;'>Cher utilisateur,</h1>" +
+                            "<h1 style='color: black;'>"+user.getPrenom()+user.getNom()+"</h1>" +
                     "<p style='color: black;'>Vous avez annulé avec succès la réservation pour l'activité : " + currentActivite.getNom() + "</p>" +
                     "<p style='color: black;'>Cordialement,</p>" +
                     "<p style='color: black;'>Votre équipe</p>" +
                  "</div>";
-            //EmailUtil.sendEmail(userEmail, subject, content);
+            EmailUtil.sendEmail(userEmail, subject, content);
 
         } catch (SQLException | IOException e) {
             e.printStackTrace();

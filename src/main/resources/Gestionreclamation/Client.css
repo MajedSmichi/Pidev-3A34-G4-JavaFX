@@ -60,13 +60,7 @@
     -fx-background-radius: 20px; /* This should match the card's radius */
     -fx-border-radius: 20px; /* This should match the card's radius */
 }
-.label {
-    -fx-font-family: 'Arial';
-    -fx-font-size: 16px;
-    -fx-text-fill: #333333;
-    -fx-font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
+
 .card-label {
     -fx-font-size: 16px; /* Adjust size as needed */
     -fx-font-weight: bold; /* Makes the text bold */

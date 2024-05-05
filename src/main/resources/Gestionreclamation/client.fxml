@@ -13,7 +13,7 @@
         <AnchorPane fx:id="anchorpane1" prefHeight="798.0" prefWidth="1520.0">
             <children>
                 <Pane prefHeight="66.0" prefWidth="1248.0" />
-                <AnchorPane fx:id="achorfront" layoutX="396.0" layoutY="421.0" prefHeight="299.0" prefWidth="611.0" />
+                <AnchorPane fx:id="achorfront" layoutX="396.0" layoutY="421.0" prefHeight="299.0" prefWidth="611.0"  />
                 <ImageView fitHeight="401.0" fitWidth="1519.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@image/breadcrumb-bg.jpg" />
@@ -22,7 +22,8 @@
                 <HBox alignment="TOP_CENTER" layoutX="142.0" layoutY="34.0" prefHeight="64.0" prefWidth="1235.0">
                     <children>
                         <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Home" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Sales" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadSalleCards" prefHeight="39.0" prefWidth="118.0" text="Salles" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadActivite" prefHeight="39.0" prefWidth="118.0" text="Activites" />
                         <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Evenement" />
                         <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" />
                         <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Produit" />
