@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="299.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCategoryController">
-   <Button fx:id="showStatsButton" layoutX="10.0" layoutY="2.0" onAction="#handleStatsButton" prefHeight="25.0" prefWidth="636.0" style="-fx-background-color: #ffa500;" text="Show Stats" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+   <Button fx:id="showStatsButton" layoutX="10.0" layoutY="2.0" onAction="#handleStatsButton" prefHeight="25.0" prefWidth="636.0"  text="Show Stats" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
       <font>
          <Font name="Roboto Black" size="12.0" />
       </font>

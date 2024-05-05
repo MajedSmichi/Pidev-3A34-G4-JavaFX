@@ -13,10 +13,10 @@ import java.sql.Connection;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SportHub/Dash.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SportHub/Frontview.fxml"));
         //VBox root = fxmlLoader.load();
-        AnchorPane root = fxmlLoader.load();
-        //ScrollPane root = fxmlLoader.load();
+        //AnchorPane root = fxmlLoader.load();
+        ScrollPane root = fxmlLoader.load();
 
 
         // Bind the size of the root node to the size of the stage

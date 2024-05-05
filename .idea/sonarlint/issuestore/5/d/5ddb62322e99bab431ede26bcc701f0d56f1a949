@@ -1,10 +1,9 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$4a662db8-781b-4a8a-8806-08772e8c1087
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$c1f480d7-c142-4d52-8c99-291049fe4af2
 
-java:S1854 ">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$f3854df6-ca70-4ab5-982d-fd2f8db02534
-~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$d74fcf75-c202-46d4-bd74-2f26da2eab6e
-X	java:S125"<This block of commented-out lines of code should be removed.(¹—¬ 8£½‡Ôô1
+java:S1854 ">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$ace4ee8c-c529-4d18-bab5-71c82db63e56
+~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$a380b899-72cd-4d3a-8f1e-2bf7642cfad6
 r
-java:S1481 "/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$71cb941f-55df-4cef-92d1-fac532fee99f
-^
-java:S1128"<Remove this unused import 'javafx.scene.control.ScrollPane'.( ––ùşÿÿÿÿ8¹½‡Ôô1
+java:S1481 "/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$b59b8915-6b61-4536-b055-2a23bf575a15
+X
+java:S1128";Remove this unused import 'javafx.scene.layout.AnchorPane'.(Ø µ8àùÁÔô1
