@@ -79,13 +79,19 @@ public class MarketController implements Initializable,FavoriteListener {
     private List<Product> favorites = new ArrayList<>(); // Add this line
 
     private Servicecategorie serviceCategorie;
+    private MyCartController myCartController;
+    @FXML
+    private ImageView cartImageView; // Assurez-vous que cet ImageView correspond à l'image de la carte dans votre fichier FXML
 
     private ProductService productService;
+    private Stage cartStage = null; // Add this line
+
 
     public MarketController() {
         this.productService = new ProductService();
         this.serviceCategorie = new Servicecategorie();
     }
+
     private void setChosenProduct(Product product) {
         try {
             // Fetch the latest product details from the database
@@ -105,6 +111,7 @@ public class MarketController implements Initializable,FavoriteListener {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         soldOutImage = new ImageView();
         MyListener myListener = new MyListener() {
             @Override
@@ -139,9 +146,6 @@ public class MarketController implements Initializable,FavoriteListener {
             // Add a listener to the category filter
             categoryFilter.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
                 try {
-                    // Print the selected category
-                    System.out.println("Selected category: " + newValue);
-
                     // Filter the products by the selected category
                     List<Product> filteredProducts;
 
@@ -153,10 +157,6 @@ public class MarketController implements Initializable,FavoriteListener {
                         // If a specific category is selected, filter the products by the selected category
                         filteredProducts = productService.getByCategory(newValue);
                     }
-
-                    // Print the filtered products
-                    System.out.println("Filtered products: " + filteredProducts);
-
                     // Update the product list in the grid
                     updateProductList(filteredProducts);
                 } catch (SQLException e) {
@@ -200,9 +200,15 @@ public class MarketController implements Initializable,FavoriteListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchProduct());
-    }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyCart.fxml"));
+            Parent root = loader.load();
+            myCartController = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+     }
 
     public void searchProduct() {
         String searchText = searchField.getText().trim();
@@ -280,15 +286,11 @@ public class MarketController implements Initializable,FavoriteListener {
     }
     @FXML
     private void addToCart() {
-        System.out.println("addToCart method called"); // Print statement for debugging
 
-        // Retrieve the selected quantity
         int selectedQuantity = quantitySpinner.getValue();
-
-        // Check if the product quantity is greater than 0
         int currentProductQuantity = Integer.parseInt(product_quantity.getText());
+
         if (currentProductQuantity <= 0) {
-            // Display an error message
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -296,30 +298,36 @@ public class MarketController implements Initializable,FavoriteListener {
             alert.showAndWait();
         } else {
             try {
+                // Décrémentez la quantité de produit dans la base de données
                 productService.decrementQuantity(chosenProduct, selectedQuantity);
-                // Update the product quantity display
+
+                // Mettez à jour l'affichage de la quantité de produit
                 int newQuantity = currentProductQuantity - selectedQuantity;
                 product_quantity.setText(String.valueOf(newQuantity));
-                // Update the image visibility
-                if (newQuantity == 0){
+
+                // Mettez à jour la visibilité de l'image "Sold Out"
+                if (newQuantity == 0) {
                     updateSoldOutImageVisibility(chosenProduct);
                 }
-                // Increment cartIndicator
-                int currentQuantity = 0;
-                if (!cartIndicator.getText().isEmpty()) {
-                    currentQuantity = Integer.parseInt(cartIndicator.getText());
+                // Ajoutez le produit au panier
+                myCartController.addProductToCart(chosenProduct, selectedQuantity);
+
+                // Incrémentez l'indicateur de panier
+                int currentQuantity = Integer.parseInt(cartIndicator.getText());
+                int newCartIndicatorValue = currentQuantity + 1;
+                cartIndicator.setText(String.valueOf(newCartIndicatorValue));
+
+                // Vérifiez si la fenêtre du panier est déjà ouverte, sinon ouvrez-la
+                if (cartStage != null && !cartStage.isShowing()) {
+                    openCart(); // Ouvrir le panier
                 }
-                int newCartIndicatorValue = currentQuantity + selectedQuantity;
-                Platform.runLater(() -> {
-                    cartIndicator.setText(String.valueOf(newCartIndicatorValue));
-                });
-                System.out.println("cartIndicator updated to: " + newCartIndicatorValue); // Print statement for debugging
+
+                System.out.println("Product added to cart.");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
-
 
     @FXML
     private void openMyFavors() {
@@ -351,6 +359,29 @@ public class MarketController implements Initializable,FavoriteListener {
             favorites.add(product);
         } else {
             favorites.remove(product);
+        }
+    }
+    public void openCart() {
+        try {
+            // Check if cartStage is already initialized
+            if (cartStage == null) {
+                // Load the FXML file for the cart window
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyCart.fxml"));
+                Parent root = loader.load();
+
+                // Initialize myCartController here
+                myCartController = loader.getController();
+
+                // Create a new stage for the cart window
+                cartStage = new Stage();
+                cartStage.setTitle("My Cart");
+                cartStage.setScene(new Scene(root));
+            }
+
+            // Show the cart window
+            cartStage.show();
+        } catch (IOException e) {
+            System.out.println("Erreur lors de l'ouverture de la fenêtre du panier : " + e.getMessage());
         }
     }
 }

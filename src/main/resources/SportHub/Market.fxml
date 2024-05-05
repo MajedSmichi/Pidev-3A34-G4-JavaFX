@@ -171,7 +171,7 @@
                               <font>
                                  <Font name="Arial Bold" size="16.0" />
                               </font></Label>
-                                    <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView  onMouseClicked="#openCart" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@images/ic_cart.png" />
                                         </image>

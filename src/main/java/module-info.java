@@ -5,6 +5,7 @@ module com.example.gestionreclamation {
     //requires com.dlsc.formsfx;
     requires java.sql;
     requires com.jfoenix;
+    requires itextpdf;
     //requires java.persistence;
     opens SportHub to javafx.fxml;
     exports SportHub;

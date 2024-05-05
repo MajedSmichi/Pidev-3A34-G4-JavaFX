@@ -41,6 +41,13 @@ public class Product {
         this.description = description;
         this.image = image;
     }
+    public Product(Product product) {
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.quantite = product.getQuantite();
+        this.image = product.getImage();
+        this.total = product.getTotal();
+    }
 
     public Product(int id, String name, int quantite, int price,  Categorie_p category, String description, String image) {
         this.id = id;
@@ -130,4 +137,9 @@ public class Product {
     public void setTotal(double total) {
         this.total = total;
     }
+    public double getTotal() {
+        return total;
+    }
+
+
 }
