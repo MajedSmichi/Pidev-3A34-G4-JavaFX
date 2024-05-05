@@ -22,29 +22,19 @@ import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dash.fxml"));
+public void start(Stage stage) throws IOException {
+    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Frontview.fxml"));
 
-        //VBox root = (VBox) FXMLLoader.load(getClass().getResource("CalendarView.fxml"));
-        AnchorPane root = fxmlLoader.load();
-       //ScrollPane root = fxmlLoader.load();
+    Parent root = fxmlLoader.load();
 
+    Scene scene = new Scene(root);
+    stage.setTitle("SPORTHUB");
+    stage.setScene(scene);
+    stage.show();
 
-       // FXMLLoader loader = new FXMLLoader(getClass().getResource("CalendarView.fxml"));
-//Parent root = loader.load();
-//CalendarViewController controller = loader.getController();
-
-
-        Scene scene = new Scene(root);
-        stage.setTitle("SPORTHUB");
-        stage.setScene(scene);
-        stage.show();
-
-       ConnectionSql connectionSql = new ConnectionSql();
-        Connection connection = connectionSql.getConnection();
-
-    }
-
+    ConnectionSql connectionSql = new ConnectionSql();
+    Connection connection = connectionSql.getConnection();
+}
 
     public static void main(String[] args) {
         launch();

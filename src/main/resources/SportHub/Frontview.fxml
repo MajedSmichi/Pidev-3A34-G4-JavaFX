@@ -15,7 +15,7 @@
       <AnchorPane fx:id="anchorpane1" prefHeight="798.0" prefWidth="1520.0">
          <children>
             <Pane prefHeight="66.0" prefWidth="1248.0" />
-            <AnchorPane fx:id="achorfront" layoutX="269.0" layoutY="437.0" prefHeight="299.0" prefWidth="611.0" />
+            <AnchorPane fx:id="achorfront" layoutX="356.0" layoutY="456.0" prefHeight="299.0" prefWidth="611.0" />
             <ImageView fitHeight="401.0" fitWidth="1519.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/breadcrumb-bg.jpg" />
@@ -32,12 +32,12 @@
                </children>
             </HBox>
             <Button fx:id="mes_tickets" layoutX="687.0" layoutY="350.0" mnemonicParsing="false" onAction="#loadUserTickets" prefHeight="34.0" prefWidth="194.0" text="Mes Tickets" visible="false" />
-            <Label fx:id="list_event" alignment="CENTER" layoutX="643.0" layoutY="187.0" prefHeight="99.0" prefWidth="351.0" text="LIST OF ALL EVENTS" textFill="WHITE" visible="false">
+            <Label fx:id="list_event" alignment="CENTER" layoutX="642.0" layoutY="74.0" prefHeight="46.0" prefWidth="306.0" text="MOST POPULAR EVENTS" textFill="WHITE" visible="false">
                <font>
-                  <Font size="36.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-         </children>
+<ScrollPane fx:id="most_popular_events" layoutX="263.0" layoutY="154.0" prefHeight="186.0" prefWidth="1006.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent; " />         </children>
       </AnchorPane>
    </content>
 </ScrollPane>

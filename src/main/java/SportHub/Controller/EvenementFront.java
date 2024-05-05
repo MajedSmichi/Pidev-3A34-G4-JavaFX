@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,6 +37,10 @@ public class EvenementFront {
     @FXML
     private GridPane eventContainer; // This is the container where you will add the event cards
 
+
+    @FXML
+    private ScrollPane most_popular_events;
+
     private WeatherService weatherService;
     private TwilioService twilioService = new TwilioService();
 
@@ -47,7 +52,7 @@ public void initialize() {
         List<Evenement> events = fetchEventsFromDatabase();
 
         int column = 0;
-        int row = 0;
+        int row = 3; // Start from the fourth row to leave space for the titleLabel, the popular events, and the new titleLabel
 
         for (Evenement event : events) {
             GridPane eventCard = createEventCard(event);
@@ -60,37 +65,22 @@ public void initialize() {
             }
         }
         // Set the horizontal gap between the columns in the GridPane
-        eventContainer.setHgap(40); // Adjust the value as needed
-
-        // Fetch the most popular events
-        TicketService ticketService = new TicketService();
-        List<Evenement> popularEvents = ticketService.getMostPopularEvents();
-
-        VBox vbox = new VBox();
-        vbox.setSpacing(10); // Set the space between the cards
-        vbox.setMaxHeight(Region.USE_PREF_SIZE); // Set the VBox to not grow beyond its preferred size
-        vbox.setPadding(new Insets(20, 0, 0, 0)); // 20 units of space at the top
+        eventContainer.setHgap(10); // Adjust the value as needed
 
 
-        // Create a label for the title
-        Label titleLabel = new Label("THE MOST POPULAR EVENTS");
-        titleLabel.setFont(new Font("Arial", 30)); // Set the font size to 30
-        //titleLabel.setTextFill(Color.RED); // Set the text color to red
+        // Create a label for the all events list
+        Label allEventsLabel = new Label("ALL EVENT LIST");
+        allEventsLabel.setFont(new Font("Arial", 30)); // Set the font size to 30
 
-        // Add the title label to the VBox
-        vbox.getChildren().add(titleLabel);
-
-        for (Evenement popularEvent : popularEvents) {
-            GridPane popularEventCard = createPopularEventCard(popularEvent);
-            vbox.getChildren().add(popularEventCard);
-        }
-
-        eventContainer.add(vbox, column + 1, 0); // Add the VBox to the right of the existing cards
+        // Add the all events label to the GridPane
+        eventContainer.add(allEventsLabel, 0, 2, 3, 1);
 
     } catch (SQLException e) {
         e.printStackTrace();
     }
-}public GridPane createEventCard(Evenement event) {
+}
+
+public GridPane createEventCard(Evenement event) {
     GridPane eventCard = new GridPane();
     eventCard.getStyleClass().add("card"); // Add the style class
 
@@ -415,30 +405,4 @@ public void showSuccessMessage() {
         return service.getAllEvents();
     }
 
-    public GridPane createPopularEventCard(Evenement event) {
-    GridPane popularEventCard = new GridPane();
-    popularEventCard.getStyleClass().add("popular-event-card"); // Add the style class
-
-
-
-    // Create an ImageView for the event image
-    ImageView eventImage = new ImageView(new Image(event.getImageEvenement()));
-    eventImage.setFitWidth(100); // Adjust the width as needed
-    eventImage.setFitHeight(100); // Adjust the height as needed
-
-    // Create a Label for the event name
-    Label eventName = new Label(event.getNom());
-    eventName.getStyleClass().add("event-name"); // Add a CSS class for styling
-
-    // Create a Label for the event date
-    Label eventDate = new Label(event.getDateEvenement().toString());
-    eventDate.getStyleClass().add("event-date"); // Add a CSS class for styling
-
-    // Add the ImageView and Labels to the GridPane
-    popularEventCard.add(eventImage, 0, 0, 1, 2); // Span 2 rows
-    popularEventCard.add(eventName, 1, 0); // Top right
-    popularEventCard.add(eventDate, 1, 1); // Bottom right
-
-    return popularEventCard;
-}
 }

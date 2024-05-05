@@ -130,9 +130,9 @@
 
 .popular-event-card {
     /* Add your styles here */
-    -fx-background-color: rgba(157, 157, 157, 0.81); /* Set default background to orange */
+    -fx-background-color: rgb(255, 208, 108); /* Set default background to orange */
     -fx-padding: 20px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 120, 171, 0.81), 5, 0, 0, 5);
+    -fx-effect: dropshadow(three-pass-box, rgba(171, 171, 171, 0.81), 5, 0, 0, 5);
     -fx-border-width: 2px;
     -fx-border-radius: 15px; /* Add this line to make the border rounded */
     -fx-background-radius: 15px; /* Add this line to make the background rounded */

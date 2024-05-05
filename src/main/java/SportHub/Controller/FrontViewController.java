@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,6 +35,10 @@ public class FrontViewController {
 
     @FXML
     private Label list_event;
+
+
+    @FXML
+    private ScrollPane most_popular_events;
 
 
 
@@ -107,10 +114,56 @@ public void loadUserTickets() {
 }
 
 
-
 @FXML
 public void loadEvenementAndMostPopularEvents() {
     loadEvenementFront();
-   // loadMostPopularEvents();
+
+    // Fetch the most popular events
+    TicketService ticketService = new TicketService();
+    List<Evenement> popularEvents = null;
+    try {
+        popularEvents = ticketService.getMostPopularEvents();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    HBox hbox = new HBox(); // Use HBox instead of VBox
+    hbox.setSpacing(10); // Set the space between the cards
+
+    for (Evenement popularEvent : popularEvents) {
+        GridPane popularEventCard = createPopularEventCard(popularEvent);
+        hbox.getChildren().add(popularEventCard);
+    }
+
+    // Add the HBox to the ScrollPane
+    most_popular_events.setContent(hbox);
 }
+
+public GridPane createPopularEventCard(Evenement event) {
+        GridPane popularEventCard = new GridPane();
+        popularEventCard.getStyleClass().add("popular-event-card"); // Add the style class
+
+
+
+        // Create an ImageView for the event image
+        ImageView eventImage = new ImageView(new Image(event.getImageEvenement()));
+        eventImage.setFitWidth(100); // Adjust the width as needed
+        eventImage.setFitHeight(100); // Adjust the height as needed
+
+        // Create a Label for the event name
+        Label eventName = new Label(event.getNom());
+        eventName.getStyleClass().add("event-name"); // Add a CSS class for styling
+
+        // Create a Label for the event date
+        Label eventDate = new Label(event.getDateEvenement().toString());
+        eventDate.getStyleClass().add("event-date"); // Add a CSS class for styling
+
+        // Add the ImageView and Labels to the GridPane
+        popularEventCard.add(eventImage, 0, 0, 1, 2); // Span 2 rows
+        popularEventCard.add(eventName, 1, 0); // Top right
+        popularEventCard.add(eventDate, 1, 1); // Bottom right
+
+        return popularEventCard;
+    }
+
 }
