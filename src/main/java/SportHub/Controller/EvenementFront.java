@@ -155,7 +155,7 @@ public GridPane createEventCard(Evenement event) {
             // Convert the temperature to Celsius
             double temperatureInCelsius = temperatureInKelvin - 273.15;
 
-            weatherInfo = "Weather: " + weatherDescription + ", Temperature: " + String.format("%.2f", temperatureInCelsius) + "°C";
+            weatherInfo = "Weather: " + weatherDescription + ", " + String.format("%.2f", temperatureInCelsius) + "°C";
         }
 
         Label weatherLabel = new Label(weatherInfo);
@@ -175,7 +175,9 @@ public GridPane createEventCard(Evenement event) {
         eventImage.setPreserveRatio(true);  // Preserve the aspect ratio
         detailedCard.add(eventImage, 0, 1);
 
-
+// Center the ImageView in its area of the GridPane
+        GridPane.setHalignment(eventImage, javafx.geometry.HPos.CENTER);
+        GridPane.setValignment(eventImage, javafx.geometry.VPos.CENTER);
 
         Label eventName = new Label( event.getNom());
         eventName.setStyle("-fx-font-size: 22; -fx-font-weight: bold;");
@@ -193,8 +195,10 @@ public GridPane createEventCard(Evenement event) {
         //eventDate.setStyle("-fx-font-size: 14;");
         detailedCard.add(eventLieu, 0, 4);
 
-        Label eventDescription = new Label("Event Description: " + event.getDescription());
-       // eventDescription.setStyle("-fx-font-size: 14;");
+Label eventDescription = new Label("Event Description: " + event.getDescription());
+eventDescription.setWrapText(true); // Enable text wrapping
+        eventDescription.setPrefWidth(500); // Set the preferred width to 500
+// eventDescription.setStyle("-fx-font-size: 14;");
         detailedCard.add(eventDescription, 0, 7);
 
 
@@ -213,8 +217,16 @@ public GridPane createEventCard(Evenement event) {
         detailedCard.add(getTicketButton, 0, 8); // Add the button to the detailed card
 
 
-        // Create a back button with text
-        Button backButton = new Button("Back");
+// Create an ImageView
+ImageView backIcon = new ImageView(new Image(getClass().getResource("/SportHub/images/back.png").toString()));// Set the size of the ImageView
+backIcon.setFitHeight(15); // adjust the size as needed
+backIcon.setFitWidth(15); // adjust the size as needed
+
+// Create a back button with an icon
+Button backButton = new Button();
+
+// Set the graphic (icon) of the button
+backButton.setGraphic(backIcon);
 
         // Add an event handler to the back button
         backButton.setOnAction(e -> {
@@ -240,7 +252,7 @@ public GridPane createEventCard(Evenement event) {
         });
 
         // Add the back button to the detailed card
-        detailedCard.add(backButton, 1, 8);
+        detailedCard.add(backButton, 0, 0);
 
         // Calculate the number of days left for the event
         LocalDate currentDate = LocalDate.now();
@@ -248,7 +260,7 @@ public GridPane createEventCard(Evenement event) {
         long daysLeft = ChronoUnit.DAYS.between(currentDate, evenementDate);
 
         // Create a label to display the number of days left
-        Label daysLeftLabel = new Label("Days left for the event: " + daysLeft);
+        Label daysLeftLabel = new Label("Days left for the event: " + daysLeft + " days");
         detailedCard.add(daysLeftLabel, 0, 3); // Adjust the index as per your layout
 
         return detailedCard;
@@ -391,7 +403,7 @@ public void showSuccessMessage() {
         eventContainer.getChildren().clear();
 
         // Create a success message label
-        Label successLabel = new Label("Payment Successful!");
+        Label successLabel = new Label("  YOUR PAYMENT WAS SUCCESSFULL!  ");
         successLabel.getStyleClass().add("success-label"); // Add a CSS class for styling
 
         // Add the success message label to the event container
@@ -400,7 +412,10 @@ public void showSuccessMessage() {
         // Handle the case where eventContainer is null
         System.out.println("eventContainer is null. Please ensure it is properly initialized before calling showSuccessMessage.");
     }
-}    private List<Evenement> fetchEventsFromDatabase() throws SQLException {
+}
+
+
+private List<Evenement> fetchEventsFromDatabase() throws SQLException {
         EvenementService service = new EvenementService();
         return service.getAllEvents();
     }

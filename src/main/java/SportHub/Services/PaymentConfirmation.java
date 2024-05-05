@@ -75,56 +75,89 @@ public class PaymentConfirmation {
         WebView webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         webEngine.setJavaScriptEnabled(true); // Enable JavaScript
+        webView.setPrefHeight(200);
+        webView.setPrefWidth(700);
         String html = "<html>\n" +
-                "<body>\n" +
-                "<script src=\"https://js.stripe.com/v3/\"></script>\n" +
-                "<form id='payment-form'>\n" +
-                "  <div class='form-row'>\n" +
-                "    <label for='card-element'>\n" +
-                "      Credit or debit card\n" +
-                "    </label>\n" +
-                "    <div id='card-element'>\n" +
-                "      <!-- A Stripe Element will be inserted here. -->\n" +
-                "    </div>\n" +
-                "    <!-- Used to display form errors. -->\n" +
-                "    <div id='card-errors' role='alert'></div>\n" +
-                "  </div>\n" +
-                "  <button>Submit Payment</button>\n" +
-                "</form>\n" +
-                "<script>\n" +
-                "var stripe = Stripe('pk_test_51OqH27C0U7VRZI3sCGMMa2P91ySR9BRMT9MmTx4TiEpwUFrXynEEqZTmwHIxgZ0ZfJoLyb3PTtUdqfuY7zqGj5sG00U8wODUiR');\n" +
-                "var elements = stripe.elements();\n" +
-                "var card = elements.create('card');\n" +
-                "card.mount('#card-element');\n" +
-                "var form = document.getElementById('payment-form');\n" +
-                "form.addEventListener('submit', function(event) {\n" +
-                "  event.preventDefault();\n" +
-                "  stripe.createPaymentMethod({\n" +
-                "    type: 'card',\n" +
-                "    card: card\n" +
-                "  }).then(function(result) {\n" +
-                "    if (result.error) {\n" +
-                "      var errorElement = document.getElementById('card-errors');\n" +
-                "      errorElement.textContent = result.error.message;\n" +
-                "    } else {\n" +
-                "      stripe.confirmCardPayment('" + clientSecret + "', {\n" +
-                "        payment_method: result.paymentMethod.id\n" +
-                "      }).then(function(confirmResult) {\n" +
-                "        if (confirmResult.error) {\n" +
-                "          var errorElement = document.getElementById('card-errors');\n" +
-                "          errorElement.textContent = confirmResult.error.message;\n" +
-                "        } else {\n" +
-                "          if (confirmResult.paymentIntent.status === 'succeeded') {\n" +
-                "            console.log('Payment succeeded!');\n" +
-                "          }\n" +
-                "        }\n" +
-                "      });\n" +
-                "    }\n" +
-                "  });\n" +
-                "});\n" +
-                "</script>\n" +
-                "</body>\n" +
-                "</html>";
+            "<head>\n" +
+            "<style>\n" +
+            "body {\n" +
+            "  font-family: Arial, sans-serif;\n" +
+            "}\n" +
+            "#payment-form {\n" +
+            "  width: 300px;\n" +
+            "  margin: 0 auto;\n" +
+            "}\n" +
+            "#card-element {\n" +
+            "  border: 1px solid #ccc;\n" +
+            "  padding: 10px;\n" +
+            "  border-radius: 4px;\n" +
+            "}\n" +
+            "button {\n" +
+            "  background-color: #4CAF50;\n" +
+            "  color: white;\n" +
+            "  padding: 15px 32px;\n" +
+            "  text-align: center;\n" +
+            "  text-decoration: none;\n" +
+            "  display: inline-block;\n" +
+            "  font-size: 16px;\n" +
+            "  margin: 4px 2px;\n" +
+            "  cursor: pointer;\n" +
+            "  border: none;\n" +
+            "}\n" +
+            "button:hover {\n" +
+            "  background-color: #45a049;\n" +
+            "}\n" +
+            "</style>\n" +
+            "</head>\n" +
+            "<body>\n" +
+            "<script src=\"https://js.stripe.com/v3/\"></script>\n" +
+            "<form id='payment-form'>\n" +
+            "  <div class='form-row'>\n" +
+            "    <label for='card-element'>\n" +
+            "      Credit or debit card\n" +
+            "    </label>\n" +
+            "    <div id='card-element'>\n" +
+            "      <!-- A Stripe Element will be inserted here. -->\n" +
+            "    </div>\n" +
+            "    <!-- Used to display form errors. -->\n" +
+            "    <div id='card-errors' role='alert'></div>\n" +
+            "  </div>\n" +
+            "  <button>Submit Payment</button>\n" +
+            "</form>\n" +
+            "<script>\n" +
+            "var stripe = Stripe('pk_test_51OqH27C0U7VRZI3sCGMMa2P91ySR9BRMT9MmTx4TiEpwUFrXynEEqZTmwHIxgZ0ZfJoLyb3PTtUdqfuY7zqGj5sG00U8wODUiR');\n" +
+            "var elements = stripe.elements();\n" +
+            "var card = elements.create('card');\n" +
+            "card.mount('#card-element');\n" +
+            "var form = document.getElementById('payment-form');\n" +
+            "form.addEventListener('submit', function(event) {\n" +
+            "  event.preventDefault();\n" +
+            "  stripe.createPaymentMethod({\n" +
+            "    type: 'card',\n" +
+            "    card: card\n" +
+            "  }).then(function(result) {\n" +
+            "    if (result.error) {\n" +
+            "      var errorElement = document.getElementById('card-errors');\n" +
+            "      errorElement.textContent = result.error.message;\n" +
+            "    } else {\n" +
+            "      stripe.confirmCardPayment('" + clientSecret + "', {\n" +
+            "        payment_method: result.paymentMethod.id\n" +
+            "      }).then(function(confirmResult) {\n" +
+            "        if (confirmResult.error) {\n" +
+            "          var errorElement = document.getElementById('card-errors');\n" +
+            "          errorElement.textContent = confirmResult.error.message;\n" +
+            "        } else {\n" +
+            "          if (confirmResult.paymentIntent.status === 'succeeded') {\n" +
+            "            console.log('Payment succeeded!');\n" +
+            "          }\n" +
+            "        }\n" +
+            "      });\n" +
+            "    }\n" +
+            "  });\n" +
+            "});\n" +
+            "</script>\n" +
+            "</body>\n" +
+            "</html>";
 
         webEngine.loadContent(html);
 
