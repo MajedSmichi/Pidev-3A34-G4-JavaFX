@@ -29,7 +29,9 @@ module com.example.gestionreclamation {
 
 
     requires poi.ooxml;
-    requires poi; // Only use poi-ooxml
+    requires poi;
+    requires itextpdf;
+    requires org.controlsfx.controls; // Only use poi-ooxml
     opens Gestionreclamation to javafx.fxml;
     exports Gestionreclamation;
     exports Gestionreclamation.Controller;

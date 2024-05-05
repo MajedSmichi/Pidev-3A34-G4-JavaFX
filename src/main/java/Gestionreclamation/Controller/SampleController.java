@@ -2,9 +2,12 @@ package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.UserService;
+import com.itextpdf.text.pdf.PdfPTable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
+import javafx.geometry.Pos;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import javafx.fxml.FXML;
@@ -32,6 +35,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import org.controlsfx.control.Notifications;
 
 import static Gestionreclamation.Services.UserService.selectUser;
 
@@ -89,7 +96,7 @@ public class SampleController implements UserCardRefreshListener {
         logoutButton.setOnAction(event -> logout());
         Circle clip = new Circle(avatarImageView.getFitWidth() / 2, avatarImageView.getFitHeight() / 2, Math.min(avatarImageView.getFitWidth(), avatarImageView.getFitHeight()) / 2);
         avatarImageView.setClip(clip);
-        exportButton.setOnAction(event -> exportToExcel());
+        exportButton.setOnAction(event -> exportToPdf());
 
 
     }
@@ -197,53 +204,64 @@ public class SampleController implements UserCardRefreshListener {
         }
     }
 
-private void exportToExcel() {
-    System.out.println("Export to Excel method called");
+  private void exportToPdf() {
+    System.out.println("Export to PDF method called");
     UserService userService = new UserService();
     List<User> users = userService.selectAllUsers();
     System.out.println("Users fetched: " + users.size());
 
-    Workbook workbook = new HSSFWorkbook();
-    Sheet sheet = workbook.createSheet("Users");
-
-    Row headerRow = (Row) sheet.createRow(0);
-    headerRow.createCell(0).setCellValue("ID");
-    headerRow.createCell(1).setCellValue("First Name");
-    headerRow.createCell(2).setCellValue("Last Name");
-    headerRow.createCell(3).setCellValue("Email");
-    headerRow.createCell(4).setCellValue("Phone");
-    headerRow.createCell(5).setCellValue("Adrees");
-    headerRow.createCell(6).setCellValue("CreatedAt");
-
-    for (int i = 0; i < users.size(); i++) {
-        User user = users.get(i);
-        Row row = sheet.createRow(i + 1);
-        row.createCell(0).setCellValue(user.getId());
-        row.createCell(1).setCellValue(user.getPrenom());
-        row.createCell(2).setCellValue(user.getNom());
-        row.createCell(3).setCellValue(user.getEmail());
-        row.createCell(4).setCellValue(user.getNumTele());
-        row.createCell(5).setCellValue(user.getAdresse());
-        row.createCell(6).setCellValue(user.getCreatedAt().toString());
-    }
-
     String homeDirectory = System.getProperty("user.home");
-    String filePath = homeDirectory + "/Downloads/users.xls";
+    String filePath = homeDirectory + "/Downloads/users.pdf";
 
-    if (Files.exists(Paths.get(filePath))) {
-        // If file exists, append a timestamp to the filename
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-        filePath = homeDirectory + "/Downloads/users_" + timestamp + ".xls";
-    }
+    try {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream(filePath));
+        document.open();
 
-    try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-        workbook.write(fileOut);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Export to Excel");
-        alert.setHeaderText(null);
-        alert.setContentText("Excel file has been downloaded successfully!");
-        alert.showAndWait();
-    } catch (IOException e) {
+        // Create a table with 7 columns (for ID, First Name, Last Name, Email, Phone, Address, CreatedDT)
+        PdfPTable table = new PdfPTable(7);
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        // Define column widths
+        float[] columnWidths = {1f, 2f, 2f, 3f, 2f, 3f, 2f};
+        table.setWidths(columnWidths);
+
+        // Add table headers
+        table.addCell("ID");
+        table.addCell("First Name");
+        table.addCell("Last Name");
+        table.addCell("Email");
+        table.addCell("Phone");
+        table.addCell("Address");
+        table.addCell("CreatedDT");
+
+        // Add table rows
+        for (User user : users) {
+            table.addCell(String.valueOf(user.getId()));
+            table.addCell(user.getPrenom());
+            table.addCell(user.getNom());
+            table.addCell(user.getEmail());
+            table.addCell(String.valueOf(user.getNumTele()));
+            table.addCell(user.getAdresse());
+            table.addCell(user.getCreatedAt().toString());
+        }
+
+        // Add table to document
+        document.add(table);
+
+        document.close();
+        System.out.println("PDF Created!");
+
+        Notifications.create()
+                .title("PDF Export")
+                .text("PDF file has been created and downloaded successfully!")
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT)
+                .onAction(e -> System.out.println("Notification clicked!"))
+                .showInformation();
+    } catch (Exception e) {
         e.printStackTrace();
     }
 }

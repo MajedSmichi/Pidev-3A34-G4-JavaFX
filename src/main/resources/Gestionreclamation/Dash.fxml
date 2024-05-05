@@ -188,7 +188,7 @@
         </ScrollPane>
         <TextField fx:id="searchField" layoutX="269.0" layoutY="74.0" prefHeight="41.0" prefWidth="789.0" promptText="Search with email" style="-fx-padding: 8px;            -fx-border-radius: 5px;            -fx-border-color: #cccccc;            -fx-border-width: 2;            -fx-background-color: #ffffff;            -fx-text-inner-color: #000000;            -fx-font-size: 14px;" visible="false">
         </TextField>
-        <Button fx:id="exportButton" layoutX="1077.0" layoutY="11.0" prefHeight="34.0" prefWidth="110.0" text="Import UserList" visible="false" />
+        <Button fx:id="exportButton" layoutX="270.0" layoutY="33.0" prefHeight="34.0" prefWidth="110.0" text="Import UserList" visible="false" />
         <AnchorPane fx:id="EditField" layoutX="401.0" layoutY="215.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@viewUser.css" visible="false">
             <children>
                 <Pane layoutX="29.0" layoutY="-16.0" styleClass="card">
