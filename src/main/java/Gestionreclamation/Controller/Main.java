@@ -19,9 +19,9 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-       FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/Login/login.fxml"));
-      //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/Dash.fxml"));
-      //  FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/client.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/Login/login.fxml"));
+        //   FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/Dash.fxml"));
+        //  FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Gestionreclamation/client.fxml"));
         Parent root = fxmlLoader.load(); // No need to set a new root here.
         Scene scene = new Scene(root);
         stage.setScene(scene);

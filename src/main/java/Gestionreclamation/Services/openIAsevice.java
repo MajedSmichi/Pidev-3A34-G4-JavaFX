@@ -1,4 +1,5 @@
 package Gestionreclamation.Services;
+/*
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -7,8 +8,16 @@ import org.json.JSONObject;
 
 
 import java.io.File;
+*/
+
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.json.JSONObject;
+
+import java.io.File;
 
 public class openIAsevice {
+
 
     public String executeService(String filePath) {
         String transcription = null;
@@ -31,5 +40,6 @@ public class openIAsevice {
 
         return transcription;
     }
+
 
 }

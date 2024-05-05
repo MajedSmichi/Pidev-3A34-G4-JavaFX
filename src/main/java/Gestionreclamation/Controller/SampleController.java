@@ -102,6 +102,34 @@ public class SampleController implements UserCardRefreshListener {
     }
 
     @FXML
+    public void loadEvenementCards() {
+        try {
+            AnchorPane evenementLayout = FXMLLoader.load(getClass().getResource("/Gestionreclamation/SportHub/EvenementBack.fxml"));
+            searchField.setVisible(false);
+            userListScrollPane.setVisible(false);
+            exportButton.setVisible(false);
+            anchor.getChildren().setAll(evenementLayout);
+            anchor.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void loadTicketCards() {
+        try {
+            AnchorPane evenementLayout = FXMLLoader.load(getClass().getResource("/Gestionreclamation/SportHub/TicketBack.fxml"));
+            searchField.setVisible(false);
+            userListScrollPane.setVisible(false);
+            exportButton.setVisible(false);
+            anchor.getChildren().setAll(evenementLayout);
+            anchor.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void openActivite(ActionEvent event) {
         try {
             // Load the FXML file

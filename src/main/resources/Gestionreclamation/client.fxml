@@ -8,7 +8,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<ScrollPane fx:id="s" prefHeight="787.0" prefWidth="1536.0" stylesheets="@Client.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.client">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane  prefHeight="787.0" prefWidth="1536.0" stylesheets="@Client.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Controller.client">
     <content>
         <AnchorPane fx:id="anchorpane1" prefHeight="798.0" prefWidth="1520.0">
             <children>
@@ -24,7 +27,7 @@
                         <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Home" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadSalleCards" prefHeight="39.0" prefWidth="118.0" text="Salles" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadActivite" prefHeight="39.0" prefWidth="118.0" text="Activites" />
-                        <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Evenement" />
+                        <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadEvenementAndMostPopularEvents" prefHeight="39.0" prefWidth="118.0" text="Evenement" />
                         <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" />
                         <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Produit" />
                         <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="39.0" prefWidth="128.0" text="Reclamation" />
@@ -47,6 +50,13 @@
                </image>
             </ImageView>
             </children>
+            <Button fx:id="mes_tickets" layoutX="687.0" layoutY="350.0" mnemonicParsing="false" onAction="#loadUserTickets" prefHeight="34.0" prefWidth="194.0" text="Mes Tickets" visible="false" />
+            <Label fx:id="list_event" alignment="CENTER" layoutX="642.0" layoutY="74.0" prefHeight="46.0" prefWidth="306.0" text="MOST POPULAR EVENTS" textFill="WHITE" visible="false">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <ScrollPane fx:id="most_popular_events" layoutX="263.0" layoutY="154.0" prefHeight="186.0" prefWidth="1006.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent; " />
         </AnchorPane>
     </content>
 </ScrollPane>

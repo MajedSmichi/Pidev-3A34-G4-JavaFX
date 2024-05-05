@@ -1,15 +1,16 @@
 package Gestionreclamation.Services;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.JsonNode;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class GrammarCheck {
     private static final String OPENAI_API_KEY = "your_openai_api_key"; // Replace with your OpenAI API key
     String content = "";
+
 
 /*
     public String checkBadWords(String text) {
@@ -32,7 +33,7 @@ public class GrammarCheck {
                     )
                     .asJson();
             System.out.println("Response from OpenAI API: " + response.getBody().toString());
-            JSONObject jsonResponse = response.getBody().getObject();
+            kong.unirest.json.JSONObject jsonResponse = response.getBody().getObject();
             if (jsonResponse.has("content")) {
                 content = jsonResponse.getString("content");
             }
@@ -44,4 +45,5 @@ public class GrammarCheck {
         return content;
     }
 */
+
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.SportHub.Controller.TicketController">
+    <children>
+        <AnchorPane layoutX="37.0" layoutY="14.0" prefHeight="640.0" prefWidth="325.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="white-bg" />
+                <String fx:value="shadow" />
+            </styleClass>
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="29.0" prefHeight="53.0" prefWidth="236.0" text="TICKET" textAlignment="CENTER">
+                    <font>
+                        <Font name="Arial Bold" size="40.0" />
+                    </font>
+                </Label>
+                <Label layoutX="36.0" layoutY="206.0" prefHeight="31.0" prefWidth="66.0" text="PRIX" />
+                <TextField fx:id="ticket_prix" accessibleRole="INCREMENT_BUTTON" layoutX="36.0" layoutY="237.0" prefHeight="59.0" prefWidth="250.0" promptText="Prix" styleClass="label-info" stylesheets="@dashboardDesign.css" />
+                <Label layoutX="36.0" layoutY="314.0" prefHeight="31.0" prefWidth="66.0" text="Type" />
+                <TextField fx:id="ticket_type" layoutX="36.0" layoutY="345.0" prefHeight="59.0" prefWidth="250.0" promptText="Type" styleClass="label-info" stylesheets="@dashboardDesign.css" />
+                <Label layoutX="36.0" layoutY="413.0" prefHeight="31.0" prefWidth="139.0" text="Nombre de Tickets" />
+                <TextField fx:id="ticket_nbre" layoutX="36.0" layoutY="444.0" prefHeight="59.0" prefWidth="250.0" promptText="Nombre de tickets" styleClass="label-info" stylesheets="@dashboardDesign.css" />
+                <ComboBox fx:id="ticket_evenement" layoutX="37.0" layoutY="147.0" prefHeight="46.0" prefWidth="250.0" promptText="choisir un evenement" />
+                <Label layoutX="36.0" layoutY="115.0" prefHeight="31.0" prefWidth="66.0" text="Evenement" />
+                <Button fx:id="ticket_add" layoutX="43.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#addTicket" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+                <Button fx:id="ticket_delete" layoutX="186.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#ticketDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
+                <Button fx:id="ticket_update" layoutX="186.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#ticketUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+                <Button fx:id="ticket_clear" layoutX="43.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#ticketClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+
+                <Label layoutX="220.0" layoutY="251.0" prefHeight="31.0" prefWidth="66.0" text="DT" />
+
+                <!--                <Button layoutX="235.0" layoutY="499.0" mnemonicParsing="false" onMouseClicked="#associationUpdate" prefHeight="38.0" prefWidth="80.0" styleClass="update-btn" stylesheets="@dashboardDesign.css" text="Update" />-->
+                <!--                <Button layoutX="84.0" layoutY="499.0" mnemonicParsing="false" onMouseClicked="#associationReset" prefHeight="38.0" prefWidth="66.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />-->
+                <!--                <Button layoutX="242.0" layoutY="577.0" mnemonicParsing="false" onMouseClicked="#associationAdd" prefHeight="38.0" prefWidth="66.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Add" />-->
+                <!--                <Button layoutX="84.0" layoutY="577.0" mnemonicParsing="false" onMouseClicked="#associationDelete" prefHeight="38.0" prefWidth="66.0" styleClass="delete-btn" stylesheets="@dashboardDesign.css" text="Delete" />-->
+                <!--                <Button layoutX="294.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#generatePdfAssociation" text="Pdf" />-->
+            </children>
+        </AnchorPane>
+        <AnchorPane accessibleRole="INCREMENT_BUTTON" layoutX="380.0" layoutY="14.0" prefHeight="640.0" prefWidth="646.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="white-bg" />
+                <String fx:value="shadow" />
+            </styleClass>
+            <children>
+                <TableView fx:id="ticketTableView" layoutX="16.0" layoutY="84.0" prefHeight="434.0" prefWidth="616.0" stylesheets="@dashboardDesign.css">
+                    <columns>
+                        <TableColumn fx:id="col_ticket_evenement" prefWidth="190.39993286132812" text="Evenement" />
+                        <TableColumn fx:id="col_ticket_type" prefWidth="172.00006103515625" text="Type" />
+                        <TableColumn fx:id="col_ticket_prix" prefWidth="123.20001220703125" text="Prix" />
+                        <TableColumn fx:id="col_ticket_nbre" prefWidth="128.0" text="Nombre de tickets" />
+                    </columns>
+                </TableView>
+
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
