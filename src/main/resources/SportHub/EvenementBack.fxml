@@ -54,7 +54,7 @@
         <Button fx:id="event_add" layoutX="40.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="38.0" prefWidth="254.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
     </children>
 </AnchorPane>
-    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="409.0" layoutY="153.0" prefHeight="586.0" prefWidth="892.0" style="-fx-background-color: transparent;" styleClass="scroll-pane">
+    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="409.0" layoutY="132.0" prefHeight="607.0" prefWidth="934.0" style="-fx-background-color: transparent;" styleClass="scroll-pane">
         <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="534.0" prefWidth="890.0" style="-fx-background-color: transparent;" stylesheets="@Back.css" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
          <columnConstraints>
             <ColumnConstraints />

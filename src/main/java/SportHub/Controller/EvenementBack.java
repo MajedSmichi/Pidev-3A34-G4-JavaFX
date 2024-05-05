@@ -153,20 +153,20 @@ public class EvenementBack {
         events.sort(Comparator.comparing(Evenement::getLieu)); // Sort events by lieu
         displayEvents(events);
     }
-    @FXML
-    private void searchEvents() throws SQLException, IOException {
-        String searchTerm = searchField.getText();
-        List<Evenement> events = evenementService.searchEvents(searchTerm);
-        eventContainerBack.getChildren().clear();
-        if (events.isEmpty()) {
-            Label label = new Label("Aucun événement ne correspond à votre recherche");
-            label.getStyleClass().add("error-message"); // Add a style class to style the error message
-            eventContainerBack.add(label, 0, 0);
-        } else {
-            displayEvents(events);
-        }
-    }
 
+@FXML
+private void searchEvents() throws SQLException, IOException {
+    String searchTerm = searchField.getText();
+    List<Evenement> events = evenementService.searchEvents(searchTerm);
+    eventContainerBack.getChildren().clear(); // Clear the GridPane
+    if (events.isEmpty()) {
+        Label label = new Label("Aucun événement ne correspond à votre recherche");
+        label.getStyleClass().add("error-message"); // Add a style class to style the error message
+        eventContainerBack.add(label, 0, 0);
+    } else {
+        displayEvents(events);
+    }
+}
 
 private void displayEvents(List<Evenement> events) throws SQLException, IOException {
     int itemsPerPage = 6; // Set the number of items per page
@@ -206,11 +206,18 @@ private void displayEvents(List<Evenement> events) throws SQLException, IOExcept
             }
         }
 
-        return gridPane; // Return the GridPane as the page content
+        // Remove all children of the eventContainerBack GridPane that are not the pagination control
+        eventContainerBack.getChildren().removeIf(node -> node != pagination);
+
+        // Add the created GridPane to the eventContainerBack GridPane
+        eventContainerBack.getChildren().add(0, gridPane); // Add the gridPane at the first position
+
+        return new ScrollPane(gridPane); // Return the GridPane wrapped in a ScrollPane as the page content
     });
 }
 
-    public void eventAdd() {
+
+public void eventAdd() {
         try {
             Alert alert;
 

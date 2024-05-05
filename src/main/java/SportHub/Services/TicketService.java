@@ -175,4 +175,23 @@ public int getTotalPurchasedTicketsByEventId(int eventId) throws SQLException {
     }
     return 0;
 }
+
+    public List<Ticket> searchTicketsByEventName(String eventName) throws SQLException {
+        List<Ticket> tickets = new ArrayList<>();
+        String query = "SELECT ticket.* FROM ticket JOIN evenement ON ticket.evenement_id = evenement.id WHERE evenement.nom LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, "%" + eventName + "%");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Ticket ticket = new Ticket();
+            ticket.setId(resultSet.getInt("id"));
+            ticket.setEvenementId(resultSet.getInt("evenement_id"));
+            ticket.setPrix(resultSet.getInt("prix"));
+            ticket.setType(resultSet.getString("type"));
+            ticket.setNbreTicket(resultSet.getInt("nbre_ticket"));
+            tickets.add(ticket);
+        }
+        return tickets;
+    }
+
 }

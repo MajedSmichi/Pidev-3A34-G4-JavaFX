@@ -17,6 +17,8 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +63,11 @@ public class TicketBack {
     @FXML
     private AnchorPane ajouterPane;
 
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private ComboBox<String> sortComboBox;
 
     @FXML
     void addTicket(MouseEvent event) {
@@ -123,13 +130,82 @@ public class TicketBack {
         hide.setOnAction(e -> {
             ajouterPane.setVisible(false);
         });
-
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                searchTicketsByEventName();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        });
         loadEvents();
-        showListTicket();
+        // Get all tickets
+        List<Ticket> tickets = null;
+        try {
+            tickets = ticketService.getAllTickets();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        // Call showListTicket method
+        if (tickets != null) {
+            showListTicket(tickets);
+        }
+
+        // Add sorting options to the sortComboBox
+sortComboBox.getItems().addAll("Sort by Price", "Sort by Event Name");
+        sortComboBox.setPromptText("Sort");
+// Add a listener to the sortComboBox
+        sortComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+switch ((String) newValue) {
+    case "Sort by Price":
+        sortTicketsByPrice();
+        break;
+    case "Sort by Event Name":
+        sortTicketsByEventName();
+        break;
+}
+            } catch (SQLException | IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
-    private void loadEvents() {
+
+    private void sortTicketsByPrice() throws SQLException, IOException {
+        List<Ticket> tickets = ticketService.getAllTickets();
+        tickets.sort(Comparator.comparing(Ticket::getPrix)); // Sort tickets by price
+        showListTicket(tickets);
+    }
+
+    private void sortTicketsByEventName() throws SQLException, IOException {
+        List<Ticket> tickets = ticketService.getAllTickets();
+        // Sort tickets by event name
+        tickets.sort(Comparator.comparing(ticket -> {
+            try {
+                return evenementService.getEventById(ticket.getEvenementId()).getNom();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }));
+        showListTicket(tickets);
+    }
+@FXML
+private void searchTicketsByEventName() throws SQLException, IOException {
+    String searchTerm = searchField.getText();
+    List<Ticket> tickets = ticketService.searchTicketsByEventName(searchTerm);
+    ticketContainerBack.getChildren().clear(); // Clear the GridPane
+    if (tickets.isEmpty()) {
+        Label label = new Label("Aucun ticket ne correspond à votre recherche");
+        label.getStyleClass().add("error-message"); // Add a style class to style the error message
+        ticketContainerBack.add(label, 0, 0);
+    } else {
+        showListTicket(tickets);
+    }
+}
+
+private void loadEvents() {
         try {
             List<String> eventNames = evenementService.getAllEventNames();
             ObservableList<String> observableList = FXCollections.observableArrayList(eventNames);
@@ -229,7 +305,8 @@ public void addTicket1() {
                 alert.showAndWait();
 
                 // Refresh the table view
-                showListTicket();
+               List<Ticket> tickets = ticketService.getAllTickets();
+showListTicket(tickets);
             }
         }
     } catch (SQLException e) {
@@ -237,32 +314,28 @@ public void addTicket1() {
     }
 }
 
-@FXML
-private void showListTicket() {
-    try {
-        TicketService service = new TicketService();
-        List<Ticket> tickets = service.getAllTickets();
+    @FXML
+    private void showListTicket(List<Ticket> tickets) {
+        try {
+            // Clear the container before repopulating it
+            ticketContainerBack.getChildren().clear();
 
-        // Clear the container before repopulating it
-        ticketContainerBack.getChildren().clear();
+            for (int i = 0; i < tickets.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/SportHub/TicketCard.fxml"));
+                Pane pane = fxmlLoader.load();
 
-        for (int i = 0; i < tickets.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/SportHub/TicketCard.fxml"));
-            Pane pane = fxmlLoader.load();
+                TicketCard controller = fxmlLoader.getController();
+                controller.setData(tickets.get(i), evenementService.getEventNameById(tickets.get(i).getEvenementId()));
+                controller.setTicketBackController(this);
 
-            TicketCard controller = fxmlLoader.getController();
-            controller.setData(tickets.get(i), evenementService.getEventNameById(tickets.get(i).getEvenementId()));
-            controller.setTicketBackController(this);
-
-            // Add the pane to the GridPane at the specified column and row
-            ticketContainerBack.add(pane, i % 3, i / 3);
+                // Add the pane to the GridPane at the specified column and row
+                ticketContainerBack.add(pane, i % 3, i / 3);
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException | IOException e) {
-        e.printStackTrace();
     }
-}
-
 
 public void populateFields(Ticket ticket) {
     ajouterPane.setVisible(true);
@@ -359,7 +432,8 @@ public void ticketUpdate() {
             ticketService.updateTicket(currentTicketId, selectedEvent.getId(), prix, type, nbre);
 
             // Refresh the table view
-            showListTicket();
+       List<Ticket> tickets = ticketService.getAllTickets();
+showListTicket(tickets);
         }
     } catch (SQLException e) {
         e.printStackTrace();
@@ -393,7 +467,8 @@ public void ticketUpdate() {
                 ticketService.deleteTicket(selectedTicket.getId());
 
                 // Refresh the table view
-                showListTicket();
+           List<Ticket> tickets = ticketService.getAllTickets();
+showListTicket(tickets);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -45,11 +45,13 @@
             <Button fx:id="ticket_update" layoutX="41.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#ticketUpdate" prefHeight="38.0" prefWidth="236.0" styleClass="update-btn" text="Modifier" />
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="1.0" layoutY="109.0" prefHeight="612.0" prefWidth="895.0" styleClass="scroll-pane">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="1.0" layoutY="153.0" prefHeight="568.0" prefWidth="895.0" styleClass="scroll-pane">
          <content>
             <GridPane fx:id="ticketContainerBack" alignment="TOP_CENTER" hgap="10" layoutX="450.0" layoutY="148.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="610.0" prefWidth="874.0" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0" />
          </content>
       </ScrollPane>
       <Button fx:id="hide" layoutX="1127.0" layoutY="28.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0" />
+      <TextField fx:id="searchField" layoutX="60.0" layoutY="58.0" onKeyReleased="#searchTicketsByEventName" prefHeight="51.0" prefWidth="530.0" promptText="Search" />
+      <ComboBox fx:id="sortComboBox" layoutX="598.0" layoutY="58.0" prefHeight="50.0" prefWidth="190.0" styleClass="sortComboBox" />
    </children>
 </AnchorPane>
