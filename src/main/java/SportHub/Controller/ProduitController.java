@@ -39,6 +39,9 @@ public class ProduitController {
 
     @FXML
     private AnchorPane ajouterPane;
+    @FXML
+    private Label productCountLabel;
+
 
     @FXML
     private Button ajouterProduit;
@@ -85,7 +88,7 @@ public class ProduitController {
 
     private Image image = null;
 
-
+private ProductService productService = new ProductService();
     private Servicecategorie serviceCategorie;
     private Product product;
 
@@ -133,6 +136,9 @@ public class ProduitController {
                     e.printStackTrace();
                 }
             }
+            int totalProducts = productService.getTotalProducts();
+            productCountLabel.setText(String.valueOf(totalProducts));
+
         });
 
         hide.visibleProperty().bind(ajouterPane.visibleProperty());

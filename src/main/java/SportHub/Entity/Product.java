@@ -82,7 +82,6 @@ public class Product {
 
     public void setQuantite(int quantite) {
         if (quantite < 0) {
-            this.quantite = 0;
             throw new IllegalArgumentException("La quantité ne peut pas être inférieure à 0");
         }
         this.quantite = quantite;

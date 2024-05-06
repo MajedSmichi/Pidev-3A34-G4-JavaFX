@@ -68,6 +68,7 @@ public class MarketController implements Initializable,FavoriteListener {
 
     @FXML
     private TextField searchField;
+    private boolean firstClick = true;
 
     @FXML
     private ComboBox<String> categoryFilter;
@@ -208,7 +209,8 @@ public class MarketController implements Initializable,FavoriteListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-     }
+
+    }
 
     public void searchProduct() {
         String searchText = searchField.getText().trim();
@@ -297,38 +299,17 @@ public class MarketController implements Initializable,FavoriteListener {
             alert.setContentText("The stock for this product is exhausted.");
             alert.showAndWait();
         } else {
-            try {
-                // Décrémentez la quantité de produit dans la base de données
-                productService.decrementQuantity(chosenProduct, selectedQuantity);
-
-                // Mettez à jour l'affichage de la quantité de produit
-                int newQuantity = currentProductQuantity - selectedQuantity;
-                product_quantity.setText(String.valueOf(newQuantity));
-
-                // Mettez à jour la visibilité de l'image "Sold Out"
-                if (newQuantity == 0) {
-                    updateSoldOutImageVisibility(chosenProduct);
-                }
-                // Ajoutez le produit au panier
-                myCartController.addProductToCart(chosenProduct, selectedQuantity);
-
-                // Incrémentez l'indicateur de panier
-                int currentQuantity = Integer.parseInt(cartIndicator.getText());
-                int newCartIndicatorValue = currentQuantity + 1;
-                cartIndicator.setText(String.valueOf(newCartIndicatorValue));
-
-                // Vérifiez si la fenêtre du panier est déjà ouverte, sinon ouvrez-la
-                if (cartStage != null && !cartStage.isShowing()) {
-                    openCart(); // Ouvrir le panier
-                }
-
-                System.out.println("Product added to cart.");
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (cartStage != null && !cartStage.isShowing()) {
+                openCart(); // Ouvrir le panier
             }
+            // Ajoutez le produit au panier
+            myCartController.addProductToCart(chosenProduct, selectedQuantity, cartIndicator);
+
+            // Vérifiez si la fenêtre du panier est déjà ouverte, sinon ouvrez-la
+            System.out.println("Product added to cart.");
+            setChosenProduct(chosenProduct);
         }
     }
-
     @FXML
     private void openMyFavors() {
         try {

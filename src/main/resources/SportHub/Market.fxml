@@ -21,11 +21,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MarketController">
+<AnchorPane fx:id="achorfront" prefHeight="787.0" prefWidth="1519.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MarketController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
-                <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                <VBox prefHeight="787.0" prefWidth="411.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                             <children>
@@ -41,7 +41,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@style.css" VBox.vgrow="NEVER">
+                        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="376.0" stylesheets="@style.css" VBox.vgrow="NEVER">
                             <VBox.margin>
                                 <Insets left="30.0" right="30.0" />
                             </VBox.margin>
@@ -54,7 +54,7 @@
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@style.css" text="Search" textFill="WHITE" />
+                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" styleClass="search-button" stylesheets="@style.css" text="Search" textFill="WHITE" />
                             </children>
                             <styleClass>
                                 <String fx:value="search-box" />
@@ -76,7 +76,7 @@
                               </Label>
                               <Pane layoutX="153.0" layoutY="16.0" prefHeight="38.0" prefWidth="183.0">
                                  <children>
-                                    <Label fx:id="product_quantity" contentDisplay="RIGHT" layoutX="100.0" layoutY="12.0" prefHeight="45.0" prefWidth="58.0" text="Stock" textFill="#f2eee9">
+                                    <Label fx:id="product_quantity" contentDisplay="RIGHT" layoutX="68.0" layoutY="12.0" prefHeight="45.0" prefWidth="58.0" text="Stock" textFill="#f2eee9">
                                        <font>
                                           <Font size="30.0" />
                                        </font>
@@ -154,7 +154,7 @@
                            <children>
                                <ComboBox fx:id="categoryFilter" layoutX="72.0" layoutY="26.0" prefHeight="45.0" prefWidth="130.0" promptText="Category" styleClass="comboBox" stylesheets="@style.css" />
                               <Slider fx:id="mySlider" layoutX="390.0" layoutY="41.0" max="200" min="0" value="0" />
-                                        <Label fx:id="sliderValueLabel" layoutX="530.0" layoutY="39.0" prefHeight="19.0" prefWidth="64.0">
+                                        <Label fx:id="sliderValueLabel" layoutX="530.0" layoutY="39.0" prefHeight="19.0" prefWidth="64.0" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -165,13 +165,13 @@
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="myFavorsButton" text="My Favors" onAction="#openMyFavors" /> <!-- Add this line -->
+                                <Button fx:id="myFavorsButton" onAction="#openMyFavors" text="My Favors" /> <!-- Add this line -->
                                 <StackPane>
                                     <Label fx:id="cartIndicator" layoutX="35" layoutY="0" text="0" textFill="RED">
                               <font>
                                  <Font name="Arial Bold" size="16.0" />
                               </font></Label>
-                                    <ImageView  onMouseClicked="#openCart" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="41.0" onMouseClicked="#openCart" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@images/ic_cart.png" />
                                         </image>

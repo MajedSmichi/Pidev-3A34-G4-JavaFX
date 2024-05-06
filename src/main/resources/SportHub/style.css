@@ -26,8 +26,9 @@
 }
 
 .comboBox{
-    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-color: rgba(243, 2, 2, 0.3);
     -fx-background-radius: 30;
+    -fx-text-fill: white;
 }
 
 .add-btn{

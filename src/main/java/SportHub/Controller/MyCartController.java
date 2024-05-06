@@ -1,6 +1,7 @@
 package SportHub.Controller;
 
 import SportHub.Entity.Product;
+import SportHub.Services.ProductService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,12 +14,16 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
 import java.io.FileOutputStream;
+import java.sql.SQLException;
 
 
 public class MyCartController {
 
     @FXML
     private TableView<Product> cartTable;
+    @FXML
+    private Label cartIndicator;
+
 
     @FXML
     private TableColumn<Product, String> nameColumn;
@@ -42,6 +47,11 @@ public class MyCartController {
     @FXML
     private Button generateInvoiceButton;
     private double total = 0;
+    private ProductService productService; // Ajoutez cette ligne
+
+    public MyCartController() {
+        this.productService = new ProductService(); // Initialisez productService dans le constructeur
+    }
 
     @FXML
     public void initialize() {
@@ -52,7 +62,7 @@ public class MyCartController {
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
         totalColumn.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-       //Set a custom cell factory for the image column
+        //Set a custom cell factory for the image column
         imageColumn.setCellFactory(param -> new TableCell<>() {
             private final ImageView imageView = new ImageView();
 
@@ -99,10 +109,28 @@ public class MyCartController {
 
     }
 
-    public void addProductToCart(Product product, int quantity) {
+    public void addProductToCart(Product product, int quantity, Label cartIndicator) {
+        try {
+            // Decrease the quantity of the product in the inventory
+            productService.decrementQuantity(product, quantity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         product.setQuantite(quantity);
         product.setTotal(product.getPrice() * quantity);
         total += product.getTotal();
+
+        // Check if the product is already in the cart
+        boolean isProductInCart = cartTable.getItems().stream()
+                .anyMatch(p -> p.getId() == product.getId());
+
+        // If the product is not in the cart, increment cartIndicator
+        if (!isProductInCart) {
+            int currentQuantity = Integer.parseInt(cartIndicator.getText());
+            int newCartIndicatorValue = currentQuantity + 1;
+            cartIndicator.setText(String.valueOf(newCartIndicatorValue));
+        }
 
         // Add the product to the cart table
         cartTable.getItems().add(product);
@@ -113,6 +141,7 @@ public class MyCartController {
         // Update the total label
         totalLabel.setText("Total: " + total);
     }
+
     public void generateInvoice() {
         System.out.println("Generating invoice...");
 
@@ -143,7 +172,16 @@ public class MyCartController {
             document.add(new Paragraph("Total: " + total));
 
             document.close();
+
+            // Ajoutez cette partie pour afficher une alerte lorsque le PDF est prêt
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("PDF Ready");
+            alert.setHeaderText(null);
+            alert.setContentText("The PDF has been generated and is ready for download.");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }}
+    }
+}

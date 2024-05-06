@@ -201,33 +201,26 @@ public class ProductService {
 
         return filteredProducts;
     }
-    public void decrementQuantity(Product product, int quantite) throws SQLException {
+    public void decrementQuantity(Product product, int quantity) throws SQLException {
         // Get the current quantity of the product
         int currentQuantity = product.getQuantite();
 
-        // Check if the quantity to decrement is greater than the current quantity
-        if (quantite > currentQuantity) {
-            // If it is, set the quantity to 0
-            quantite = currentQuantity;
+        // Calculate the new quantity
+        int newQuantity = currentQuantity - quantity;
+
+        // If the new quantity is less than 0, throw an exception
+        if (newQuantity < 0) {
+            throw new IllegalArgumentException("The quantity cannot be less than 0");
         }
 
-        // Check if the quantity is less than or equal to 0 before decrementing it in the database
-        if (currentQuantity <= 0) {
-            return;
-        }
+        // Update the quantity of the product in the database
+        String query = "UPDATE product SET quantite = ? WHERE id = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setInt(1, newQuantity);
+        preparedStatement.setInt(2, product.getId());
 
-        // Create a SQL query to update the quantity of the product
-        String query = "UPDATE product SET quantite = quantite - ? WHERE id = ?";
-
-        // Prepare the SQL query
-        PreparedStatement stmt = conn.prepareStatement(query);
-
-        // Set the quantity and the product ID in the PreparedStatement
-        stmt.setInt(1, quantite);
-        stmt.setInt(2, product.getId());
-
-        // Execute the update query
-        stmt.executeUpdate();
+        // Execute the update
+        preparedStatement.executeUpdate();
     }
     public Product getProductById(int id) throws SQLException {
         Product product = null;
@@ -250,4 +243,29 @@ public class ProductService {
 
         return product;
     }
+    public int getTotalProducts() {
+        int totalProducts = 0;
+
+        // Utilisez la connexion existante à la base de données
+        try {
+
+            // Créez une requête SQL pour obtenir le nombre total de produits
+            String sql = "SELECT COUNT(*) FROM product";
+
+            // Exécutez la requête
+            try (Statement statement = conn.createStatement();
+                 ResultSet resultSet = statement.executeQuery(sql)) {
+
+                // Si le résultat est disponible, mettez à jour totalProducts
+                if (resultSet.next()) {
+                    totalProducts = resultSet.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalProducts;
+    }
+
 }
