@@ -36,7 +36,8 @@ module com.example.gestionreclamation {
     requires java.datatransfer;
     requires stripe.java;
     requires java.desktop;
-    requires javafx.swing; // Only use poi-ooxml
+    requires javafx.swing;
+    requires okhttp3; // Only use poi-ooxml
     opens Gestionreclamation to javafx.fxml;
     exports Gestionreclamation;
     exports Gestionreclamation.Controller;

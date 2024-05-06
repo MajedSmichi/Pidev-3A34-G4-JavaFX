@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="front salle">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_05_2024_01_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_05_2024_01_05__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_26_03_2024_22_34__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_02_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_1_16_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_11_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_4_2024_2_13_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_05_2024_14_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_05_2024_14_21__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/EmailUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/BardChatBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Services/BardChatBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +34,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/SaadLouay-3A34-G4" />
+    <option name="BRANCH" value="origin/AlaDaas-3A34-G4" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -54,12 +63,12 @@
     &quot;assignee&quot;: &quot;MajedSmichi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
-    &quot;accountId&quot;: &quot;e8372b73-8ed5-41f0-ac37-ecd68e52e9b4&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git",
+    "accountId": "c6bbbcb0-5fc6-462e-817c-1b2bbad08779"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -127,7 +136,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Gestionreclamation.Controller.Main" />
-      <module name="Pidev-3A34-G4" />
+      <module name="GestionReclamation" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Gestionreclamation.Controller.*" />
@@ -252,6 +261,7 @@
       <workItem from="1714828647433" duration="10652000" />
       <workItem from="1714856685370" duration="7136000" />
       <workItem from="1714912516498" duration="2070000" />
+      <workItem from="1714989332299" duration="91000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -535,7 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="User Static Crud" />
     <MESSAGE value="Screen of login nd register" />
     <MESSAGE value="img login nd register" />
     <MESSAGE value="login button" />
@@ -560,7 +569,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="maerge louay" />
     <MESSAGE value="front salle" />
-    <option name="LAST_COMMIT_MESSAGE" value="front salle" />
+    <MESSAGE value="merge iyed with majed" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge iyed with majed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -568,7 +578,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java</url>
           <line>36</line>
-          <properties class="Gestionreclamation.HelloApplication" method="main">
+          <properties class="Gestionreclamation.HelloApplication">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
