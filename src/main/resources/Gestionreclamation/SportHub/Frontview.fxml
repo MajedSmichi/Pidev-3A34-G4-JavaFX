@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="s" prefHeight="787.0" prefWidth="1536.0" stylesheets="@FrontView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.SportHub.Controller.FrontViewController">
+   <content>
+      <AnchorPane fx:id="anchorpane1" prefHeight="798.0" prefWidth="1520.0">
+         <children>
+            <Pane prefHeight="66.0" prefWidth="1248.0" />
+            <AnchorPane fx:id="achorfront" layoutX="356.0" layoutY="456.0" prefHeight="299.0" prefWidth="611.0" />
+            <ImageView fitHeight="401.0" fitWidth="1519.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/breadcrumb-bg.jpg" />
+               </image>
+            </ImageView>
+            <HBox alignment="TOP_CENTER" layoutX="142.0" layoutY="34.0" prefHeight="64.0" prefWidth="1235.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Home" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Sales" />
+                  <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadEvenementAndMostPopularEvents" prefHeight="39.0" prefWidth="118.0" text="Evenement" />
+                  <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" />
+                  <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Produit" />
+                  <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="128.0" text="Reclamation" />
+               </children>
+            </HBox>
+            <Button fx:id="mes_tickets" layoutX="687.0" layoutY="350.0" mnemonicParsing="false" onAction="#loadUserTickets" prefHeight="34.0" prefWidth="194.0" text="Mes Tickets" visible="false" />
+            <Label fx:id="list_event" alignment="CENTER" layoutX="642.0" layoutY="74.0" prefHeight="46.0" prefWidth="306.0" text="MOST POPULAR EVENTS" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+<ScrollPane fx:id="most_popular_events" layoutX="263.0" layoutY="154.0" prefHeight="186.0" prefWidth="1006.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent; " />         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

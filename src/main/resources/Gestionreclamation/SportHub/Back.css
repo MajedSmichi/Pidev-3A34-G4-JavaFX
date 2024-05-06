@@ -1,0 +1,272 @@
+/* Style for the event name */
+#name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3f3f3f;
+}
+
+
+
+#PaneEvenement {
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+    -fx-min-width: 250px;  /* Set minimum width */
+    -fx-min-height: 350px; /* Set minimum height */
+    -fx-max-width: 250px;  /* Set maximum width */
+    -fx-max-height: 350px; /* Set maximum height */
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+
+#PaneEvenement:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 165, 0, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(255, 195, 89, 0.81);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#PaneEvenement:hover #name {
+    -fx-text-fill: #ffffff; /* Makes the text white */
+}
+
+#supprimer, #modifier {
+    -fx-background-color: transparent;
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+
+}
+
+#hide {
+    -fx-background-color: transparent;
+
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+    -fx-min-width: 38px;
+    -fx-min-height: 38px;
+    -fx-max-width: 38px;
+    -fx-max-height: 38px;
+}
+
+
+#ajouterEvenement{
+    -fx-background-color: #000000; /* Change button background color to black */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#ajouterEvenement:hover {
+    -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
+#PaneDetail {
+
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+#PaneDetail:hover {
+
+    -fx-effect: dropshadow(three-pass-box, rgba(87, 87, 87, 0.87), 10, 0, 0, 10);
+}
+
+
+
+#PaneTicket {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+    -fx-min-width: 250px;  /* Set minimum width */
+    -fx-min-height: 350px; /* Set minimum height */
+    -fx-max-width: 250px;  /* Set maximum width */
+    -fx-max-height: 350px; /* Set maximum height */
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: scale 0.5s;
+}
+
+#PaneTicket:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgb(146, 138, 191), 10, 0, 0, 10);
+    -fx-background-color: rgb(255, 208, 108);
+    -fx-text-fill: white ;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+#PaneTicket:hover #name,
+#PaneTicket:hover #Date,
+#PaneTicket:hover #Prix,
+#PaneTicket:hover #Type,
+#PaneTicket:hover #Nbre_tickets {
+    -fx-text-fill: white;
+}
+
+#ajouterTicket{
+    -fx-background-color: #000000; /* Change button background color to black */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+#ajouterTicket:hover {
+    -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
+}
+
+#scrollPane{
+    -fx-background-color: transparent;
+}
+#eventContainerBack {
+    -fx-background-color: transparent;
+
+}
+#root1 {
+    -fx-background-color: transparent;
+}
+.error-message {
+    /* Add your styles here */
+    font-size: 20px;
+    color: red;
+}
+
+#sortComboBox {
+    -fx-background-color: #ffffff; /* Change button background color to black */
+    -fx-text-fill: #003669;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#sortComboBox:hover {
+    -fx-background-color: #FFA500; /* Change button hover background color to orange */
+}
+
+.progress-bar {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #bbb;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 3px;
+}
+
+.progress-bar .bar {
+    -fx-background-color: rgba(31, 190, 255, 0.81);
+    -fx-background-insets: 1px;
+    -fx-background-radius: 5px;
+}
+
+.progress-bar .label {
+    -fx-text-fill: #000000;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
+}
+.pagination .control-box .control {
+    -fx-background-color: white;
+}
+.pagination .control-box .control .button {
+    -fx-background-color: rgba(2, 69, 119, 0.6); /* Button background color */
+    -fx-text-fill: #000000; /* Button text color */
+    -fx-border-color: #000000; /* Button border color */
+/* Button border radius for rounded corners */
+}
+
+.pagination .control-box .control .button:hover {
+    -fx-background-color: #FFA500; /* Button background color when hovered */
+    -fx-text-fill: #ffffff; /* Button text color when hovered */
+
+}
+
+.pagination .control-box .control .button:pressed {
+    -fx-background-color: #FF4500; /* Button background color when pressed */
+    -fx-text-fill: #ffffff; /* Button text color when pressed */
+}
+.pagination .toggle-button {
+    -fx-background-color: #ffffff; /* Button background color */
+    -fx-text-fill: #000000; /* Button text color */
+    -fx-border-color: #000000; /* Button border color */
+}
+
+.pagination .toggle-button:hover {
+    -fx-background-color: #FFA500; /* Button background color when hovered */
+    -fx-text-fill: #ffffff; /* Button text color when hovered */
+}
+
+.pagination .toggle-button:pressed {
+    -fx-background-color: #FFA500; /* Button background color when pressed */
+    -fx-text-fill: #ffffff; /* Button text color when pressed */
+}
+
+.pagination .toggle-button:selected {
+    -fx-background-color: #FFA500; /* Button background color when selected */
+    -fx-text-fill: #ffffff; /* Button text color when selected */
+}
+.pagination .arrow-button {
+    -fx-background-color: #ffffff; /* Button background color */
+    -fx-text-fill: #000000; /* Button text color */
+    -fx-border-color: #000000; /* Button border color */
+    -fx-border-width: 1px; /* Button border width */
+    -fx-border-radius: 5px; /* Button border radius for rounded corners */
+}
+
+.pagination .arrow-button:hover {
+    -fx-background-color: #FFA500; /* Button background color when hovered */
+    -fx-text-fill: #ffffff; /* Button text color when hovered */
+}
+
+.pagination .arrow-button:pressed {
+    -fx-background-color: #FF4500; /* Button background color when pressed */
+    -fx-text-fill: #ffffff; /* Button text color when pressed */
+}

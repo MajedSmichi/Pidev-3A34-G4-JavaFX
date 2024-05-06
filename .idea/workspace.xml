@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="merge iyed with majed">
+    <list default="true" id="654848c4-1f7f-45df-988e-87231ea556ad" name="Changes" comment="front salle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/EmailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Salle/FrontActiviteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +25,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/WederniIyed-3A34-G4" />
+    <option name="BRANCH" value="origin/SaadLouay-3A34-G4" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -51,18 +54,14 @@
     &quot;assignee&quot;: &quot;MajedSmichi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git",
-    "accountId": "c6bbbcb0-5fc6-462e-817c-1b2bbad08779"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MajedSmichi/Pidev-3A34-G4-JavaFX.git&quot;,
+    &quot;accountId&quot;: &quot;e8372b73-8ed5-41f0-ac37-ecd68e52e9b4&quot;
   }
-}]]></component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -77,34 +76,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Gestionreclamation.Controller.Main.executor": "Run",
-    "Application.Gestionreclamation.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.Pidev-3A34-G4 [clean].executor": "Run",
-    "Maven.Pidev-3A34-G4 [install].executor": "Run",
-    "Maven.Pidev-3A34-G4 [verify].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Gestionreclamation.Controller.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Gestionreclamation.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Pidev-3A34-G4 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
@@ -119,13 +118,16 @@
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Gestionreclamation" />
       <recent name="Controller" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Gestionreclamation.Controller.Main">
     <configuration name="Gestionreclamation.Controller.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Gestionreclamation.Controller.Main" />
-      <module name="GestionReclamation" />
+      <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Gestionreclamation.Controller.*" />
@@ -166,7 +168,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Controller.Main" />
-      <module name="GestionReclamation" />
+      <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="connectionSql.*" />
@@ -247,7 +249,9 @@
       <workItem from="1713603550951" duration="2318000" />
       <workItem from="1713605886662" duration="13264000" />
       <workItem from="1713657572605" duration="29818000" />
-      <workItem from="1714828647433" duration="11380000" />
+      <workItem from="1714828647433" duration="10652000" />
+      <workItem from="1714856685370" duration="7136000" />
+      <workItem from="1714912516498" duration="2070000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -465,15 +469,55 @@
       <option name="project" value="LOCAL" />
       <updated>1714828769441</updated>
     </task>
-    <task id="LOCAL-00028" summary="merge iyed with majed">
+    <task id="LOCAL-00028" summary="test">
       <option name="closed" value="true" />
-      <created>1714840945572</created>
+      <created>1714856779861</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1714840945572</updated>
+      <updated>1714856779861</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="maerge louay">
+      <option name="closed" value="true" />
+      <created>1714867347482</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714867347482</updated>
+    </task>
+    <task id="LOCAL-00030" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714936371270</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714936371270</updated>
+    </task>
+    <task id="LOCAL-00031" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714936408389</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714936408389</updated>
+    </task>
+    <task id="LOCAL-00032" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714937007704</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1714937007704</updated>
+    </task>
+    <task id="LOCAL-00033" summary="front salle">
+      <option name="closed" value="true" />
+      <created>1714938409869</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714938409869</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="User Static Crud" />
     <MESSAGE value="Screen of login nd register" />
     <MESSAGE value="img login nd register" />
@@ -513,19 +556,15 @@
     <MESSAGE value="function convertBcryptPrefixTo2a" />
     <MESSAGE value="fix id in symfony and java" />
     <MESSAGE value="add UserService" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/WederniIyed-3A34-G4'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/Controller/HelloApplication.java&#10;#&#9;src/main/java/Controller/TestConnectionSql.java&#10;#&#9;src/main/java/Controller/UserController.java&#10;#&#9;src/main/java/Gestionreclamation/Controller/HelloController.java&#10;#&#9;src/main/java/Gestionreclamation/Entity/User.java&#10;#&#9;src/main/java/connectionSql/ConnectionSql.java&#10;#&#9;src/main/java/module-info.java&#10;#&#9;src/main/resources/com/example/pidev3a34g4/hello-view.fxml" />
     <MESSAGE value="activate and desactivate user" />
-    <MESSAGE value="merge iyed with majed" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge iyed with majed" />
+    <MESSAGE value="test" />
+    <MESSAGE value="maerge louay" />
+    <MESSAGE value="front salle" />
+    <option name="LAST_COMMIT_MESSAGE" value="front salle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java</url>
           <line>36</line>

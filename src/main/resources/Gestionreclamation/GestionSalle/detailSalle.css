@@ -1,0 +1,60 @@
+#myPane {
+    -fx-background-color: #cbc6c6;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#myPane:hover {
+    -fx-background-color: #656161;
+    -fx-background-radius: 20px; /* Adjust as needed */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+
+}
+
+#delete {
+    -fx-background-color: #ec5353;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#delete:hover {
+    -fx-background-color: #fa0f2b;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#modifer {
+    -fx-background-color: #80fc72;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#modifer:hover {
+    -fx-background-color: #20fa08;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+#modifierSalle {
+    -fx-background-color: #80fc72;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#modifierSalle:hover {
+    -fx-background-color: #20fa08;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+#event_import {
+    -fx-background-color: #6e7aff;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+#event_import:hover {
+    -fx-background-color: #0365e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+#list {
+    -fx-background-color: transparent;
+}
+#statistique {
+    -fx-background-color: #7299d5;
+    -fx-background-radius: 20px; /* Adjust as needed */
+}
+
+#statistique:hover {
+    -fx-background-color: #0ea8ff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}

@@ -1,0 +1,117 @@
+/* General Styles */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-base: #FFFFFF;
+}
+
+/* ScrollPane Styles */
+.scroll-pane {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #4a4a4a;
+}
+
+/* ImageView Styles */
+.image-view {
+    -fx-pref-width: 100%;
+    -fx-fit-width: true;
+}
+
+/* Button Styles */
+.button {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #FFA500;
+    -fx-background-radius: 5;
+    -fx-font-family: 'Verdana'; /* Change this to your preferred font */
+    -fx-font-size: 17px; /* Adjust size as needed */
+    //-fx-font-weight: bold; /* Makes the text bold */
+}
+.button:hover {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: #ffffff;
+
+}
+
+/* AnchorPane Styles */
+.anchor-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+#anchorpane1 {
+    -fx-background-color: #000000;
+}
+/* Center Content Styles */
+.center-content {
+    -fx-alignment: center;
+}
+
+
+.mes_tickets {
+    -fx-background-color: #ffffff; /* Set default background to orange */
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-min-width: 220px;  /* Set minimum width */
+    -fx-min-height: 250px; /* Set minimum height */
+    -fx-max-width: 220px;  /* Set maximum width */
+    -fx-max-height: 250px; /* Set maximum height */
+    -fx-alignment: center; /* Center all elements */
+    -fx-transition: all 0.3s ease;
+    -fx-text-fill: #000000; /* Change text color to white */
+
+}
+
+
+
+.mes_tickets:hover {
+    -fx-background-color: rgba(255, 204, 109, 0.87); /* Change hover background color to black */
+    -fx-text-fill: #ffffff; /* Makes the text white */
+
+}
+
+
+.mes_tickets .button {
+
+    -fx-min-width: 0px;
+    -fx-min-height: 0px;
+    -fx-max-width: 0px;
+    -fx-max-height: 0px;
+    align-self: center;
+    margin-top: auto;
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+}
+
+
+
+
+.popular-event-card {
+    /* Add your styles here */
+    -fx-background-color: rgba(255, 195, 89, 0.81); /* Set default background to orange */
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(246, 212, 155, 0.81), 5, 0, 0, 5);
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-min-width: 290px;  /* Set minimum width */
+    -fx-min-height: 150px; /* Set minimum height */
+    -fx-max-width: 290px;  /* Set maximum width */
+    -fx-max-height: 150px; /* Set maximum height */
+    -fx-alignment: center; /* Center all elements */
+    -fx-transition: all 0.3s ease;
+
+}
+.popular-event-card:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 165, 0, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(255, 195, 89, 0.81); /* Change hover background color to black */
+}
+
+#most_popular_events .scroll-bar {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+#most_popular_events .scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}

@@ -1,5 +1,8 @@
 package Gestionreclamation.Controller;
 
+import javafx.application.Platform;
+import javafx.util.Duration;
+import javafx.geometry.Pos;
 import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.UserService;
 import javafx.fxml.FXML;
@@ -10,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
+import org.controlsfx.control.Notifications;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -56,11 +60,11 @@ public class UserCardController {
                     userImage.setImage(new Image(avatarUrlResource.toExternalForm()));
                 } else {
 
-                    userImage.setImage(new Image(getClass().getResource("/Gestionreclamation//avatars/default.png").toExternalForm()));
+                    userImage.setImage(new Image(getClass().getResource("/Gestionreclamation/avatars/default.png").toExternalForm()));
                 }
             } catch (IllegalArgumentException e) {
 
-                userImage.setImage(new Image(getClass().getResource("/Gestionreclamation//avatars/default.png").toExternalForm()));
+                userImage.setImage(new Image(getClass().getResource("/Gestionreclamation/avatars/default.png").toExternalForm()));
             }
         } else {
 
@@ -117,6 +121,12 @@ public class UserCardController {
             try {
                 if (UserService.deleteUser(this.currentUser.getId())) {
                     System.out.println("User deleted successfully");
+                    Notifications.create()
+                            .title("User Deletion")
+                            .text("User has been deleted successfully!")
+                            .hideAfter(Duration.seconds(5))
+                            .position(Pos.BOTTOM_RIGHT)
+                            .showInformation();
                     if (refreshListener != null) {
                         refreshListener.refreshUserList();
                     }
@@ -150,6 +160,14 @@ private void handleActivateUser() {
             System.out.println("User active status updated successfully");
             this.currentUser.setVerified(newStatus);
             activateButton.setText(newStatus ? "Deactivate" : "Activate");
+            Platform.runLater(() -> {
+                Notifications.create()
+                        .title("User Activation")
+                        .text("User has been " + (newStatus ? "activated" : "deactivated") + " successfully!")
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .showInformation();
+            });
 
             // Send an email to the user
             String host = "smtp.gmail.com"; // Gmail SMTP server

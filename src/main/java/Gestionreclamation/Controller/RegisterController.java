@@ -292,14 +292,14 @@ public class RegisterController {
     private void togglePasswordVisibility() {
         boolean visibility = passwordTextField.isVisible();
         passwordTextField.setVisible(!visibility);
-        passwordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "/Gestionreclamation/Assets/hide.png" : "/Gestionreclamation/Assets/view.png").toExternalForm()));
+        passwordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "Gestionreclamation/Assets/hide.png" : "Gestionreclamation/Assets/view.png").toExternalForm()));
     }
 
     @FXML
     private void toggleConfirmPasswordVisibility() {
         boolean visibility = confirmPasswordTextField.isVisible();
         confirmPasswordTextField.setVisible(!visibility);
-        confirmPasswordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "/Gestionreclamation/Assets/hide.png" : "/Gestionreclamation/Assets/view.png").toExternalForm()));
+        confirmPasswordToggleImageView.setImage(new Image(getClass().getResource(visibility ? "Gestionreclamation/Assets/hide.png" : "Gestionreclamation/Assets/view.png").toExternalForm()));
     }
 
     private void clearErrors() {
