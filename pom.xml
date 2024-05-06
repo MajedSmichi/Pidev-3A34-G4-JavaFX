@@ -109,11 +109,11 @@
 
 
 
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>8.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.platform</groupId>-->
+<!--            <artifactId>jakarta.jakartaee-api</artifactId>-->
+<!--            <version>8.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
@@ -202,34 +202,34 @@
     </dependencies>
 
     <build>
-<plugins>
-    <!-- ... your existing plugins ... -->
+        <plugins>
+            <!-- ... your existing plugins ... -->
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-            <source>11</source>
-            <target>11</target>
-            <compilerArgs>
-                <arg>--add-exports=com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED</arg>
-                <arg>--add-opens=com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED</arg>
-                <arg>--add-exports=com.google.gson/com.google.gson.internal.bind=stripe.java</arg>
-            </compilerArgs>
-        </configuration>
-    </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <compilerArgs>
+                        <arg>--add-exports=com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED</arg>
+                        <arg>--add-opens=com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED</arg>
+                        <arg>--add-exports=com.google.gson/com.google.gson.internal.bind=stripe.java</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
-        <configuration>
-            <argLine>
-                --add-opens com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED
-            </argLine>
-        </configuration>
-    </plugin>
-</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <argLine>
+                        --add-opens com.google.gson/com.google.gson.internal.bind=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

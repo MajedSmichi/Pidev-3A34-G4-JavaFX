@@ -251,20 +251,35 @@ public class FrontActiviteController {
             int userId = Integer.parseInt(user.getId()); // Replace this with actual method to get logged in user id
             activiteUserService.reserverActivite(currentActivite.getId(), userId);
 
+
+
+            int sale = currentActivite.getSalle_id();
+            SalleService salleService = new SalleService();
+            Salle salle = salleService.getSalleById(sale);
+            String get = salle.getNom();
+
             int code = userId * 33 +17;
-            String reservationInfo = "Code confédentiel : " + code;// Replace with actual reservation ID
+            String verfie = "Réservation confirmée";
+            String userDetails = "User: " + user.getNom() + " " + user.getPrenom() + ", Email: " + user.getEmail();
+            String activiteDetails = "Activite: " + currentActivite.getNom() + ", Date: " + currentActivite.getDate() + ", Salle: " + currentActivite.getSalle_id();
+            String reservationInfo = verfie + "\n" + userDetails + "\n" + activiteDetails + "\n" + "Code confédentiel : " + code ;
             String base64Image = showReservationConfirmation(reservationInfo);
+
+
 
             // Send email
             String userEmail = user.getEmail(); // replace with the user's email
             String subject = "Reservation Confirmation";
-            String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
-                                        "<h1 style='color: black;'>Cher utilisateur,</h1>" +
-                                        "<p style='color: black;'>Vous avez réservé avec succès l'activité : " + currentActivite.getNom() + "</p>" +
-                                        "<p style='color: black;'>Cordialement,</p>" +
-                                        "<p style='color: black;'>Votre équipe</p>" +
-                                        "<img src='data:image/png;base64, " + base64Image + "' style='display: block; margin: auto;' />" +
-                                        "</div>";
+            String content = "<div style=\"padding: 20px; background-color: #f9f9f9; border-radius: 15px; border: 1px solid #ccc; max-width: 600px; margin: 0 auto;\">" +
+                    "<h1 style=\"color: #333; font-size: 24px; text-align: center; margin-bottom: 20px;\">Cher utilisateur,</h1>" +
+                    "<h1 style=\"color: #333; font-size: 20px; text-align: center;\">" + user.getNom() + " " + user.getPrenom() + "</h1>" +
+                    "<p style=\"color: #555; font-size: 18px;\">Vous avez réservé avec succès l'activité : <strong>" + currentActivite.getNom() + "</strong> au sein de la salle : <strong>" + get + "</strong>.</p>" +
+                    "<p style=\"color: #555; font-size: 18px;\">Veuillez sauvegarder le QR Code ci-dessous afin de pouvoir le présenter lors de votre visite pour accéder à nos services.</p>" +
+                    "<p style=\"color: #555; font-size: 18px; margin-top: 20px;\">Cordialement,</p>" +
+                    "<p style=\"color: #555; font-size: 18px; margin-bottom: 0;\">Sport Hub</p>" +
+                    "<img src=\"data:image/png;base64, " + base64Image + "\" style=\"display: block; margin: auto;\" />" +
+                    "</div>";
+
             EmailUtil.sendEmail(userEmail, subject, content);
 
 
@@ -325,17 +340,23 @@ public class FrontActiviteController {
             populateGrid1(activitesByUser);
             detail1.setVisible(false);
 
+            int sale = currentActivite.getSalle_id();
+            SalleService salleService = new SalleService();
+            Salle salle = salleService.getSalleById(sale);
+            String get = salle.getNom();
+
 
             // Send email
             String userEmail = user.getEmail(); // replace with the user's email
             String subject = "Reservation Cancellation";
-            String content = "<div style='padding: 10px; background-color: grey; color: black; border: none; border-radius: 15px;'>" +
-                    "<h1 style='color: black;'>Cher utilisateur,</h1>" +
-                            "<h1 style='color: black;'>"+user.getPrenom()+user.getNom()+"</h1>" +
-                    "<p style='color: black;'>Vous avez annulé avec succès la réservation pour l'activité : " + currentActivite.getNom() + "</p>" +
-                    "<p style='color: black;'>Cordialement,</p>" +
-                    "<p style='color: black;'>Votre équipe</p>" +
-                 "</div>";
+            String content = "<div style=\"padding: 20px; background-color: #f9f9f9; border-radius: 15px; border: 1px solid #ccc; max-width: 600px; margin: 0 auto;\">" +
+                    "<h1 style=\"color: #333; font-size: 24px; text-align: center; margin-bottom: 20px;\">Cher utilisateur,</h1>" +
+                    "<h1 style=\"color: #333; font-size: 20px; text-align: center;\">" + user.getPrenom() + " " + user.getNom() + "</h1>" +
+                    "<p style=\"color: #555; font-size: 18px;\">Votre réservation pour l'activité : <strong>" + currentActivite.getNom() + "</strong> dans la salle : <strong>" + get + "</strong> a été annulée avec succès.</p>" +
+                    "<p style=\"color: #555; font-size: 18px;\">Nous espérons avoir le plaisir de vous accueillir à nouveau prochainement pour de nouvelles aventures.</p>" +
+                    "<p style=\"color: #555; font-size: 18px; margin-top: 20px;\">Cordialement,</p>" +
+                    "<p style=\"color: #555; font-size: 18px; margin-bottom: 0;\">Votre équipe</p>" +
+                    "</div>";
             EmailUtil.sendEmail(userEmail, subject, content);
 
         } catch (SQLException | IOException e) {

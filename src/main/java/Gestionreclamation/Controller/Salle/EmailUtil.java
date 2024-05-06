@@ -34,7 +34,7 @@ public class EmailUtil {
             );
             message.setSubject(subject);
 // set the email content to be HTML
-            message.setContent(content, "text/html");
+            message.setContent(content, "text/html; charset=utf-8");
             Transport.send(message);
 
             System.out.println("Done");
