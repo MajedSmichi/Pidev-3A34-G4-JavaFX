@@ -28,8 +28,7 @@
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadSalleCards" prefHeight="39.0" prefWidth="118.0" text="Salles" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadActivite" prefHeight="39.0" prefWidth="118.0" text="Activites" />
                         <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadEvenementAndMostPopularEvents" prefHeight="39.0" prefWidth="118.0" text="Evenement" />
-                        <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" />
-                        <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadMarket" prefHeight="39.0" prefWidth="118.0" text="Produit" />
+                        <Button layoutX="247.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" text="Cours" onAction="#loadCoursesFront"/>                        <Button layoutX="365.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadMarket" prefHeight="39.0" prefWidth="118.0" text="Produit" />
                         <Button layoutX="484.0" layoutY="10.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="39.0" prefWidth="128.0" text="Reclamation" />
                     </children>
                 </HBox>

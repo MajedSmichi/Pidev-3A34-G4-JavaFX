@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Style de l'arrière-plan */
 .anchor-pane {
     -fx-background-color: #e9edf1;
@@ -50,27 +51,39 @@
 }
 =======
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
 
 
 /* Style for the event name */
 .label {
 <<<<<<< HEAD
+<<<<<<< HEAD
     -fx-font-size: 17px;
 =======
     -fx-font-size: 20px;
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+    -fx-font-size: 20px;
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
     -fx-font-weight: bold;
     -fx-text-fill: #3f3f3f;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
 /* Style for the event date */
 .label.date {
     -fx-font-size: 16px;
     -fx-text-fill: #7f7f7f;
 }
+<<<<<<< HEAD
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
 
 .button {
     -fx-background-color: #000000; /* Change button background color to black */
@@ -130,6 +143,7 @@
     -fx-border-width: 0;
     -fx-min-width: 500px;  /* Set minimum width */
 <<<<<<< HEAD
+<<<<<<< HEAD
     -fx-min-height: 850px; /* Set minimum height */
 
     -fx-alignment: center; /* Center all elements */
@@ -138,6 +152,8 @@
     -fx-border-radius: 15px; /* Add this line to make the border rounded */
 }
 =======
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
     -fx-min-height: 700px; /* Set minimum height */
     -fx-max-width: 500px;  /* Set maximum width */
     -fx-max-height: 700px; /* Set maximum height */
@@ -145,7 +161,10 @@
     -fx-transition: all 0.3s ease;
 }
 
+<<<<<<< HEAD
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
 .detailed-card:hover {
     /* Add your hover styles here */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 10);
@@ -177,10 +196,14 @@
 
 .ticket-card:hover {
 <<<<<<< HEAD
+<<<<<<< HEAD
     -fx-background-color: #ffb337; /* Change hover background color to black */
 =======
     -fx-background-color: #000000; /* Change hover background color to black */
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+    -fx-background-color: #000000; /* Change hover background color to black */
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
 }
 
 .ticket-card:hover .button {
@@ -205,6 +228,7 @@
 
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 .popular-event-card {
@@ -231,3 +255,5 @@
 }
 =======
 >>>>>>> d8b843481fd76ce338451a75abbdc388be606330
+=======
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a

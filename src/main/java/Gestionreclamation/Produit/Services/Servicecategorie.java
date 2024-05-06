@@ -11,7 +11,7 @@ import java.util.Set;
 public class Servicecategorie {
     Connection conn;
     public Servicecategorie() {
-           conn =ConnectionSql.getConnection();
+           conn = ConnectionSql.getConnection();
     }
 
     public void ajouter(Categorie_p categorie) throws SQLException{

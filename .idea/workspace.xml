@@ -14,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -86,7 +86,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/New folder (5)/Pidev-3A34-G4/Pidev-3A34-G4/Pidev-3A34-G4/src/main/java/Gestionreclamation/Produit",
+    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/New folder (5)/Pidev-3A34-G4/Pidev-3A34-G4/Pidev-3A34-G4/src/main/java/Gestionreclamation/Cours/Services",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,10 +101,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MajedSmichi\Desktop\New folder (5)\Pidev-3A34-G4\Pidev-3A34-G4\Pidev-3A34-G4\src\main\java\Gestionreclamation\Cours\Services" />
+      <recent name="C:\Users\MajedSmichi\Desktop\New folder (5)\Pidev-3A34-G4\Pidev-3A34-G4\Pidev-3A34-G4\src\main\java\Gestionreclamation\Cours\Entity" />
+      <recent name="C:\Users\MajedSmichi\Desktop\New folder (5)\Pidev-3A34-G4\Pidev-3A34-G4\Pidev-3A34-G4\src\main\java\Gestionreclamation\Cours\Controller" />
       <recent name="C:\Users\MajedSmichi\Desktop\New folder (5)\Pidev-3A34-G4\Pidev-3A34-G4\Pidev-3A34-G4\src\main\java\Gestionreclamation\Produit" />
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\java\Controller" />
-      <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\weder\OneDrive\Bureau\pidevJava-3A34\Pidev-3A34-G4-JavaFX\src\main\resources\Gestionreclamation\image" />
@@ -152,7 +153,7 @@
       <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="connectionSql.*" />
+          <option name="PATTERN" value="connectionSql.Myconnection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -167,7 +168,7 @@
       <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="connectionSql.*" />
+          <option name="PATTERN" value="connectionSql.Myconnection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -180,7 +181,7 @@
       <module name="Pidev-3A34-G4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="connectionSql.*" />
+          <option name="PATTERN" value="connectionSql.Myconnection.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -564,8 +565,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/HelloApplication.java</url>
-          <line>36</line>
-          <properties class="Gestionreclamation.HelloApplication">
+          <line>32</line>
+          <properties class="Gestionreclamation.HelloApplication" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -573,7 +574,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java</url>
-          <line>105</line>
+          <line>124</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

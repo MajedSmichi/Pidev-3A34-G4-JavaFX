@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.MyController.FrontCoursController">
+    <Label fx:id="categoryNameLabel" layoutX="38.0" layoutY="38.0" prefHeight="35.0" prefWidth="338.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" textAlignment="CENTER" textFill="ORANGE">
+      <font>
+         <Font name="Roboto Black" size="12.0" />
+      </font></Label>
+    <FlowPane fx:id="coursesFlowPane" hgap="10" layoutX="38.0" layoutY="85.0" prefHeight="20.0" prefWidth="525.0" vgap="10">
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+        </padding>
+    </FlowPane>
+    <Label fx:id="noCoursesLabel" layoutX="38.0" layoutY="95.0" prefWidth="240.0" style="-fx-font-size: 20px; -fx-text-fill: #ffa500; -fx-font-weight: bold;" textFill="ORANGE" />
+   <Button fx:id="goToCategoriesButton"  layoutX="446.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToCategories" text="Back To Categories" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: Roboto;">
+      <font>
+         <Font name="Roboto Black" size="12.0" />
+      </font>
+   </Button>
+</AnchorPane>

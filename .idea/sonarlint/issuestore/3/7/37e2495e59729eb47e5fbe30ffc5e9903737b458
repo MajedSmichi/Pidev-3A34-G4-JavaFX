@@ -1,0 +1,17 @@
+
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸š­Ôô1J$91f79a19-df79-4ffe-9bf7-c95e9bab1e63
+ˆ
+java:S1192k"FDefine a constant instead of duplicating this literal "Error" 3 times.(«üâY8»š­Ôô1J$d9b8b14e-5cf2-4360-ac17-9463e716dce5
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8Áš­Ôô1J$254aa5db-1b22-403d-8896-215b801965fc
+‘
+java:S2095’"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†š­î8À›­Ôô1J$c2b8c95d-72fa-42ed-bc4b-9d482c9a584f
+m	java:S106a"+Replace this use of System.err by a logger.(ÿêË8Ò›­Ôô1J$930510ad-4b46-422b-8900-6857e509679a
+
+java:S2674“"JCheck the return value of the "read" call to see how many bytes were read.(®²ëª8Ş›­Ôô1J$ad9de0e8-6af4-4df7-b044-eb4df1dbd72e
+…
+java:S1172˜"<Remove these unused method parameters "name", "description".(å„‹ıÿÿÿÿ8á›­Ôô1J$743627f6-6211-403d-baac-374951c77aaa
+s	java:S106š"+Replace this use of System.out by a logger.(šüó‰ùÿÿÿÿ8ã›­Ôô1J$05baceb5-dcff-456b-ab18-1862bee7ac75
+v
+java:S10681"3Remove this unused "categoryService" private field.(å³Î8šœ­Ôô1J$f3a448ba-0bc6-4ac2-8849-55840f653617
+|
+java:S1144˜"3Remove this unused private "validateInputs" method.(å„‹ıÿÿÿÿ8›œ­Ôô1J$0c9cb0bc-b4f4-4e68-95c9-f8039a3c9c0d

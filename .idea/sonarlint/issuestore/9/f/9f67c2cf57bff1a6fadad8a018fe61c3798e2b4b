@@ -1,0 +1,6 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8å¿›Ëô1J$2fdb7d27-b342-4b8d-aecb-1dc17219dfa8
+¡
+java:S1171L"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8•À›Ëô1J$b83d0a23-5e7c-4548-bcbe-42c31c7c1306
+‰
+java:S1193‹"@Replace the usage of the "instanceof" operator by a catch block.(ñ›»‹üÿÿÿÿ8®À›Ëô1J$b432bdcf-762f-412f-a33d-402638804543

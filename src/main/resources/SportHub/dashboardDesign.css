@@ -128,7 +128,11 @@
     -fx-background-radius:8px;
     -fx-text-fill:#fff;
     -fx-font-size:14px;
+<<<<<<< HEAD
     -fx-font-family:"Arial";
+=======
+    -fx-font-family:"Roboto";
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a
     -fx-cursor:hand;
 }
 .add-btn:hover{

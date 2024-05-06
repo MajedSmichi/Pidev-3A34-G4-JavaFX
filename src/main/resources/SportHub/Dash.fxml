@@ -17,6 +17,8 @@
             <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion users" textFill="WHITE">
+
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadEvenementCards" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Evenement with cards" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -67,6 +69,8 @@
                      </padding>
                   </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Cours" textFill="WHITE">
+
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" onAction="#loadCourseLayout" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Cours" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -78,7 +82,7 @@
                         <Insets left="40.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadGestionProduitsLayout" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Produits" textFill="WHITE">
+
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -90,7 +94,7 @@
                         <Insets left="40.0" />
                      </padding>
                   </Button>
-                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadGestionCategroiesLayout" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Categories" textFill="WHITE">
+                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false"  prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Categories" textFill="WHITE">
                        <graphic>
                            <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                <image>
@@ -102,6 +106,7 @@
                            <Insets left="40.0" />
                        </padding>
                    </Button>
+
 
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@fullpackstyling.css" text="Gestion Reclamations" textFill="WHITE">
                      <graphic>
@@ -142,6 +147,6 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="anchor" layoutX="272.0" layoutY="20.0" prefHeight="664.0" prefWidth="922.0" />
+      <AnchorPane fx:id="anchor" layoutX="275.0" layoutY="14.0" prefHeight="586.0" prefWidth="905.0" />
    </children>
 </AnchorPane>

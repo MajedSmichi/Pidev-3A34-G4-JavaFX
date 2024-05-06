@@ -1,0 +1,24 @@
+
+‹
+java:S1192Z"ODefine a constant instead of duplicating this literal "date_evenement" 3 times.(âÀÄıJ$9ce70384-be0e-4558-84be-6cdf1276df14
+
+java:S1192X"LDefine a constant instead of duplicating this literal "description" 3 times.(¨»§÷ùÿÿÿÿJ$43bd6277-eff1-4ff4-8eec-e1a2a68ff8a9
+‘
+java:S1192["PDefine a constant instead of duplicating this literal "image_evenement" 3 times.(Ä¬îœÿÿÿÿÿJ$c741de94-0a3c-468a-a0e2-0bd41371325f
+‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$b90ebe8b-c31a-4a60-9344-96f70cf727d3
+‘	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¼¿ØùÿÿÿÿJ$76a60d5a-cf7c-4ef7-bda2-1824344cf80c
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ãÈÈñüÿÿÿÿJ$5b5ecff3-82d5-4c17-bde3-b2238691d394
+‹
+java:S2095!"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ıé¼ÆJ$4dd80b01-957e-45d2-90b2-861085ee2fff
+‹
+java:S2095'"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¥²¾±J$6c2e98b5-d32d-42a0-acb6-553777dca04c
+
+java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿJ$1a8baff7-2b9c-4c8d-8607-0f99607c5abd
+
+java:S2095f"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°Áµşÿÿÿÿ8õ§»ï1J$947115fb-9f48-44c0-9066-32d6d60071be
+˜
+java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â…ÍÆÿÿÿÿÿ8ö§»ï1J$9ae95d45-73e0-4311-a8ae-f2b2820e6333
+|	java:S125-"<This block of commented-out lines of code should be removed.(´¼¿ØùÿÿÿÿJ$8dd88cdf-bd65-459c-9258-84946aac8dc0
+k	java:S106D"+Replace this use of System.out by a logger.(©Ô°ĞûÿÿÿÿJ$0eaad775-c0fd-44cb-a7d5-d20b6dac1ae4
+k	java:S106I"+Replace this use of System.out by a logger.(¹êÙôüÿÿÿÿJ$762770a8-87cb-4673-9618-ce9b1e9a90fb
+f	java:S106K"+Replace this use of System.out by a logger.(©ú›ØJ$22fdb115-ce4c-484c-a06e-f479eec83051

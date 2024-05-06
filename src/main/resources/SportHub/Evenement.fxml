@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root1" prefHeight="765.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementController">
+<children>
+      <AnchorPane layoutX="406.0" layoutY="14.0" prefHeight="682.0" prefWidth="754.0" stylesheets="@dashboardDesign.css">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <TableView fx:id="eventTableView" layoutX="18.0" layoutY="76.0" prefHeight="591.0" prefWidth="718.0" stylesheets="@dashboardDesign.css">
+               <columns>
+                  <TableColumn fx:id="col_event_nom" prefWidth="187.99993896484375" text="Nom" />
+                  <TableColumn fx:id="col_event_lieu" prefWidth="176.800048828125" text="Lieu" />
+                  <TableColumn fx:id="col_event_date" minWidth="0.0" prefWidth="143.20001220703125" text="Date" />
+                  <TableColumn fx:id="col_event_description" prefWidth="212.00006103515625" text="Description" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+    <AnchorPane layoutX="53.0" layoutY="14.0" prefHeight="682.0" prefWidth="335.0" stylesheets="@dashboardDesign.css">
+        <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+        </styleClass>
+        <children>
+            <Label layoutX="14.0" layoutY="241.0" text="Titre" />
+            <Label layoutX="14.0" layoutY="330.0" text="Lieu" />
+            <Label layoutX="14.0" layoutY="487.0" text="Description" />
+            <Label layoutX="14.0" layoutY="411.0" text="Date" />
+            <Label layoutX="16.0" layoutY="34.0" text="Image" />
+            <TextField fx:id="event_titre" layoutX="23.0" layoutY="272.0" prefHeight="46.0" prefWidth="240.0" promptText="Titre" styleClass="label-info" />
+            <TextField fx:id="event_lieu" layoutX="26.0" layoutY="350.0" prefHeight="46.0" prefWidth="240.0" promptText="Lieu" styleClass="label-info" />
+            <TextArea fx:id="event_description" layoutX="29.0" layoutY="511.0" prefHeight="86.0" prefWidth="240.0" promptText="Description" styleClass="label-info" />
+            <DatePicker fx:id="event_date" layoutX="28.0" layoutY="435.0" prefHeight="45.0" prefWidth="240.0" promptText="Date" styleClass="label-info" />
+
+            <AnchorPane layoutX="41.0" layoutY="60.0" prefHeight="154.0" prefWidth="218.0" stylesheets="@dashboardDesign.css">
+
+                <children>
+                    <ImageView fx:id="event_image" fitHeight="130.0" fitWidth="218.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                        <styleClass>
+                            <String fx:value="white-bg" />
+                            <String fx:value="shadow" />
+                        </styleClass>
+                    </ImageView>
+                 <Button fx:id="event_import" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="34.0" prefWidth="218.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
+                </children>
+                <styleClass>
+                    <String fx:value="white-bg" />
+                    <String fx:value="shadow" />
+                </styleClass>
+            </AnchorPane>
+            <Button fx:id="event_clear" layoutX="37.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+            <Button fx:id="event_add" layoutX="37.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+            <Button fx:id="event_delete" layoutX="176.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#eventDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
+            <Button fx:id="event_update" layoutX="176.0" layoutY="609.0" mnemonicParsing="false" onMouseClicked="#eventUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+
+        </children>
+    </AnchorPane>
+</children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+
+¤
+java:S1104"\Make categoryFlowPane a static final constant or non-public and provide accessors if needed.(îØÃÊşÿÿÿÿ8Š‡úÓô1J$6a82a469-b39e-46d7-8fdc-59a7d405fc26
+™
+java:S1104 "VMake pagination a static final constant or non-public and provide accessors if needed.(ãŒ8Œ‡úÓô1J$3b6321d1-8b64-4810-ba1a-30cf4153b2b4
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8’‡úÓô1J$7870f693-d222-4b8f-ac47-a5c9f0041e48
+¦
+java:S1450"cRemove the "frontCoursController" field and declare it as a local variable in the relevant methods.(ãòì¶8ë‡úÓô1J$ce037f44-5e80-4fd8-800f-6b9606a7f399
+‘
+java:S1117“"HRename "frontCoursController" which hides the field declared at line 31.(øåÌûûÿÿÿÿ8¡ˆúÓô1J$a878504b-2e24-4653-ba0d-6f5dc9b6bada
+r
+java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8¥ˆúÓô1J$ae03e2cc-c53d-4003-af2d-85700d25487e
+w
+java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8¥ˆúÓô1J$fc313f3d-7a23-418a-a03d-ee815a2c124e
+{
+java:S1068"8Remove this unused "frontCoursController" private field.(ãòì¶8§ˆúÓô1J$1e7c0817-a7bf-4438-af93-2ed5e2e58d3c

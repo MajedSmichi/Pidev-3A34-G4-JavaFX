@@ -2,6 +2,7 @@ package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.User;
 import Gestionreclamation.Services.UserService;
+import Gestionreclamation.Cours.Controller.CategoryListController;
 import com.itextpdf.text.pdf.PdfPTable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -100,6 +101,24 @@ public class SampleController implements UserCardRefreshListener {
 
 
     }
+
+
+
+@FXML
+public void loadCourseLayout() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/ListCat.fxml"));
+        AnchorPane courseLayout = loader.load();
+
+        // Pass this DashController instance to CategoryListController
+        CategoryListController categoryListController = loader.getController();
+        categoryListController.setDashController(this);
+
+        anchor.getChildren().setAll(courseLayout);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     @FXML
     public void loadGestionProduitsLayout() {

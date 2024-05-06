@@ -63,4 +63,29 @@ module com.example.gestionreclamation {
     opens Gestionreclamation.Produit.Controller to javafx.fxml;
     exports Gestionreclamation.Produit.Entity;
     opens Gestionreclamation.Produit.Entity to javafx.fxml;
+
+    //requires com.dlsc.formsfx;
+
+
+
+    requires java.persistence;
+    requires java.activation;
+
+
+    //requires activation;
+    //requires java.mail;
+    //requires sendgrid.java;
+    //requires java.http.client;
+
+
+
+    exports Gestionreclamation.Cours.Controller;
+    opens Gestionreclamation.Cours.Controller to javafx.fxml;
+    exports Gestionreclamation.Cours.Entity;
+    opens Gestionreclamation.Cours.Entity to javafx.fxml;
+    exports Gestionreclamation.Cours.Services;
+    opens Gestionreclamation.Cours.Services to javafx.fxml;
+
+
+
 }

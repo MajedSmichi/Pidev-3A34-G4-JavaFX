@@ -149,4 +149,12 @@
 .linear-grad
 {
     -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+<<<<<<< HEAD
 }
+=======
+}
+
+.AnchorPane  {
+    -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+>>>>>>> a57881855167a52432b1e5bcd5a6e4c0c07a465a

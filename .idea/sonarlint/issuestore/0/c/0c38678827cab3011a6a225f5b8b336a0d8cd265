@@ -1,0 +1,61 @@
+
+d
+java:S1192l"NDefine a constant instead of duplicating this literal "Error Message" 3 times.(ö‡
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿ
+c
+java:S3655Í"LCall "option.isPresent()" or "!option.isEmpty()" before accessing the value.(…İòÔ
+Q	java:S125!"<This block of commented-out lines of code should be removed.(´±™¤
+n	java:S116."TRename this field "event_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÄ¢’üÿÿÿÿ
+p	java:S1161"VRename this field "event_clear" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¿ğøÿÿÿÿ
+j	java:S1164"URename this field "event_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“²ñ•
+v	java:S1167"\Rename this field "event_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¨›†ÿÿÿÿÿ
+p	java:S116:"VRename this field "event_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á­«¿şÿÿÿÿ
+l	java:S116="WRename this field "event_import" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍĞ¤ÿ
+o	java:S116@"URename this field "event_lieu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş¯Ÿåùÿÿÿÿ
+p	java:S116C"VRename this field "event_titre" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãêíßıÿÿÿÿ
+i	java:S116E"TRename this field "nom_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õºë€
+m	java:S116L"XRename this field "col_event_nom" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•½È™
+n	java:S116O"YRename this field "col_event_lieu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥óî›
+n	java:S116R"YRename this field "col_event_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»®
+t	java:S116U"`Rename this field "col_event_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â¡F
+i	java:S116_"TRename this field "url_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ˆ‰
+o
+java:S1450^"TRemove the "image" field and declare it as a local variable in the relevant methods.(­¾öÁùÿÿÿÿ
+n
+java:S1450_"XRemove the "url_image" field and declare it as a local variable in the relevant methods.(½ˆ‰
+Q	java:S125["<This block of commented-out lines of code should be removed.(„ñı¬
+W	java:S125"<This block of commented-out lines of code should be removed.(ÚÜ¡›ÿÿÿÿÿ
+W	java:S125§"<This block of commented-out lines of code should be removed.(Ò…÷œşÿÿÿÿ
+O
+java:S1117‘"8Rename "file" which hides the field declared at line 93.(¶Çˆƒ
+U
+java:S1117’"9Rename "image" which hides the field declared at line 94.(‰–¦öşÿÿÿÿ
+P
+java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ
+N
+java:S1128	"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ
+F
+java:S1128
+"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È
+E
+java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²
+J
+java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü
+E
+java:S1128"/Remove this unused import 'java.nio.file.Path'.(×²êÂ
+F
+java:S1128"0Remove this unused import 'java.nio.file.Paths'.(áè°¯
+S
+java:S1128"=Remove this unused import 'java.nio.file.StandardCopyOption'.(×ÀòÔ
+D
+java:S1128"".Remove this unused import 'javafx.scene.Node'.(ÑÖ¬ï
+D
+java:S1128$")Remove this unused import 'java.net.URL'.(ñìÁ„üÿÿÿÿ
+P
+java:S1128&"5Remove this unused import 'java.util.ResourceBundle'.(ıÆ£¯øÿÿÿÿ
+C
+java:S1068_"-Remove this unused "url_image" private field.(½ˆ‰

@@ -1,17 +1,13 @@
 package Gestionreclamation;
 import Gestionreclamation.Services.AssemblyAIService;
-import Gestionreclamation.Services.GrammarCheck;
-import Gestionreclamation.Services.sms77io;
 import connectionSql.ConnectionSql;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
-import Gestionreclamation.Services.openIAsevice;
 
 public class HelloApplication extends Application {
     @Override

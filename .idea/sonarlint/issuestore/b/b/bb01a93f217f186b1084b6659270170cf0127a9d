@@ -1,0 +1,15 @@
+
+ˆ
+java:S1192d"FDefine a constant instead of duplicating this literal "Error" 3 times.(«üâY8® äşñ1J$d0dde0a7-82ee-4257-914e-cb23467687f8
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( Ë¢äüÿÿÿÿ8± äşñ1J$4b36b410-e1ce-4a10-b910-1e94c97871fa
+•
+java:S2095R"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¾¡½ßÿÿÿÿÿ8‚ŞæÅó1J$69b68bcb-c83b-485e-85b3-621c9899cb8a
+x
+java:S2209E"5Change this instance-reference to a static reference.(ÔÒÇû8“Åøëó1J$93d15898-2c30-40b8-aa5d-abe80fb2ac60
+m	java:S106M"+Replace this use of System.err by a logger.(ÿêË8Ò äşñ1J$b60b36ab-ee76-4c1a-b9d6-25ba6c2035bd
+’
+java:S2674T"JCheck the return value of the "read" call to see how many bytes were read.(¸¡…Ÿúÿÿÿÿ8ŞæÅó1J$580c7986-9cb1-4d55-87ba-49aa2e779369
+†
+java:S1854…"=Remove this useless assignment to local variable "coursList".(ß“ÜŞşÿÿÿÿ8º¦æşñ1J$6a2bace3-face-4ec2-acf7-f90a65156fb4
+w
+java:S1481ƒ".Remove this unused "coursList" local variable.(Ÿ„úÿÿÿÿ8»¦æşñ1J$2c476877-238f-4016-a46d-f6d87e44adb3

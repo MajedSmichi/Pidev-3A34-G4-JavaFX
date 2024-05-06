@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root type="AnchorPane" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx">
+<VBox prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #A9A9A9; -fx-border-radius: 10px; -fx-padding: 10px; -fx-border-width: 1px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">        <ImageView fx:id="categoryImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
+        <Label fx:id="categoryNameLabel" text="Category Name" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #333;" VBox.vgrow="NEVER">
+         <font>
+            <Font name="Roboto Black" size="12.0" />
+         </font></Label>
+        <Label fx:id="categoryDescriptionLabel" text="Category Description" style="-fx-font-size: 14px; -fx-text-fill: #666;" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="Roboto Black" size="12.0" />
+         </font></Label>
+        <Button fx:id="exploreButton" onAction="#handleExploreButtonAction" prefHeight="22.0" prefWidth="200.0" text="Explore!" style="-fx-background-color: #ffa500; -fx-border: none; -fx-text-fill: white; -fx-font-size: 14px;" VBox.vgrow="NEVER">
+         <font>
+            <Font name="Roboto Black" size="12.0" />
+         </font></Button>
+    </VBox>
+</fx:root>

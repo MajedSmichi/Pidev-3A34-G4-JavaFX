@@ -6,6 +6,7 @@ import Gestionreclamation.SportHub.Entity.Evenement;
 import Gestionreclamation.SportHub.Entity.Ticket;
 import Gestionreclamation.SportHub.Services.EvenementService;
 import Gestionreclamation.SportHub.Services.TicketService;
+import Gestionreclamation.Cours.Controller.FrontCategoryController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -40,6 +41,27 @@ public class client {
     public AnchorPane getAnchor() {
         return achorfront;
     }
+
+    @FXML
+    public void loadCoursesFront() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SportHub/MyFxml/FrontCategory.fxml"));
+            AnchorPane coursesFront = loader.load();
+
+            // Get the controller of the FrontCategory.fxml
+            FrontCategoryController frontCategoryController = loader.getController();
+
+            // Set achorfront to the FrontCategoryController
+            frontCategoryController.setAchorfront(achorfront);
+
+            achorfront.getChildren().setAll(coursesFront);
+            System.out.println("Courses front view loaded successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error while loading the courses front view");
+        }
+    }
+
 
     @FXML
     public void loadMarket() {

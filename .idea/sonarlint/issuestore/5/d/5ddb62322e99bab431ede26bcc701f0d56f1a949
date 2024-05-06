@@ -1,0 +1,9 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´˜–¬8ú¿ìòò1J$c1f480d7-c142-4d52-8c99-291049fe4af2
+
+java:S1854 ">Remove this useless assignment to local variable "connection".(ì·³ó8³¨òòò1J$ace4ee8c-c529-4d18-bab5-71c82db63e56
+~	java:S125"<This block of commented-out lines of code should be removed.(‰ÁŞ8úß÷¦ó1J$a380b899-72cd-4d3a-8f1e-2bf7642cfad6
+r
+java:S1481 "/Remove this unused "connection" local variable.(ì·³ó8Ê¨òòò1J$b59b8915-6b61-4536-b055-2a23bf575a15
+X
+java:S1128";Remove this unused import 'javafx.scene.layout.AnchorPane'.(Ø µ8àùÁÔô1

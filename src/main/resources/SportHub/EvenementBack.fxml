@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane fx:id="root1" prefHeight="762.0" prefWidth="1356.0" stylesheets="@Back.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SportHub.Controller.EvenementBack">
+   <Button fx:id="ajouterEvenement" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" text="Ajouter Evenement" textAlignment="CENTER" />
+   <AnchorPane fx:id="ajouterPane" layoutX="33.0" layoutY="69.0" prefHeight="678.0" prefWidth="350.0" stylesheets="@dashboardDesign.css">
+      <styleClass>
+         <String fx:value="shadow" />
+         <String fx:value="white-bg" />
+      </styleClass>
+      <children>
+         <Label layoutX="16.0" layoutY="219.0" text="Titre" />
+         <Label layoutX="19.0" layoutY="289.0" text="Lieu" />
+         <Label layoutX="17.0" layoutY="442.0" text="Description" />
+         <Label layoutX="15.0" layoutY="372.0" text="Date" />
+         <Label layoutX="10.0" layoutY="14.0" text="Image" />
+         <TextField fx:id="event_titre" layoutX="26.0" layoutY="237.0" prefHeight="51.0" prefWidth="274.0" promptText="Titre" styleClass="label-info" />
+         <TextField fx:id="event_lieu" layoutX="28.0" layoutY="320.0" prefHeight="51.0" prefWidth="274.0" promptText="Lieu" styleClass="label-info" />
+         <TextArea fx:id="event_description" layoutX="30.0" layoutY="471.0" prefHeight="82.0" prefWidth="274.0" promptText="Description" styleClass="label-info" />
+         <DatePicker fx:id="event_date" layoutX="28.0" layoutY="390.0" prefHeight="51.0" prefWidth="274.0" promptText="Date" styleClass="label-info" />
+         <AnchorPane layoutX="93.0" layoutY="14.0" prefHeight="195.0" prefWidth="144.0" stylesheets="@dashboardDesign.css">
+            <children>
+               <ImageView fx:id="event_image" fitHeight="166.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                  <styleClass>
+                     <String fx:value="white-bg" />
+                     <String fx:value="shadow" />
+                  </styleClass>
+               </ImageView>
+               <Button fx:id="event_import" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#importImage" prefHeight="42.0" prefWidth="144.0" styleClass="import-btn" stylesheets="@dashboardDesign.css" text="Import" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="152.0" />
+
+            </children>
+            <styleClass>
+               <String fx:value="white-bg" />
+               <String fx:value="shadow" />
+            </styleClass>
+         </AnchorPane>
+         <Button fx:id="event_clear" layoutX="41.0" layoutY="630.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="254.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+         <Button fx:id="event_add" layoutX="40.0" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#eventAdd" prefHeight="38.0" prefWidth="254.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+      </children>
+   </AnchorPane>
+   <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="402.0" layoutY="127.0" prefHeight="612.0" prefWidth="892.0" styleClass="scroll-pane">
+      <GridPane fx:id="eventContainerBack" alignment="CENTER" hgap="10" layoutX="450.0" layoutY="148.0" prefHeight="610.0" prefWidth="874.0" vgap="10" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.40000000000009" AnchorPane.topAnchor="148.0">
+      </GridPane>
+   </ScrollPane>
+   <Button fx:id="hide" layoutX="282.0" layoutY="16.0" maxHeight="42.0" maxWidth="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="43.0">
+      <graphic>
+         <ImageView fx:id="modifiericon" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/cancel.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+
+</AnchorPane>

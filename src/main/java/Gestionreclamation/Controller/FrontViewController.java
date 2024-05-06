@@ -1,6 +1,7 @@
 package Gestionreclamation.Controller;
 
 import Gestionreclamation.Entity.User;
+import Gestionreclamation.Cours.Controller.FrontCategoryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

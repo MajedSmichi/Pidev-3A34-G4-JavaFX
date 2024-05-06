@@ -1,0 +1,29 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şÆ‘…ùÿÿÿÿJ$168134b3-b92d-4fb4-8bec-797eea536648
+”	java:S116."TRename this field "event_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÄ¢’üÿÿÿÿJ$227201b9-db6b-4749-b324-365de07816d6
+–	java:S1161"VRename this field "event_clear" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¿ğøÿÿÿÿJ$5055dba7-6a09-48e3-af92-b4ca162ea96a
+	java:S1164"URename this field "event_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“²ñ•J$f8530c59-c25e-4c96-ba8e-93f7f3abea42
+œ	java:S1167"\Rename this field "event_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¨›†ÿÿÿÿÿJ$5ac3791e-1edd-4668-870b-47f5eab38a7a
+–	java:S116:"VRename this field "event_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á­«¿şÿÿÿÿJ$19d02b8e-308c-412b-a004-0a6c11d71973
+’	java:S116="WRename this field "event_import" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍĞ¤ÿJ$67fdedc1-ed6e-433b-9d8d-8b7adcecd0d9
+•	java:S116@"URename this field "event_lieu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş¯ŸåùÿÿÿÿJ$46a9319b-ebbe-4a9e-a9b1-47dcd25b1579
+–	java:S116C"VRename this field "event_titre" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃêíßıÿÿÿÿJ$f9ebdf33-caec-47ee-92cc-33b84516b26e
+	java:S116G"TRename this field "nom_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õºë€J$f6bd9742-543c-43ce-b238-259ca6e1b2f3
+	java:S116J"TRename this field "url_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ˆ‰J$95accacc-7920-49de-a11a-ecf9d1a45a71
+•
+java:S1450I"TRemove the "image" field and declare it as a local variable in the relevant methods.(­¾öÁùÿÿÿÿJ$17f287a2-d4bb-4948-84a6-2fb11ba45bea
+”
+java:S1450J"XRemove the "url_image" field and declare it as a local variable in the relevant methods.(½ˆ‰J$60ff4fd0-d3ae-497c-9a17-2c231cf04a95
+m
+java:S1602U",Remove useless curly braces around statement(÷¶ùØÿÿÿÿÿJ$26374f6f-8181-4d10-9aac-b3bc95b3cd6b
+h
+java:S1602X",Remove useless curly braces around statement(ÔíßJ$9817245b-d9f2-420e-8262-84332c5d31c6
+}	java:S125¤"<This block of commented-out lines of code should be removed.(ÚÜ¡›ÿÿÿÿÿJ$69bce044-0543-47ac-ac2b-80300810e624
+L
+java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8ûóÜ·ï1
+Q
+java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8üóÜ·ï1
+i
+java:S1068G"-Remove this unused "nom_image" private field.(õºë€J$a261d782-1eba-4b2b-aa26-188362ced33f
+i
+java:S1068J"-Remove this unused "url_image" private field.(½ˆ‰J$884e63b1-17d6-40c9-bc8c-2d903cee395e
