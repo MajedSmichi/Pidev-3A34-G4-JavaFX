@@ -41,7 +41,19 @@ public class client {
         return achorfront;
     }
 
+    @FXML
+    public void loadMarket() {
+        try {
+            // Load the new FXML file
+            AnchorPane marketPane = FXMLLoader.load(getClass().getResource("/SportHub/market.fxml"));
 
+            // Clear the existing content and add the new pane
+            achorfront.getChildren().clear();
+            achorfront.getChildren().add(marketPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void loadSalleCards() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GestionReclamation/GestionSalle/FrontSalle.fxml"));

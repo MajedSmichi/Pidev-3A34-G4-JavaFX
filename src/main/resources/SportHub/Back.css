@@ -1,0 +1,147 @@
+/* Style for the event name */
+#name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3f3f3f;
+}
+
+/* Style for the event date */
+#Date {
+    -fx-font-size: 16px;
+    -fx-text-fill: #7f7f7f;
+}
+
+#PaneProduct {
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+    -fx-min-width: 250px;  /* Set minimum width */
+    -fx-min-height: 350px; /* Set minimum height */
+    -fx-max-width: 250px;  /* Set maximum width */
+    -fx-max-height: 350px; /* Set maximum height */
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+
+#PaneProduct:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 89, 0, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(255, 119, 89, 0.81);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#PaneProduct:hover #name {
+    -fx-text-fill: #ffffff; /* Makes the text white */
+}
+
+#supprimer, #modifier {
+    -fx-background-color: transparent;
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+
+}
+
+#hide {
+    -fx-background-color: transparent;
+
+    -fx-shape: "M 50 0 a 50 50 0 1 1 0.0001 0";
+    -fx-min-width: 38px;
+    -fx-min-height: 38px;
+    -fx-max-width: 38px;
+    -fx-max-height: 38px;
+}
+
+
+#ajouterProduit{
+    -fx-background-color: #000000; /* Change button background color to black */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+#ajouterProduit:hover {
+    -fx-background-color: #ff4800; /* Change button hover background color to orange */
+}
+#PaneDetail {
+
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+}
+#PaneDetail:hover {
+
+    -fx-effect: dropshadow(three-pass-box, rgba(87, 87, 87, 0.87), 10, 0, 0, 10);
+}
+
+
+
+#PaneTicket {
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.16), 5, 0, 0, 5);
+    -fx-border-color: transparent;
+    -fx-border-radius: 15px; /* Add this line to make the border rounded */
+    -fx-background-radius: 15px; /* Add this line to make the background rounded */
+    -fx-border-width: 0;
+    -fx-min-width: 250px;  /* Set minimum width */
+    -fx-min-height: 350px; /* Set minimum height */
+    -fx-max-width: 250px;  /* Set maximum width */
+    -fx-max-height: 350px; /* Set maximum height */
+    -fx-alignment: center; /* Add this line */
+    -fx-transition: all 0.3s ease;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: scale 0.5s;
+}
+
+#PaneTicket:hover {
+    /* Add your hover styles here */
+    -fx-effect: dropshadow(three-pass-box, rgba(70, 182, 255, 0.87), 10, 0, 0, 10);
+    -fx-background-color: rgba(0, 120, 171, 0.81);
+    -fx-text-fill: white ;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#ajouterTicket{
+    -fx-background-color: #000000; /* Change button background color to black */
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px 10px 20px; /* Top Right Bottom Left */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+#ajouterTicket:hover {
+    -fx-background-color: #ff6200; /* Change button hover background color to orange */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
+}

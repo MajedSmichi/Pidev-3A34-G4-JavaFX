@@ -1,0 +1,45 @@
+/* General Styles */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-base: #FFFFFF;
+}
+
+/* ScrollPane Styles */
+.scroll-pane {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #4a4a4a;
+}
+
+/* ImageView Styles */
+.image-view {
+    -fx-pref-width: 100%;
+    -fx-fit-width: true;
+}
+
+/* Button Styles */
+.button {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #FFA500;
+    -fx-background-radius: 5;
+    -fx-font-family: 'Verdana'; /* Change this to your preferred font */
+    -fx-font-size: 17px; /* Adjust size as needed */
+//-fx-font-weight: bold; /* Makes the text bold */
+}
+.button:hover {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: #ffffff;
+
+}
+
+/* AnchorPane Styles */
+.anchor-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+#anchorpane1 {
+    -fx-background-color: #000000;
+}
+/* Center Content Styles */
+.center-content {
+    -fx-alignment: center;
+}

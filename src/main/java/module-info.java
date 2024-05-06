@@ -53,4 +53,14 @@ module com.example.gestionreclamation {
     opens Gestionreclamation.SportHub.Controller to javafx.fxml;
 
     // Add these lines for gestionsalle
+
+    //requires com.dlsc.formsfx;
+    //requires java.persistence;
+    opens Gestionreclamation.Produit to javafx.fxml;
+    exports Gestionreclamation.Produit;
+
+    exports Gestionreclamation.Produit.Controller;
+    opens Gestionreclamation.Produit.Controller to javafx.fxml;
+    exports Gestionreclamation.Produit.Entity;
+    opens Gestionreclamation.Produit.Entity to javafx.fxml;
 }

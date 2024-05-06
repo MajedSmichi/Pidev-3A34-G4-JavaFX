@@ -98,4 +98,23 @@ public class Dash {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void loadGestionProduitsLayout() {
+        try {
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Product.fxml"));
+            anchor.getChildren().setAll(gestionProduitsLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void loadGestionCategroiesLayout() {
+        try {
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Categorie.fxml"));
+            anchor.getChildren().setAll(gestionProduitsLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -102,6 +102,26 @@ public class SampleController implements UserCardRefreshListener {
     }
 
     @FXML
+    public void loadGestionProduitsLayout() {
+        try {
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Product.fxml"));
+            anchor.getChildren().setAll(gestionProduitsLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void loadGestionCategroiesLayout() {
+        try {
+            AnchorPane gestionProduitsLayout = FXMLLoader.load(getClass().getResource("/SportHub/Categorie.fxml"));
+            anchor.getChildren().setAll(gestionProduitsLayout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     public void loadEvenementCards() {
         try {
             AnchorPane evenementLayout = FXMLLoader.load(getClass().getResource("/Gestionreclamation/SportHub/EvenementBack.fxml"));

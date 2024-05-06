@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root1" prefHeight="765.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gestionreclamation.Produit.Controller.CategorieController">
+    <children>
+        <AnchorPane layoutX="444.0" layoutY="23.0" prefHeight="682.0" prefWidth="714.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="shadow" />
+                <String fx:value="white-bg" />
+            </styleClass>
+            <children>
+                <TableView fx:id="categorieTableView" layoutX="136.0" layoutY="64.0" prefHeight="591.0" prefWidth="464.0" stylesheets="@dashboardDesign.css">
+                    <columns>
+                        <TableColumn fx:id="col_categorie_name" prefWidth="463.20001220703125" text="Nom" />
+                    </columns>
+                </TableView>
+            <Label layoutX="250.0" layoutY="14.0" text="LIiste Des Categores">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="54.0" layoutY="14.0" prefHeight="682.0" prefWidth="335.0" stylesheets="@dashboardDesign.css">
+            <styleClass>
+                <String fx:value="shadow" />
+                <String fx:value="white-bg" />
+            </styleClass>
+            <children>
+                <Label layoutX="40.0" layoutY="87.0" text="Nom" />
+                <TextField fx:id="categorie_name" layoutX="36.0" layoutY="120.0" prefHeight="46.0" prefWidth="240.0" promptText="nom_categorie" styleClass="label-info" />
+                <Button fx:id="categ_clear" layoutX="53.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#categorieClear" prefHeight="26.0" prefWidth="87.0" styleClass="clear-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+                <Button fx:id="categ_add" layoutX="53.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#categorieAdd" prefHeight="26.0" prefWidth="87.0" styleClass="add-btn" stylesheets="@dashboardDesign.css" text="Ajouter" />
+                <Button fx:id="categ_delete" layoutX="188.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#categorieDelete" prefHeight="26.0" prefWidth="87.0" styleClass="delete-btn" text="Supprimer" />
+                <Button fx:id="categ_update" layoutX="188.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#categorieUpdate" prefHeight="26.0" prefWidth="87.0" styleClass="update-btn" text="Modifier" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

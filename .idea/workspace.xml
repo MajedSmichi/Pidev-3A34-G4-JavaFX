@@ -71,36 +71,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Gestionreclamation.Controller.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Gestionreclamation.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pidev-3A34-G4 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pidev-3A34-G4 [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pidev-3A34-G4 [verify].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MajedSmichi/Desktop/Pidev-3A34-G4&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Gestionreclamation.Controller.Main.executor": "Run",
+    "Application.Gestionreclamation.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Maven.Pidev-3A34-G4 [clean].executor": "Run",
+    "Maven.Pidev-3A34-G4 [install].executor": "Run",
+    "Maven.Pidev-3A34-G4 [verify].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/MajedSmichi/Desktop/New folder (5)/Pidev-3A34-G4/Pidev-3A34-G4/Pidev-3A34-G4/src/main/java/Gestionreclamation/Produit",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MajedSmichi\Desktop\New folder (5)\Pidev-3A34-G4\Pidev-3A34-G4\Pidev-3A34-G4\src\main\java\Gestionreclamation\Produit" />
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Register" />
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\java\Controller" />
       <recent name="C:\Users\MajedSmichi\IdeaProjects\Pidev-3A34-G4\src\main\resources\Controller\Login" />
@@ -531,7 +532,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Screen of login nd register" />
     <MESSAGE value="img login nd register" />
     <MESSAGE value="login button" />
     <MESSAGE value="register button nd form validation" />
@@ -556,7 +556,8 @@
     <MESSAGE value="maerge louay" />
     <MESSAGE value="front salle" />
     <MESSAGE value="merge iyed with majed" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge iyed with majed" />
+    <MESSAGE value="pdf and notif" />
+    <option name="LAST_COMMIT_MESSAGE" value="pdf and notif" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -569,6 +570,11 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Gestionreclamation/Controller/SampleController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

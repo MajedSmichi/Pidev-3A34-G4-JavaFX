@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Style de l'arrière-plan */
 .anchor-pane {
     -fx-background-color: #e9edf1;
@@ -47,15 +48,29 @@
 .label.dashboard {
     -fx-text-fill: #181c32;
 }
+=======
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
 
 
 /* Style for the event name */
 .label {
+<<<<<<< HEAD
     -fx-font-size: 17px;
+=======
+    -fx-font-size: 20px;
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
     -fx-font-weight: bold;
     -fx-text-fill: #3f3f3f;
 }
 
+<<<<<<< HEAD
+=======
+/* Style for the event date */
+.label.date {
+    -fx-font-size: 16px;
+    -fx-text-fill: #7f7f7f;
+}
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
 
 .button {
     -fx-background-color: #000000; /* Change button background color to black */
@@ -114,6 +129,7 @@
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-min-width: 500px;  /* Set minimum width */
+<<<<<<< HEAD
     -fx-min-height: 850px; /* Set minimum height */
 
     -fx-alignment: center; /* Center all elements */
@@ -121,6 +137,15 @@
     -fx-background-radius: 15px; /* Add this line to make the background rounded */
     -fx-border-radius: 15px; /* Add this line to make the border rounded */
 }
+=======
+    -fx-min-height: 700px; /* Set minimum height */
+    -fx-max-width: 500px;  /* Set maximum width */
+    -fx-max-height: 700px; /* Set maximum height */
+    -fx-alignment: center; /* Center all elements */
+    -fx-transition: all 0.3s ease;
+}
+
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
 .detailed-card:hover {
     /* Add your hover styles here */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 10);
@@ -151,7 +176,11 @@
 }
 
 .ticket-card:hover {
+<<<<<<< HEAD
     -fx-background-color: #ffb337; /* Change hover background color to black */
+=======
+    -fx-background-color: #000000; /* Change hover background color to black */
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
 }
 
 .ticket-card:hover .button {
@@ -176,6 +205,7 @@
 
 }
 
+<<<<<<< HEAD
 
 .popular-event-card {
     /* Add your styles here */
@@ -199,3 +229,5 @@
     -fx-background-radius: 15; /* Optional: if you want rounded corners */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1); /* Optional: if you want a shadow effect */
 }
+=======
+>>>>>>> d8b843481fd76ce338451a75abbdc388be606330
